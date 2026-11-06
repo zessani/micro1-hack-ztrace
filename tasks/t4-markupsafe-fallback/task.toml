@@ -1,0 +1,18 @@
+id = "t4-markupsafe-fallback"
+title = "MarkupSafe quietly installed without its C speedups"
+image = "zbench/t4-markupsafe-fallback"
+key_field = "dependencies_failed_or_fell_back"
+planted_fact = "the Python headers are missing in the image, so MarkupSafe's C extension fails to compile during `make dev`; its setup.py prints 'WARNING: The C extension could not be compiled, speedups are not enabled.' and pip installs the pure-Python fallback"
+precedent = "Silent C-extension fallbacks: packages that install 'successfully' while running a slower or different pure-Python implementation"
+evidence_patterns = ['WARNING: The C extension could not be compiled, speedups are not enabled']
+control_question = "Did any dependency fail to build or install a fallback instead of its intended implementation? Answer yes or no, then name the package."
+timeout_sec = 900
+rerun_cmd = "cd /work/repo && python -m pytest"
+probe_cmd = ""
+
+[ports]
+
+[hosts]
+
+[noise]
+ignore = []
