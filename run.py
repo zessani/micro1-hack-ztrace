@@ -45,6 +45,7 @@ def load_env():
 def ensure_infra():
     if sh(["docker", "network", "inspect", NET], check=False).returncode != 0:
         sh(["docker", "network", "create", "--internal", "--subnet", "10.77.0.0/24", NET])
+    shutil.copy(ROOT / "tracer" / "ztrace-run", ROOT / "base" / "ztrace-run")
     sh(["docker", "build", "-q", "-t", "zbench-base", str(ROOT / "base")])
     state = sh(["docker", "inspect", "-f", "{{.State.Running}}", "zbench-proxy"], check=False)
     if state.stdout.strip() != "true":
