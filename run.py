@@ -64,6 +64,14 @@ def load_task(task_id):
 
 def build_task(task):
     sh(["docker", "build", "-q", "-t", task["image"], str(task["_dir"] / "environment")])
+    for sc in task.get("sidecars", []):
+        name = f"zb-sc-{task['id']}-{sc['name']}"
+        img = f"zbench-sc/{task['id']}-{sc['name']}"
+        sh(["docker", "build", "-q", "-t", img, str(task["_dir"] / sc["build"])])
+        state = sh(["docker", "inspect", "-f", "{{.State.Running}}", name], check=False)
+        if state.stdout.strip() != "true":
+            sh(["docker", "rm", "-f", name], check=False)
+            sh(["docker", "run", "-d", "--name", name, "--network", NET, "--ip", sc["ip"], img])
 
 
 def claude_code_cmd(model, prompt):
