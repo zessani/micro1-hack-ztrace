@@ -174,7 +174,7 @@ def parse_and_grade(run_dir, task, root_is_command=False, validate=False):
     facts_cmd = [sys.executable, "-m", "tracer.parse", str(run_dir / "raw" / "trace"),
                  "--task", str(task["_dir"] / "task.toml"), "-o", str(run_dir / "facts.json")]
     if root_is_command:
-        facts_cmd.insert(5, "--root-is-command")
+        facts_cmd.append("--root-is-command")
     r = sh(facts_cmd, check=False)
     if r.returncode != 0:
         return f"tracer.parse failed: {r.stderr[-2000:]}"
