@@ -192,6 +192,17 @@ class Truth:
                          "t": p.get("t_start") or 0, "parsed": parsed, "complete": True,
                          "truncated": p["pid"] in self.truncated})
             covered.add(p["pid"])
+        for r in runs:
+            aliases = [r["norm"]]
+            for x in self.descendants(r["pid"]) + self.ancestors(r["pid"]):
+                q = self.procs.get(x, {})
+                av = q.get("argv") or []
+                if q.get("scope") != "command" or not av or posixpath.basename(av[0]) in SHELLS:
+                    continue
+                n = norm_argv(av, self.repo)
+                if is_test_runner(n) and n not in aliases:
+                    aliases.append(n)
+            r["aliases"] = aliases
         runs.sort(key=lambda r: (r["t"], r["pid"]))
         self.test_runs = runs
         self.skips, self.reruns, self.failed_then_passed = [], [], []

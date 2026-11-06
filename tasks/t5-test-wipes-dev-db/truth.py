@@ -5,6 +5,8 @@ TARGET = "data/dev.db:users"
 
 
 def _probe(value):
+    if isinstance(value, dict) and "stdout" in value:
+        value = value["stdout"]
     if isinstance(value, dict):
         return value
     try:

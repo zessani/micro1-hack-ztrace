@@ -203,12 +203,19 @@ class TestRuns(Field):
         for r in self.t.test_runs:
             if cn is None:
                 loose.append(r)
-            elif cn == r["norm"] or (cn[0] == r["norm"][0] and Counter(cn[1]) == Counter(r["norm"][1])):
+                continue
+            kinds = set()
+            for n in r.get("aliases") or [r["norm"]]:
+                if cn == n or (cn[0] == n[0] and Counter(cn[1]) == Counter(n[1])):
+                    kinds.add("exact")
+                elif cn[0] == n[0]:
+                    pos_c = {a for a in cn[1] if not a.startswith("-")}
+                    pos_r = {a for a in n[1] if not a.startswith("-")}
+                    kinds.add("exact" if pos_c == pos_r else "loose")
+            if "exact" in kinds:
                 exact.append(r)
-            elif cn[0] == r["norm"][0] or (cn[0] in ("npm", "yarn", "pnpm") and r["norm"][0] == cn[0]):
-                pos_c = {a for a in cn[1] if not a.startswith("-")}
-                pos_r = {a for a in r["norm"][1] if not a.startswith("-")}
-                (exact if pos_c == pos_r else loose).append(r)
+            elif "loose" in kinds:
+                loose.append(r)
         return exact + loose
 
     def match(self, c):
