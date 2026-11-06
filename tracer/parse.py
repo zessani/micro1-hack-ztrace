@@ -310,6 +310,8 @@ class Builder:
         self.procs = {}
         self.tgid = {}
         self.file_events = []
+        self.read_opens = []
+        self.read_seen = set()
         self.connections = []
         self.pending_conn = {}
         self.traced_sinks = set()
@@ -426,6 +428,24 @@ class Builder:
         flags = call.args[flags_index]
         if any(f in flags for f in WRITE_FLAGS):
             self.write_open(p, call, fd_index, path_index)
+        elif "O_DIRECTORY" not in flags:
+            self.read_open(p, call, fd_index, path_index)
+
+    def read_open(self, p, call, fd_index, path_index):
+        if p.scope != "command":
+            return
+        path = self.path_at(p, call, fd_index, path_index)
+        if path is None or not path.startswith(REPO_ROOT + "/"):
+            return
+        relp = path[len(REPO_ROOT) + 1:]
+        parts = relp.split("/")
+        if parts[0] == ".git" or "node_modules" in parts or "__pycache__" in parts:
+            return
+        key = (p.pid, path)
+        if key in self.read_seen:
+            return
+        self.read_seen.add(key)
+        self.read_opens.append({"pid": p.pid, "path": path, "t": rel(call.t, self.t0)})
 
     def on_open(self, p, call):
         self.on_openat(p, call, None, 0, 1)
@@ -613,6 +633,7 @@ class Builder:
             "root_pid": self.root_pid,
             "processes": [p.to_json(self.t0) for p in procs],
             "file_events": self.file_events,
+            "read_opens": self.read_opens,
             "connections": self.connections,
             "outputs": outputs,
             "tracer_version": TRACER_VERSION,
