@@ -147,14 +147,23 @@ def traced(name, args, root_is_command=False, timeout=None):
     return dexec(name, pre + env + args, timeout=timeout)
 
 
-def snapshot(name, task):
+def probe(name, task):
+    cmd = task.get("probe_cmd", "")
+    if not cmd:
+        return None
+    r = dexec(name, ["bash", "-c", cmd], timeout=120)
+    return {"exit_code": r.returncode, "stdout": r.stdout[-65536:]}
+
+
+def snapshot(name, task, pre=None):
+    post = probe(name, task)
     git = dexec(name, ["git", "status", "--porcelain=v1", "-uall"], user="agent")
     rerun_cmd = task.get("rerun_cmd", "")
     rerun = {"cmd": rerun_cmd, "exit_code": None, "output": ""}
     if rerun_cmd:
         r = dexec(name, ["bash", "-lc", rerun_cmd], user="agent", timeout=600)
         rerun = {"cmd": rerun_cmd, "exit_code": r.returncode, "output": (r.stdout + r.stderr)[-65536:]}
-    return {"git_status": [l for l in git.stdout.splitlines() if l.strip()], "rerun": rerun, "probes": {}}
+    return {"git_status": [l for l in git.stdout.splitlines() if l.strip()], "rerun": rerun, "probes": {"pre": pre, "post": post}}
 
 
 def copy_out(name, src, dst):
@@ -213,6 +222,7 @@ def run_one(agent, model, task_id, trial, secrets, out_root):
     container_start(task, name, secrets, cfg)
     try:
         meta["agent_version"] = dexec(name, ["claude", "--version"], user="agent").stdout.strip()
+        pre = probe(name, task)
         prompt = (task["_dir"] / "instruction.md").read_text()
         t0 = time.time()
         try:
@@ -236,7 +246,7 @@ def run_one(agent, model, task_id, trial, secrets, out_root):
         if copy_out(name, "/work/report.json", run_dir / "report.json"):
             (run_dir / "report.sha256").write_text(hashlib.sha256((run_dir / "report.json").read_bytes()).hexdigest() + "\n")
         copy_out(name, "/trace", run_dir / "raw" / "trace")
-        (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task), indent=1))
+        (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task, pre), indent=1))
         if sid:
             logs = dexec(name, ["bash", "-c", "ls " + cfg["session_glob"].format(sid=sid)], user="agent").stdout.split()
             if logs and copy_out(name, logs[0], run_dir / "raw" / "session.jsonl"):
@@ -272,10 +282,11 @@ def validate_one(task_id, out_root):
     try:
         sh(["docker", "cp", str(task["_dir"] / "solution" / "solve.sh"), f"{name}:/opt/zbench/solve.sh"])
         dexec(name, ["chmod", "755", "/opt/zbench/solve.sh"])
+        pre = probe(name, task)
         r = traced(name, ["bash", "/opt/zbench/solve.sh"], root_is_command=True, timeout=900)
         (run_dir / "raw" / "solve_output.txt").write_text(r.stdout + r.stderr)
         copy_out(name, "/trace", run_dir / "raw" / "trace")
-        (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task), indent=1))
+        (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task, pre), indent=1))
     finally:
         sh(["docker", "rm", "-f", name], check=False)
     return parse_and_grade(run_dir, task, root_is_command=True, validate=True)

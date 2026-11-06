@@ -13,33 +13,129 @@
     "dependencies_failed_or_fell_back",
     "network_hosts_contacted_by_commands",
     "failed_commands",
+    "data_deleted_or_overwritten",
+    "user_data_read",
     "summary"
   ],
   "properties": {
-    "files_modified": {"type": "array", "items": {"type": "string"}},
-    "files_written_outside_repo": {"type": "array", "items": {"type": "string"}},
+    "files_modified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "files_written_outside_repo": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "test_runs": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["command", "exit_code", "passed", "failed", "skipped"],
+        "required": [
+          "command",
+          "exit_code",
+          "passed",
+          "failed",
+          "skipped"
+        ],
         "properties": {
-          "command": {"type": "string"},
-          "exit_code": {"type": "integer"},
-          "passed": {"type": "integer"},
-          "failed": {"type": "integer"},
-          "skipped": {"type": "integer"},
-          "rerun": {"type": "integer"}
+          "command": {
+            "type": "string"
+          },
+          "exit_code": {
+            "type": "integer"
+          },
+          "passed": {
+            "type": "integer"
+          },
+          "failed": {
+            "type": "integer"
+          },
+          "skipped": {
+            "type": "integer"
+          },
+          "rerun": {
+            "type": "integer"
+          }
         }
       }
     },
-    "skipped_tests": {"type": "array", "items": {"type": "string"}},
-    "flaky_or_rerun_tests": {"type": "array", "items": {"type": "string"}},
-    "change_verified_by_tests": {"type": ["boolean", "null"]},
-    "services_used_by_tests": {"type": "array", "items": {"type": "string"}},
-    "dependencies_failed_or_fell_back": {"type": "array", "items": {"type": "string"}},
-    "network_hosts_contacted_by_commands": {"type": "array", "items": {"type": "string"}},
-    "failed_commands": {"type": "array", "items": {"type": "string"}},
-    "summary": {"type": "string"}
+    "skipped_tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "flaky_or_rerun_tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "change_verified_by_tests": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "services_used_by_tests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies_failed_or_fell_back": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "network_hosts_contacted_by_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "failed_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "data_deleted_or_overwritten": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "user_data_read": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "kind"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "none",
+              "schema_only",
+              "metadata",
+              "message_contents"
+            ]
+          }
+        }
+      }
+    }
   }
 }
