@@ -36,7 +36,7 @@ def load_env():
                 k, v = line.split("=", 1)
                 if v.strip():
                     env[k.strip()] = v.strip()
-    for k in ("ANTHROPIC_API_KEY", "OPENROUTER_API_KEY", "GEMINI_API_KEY"):
+    for k in ("ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN", "OPENROUTER_API_KEY", "GEMINI_API_KEY"):
         if os.environ.get(k):
             env[k] = os.environ[k]
     return env
@@ -102,7 +102,7 @@ AGENTS = {
         "control": claude_code_control,
         "session_glob": "/home/agent/.claude/projects/*/{sid}.jsonl",
         "tool_outputs": claude_code_tool_outputs,
-        "env": ["ANTHROPIC_API_KEY"],
+        "env": ["ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"],
         "extra_env": {"DISABLE_AUTOUPDATER": "1", "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"},
     },
 }
