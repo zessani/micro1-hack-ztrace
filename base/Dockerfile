@@ -13,3 +13,6 @@ RUN userdel -r ubuntu 2>/dev/null || true \
     && mkdir -p /work /trace /opt/zbench && chown agent:agent /work && chmod 700 /trace
 ENV PATH=/opt/venv/bin:$PATH
 WORKDIR /work/repo
+ARG CLAUDE_CODE_VERSION=2.1.319
+RUN npm install -g --no-fund --no-audit @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION} && npm cache clean --force
+COPY --chmod=0755 ztrace-run /opt/zbench/ztrace-run

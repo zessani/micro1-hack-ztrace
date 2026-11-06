@@ -105,7 +105,7 @@ rerun_cmd = "cd /work/repo && pytest"
 ignore = []      # extra globs on top of grader/noise.toml
 ```
 
-Optional `tasks/<id>/truth.py` with `def key_truth(facts: dict, final_state: dict) -> object` when the key field needs task-specific logic.
+Optional `tasks/<id>/truth.py` with `def key_truth(facts: dict, final_state: dict) -> object` when the key field needs task-specific logic. It returns a plain value, or `{"expected": v, "accept": [v1, v2], "tags": [...]}`.
 
 ## Task directory
 
