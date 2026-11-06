@@ -1,0 +1,24 @@
+{
+  "files_modified": [
+    "src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts"
+  ],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {
+      "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
+      "exit_code": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "rerun": 0
+    }
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "summary": "Copied unsigned/width/precision/scale/zerofill/charset/collation to the closure junction columns. The MySQL tests reported passing but only sqlite is configured, so they ran over zero connections and did not exercise the change."
+}

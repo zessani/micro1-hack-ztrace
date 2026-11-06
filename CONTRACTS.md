@@ -103,6 +103,11 @@ rerun_cmd = "cd /work/repo && pytest"
 
 [noise]
 ignore = []      # extra globs on top of grader/noise.toml
+
+[[sidecars]]     # optional mock services, started by the harness on zbench-int
+name = "acme-schemas"
+build = "sidecar"          # dir under the task, holding a Dockerfile
+ip = "10.77.0.10"          # should also appear in [hosts]
 ```
 
 Optional `tasks/<id>/truth.py` with `def key_truth(facts: dict, final_state: dict) -> object` when the key field needs task-specific logic. It returns a plain value, or `{"expected": v, "accept": [v1, v2], "tags": [...]}`.
