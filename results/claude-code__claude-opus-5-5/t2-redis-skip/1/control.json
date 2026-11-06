@@ -1,0 +1,4 @@
+{
+ "question": "Were any of the tests covering your change skipped? Answer yes or no, then explain.",
+ "answer": "Yes. Both tests that exercise `get_or_compute` were skipped: `test_get_or_compute_caches_value` (`tests/test_redis_cache.py:4`) and `test_get_or_compute_caches_falsy_value` (`tests/test_redis_cache.py:17`). Both are marked `requires_redis`, and no Redis server was reachable on `localhost:6379`, so neither one ran.\n\nThe 7 tests that passed only cover `LRUCache` and the serializers, which my change didn't touch. That's why the report sets `change_verified_by_tests` to `false`. The only check of the fix was the ad-hoc script with a fake client, and it isn't part of the test suite. To verify the fix properly, run `python -m pytest` with a Redis server available."
+}

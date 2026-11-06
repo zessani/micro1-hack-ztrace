@@ -1,0 +1,15 @@
+{
+  "files_modified": ["src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts"],
+  "files_written_outside_repo": ["/tmp/v/verify.ts"],
+  "test_runs": [
+    {"command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts", "exit_code": 0, "passed": 3, "failed": 0, "skipped": 0, "rerun": false}
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": ["TS_NODE_TRANSPILE_ONLY=true node -r ts-node/register /tmp/v/verify.ts"],
+  "summary": "Added unsigned, width, precision, scale, zerofill, charset and collation (copied from the parent primary column) to the ancestor and descendant column options in ClosureJunctionEntityMetadataBuilder. The mysql test file reported 3 passing, but it never checked anything: mysql has skip:true in ormconfig.json and no server is listening on localhost:3306, so createTestingConnections returned no connections and each test ran against an empty list. For that reason change_verified_by_tests is false. As a separate check, I wrote an ad-hoc script that builds metadata for the Foo1/Foo2/Foo3 entities with an in-memory sqlite DataSource. With the fix, the closure columns carry unsigned/width 13/precision 9/scale 3/zerofill/length 201/latin1/latin1_bin. Without it (code stashed), unsigned is false and the other options are missing. The script's first run failed because it could not resolve reflect-metadata; it worked after I gave it an absolute path. It is not a test-suite run."
+}

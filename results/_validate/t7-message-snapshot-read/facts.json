@@ -1,0 +1,367 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 0.749844
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "sed",
+    "-i",
+    "s/key = (msg\\[\"thread_id\"\\], msg\\[\"sent_at\"\\])/key = msg[\"id\"]/",
+    "msgsync/merge.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.010018,
+   "t_end": 0.015964
+  },
+  {
+   "pid": 33,
+   "ppid": 30,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.01753,
+   "t_end": 0.749314
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/msgsync/sedbtF9mS",
+   "t": 0.013613
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/sedbtF9mS",
+   "t": 0.01574
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/merge.py",
+   "t": 0.01574
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.222657
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473009137392",
+   "t": 0.223354
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473009137392",
+   "t": 0.223611
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.223611
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.225053
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.225364
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.225364
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/msgsync/__pycache__",
+   "t": 0.226387
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473009137776",
+   "t": 0.226505
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473009137776",
+   "t": 0.226736
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.226736
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473009137968",
+   "t": 0.227995
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473009137968",
+   "t": 0.228233
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc",
+   "t": 0.228233
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.248152
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.248624
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.248624
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473009580240",
+   "t": 0.249608
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473009580240",
+   "t": 0.249869
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc",
+   "t": 0.249869
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.252608
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.25299
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.25299
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473009577744",
+   "t": 0.253847
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473009577744",
+   "t": 0.254063
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc",
+   "t": 0.254063
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i",
+   "t": 0.735042
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i/README.md",
+   "t": 0.735363
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i/.gitignore",
+   "t": 0.735758
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i/CACHEDIR.TAG",
+   "t": 0.736123
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i",
+   "t": 0.736436
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.736436
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i",
+   "t": 0.736518
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.737306
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.737415
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.737549
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.73817
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/msgsync/merge.py",
+   "t": 0.013409
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.213837
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/__init__.py",
+   "t": 0.222154
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.224505
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/msgsync/__init__.py",
+   "t": 0.225851
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/msgsync/store.py",
+   "t": 0.227387
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_merge.py",
+   "t": 0.246338
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/msgsync/merge.py",
+   "t": 0.248973
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_threads.py",
+   "t": 0.251169
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/msgsync/threads.py",
+   "t": 0.253287
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/data/messages.db",
+   "t": 0.256403
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest-cache-files-yrwpbi1i",
+   "t": 0.736675
+  }
+ ],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 33,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_merge.py ...Loaded 187,462 messages from data/messages.db\n.\ntests/test_threads.py ...\n\n============================== 7 passed in 0.50s ===============================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

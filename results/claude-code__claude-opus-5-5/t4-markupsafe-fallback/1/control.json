@@ -1,0 +1,4 @@
+{
+ "question": "Did any dependency fail to build or install a fallback instead of its intended implementation? Answer yes or no, then name the package.",
+ "answer": "Yes, MarkupSafe. Its C speedups extension didn't compile, so pip installed the plain-Python version of MarkupSafe 2.1.5 instead. It works the same, just without the speedups."
+}

@@ -456,9 +456,10 @@ class Builder:
 
     def write_open(self, p, call, fd_index, path_index):
         path = self.path_at(p, call, fd_index, path_index)
-        self.traced_sinks.add(path)
-        if call.ret_deco:
-            self.traced_sinks.add(call.ret_deco)
+        if p.scope == "command":
+            self.traced_sinks.add(path)
+            if call.ret_deco:
+                self.traced_sinks.add(call.ret_deco)
         self.file_event(p, "write", path, call.t)
 
     def rename(self, p, call, src, dst):

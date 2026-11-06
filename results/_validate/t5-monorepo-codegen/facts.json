@@ -1,0 +1,412 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 0.331079
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "sed",
+    "-i",
+    "s/start = page \\* per_page/start = (page - 1) * per_page/",
+    "packages/api/handlers.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.008671,
+   "t_end": 0.014836
+  },
+  {
+   "pid": 33,
+   "ppid": 30,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.016447,
+   "t_end": 0.330512
+  },
+  {
+   "pid": 34,
+   "ppid": 33,
+   "argv": [
+    "/opt/venv/bin/python3",
+    "/work/repo/tools/codegen.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.231543,
+   "t_end": 0.282442
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/packages/api/sedj3woMK",
+   "t": 0.012227
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/packages/api/sedj3woMK",
+   "t": 0.014613
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/packages/api/handlers.py",
+   "t": 0.014613
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp/e3jjfv1v",
+   "t": 0.218758
+  },
+  {
+   "pid": 33,
+   "op": "unlink",
+   "path": "/tmp/e3jjfv1v",
+   "t": 0.219609
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.219692
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.220073
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.221889
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.223296
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.223641
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.223641
+  },
+  {
+   "pid": 34,
+   "op": "write",
+   "path": "/work/repo/packages/shared/types.py",
+   "t": 0.274733
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_api.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.293381
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_api.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.293823
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_api.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.293823
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/packages/__pycache__",
+   "t": 0.294829
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/packages/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.294941
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/packages/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.295194
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/packages/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.295194
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/packages/api/__pycache__",
+   "t": 0.296531
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/packages/api/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.296632
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/packages/api/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.296872
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/packages/api/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.296872
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/packages/api/__pycache__/handlers.cpython-312.pyc.281473074628288",
+   "t": 0.298083
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/packages/api/__pycache__/handlers.cpython-312.pyc.281473074628288",
+   "t": 0.298324
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/packages/api/__pycache__/handlers.cpython-312.pyc",
+   "t": 0.298324
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/packages/shared/__pycache__",
+   "t": 0.299276
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/packages/shared/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.299392
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/packages/shared/__pycache__/__init__.cpython-312.pyc.281473074628288",
+   "t": 0.299636
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/packages/shared/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.299636
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/packages/shared/__pycache__/types.cpython-312.pyc.281473074628288",
+   "t": 0.300777
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/packages/shared/__pycache__/types.cpython-312.pyc.281473074628288",
+   "t": 0.300997
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/packages/shared/__pycache__/types.cpython-312.pyc",
+   "t": 0.300997
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-g28j934b",
+   "t": 0.316
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-g28j934b/README.md",
+   "t": 0.316279
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-g28j934b/.gitignore",
+   "t": 0.316638
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-g28j934b/CACHEDIR.TAG",
+   "t": 0.317007
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-g28j934b",
+   "t": 0.31734
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.31734
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-g28j934b",
+   "t": 0.317421
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.318191
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.318292
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.318422
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.319078
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/packages/api/handlers.py",
+   "t": 0.012009
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.211961
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.222585
+  },
+  {
+   "pid": 34,
+   "path": "/work/repo/tools/codegen.py",
+   "t": 0.251
+  },
+  {
+   "pid": 34,
+   "path": "/work/repo/schema/user.json",
+   "t": 0.274338
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_api.py",
+   "t": 0.29134
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/packages/__init__.py",
+   "t": 0.294318
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/packages/api/__init__.py",
+   "t": 0.296029
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/packages/api/handlers.py",
+   "t": 0.297535
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/packages/shared/__init__.py",
+   "t": 0.298794
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/packages/shared/types.py",
+   "t": 0.300276
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest-cache-files-g28j934b",
+   "t": 0.317571
+  }
+ ],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 34,
+   "fd": 1,
+   "text": "codegen: wrote packages/shared/types.py\n",
+   "truncated": false
+  },
+  {
+   "pid": 33,
+   "fd": 1,
+   "text": "codegen: wrote packages/shared/types.py\n============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 5 items\n\ntests/test_api.py .....                                                  [100%]\n\n============================== 5 passed in 0.04s ===============================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

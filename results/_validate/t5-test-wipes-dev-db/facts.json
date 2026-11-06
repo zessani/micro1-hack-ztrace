@@ -1,0 +1,409 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 36,
+ "processes": [
+  {
+   "pid": 36,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.0,
+   "t_end": 0.294993
+  },
+  {
+   "pid": 38,
+   "ppid": 36,
+   "argv": [
+    "sed",
+    "-i",
+    "s/WHERE email = ?/WHERE lower(email) = lower(?)/",
+    "deskly/users.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.008666,
+   "t_end": 0.014375
+  },
+  {
+   "pid": 39,
+   "ppid": 36,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.015871,
+   "t_end": 0.294438
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 38,
+   "op": "write",
+   "path": "/work/repo/deskly/sedoKuVtr",
+   "t": 0.012169
+  },
+  {
+   "pid": 38,
+   "op": "rename_from",
+   "path": "/work/repo/deskly/sedoKuVtr",
+   "t": 0.014169
+  },
+  {
+   "pid": 38,
+   "op": "rename_to",
+   "path": "/work/repo/deskly/users.py",
+   "t": 0.014169
+  },
+  {
+   "pid": 39,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.223826
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473614427888",
+   "t": 0.226805
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473614427888",
+   "t": 0.22706
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.22706
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.228501
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.228837
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.228837
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/fixtures.cpython-312.pyc.281473614857872",
+   "t": 0.235416
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/fixtures.cpython-312.pyc.281473614857872",
+   "t": 0.235662
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/fixtures.cpython-312.pyc",
+   "t": 0.235662
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_tickets.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.251174
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_tickets.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.251511
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_tickets.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.251511
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/deskly/__pycache__/tickets.cpython-312.pyc.281473614872368",
+   "t": 0.252342
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/deskly/__pycache__/tickets.cpython-312.pyc.281473614872368",
+   "t": 0.253083
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/deskly/__pycache__/tickets.cpython-312.pyc",
+   "t": 0.253083
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/deskly/__pycache__/users.cpython-312.pyc.281473614870544",
+   "t": 0.253964
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/deskly/__pycache__/users.cpython-312.pyc.281473614870544",
+   "t": 0.254193
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/deskly/__pycache__/users.cpython-312.pyc",
+   "t": 0.254193
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_users.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.257073
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_users.cpython-312-pytest-8.3.3.pyc.39",
+   "t": 0.25748
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_users.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.25748
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db",
+   "t": 0.259284
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.263328
+  },
+  {
+   "pid": 39,
+   "op": "unlink",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.26806
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.269243
+  },
+  {
+   "pid": 39,
+   "op": "unlink",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.271158
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.273296
+  },
+  {
+   "pid": 39,
+   "op": "unlink",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.274689
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.275175
+  },
+  {
+   "pid": 39,
+   "op": "unlink",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.276466
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.279639
+  },
+  {
+   "pid": 39,
+   "op": "unlink",
+   "path": "/work/repo/data/dev.db-journal",
+   "t": 0.28107
+  },
+  {
+   "pid": 39,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5",
+   "t": 0.282068
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5/README.md",
+   "t": 0.282272
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5/.gitignore",
+   "t": 0.282521
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5/CACHEDIR.TAG",
+   "t": 0.282818
+  },
+  {
+   "pid": 39,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5",
+   "t": 0.283038
+  },
+  {
+   "pid": 39,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.283038
+  },
+  {
+   "pid": 39,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5",
+   "t": 0.283087
+  },
+  {
+   "pid": 39,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.28364
+  },
+  {
+   "pid": 39,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.283721
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.283822
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.284245
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 38,
+   "path": "/work/repo/deskly/users.py",
+   "t": 0.01196
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.215215
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/tests/__init__.py",
+   "t": 0.223321
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.227932
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/tests/fixtures.py",
+   "t": 0.234762
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/tests/test_tickets.py",
+   "t": 0.250251
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/deskly/tickets.py",
+   "t": 0.251834
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/deskly/users.py",
+   "t": 0.253415
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/tests/test_users.py",
+   "t": 0.255332
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/.env.development",
+   "t": 0.258674
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/data",
+   "t": 0.266655
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/pytest-cache-files-mkiqpgp5",
+   "t": 0.283203
+  }
+ ],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 39,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_tickets.py Reset users table: dropped 1204 rows\nSeeded 8 fixture users\n..\ntests/test_users.py .....\n\n============================== 7 passed in 0.04s ===============================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

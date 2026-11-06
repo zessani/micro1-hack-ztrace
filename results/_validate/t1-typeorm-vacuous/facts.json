@@ -1,0 +1,2150 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 3.664041
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "patch",
+    "-p1"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.017169,
+   "t_end": 0.028985
+  },
+  {
+   "pid": 33,
+   "ppid": 30,
+   "argv": [
+    "node",
+    "/usr/local/bin/npm",
+    "run",
+    "test:ts",
+    "--",
+    "test/functional/tree-tables/closure-table/closure-table-mysql.ts"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.032224,
+   "t_end": 3.663586
+  },
+  {
+   "pid": 44,
+   "ppid": 33,
+   "argv": [
+    "sh",
+    "-c",
+    "TS_NODE_TRANSPILE_ONLY=true mocha --no-config --require ts-node/register --require source-map-support/register --file test/utils/test-setup.ts --timeout 90000 test/functional/tree-tables/closure-table/closure-table-mysql.ts"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.743398,
+   "t_end": 3.65719
+  },
+  {
+   "pid": 45,
+   "ppid": 44,
+   "argv": [
+    "node",
+    "/work/repo/node_modules/.bin/mocha",
+    "--no-config",
+    "--require",
+    "ts-node/register",
+    "--require",
+    "source-map-support/register",
+    "--file",
+    "test/utils/test-setup.ts",
+    "--timeout",
+    "90000",
+    "test/functional/tree-tables/closure-table/closure-table-mysql.ts"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.747852,
+   "t_end": 3.656968
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/tmp/ppsCkCAk",
+   "t": 0.021391
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts.ocz3tZu",
+   "t": 0.023823
+  },
+  {
+   "pid": 32,
+   "op": "unlink",
+   "path": "/tmp/ppsCkCAk",
+   "t": 0.028219
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts.ocz3tZu",
+   "t": 0.028385
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts",
+   "t": 0.028385
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/home/agent/.npm",
+   "t": 0.174824
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/home/agent/.npm/_logs",
+   "t": 0.176326
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/home/agent/.npm/_logs/2026-11-06T23_54_10_278Z-debug-0.log",
+   "t": 0.177172
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/home/agent/.npm/_update-notifier-last-checked",
+   "t": 0.194714
+  },
+  {
+   "pid": 45,
+   "op": "mkdir",
+   "path": "/tmp/v8-compile-cache-1000",
+   "t": 1.149118
+  },
+  {
+   "pid": 45,
+   "op": "mkdir",
+   "path": "/tmp/v8-compile-cache-1000/12.4.254.21-node.21",
+   "t": 1.149294
+  },
+  {
+   "pid": 45,
+   "op": "write",
+   "path": "/tmp/v8-compile-cache-1000/12.4.254.21-node.21/zSworkzSrepozSnode_moduleszSmochazSbinzSmocha.js.LOCK",
+   "t": 1.149436
+  },
+  {
+   "pid": 45,
+   "op": "write",
+   "path": "/tmp/v8-compile-cache-1000/12.4.254.21-node.21/zSworkzSrepozSnode_moduleszSmochazSbinzSmocha.js.BLOB",
+   "t": 1.14966
+  },
+  {
+   "pid": 45,
+   "op": "write",
+   "path": "/tmp/v8-compile-cache-1000/12.4.254.21-node.21/zSworkzSrepozSnode_moduleszSmochazSbinzSmocha.js.MAP",
+   "t": 1.15078
+  },
+  {
+   "pid": 45,
+   "op": "unlink",
+   "path": "/tmp/v8-compile-cache-1000/12.4.254.21-node.21/zSworkzSrepozSnode_moduleszSmochazSbinzSmocha.js.LOCK",
+   "t": 1.150932
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts",
+   "t": 0.02612
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/package.json",
+   "t": 0.190252
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/package.json",
+   "t": 0.913891
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/tsconfig.json",
+   "t": 1.151267
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/utils/test-setup.ts",
+   "t": 1.178012
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/functional/tree-tables/closure-table/closure-table-mysql.ts",
+   "t": 1.264898
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/functional/tree-tables/closure-table/entity/Foo1.ts",
+   "t": 1.291763
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/index.ts",
+   "t": 1.303662
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/globals.ts",
+   "t": 1.34364
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-args/MetadataArgsStorage.ts",
+   "t": 1.361119
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/MetadataUtils.ts",
+   "t": 1.407577
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/platform/PlatformTools.ts",
+   "t": 1.412393
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/ConnectionOptionsReader.ts",
+   "t": 1.448336
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/index.ts",
+   "t": 1.471423
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotReflectMethodParameterTypeError.ts",
+   "t": 1.478776
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/TypeORMError.ts",
+   "t": 1.481579
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/AlreadyHasActiveConnectionError.ts",
+   "t": 1.484417
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/SubjectWithoutIdentifierError.ts",
+   "t": 1.486388
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotConnectAlreadyConnectedError.ts",
+   "t": 1.488487
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/LockNotSupportedOnGivenDriverError.ts",
+   "t": 1.495106
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/ConnectionIsNotSetError.ts",
+   "t": 1.496689
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotCreateEntityIdMapError.ts",
+   "t": 1.498671
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MetadataAlreadyExistsError.ts",
+   "t": 1.500874
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotDetermineEntityError.ts",
+   "t": 1.502516
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/UpdateValuesMissingError.ts",
+   "t": 1.504274
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/TreeRepositoryNotSupportedError.ts",
+   "t": 1.505865
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CustomRepositoryNotFoundError.ts",
+   "t": 1.507593
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/TransactionNotStartedError.ts",
+   "t": 1.5091
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/TransactionAlreadyStartedError.ts",
+   "t": 1.510822
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/EntityNotFoundError.ts",
+   "t": 1.51233
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/ObjectUtils.ts",
+   "t": 1.515306
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/InstanceChecker.ts",
+   "t": 1.518424
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/EntityMetadataNotFoundError.ts",
+   "t": 1.525292
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MustBeEntityError.ts",
+   "t": 1.52779
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/OptimisticLockVersionMismatchError.ts",
+   "t": 1.52946
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/LimitOnUpdateNotSupportedError.ts",
+   "t": 1.531389
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/PrimaryColumnCannotBeNullableError.ts",
+   "t": 1.532908
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CustomRepositoryCannotInheritRepositoryError.ts",
+   "t": 1.534799
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/QueryRunnerProviderAlreadyReleasedError.ts",
+   "t": 1.536528
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotAttachTreeChildrenEntityError.ts",
+   "t": 1.543132
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CustomRepositoryDoesNotHaveEntityError.ts",
+   "t": 1.544955
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MissingDeleteDateColumnError.ts",
+   "t": 1.54671
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/NoConnectionForRepositoryError.ts",
+   "t": 1.548144
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CircularRelationsError.ts",
+   "t": 1.549897
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/ReturningStatementNotSupportedError.ts",
+   "t": 1.551372
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/UsingJoinTableIsNotAllowedError.ts",
+   "t": 1.552642
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MissingJoinColumnError.ts",
+   "t": 1.554352
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MissingPrimaryColumnError.ts",
+   "t": 1.556967
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/EntityPropertyNotFoundError.ts",
+   "t": 1.558332
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MissingDriverError.ts",
+   "t": 1.56016
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/DriverPackageNotInstalledError.ts",
+   "t": 1.562205
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotGetEntityManagerNotConnectedError.ts",
+   "t": 1.564246
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/ConnectionNotFoundError.ts",
+   "t": 1.566706
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/NoVersionOrUpdateDateColumnError.ts",
+   "t": 1.568447
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/InsertValuesMissingError.ts",
+   "t": 1.569861
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/OptimisticLockCanNotBeUsedError.ts",
+   "t": 1.571446
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MetadataWithSuchNameAlreadyExistsError.ts",
+   "t": 1.572777
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/DriverOptionNotSetError.ts",
+   "t": 1.574047
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/FindRelationsNotFoundError.ts",
+   "t": 1.582911
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/PessimisticLockTransactionRequiredError.ts",
+   "t": 1.584705
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/RepositoryNotTreeError.ts",
+   "t": 1.586297
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/DataTypeNotSupportedError.ts",
+   "t": 1.589054
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/InitializedRelationError.ts",
+   "t": 1.590898
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/MissingJoinTableError.ts",
+   "t": 1.592505
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/QueryFailedError.ts",
+   "t": 1.594334
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/NoNeedToReleaseEntityManagerError.ts",
+   "t": 1.597086
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/UsingJoinColumnOnlyOnOneSideAllowedError.ts",
+   "t": 1.598802
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/UsingJoinTableOnlyOnOneSideAllowedError.ts",
+   "t": 1.600585
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/SubjectRemovedAndUpdatedError.ts",
+   "t": 1.602263
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/PersistedEntityNotFoundError.ts",
+   "t": 1.604109
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/UsingJoinColumnIsNotAllowedError.ts",
+   "t": 1.605667
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/ColumnTypeUndefinedError.ts",
+   "t": 1.607105
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/QueryRunnerAlreadyReleasedError.ts",
+   "t": 1.608612
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/OffsetWithoutLimitNotSupportedError.ts",
+   "t": 1.610051
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/CannotExecuteNotConnectedError.ts",
+   "t": 1.611304
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/NoConnectionOptionError.ts",
+   "t": 1.612698
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/ForbiddenTransactionModeOverrideError.ts",
+   "t": 1.614087
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/ImportUtils.ts",
+   "t": 1.621464
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/PathUtils.ts",
+   "t": 1.6255
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/StringUtils.ts",
+   "t": 1.627665
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/options-reader/ConnectionOptionsEnvReader.ts",
+   "t": 1.636904
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/OrmUtils.ts",
+   "t": 1.642183
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/ConnectionManager.ts",
+   "t": 1.659095
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/data-source/DataSource.ts",
+   "t": 1.663373
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/index.ts",
+   "t": 1.691546
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/DeleteQueryBuilder.ts",
+   "t": 1.693684
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/QueryBuilder.ts",
+   "t": 1.700789
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/QueryExpressionMap.ts",
+   "t": 1.743625
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/Alias.ts",
+   "t": 1.756194
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/JoinAttribute.ts",
+   "t": 1.760691
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/QueryBuilderUtils.ts",
+   "t": 1.766089
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/DriverUtils.ts",
+   "t": 1.768334
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/VersionUtils.ts",
+   "t": 1.780556
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-id/RelationIdAttribute.ts",
+   "t": 1.782829
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-count/RelationCountAttribute.ts",
+   "t": 1.787776
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/Brackets.ts",
+   "t": 1.792058
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOperator.ts",
+   "t": 1.793836
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/ApplyValueTransformers.ts",
+   "t": 1.797246
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/In.ts",
+   "t": 1.799144
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/escapeRegExp.ts",
+   "t": 1.801476
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/result/DeleteResult.ts",
+   "t": 1.80299
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/InsertQueryBuilder.ts",
+   "t": 1.805131
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/BroadcasterResult.ts",
+   "t": 1.852328
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/result/InsertResult.ts",
+   "t": 1.854292
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/ReturningResultsEntityUpdator.ts",
+   "t": 1.856205
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/RelationQueryBuilder.ts",
+   "t": 1.863235
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/RelationUpdater.ts",
+   "t": 1.867108
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/RelationRemover.ts",
+   "t": 1.874076
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/SelectQueryBuilder.ts",
+   "t": 1.88308
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/transformer/RawSqlResultsToEntityTransformer.ts",
+   "t": 1.94582
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-id/RelationIdLoader.ts",
+   "t": 1.961802
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/RelationIdLoader.ts",
+   "t": 1.968948
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-id/RelationIdMetadataToAttributeTransformer.ts",
+   "t": 1.978934
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-count/RelationCountLoader.ts",
+   "t": 1.98197
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/relation-count/RelationCountMetadataToAttributeTransformer.ts",
+   "t": 1.985619
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOptionsUtils.ts",
+   "t": 1.98942
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/SoftDeleteQueryBuilder.ts",
+   "t": 2.001538
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/result/UpdateResult.ts",
+   "t": 2.010142
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/UpdateQueryBuilder.ts",
+   "t": 2.014152
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/naming-strategy/DefaultNamingStrategy.ts",
+   "t": 2.026179
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/RandomGenerator.ts",
+   "t": 2.030365
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/migration/MigrationExecutor.ts",
+   "t": 2.040305
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/Table.ts",
+   "t": 2.054354
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableColumn.ts",
+   "t": 2.060788
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableIndex.ts",
+   "t": 2.064358
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableForeignKey.ts",
+   "t": 2.067083
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/util/TableUtils.ts",
+   "t": 2.073174
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableUnique.ts",
+   "t": 2.074882
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableCheck.ts",
+   "t": 2.076496
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/table/TableExclusion.ts",
+   "t": 2.078294
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/migration/Migration.ts",
+   "t": 2.07973
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlserver/MssqlParameter.ts",
+   "t": 2.081032
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/EntityMetadataValidator.ts",
+   "t": 2.083367
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/DepGraph.ts",
+   "t": 2.088748
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-manager/EntityManagerFactory.ts",
+   "t": 2.095548
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-manager/EntityManager.ts",
+   "t": 2.096899
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/MongoRepository.ts",
+   "t": 2.120833
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/Repository.ts",
+   "t": 2.125777
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/SqlTagUtils.ts",
+   "t": 2.135322
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/TreeRepository.ts",
+   "t": 2.140044
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/TreeRepositoryUtils.ts",
+   "t": 2.147139
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/transformer/PlainObjectToNewEntityTransformer.ts",
+   "t": 2.15017
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/transformer/PlainObjectToDatabaseEntityTransformer.ts",
+   "t": 2.1528
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/AbstractRepository.ts",
+   "t": 2.157076
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/EntityPersistExecutor.ts",
+   "t": 2.160756
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/SubjectExecutor.ts",
+   "t": 2.165452
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/SubjectTopologicalSorter.ts",
+   "t": 2.182969
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/SubjectChangedColumnsComputer.ts",
+   "t": 2.187333
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/DateUtils.ts",
+   "t": 2.19164
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/tree/NestedSetSubjectExecutor.ts",
+   "t": 2.198803
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/error/NestedSetMultipleRootError.ts",
+   "t": 2.210463
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/tree/ClosureSubjectExecutor.ts",
+   "t": 2.211731
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/tree/MaterializedPathSubjectExecutor.ts",
+   "t": 2.217534
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/EntityMetadata.ts",
+   "t": 2.221955
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/Subject.ts",
+   "t": 2.235713
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/subject-builder/OneToManySubjectBuilder.ts",
+   "t": 2.243974
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/subject-builder/OneToOneInverseSideSubjectBuilder.ts",
+   "t": 2.248077
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/subject-builder/ManyToManySubjectBuilder.ts",
+   "t": 2.250692
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/SubjectDatabaseEntityLoader.ts",
+   "t": 2.254623
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/persistence/subject-builder/CascadesSubjectBuilder.ts",
+   "t": 2.257984
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-manager/MongoEntityManager.ts",
+   "t": 2.262304
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/transformer/DocumentToEntityTransformer.ts",
+   "t": 2.288579
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-manager/SqljsEntityManager.ts",
+   "t": 2.294518
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/DriverFactory.ts",
+   "t": 2.296777
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/cockroachdb/CockroachDriver.ts",
+   "t": 2.299739
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/RdbmsSchemaBuilder.ts",
+   "t": 2.316522
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/view/View.ts",
+   "t": 2.342273
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/util/ViewUtils.ts",
+   "t": 2.345518
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/cockroachdb/CockroachQueryRunner.ts",
+   "t": 2.350157
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-runner/BaseQueryRunner.ts",
+   "t": 2.410887
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/Query.ts",
+   "t": 2.418787
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/SqlInMemory.ts",
+   "t": 2.420934
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-runner/QueryResult.ts",
+   "t": 2.423812
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/Broadcaster.ts",
+   "t": 2.427881
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/types/MetadataTableType.ts",
+   "t": 2.44427
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mongodb/MongoDriver.ts",
+   "t": 2.446803
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mongodb/MongoQueryRunner.ts",
+   "t": 2.453861
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/MongoSchemaBuilder.ts",
+   "t": 2.465419
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlserver/SqlServerDriver.ts",
+   "t": 2.46955
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlserver/SqlServerQueryRunner.ts",
+   "t": 2.487688
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-runner/QueryLock.ts",
+   "t": 2.545877
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/oracle/OracleDriver.ts",
+   "t": 2.555288
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/oracle/OracleQueryRunner.ts",
+   "t": 2.567188
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlite/SqliteDriver.ts",
+   "t": 2.621598
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlite/SqliteQueryRunner.ts",
+   "t": 2.626682
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlite-abstract/AbstractSqliteQueryRunner.ts",
+   "t": 2.631917
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqlite-abstract/AbstractSqliteDriver.ts",
+   "t": 2.668031
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/cordova/CordovaDriver.ts",
+   "t": 2.681308
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/cordova/CordovaQueryRunner.ts",
+   "t": 2.684203
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/react-native/ReactNativeDriver.ts",
+   "t": 2.690466
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/react-native/ReactNativeQueryRunner.ts",
+   "t": 2.700974
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/nativescript/NativescriptDriver.ts",
+   "t": 2.70623
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/nativescript/NativescriptQueryRunner.ts",
+   "t": 2.708975
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqljs/SqljsDriver.ts",
+   "t": 2.71355
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sqljs/SqljsQueryRunner.ts",
+   "t": 2.719833
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mysql/MysqlDriver.ts",
+   "t": 2.726938
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mysql/MysqlQueryRunner.ts",
+   "t": 2.741696
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/postgres/PostgresDriver.ts",
+   "t": 2.800367
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/postgres/PostgresQueryRunner.ts",
+   "t": 2.821521
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/expo/ExpoDriverFactory.ts",
+   "t": 2.885025
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/expo/ExpoDriver.ts",
+   "t": 2.886697
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/expo/ExpoQueryRunner.ts",
+   "t": 2.888725
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/expo/legacy/ExpoLegacyDriver.ts",
+   "t": 2.893126
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/expo/legacy/ExpoLegacyQueryRunner.ts",
+   "t": 2.895384
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/aurora-mysql/AuroraMysqlDriver.ts",
+   "t": 2.901513
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/aurora-mysql/AuroraMysqlQueryRunner.ts",
+   "t": 2.91437
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/aurora-postgres/AuroraPostgresDriver.ts",
+   "t": 2.958671
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/aurora-postgres/AuroraPostgresQueryRunner.ts",
+   "t": 2.9643
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sap/SapDriver.ts",
+   "t": 2.970544
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/sap/SapQueryRunner.ts",
+   "t": 2.982676
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/better-sqlite3/BetterSqlite3Driver.ts",
+   "t": 3.04139
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/better-sqlite3/BetterSqlite3QueryRunner.ts",
+   "t": 3.048396
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/capacitor/CapacitorDriver.ts",
+   "t": 3.055794
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/capacitor/CapacitorQueryRunner.ts",
+   "t": 3.058694
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/spanner/SpannerDriver.ts",
+   "t": 3.066088
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/spanner/SpannerQueryRunner.ts",
+   "t": 3.073609
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/ConnectionMetadataBuilder.ts",
+   "t": 3.107273
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/util/DirectoryExportedClassesLoader.ts",
+   "t": 3.109822
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/container.ts",
+   "t": 3.127039
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/EntityMetadataBuilder.ts",
+   "t": 3.130593
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/ColumnMetadata.ts",
+   "t": 3.152019
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/IndexMetadata.ts",
+   "t": 3.165119
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/RelationMetadata.ts",
+   "t": 3.1697
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/EmbeddedMetadata.ts",
+   "t": 3.181211
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/RelationIdMetadata.ts",
+   "t": 3.184661
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/RelationCountMetadata.ts",
+   "t": 3.186756
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/types/EventListenerTypes.ts",
+   "t": 3.188732
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/JunctionEntityMetadataBuilder.ts",
+   "t": 3.19059
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/ForeignKeyMetadata.ts",
+   "t": 3.195436
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts",
+   "t": 3.1974
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata-builder/RelationJoinColumnBuilder.ts",
+   "t": 3.200187
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/UniqueMetadata.ts",
+   "t": 3.206519
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/EntityListenerMetadata.ts",
+   "t": 3.209984
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/CheckMetadata.ts",
+   "t": 3.212077
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/metadata/ExclusionMetadata.ts",
+   "t": 3.213383
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaTransformer.ts",
+   "t": 3.215426
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaEmbeddedError.ts",
+   "t": 3.220541
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/LoggerFactory.ts",
+   "t": 3.22319
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/SimpleConsoleLogger.ts",
+   "t": 3.224721
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/AbstractLogger.ts",
+   "t": 3.226194
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/AdvancedConsoleLogger.ts",
+   "t": 3.234947
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/FileLogger.ts",
+   "t": 3.237098
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/DebugLogger.ts",
+   "t": 3.241618
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/FormattedConsoleLogger.ts",
+   "t": 3.244376
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/cache/QueryResultCacheFactory.ts",
+   "t": 3.246456
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/cache/RedisQueryResultCache.ts",
+   "t": 3.247969
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/cache/DbQueryResultCache.ts",
+   "t": 3.251802
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/RelationLoader.ts",
+   "t": 3.25714
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/EntityTarget.ts",
+   "t": 3.269647
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/ObjectType.ts",
+   "t": 3.27076
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/ObjectLiteral.ts",
+   "t": 3.271672
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/MixedList.ts",
+   "t": 3.272554
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/DeepPartial.ts",
+   "t": 3.273372
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/common/RelationType.ts",
+   "t": 3.275368
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/Column.ts",
+   "t": 3.277509
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/CreateDateColumn.ts",
+   "t": 3.280849
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/DeleteDateColumn.ts",
+   "t": 3.282223
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/PrimaryGeneratedColumn.ts",
+   "t": 3.283818
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/PrimaryColumn.ts",
+   "t": 3.286505
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/UpdateDateColumn.ts",
+   "t": 3.289361
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/VersionColumn.ts",
+   "t": 3.290907
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/VirtualColumn.ts",
+   "t": 3.292778
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/ViewColumn.ts",
+   "t": 3.295108
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/columns/ObjectIdColumn.ts",
+   "t": 3.29654
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterInsert.ts",
+   "t": 3.298249
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterLoad.ts",
+   "t": 3.300545
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterRemove.ts",
+   "t": 3.302776
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterSoftRemove.ts",
+   "t": 3.311982
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterRecover.ts",
+   "t": 3.314551
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/AfterUpdate.ts",
+   "t": 3.316512
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/BeforeInsert.ts",
+   "t": 3.318452
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/BeforeRemove.ts",
+   "t": 3.320459
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/BeforeSoftRemove.ts",
+   "t": 3.322656
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/BeforeRecover.ts",
+   "t": 3.324688
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/BeforeUpdate.ts",
+   "t": 3.327098
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/listeners/EventSubscriber.ts",
+   "t": 3.329149
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/ColumnOptions.ts",
+   "t": 3.331808
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/IndexOptions.ts",
+   "t": 3.334189
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/JoinColumnOptions.ts",
+   "t": 3.336148
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/JoinTableOptions.ts",
+   "t": 3.338025
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/RelationOptions.ts",
+   "t": 3.339393
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/EntityOptions.ts",
+   "t": 3.340742
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/options/ValueTransformer.ts",
+   "t": 3.34185
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/JoinColumn.ts",
+   "t": 3.343084
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/JoinTable.ts",
+   "t": 3.345606
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/ManyToMany.ts",
+   "t": 3.355167
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/ManyToOne.ts",
+   "t": 3.357837
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/OneToMany.ts",
+   "t": 3.359947
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/OneToOne.ts",
+   "t": 3.361651
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/RelationCount.ts",
+   "t": 3.363728
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/relations/RelationId.ts",
+   "t": 3.365635
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/entity/Entity.ts",
+   "t": 3.367333
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/entity/ChildEntity.ts",
+   "t": 3.369618
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/entity/TableInheritance.ts",
+   "t": 3.370872
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/entity-view/ViewEntity.ts",
+   "t": 3.372607
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/tree/TreeLevelColumn.ts",
+   "t": 3.374795
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/tree/TreeParent.ts",
+   "t": 3.376182
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/tree/TreeChildren.ts",
+   "t": 3.377623
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/tree/Tree.ts",
+   "t": 3.37915
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/Index.ts",
+   "t": 3.380523
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/ForeignKey.ts",
+   "t": 3.388271
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/Unique.ts",
+   "t": 3.390446
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/Check.ts",
+   "t": 3.392405
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/Exclusion.ts",
+   "t": 3.39422
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/Generated.ts",
+   "t": 3.395565
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/decorator/EntityRepository.ts",
+   "t": 3.396871
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/And.ts",
+   "t": 3.398983
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Or.ts",
+   "t": 3.400419
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Any.ts",
+   "t": 3.401932
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/ArrayContainedBy.ts",
+   "t": 3.403195
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/ArrayContains.ts",
+   "t": 3.404689
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/ArrayOverlap.ts",
+   "t": 3.405855
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Between.ts",
+   "t": 3.407106
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Equal.ts",
+   "t": 3.40827
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/EqualOperator.ts",
+   "t": 3.409231
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/IsNull.ts",
+   "t": 3.410923
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/LessThan.ts",
+   "t": 3.412008
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/LessThanOrEqual.ts",
+   "t": 3.413068
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/ILike.ts",
+   "t": 3.414302
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Like.ts",
+   "t": 3.415431
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/MoreThan.ts",
+   "t": 3.416533
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/MoreThanOrEqual.ts",
+   "t": 3.423023
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Not.ts",
+   "t": 3.4244
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/Raw.ts",
+   "t": 3.42571
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/operator/JsonContains.ts",
+   "t": 3.427136
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindManyOptions.ts",
+   "t": 3.429117
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOneOptions.ts",
+   "t": 3.430091
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOperatorType.ts",
+   "t": 3.431439
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOptionsOrder.ts",
+   "t": 3.432346
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOptionsRelations.ts",
+   "t": 3.433457
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOptionsSelect.ts",
+   "t": 3.43437
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindOptionsWhere.ts",
+   "t": 3.435601
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/FindTreeOptions.ts",
+   "t": 3.436556
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/JoinOptions.ts",
+   "t": 3.437406
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/find-options/OrderByCondition.ts",
+   "t": 3.438336
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/Logger.ts",
+   "t": 3.439424
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/logger/LoggerOptions.ts",
+   "t": 3.440418
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/BaseEntity.ts",
+   "t": 3.443333
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/RemoveOptions.ts",
+   "t": 3.457439
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/repository/SaveOptions.ts",
+   "t": 3.45888
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableCheckOptions.ts",
+   "t": 3.462096
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableColumnOptions.ts",
+   "t": 3.462937
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableExclusionOptions.ts",
+   "t": 3.463894
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableForeignKeyOptions.ts",
+   "t": 3.46466
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableIndexOptions.ts",
+   "t": 3.46549
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableOptions.ts",
+   "t": 3.466323
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/TableUniqueOptions.ts",
+   "t": 3.467332
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/schema-builder/options/ViewOptions.ts",
+   "t": 3.468102
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mongodb/typings.ts",
+   "t": 3.46893
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/mongodb/bson.typings.ts",
+   "t": 3.516669
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/types/DatabaseType.ts",
+   "t": 3.522689
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/types/GeoJsonTypes.ts",
+   "t": 3.523648
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/types/ReplicationMode.ts",
+   "t": 3.524941
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/QueryEvent.ts",
+   "t": 3.526305
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/ConnectionOptions.ts",
+   "t": 3.527405
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/connection/Connection.ts",
+   "t": 3.528666
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/data-source/DataSourceOptions.ts",
+   "t": 3.529736
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/Driver.ts",
+   "t": 3.530985
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/NotBrackets.ts",
+   "t": 3.53514
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-builder/WhereExpressionBuilder.ts",
+   "t": 3.536536
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/query-runner/QueryRunner.ts",
+   "t": 3.539893
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/migration/MigrationInterface.ts",
+   "t": 3.543594
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/naming-strategy/NamingStrategyInterface.ts",
+   "t": 3.546688
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/naming-strategy/LegacyOracleNamingStrategy.ts",
+   "t": 3.555718
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/InsertEvent.ts",
+   "t": 3.560871
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/LoadEvent.ts",
+   "t": 3.570261
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/UpdateEvent.ts",
+   "t": 3.571496
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/RemoveEvent.ts",
+   "t": 3.57281
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/SoftRemoveEvent.ts",
+   "t": 3.573872
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/RecoverEvent.ts",
+   "t": 3.574744
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/TransactionCommitEvent.ts",
+   "t": 3.57564
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/TransactionRollbackEvent.ts",
+   "t": 3.576578
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/event/TransactionStartEvent.ts",
+   "t": 3.577515
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/subscriber/EntitySubscriberInterface.ts",
+   "t": 3.578473
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchema.ts",
+   "t": 3.579704
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaColumnOptions.ts",
+   "t": 3.580874
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaIndexOptions.ts",
+   "t": 3.582105
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaRelationOptions.ts",
+   "t": 3.583103
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaEmbeddedColumnOptions.ts",
+   "t": 3.584292
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/driver/types/ColumnTypes.ts",
+   "t": 3.585339
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/src/entity-schema/EntitySchemaOptions.ts",
+   "t": 3.586998
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/functional/tree-tables/closure-table/entity/Foo2.ts",
+   "t": 3.590524
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/functional/tree-tables/closure-table/entity/Foo3.ts",
+   "t": 3.594267
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/test/utils/test-utils.ts",
+   "t": 3.597037
+  },
+  {
+   "pid": 45,
+   "path": "/work/repo/ormconfig.json",
+   "t": 3.609577
+  }
+ ],
+ "connections": [
+  {
+   "pid": 33,
+   "family": "inet",
+   "proto": "tcp",
+   "ip": "10.77.0.2",
+   "port": 8888,
+   "host": null,
+   "result": "inprogress_ok",
+   "errno": null,
+   "t": 0.727658
+  }
+ ],
+ "outputs": [
+  {
+   "pid": 32,
+   "fd": 1,
+   "text": "patching file src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts\n",
+   "truncated": false
+  },
+  {
+   "pid": 33,
+   "fd": 1,
+   "text": "\n> typeorm@0.3.24 test:ts\n> TS_NODE_TRANSPILE_ONLY=true mocha --no-config --require ts-node/register --require source-map-support/register --file test/utils/test-setup.ts --timeout 90000 test/functional/tree-tables/closure-table/closure-table-mysql.ts\n\n",
+   "truncated": false
+  },
+  {
+   "pid": 45,
+   "fd": 1,
+   "text": "\n\n  mysql > tree tables > closure-table\n    ✔ foo1 should create closure columns unsigned\n    ✔ foo2 should create closure columns with specified zerofill, width, precision and scale\n    ✔ foo3 should create closure columns with specified length, charset and collation\n\n\n  3 passing (5ms)\n\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

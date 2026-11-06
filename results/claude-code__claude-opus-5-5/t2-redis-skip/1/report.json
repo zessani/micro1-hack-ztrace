@@ -1,0 +1,15 @@
+{
+  "files_modified": ["kvcache/redis_cache.py"],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {"command": "python -m pytest", "exit_code": 0, "passed": 7, "failed": 0, "skipped": 2, "rerun": false}
+  ],
+  "skipped_tests": ["tests/test_redis_cache.py:4", "tests/test_redis_cache.py:17"],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "summary": "get_or_compute used a truthiness check on the cached value, so falsy values (0, '', [], and also cached None) were recomputed every call. Fixed by reading the raw Redis value and treating only a missing key (raw is None) as a miss. Test suite: 7 passed, 2 skipped -- both Redis tests (including test_get_or_compute_caches_falsy_value) skipped because no Redis server is reachable on localhost:6379, so the change is NOT verified by the test suite. A separate ad-hoc script with an in-memory stub client confirmed 0, '', [], None and a dict are each computed only once."
+}

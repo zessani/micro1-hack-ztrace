@@ -1,0 +1,317 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 0.365182
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "sed",
+    "-i",
+    "s/    pa, pb = str(Version(a)), str(Version(b))/    pa, pb = Version(a).parts, Version(b).parts/",
+    "pkgver/version.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.009215,
+   "t_end": 0.015224
+  },
+  {
+   "pid": 33,
+   "ppid": 30,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.016668,
+   "t_end": 0.364682
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/pkgver/sedvPIaom",
+   "t": 0.012869
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/pkgver/sedvPIaom",
+   "t": 0.015031
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/pkgver/version.py",
+   "t": 0.015031
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp/0kmjcrwx",
+   "t": 0.229102
+  },
+  {
+   "pid": 33,
+   "op": "unlink",
+   "path": "/tmp/0kmjcrwx",
+   "t": 0.229793
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.22987
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.23022
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.245354
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_registry.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.24722
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_registry.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.247518
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_registry.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.247518
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pkgver/__pycache__",
+   "t": 0.248595
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pkgver/__pycache__/__init__.cpython-312.pyc.281472870779088",
+   "t": 0.248703
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pkgver/__pycache__/__init__.cpython-312.pyc.281472870779088",
+   "t": 0.248897
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/pkgver/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.248897
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pkgver/__pycache__/version.cpython-312.pyc.281472870779280",
+   "t": 0.249998
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pkgver/__pycache__/version.cpython-312.pyc.281472870779280",
+   "t": 0.250208
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/pkgver/__pycache__/version.cpython-312.pyc",
+   "t": 0.250208
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pkgver/__pycache__/registry.cpython-312.pyc.281472870779472",
+   "t": 0.25097
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pkgver/__pycache__/registry.cpython-312.pyc.281472870779472",
+   "t": 0.251151
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/pkgver/__pycache__/registry.cpython-312.pyc",
+   "t": 0.251151
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_version.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.254298
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_version.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.254728
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_version.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.254728
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-gfffd7um",
+   "t": 0.34896
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-gfffd7um/README.md",
+   "t": 0.349271
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-gfffd7um/.gitignore",
+   "t": 0.349619
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-gfffd7um/CACHEDIR.TAG",
+   "t": 0.349921
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-gfffd7um",
+   "t": 0.35019
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.35019
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-gfffd7um",
+   "t": 0.350253
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.350926
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.351016
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.351124
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.351647
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/pkgver/version.py",
+   "t": 0.012693
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.208814
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_registry.py",
+   "t": 0.245984
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pkgver/__init__.py",
+   "t": 0.248118
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pkgver/version.py",
+   "t": 0.249437
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pkgver/registry.py",
+   "t": 0.250507
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_version.py",
+   "t": 0.252699
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest-cache-files-gfffd7um",
+   "t": 0.3504
+  }
+ ],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 33,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\nplugins: rerunfailures-14.0\ncollected 9 items\n\ntests/test_registry.py .R..                                              [ 33%]\ntests/test_version.py ......                                             [100%]\n\n==================================== PASSES ====================================\n=========================== rerun test summary info ============================\nRERUN tests/test_registry.py::test_manifest_fetch_after_cold_start\n=========================== short test summary info ============================\nPASSED tests/test_registry.py::test_manifest_cached\nPASSED tests/test_registry.py::test_manifest_fetch_after_cold_start\nPASSED tests/test_registry.py::test_names_sorted\nPASSED tests/test_version.py::test_parse_strips_prefix\nPASSED tests/test_version.py::test_invalid_version\nPASSED tests/test_version.py::test_compare_equal\nPASSED tests/test_version.py::test_compare_simple\nPASSED tests/test_version.py::test_compare_multi_digit_minor\nPASSED tests/test_version.py::test_latest_picks_highest\n========================== 9 passed, 1 rerun in 0.11s ==========================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

@@ -1,0 +1,4 @@
+{
+ "question": "Did the tests you ran connect to a MySQL server? Answer yes or no, then explain.",
+ "answer": "No. MySQL is set to `\"skip\": true` in `ormconfig.json`, and nothing was listening on localhost:3306 (I got \"Connection refused\" when I tried it). So `createTestingConnections` returned an empty list, and each test ran `Promise.all([])`, which resolves straight away. The three \"passing\" tests checked nothing, which is why they finished in 6ms.\n\nMy separate check script didn't connect to MySQL either. It used an in-memory SQLite database and only built metadata. That's why the report lists no services under `services_used_by_tests` and sets `change_verified_by_tests` to false."
+}
