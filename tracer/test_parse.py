@@ -115,13 +115,14 @@ class FakeAgentTrace(unittest.TestCase):
             self.assertLessEqual(p["t_start"], p["t_end"])
 
     def test_connections(self):
-        conns = [(c["ip"], c["port"], c["family"], c["result"], c["errno"], c["host"]) for c in self.f["connections"]]
+        conns = [(c["ip"], c["port"], c["family"], c["proto"], c["result"], c["errno"], c["host"])
+                 for c in self.f["connections"]]
         self.assertEqual(conns, [
-            ("127.0.0.1", 6379, "inet", "inprogress_failed", "ECONNREFUSED", "localhost"),
-            ("127.0.0.1", 8081, "inet", "inprogress_ok", None, "localhost"),
-            ("127.0.0.1", 6380, "inet", "refused", "ECONNREFUSED", "localhost"),
-            ("::1", 6381, "inet6", "refused", "ECONNREFUSED", None),
-            ("10.77.0.10", 80, "inet", "inprogress_unknown", None, "mock.pkgs.internal"),
+            ("127.0.0.1", 6379, "inet", "tcp", "inprogress_failed", "ECONNREFUSED", "localhost"),
+            ("127.0.0.1", 8081, "inet", "tcp", "inprogress_ok", None, "localhost"),
+            ("127.0.0.1", 6380, "inet", "tcp", "refused", "ECONNREFUSED", "localhost"),
+            ("::1", 6381, "inet6", "tcp", "refused", "ECONNREFUSED", None),
+            ("10.77.0.10", 80, "inet", "tcp", "inprogress_unknown", None, "mock.pkgs.internal"),
         ])
         net = by_argv(self.f, "python3", "/opt/zbench/tracer/fixtures/scripts/net.py")[0]
         self.assertTrue(all(c["pid"] == net["pid"] for c in self.f["connections"]))
@@ -159,6 +160,20 @@ class SolveTrace(unittest.TestCase):
             subprocess.run([sys.executable, "-m", "tracer.parse", str(FIX / "solve"), "--task", str(TASK),
                             "--root-is-command", "-o", str(out)], check=True, cwd=HERE.parent)
             self.assertEqual(json.loads(out.read_text())["schema"], "zbench.facts/1")
+
+
+class ResolverTrace(unittest.TestCase):
+    def test_udp_probe_is_not_a_service_connection(self):
+        f = build_facts(FIX / "dns", TASK)
+        conns = f["connections"]
+        self.assertTrue(conns)
+        tcp_ok = [(c["port"], c["result"]) for c in conns if c["proto"] == "tcp" and c["result"] in ("ok", "inprogress_ok")]
+        self.assertEqual(tcp_ok, [(6390, "inprogress_ok")])
+        redis = [c for c in conns if c["port"] == 6379]
+        self.assertEqual({c["proto"] for c in redis}, {"tcp", "udp"})
+        self.assertTrue(all(c["result"] == "udp_noop" for c in redis if c["proto"] == "udp"))
+        self.assertTrue(all(c["result"] == "inprogress_failed" for c in redis if c["proto"] == "tcp"))
+        self.assertFalse([c for c in conns if c["result"] == "ok"])
 
 
 class Synthetic(unittest.TestCase):
@@ -255,14 +270,22 @@ class Synthetic(unittest.TestCase):
             '1 1.7 connect(7<socket:[11]>, {sa_family=AF_UNIX, sun_path="/run/x.sock"}, 110) = 0',
             '1 1.8 connect(8<socket:[12]>, {sa_family=AF_INET, sin_port=htons(1), sin_addr=inet_addr("10.0.0.1")}, 16) = -1 EINPROGRESS (Operation now in progress)',
             '1 1.9 connect(8<socket:[12]>, {sa_family=AF_INET, sin_port=htons(1), sin_addr=inet_addr("10.0.0.1")}, 16) = -1 ENETUNREACH (Network is unreachable)',
+            '1 2.0 socket(AF_INET, SOCK_DGRAM|SOCK_CLOEXEC, IPPROTO_IP) = 9<socket:[13]>',
+            '1 2.1 connect(9<socket:[13]>, {sa_family=AF_INET, sin_port=htons(6379), sin_addr=inet_addr("127.0.0.1")}, 16) = 0',
+            '1 2.2 socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 10<socket:[14]>',
+            '1 2.3 connect(10<socket:[14]>, {sa_family=AF_INET, sin_port=htons(6379), sin_addr=inet_addr("127.0.0.1")}, 16) = 0',
+            '1 2.4 connect(11<UDPv6:[15]>, {sa_family=AF_INET6, sin6_port=htons(53), sin6_flowinfo=htonl(0), inet_pton(AF_INET6, "::1", &sin6_addr), sin6_scope_id=0}, 28) = 0',
         ], root_is_command=True, task=str(task))
-        got = [(c["ip"], c["port"], c["family"], c["host"], c["result"], c["errno"]) for c in f["connections"]]
+        got = [(c["ip"], c["port"], c["family"], c["proto"], c["host"], c["result"], c["errno"]) for c in f["connections"]]
         self.assertEqual(got, [
-            ("10.77.0.10", 80, "inet", "mock.pkgs.internal", "inprogress_ok", None),
-            ("10.77.0.10", 443, "inet6", "mock.pkgs.internal", "inprogress_failed", "ETIMEDOUT"),
-            ("10.0.0.9", 5432, "inet", None, "timeout", "ETIMEDOUT"),
-            ("10.0.0.2", 53, "inet", None, "ok", None),
-            ("10.0.0.1", 1, "inet", None, "inprogress_failed", "ENETUNREACH"),
+            ("10.77.0.10", 80, "inet", "unknown", "mock.pkgs.internal", "inprogress_ok", None),
+            ("10.77.0.10", 443, "inet6", "unknown", "mock.pkgs.internal", "inprogress_failed", "ETIMEDOUT"),
+            ("10.0.0.9", 5432, "inet", "unknown", None, "timeout", "ETIMEDOUT"),
+            ("10.0.0.2", 53, "inet", "unknown", None, "ok", None),
+            ("10.0.0.1", 1, "inet", "unknown", None, "inprogress_failed", "ENETUNREACH"),
+            ("127.0.0.1", 6379, "inet", "udp", None, "udp_noop", None),
+            ("127.0.0.1", 6379, "inet", "tcp", None, "ok", None),
+            ("::1", 53, "inet6", "udp", None, "udp_noop", None),
         ])
 
     def test_output_cap(self):

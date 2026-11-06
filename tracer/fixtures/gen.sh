@@ -23,3 +23,4 @@ gen() {
 
 gen fake_agent -- node /opt/zbench/tracer/fixtures/scripts/fake_agent.js
 gen solve --root-is-command -- /opt/zbench/tracer/fixtures/scripts/solve.sh
+gen dns --root-is-command -- python3 /opt/zbench/tracer/fixtures/scripts/dns.py
