@@ -36,6 +36,8 @@ RET_RE = re.compile(r"^=\s+(-?\d+|0x[0-9a-fA-F]+|\?)(?:<(.*?)>)?(?:\s+(E[A-Z0-9]
 FD_RE = re.compile(r"^(-?\d+|AT_FDCWD)(?:<(.*)>)?$")
 INET_RE = re.compile(r'sa_family=AF_INET,\s*sin_port=htons\((\d+)\),\s*sin_addr=inet_addr\("([^"]+)"\)')
 INET6_RE = re.compile(r'sa_family=AF_INET6,\s*sin6_port=htons\((\d+)\).*?inet_pton\(AF_INET6,\s*"([^"]+)"')
+SOCK_DECO_RE = re.compile(r"^([A-Za-z0-9]+):\[(\d+)\]$")
+DECO_PROTO = {"TCP": "tcp", "TCPv6": "tcp", "UDP": "udp", "UDPv6": "udp", "UNIX": "unix"}
 UNFINISHED = " <unfinished ...>"
 
 
@@ -311,6 +313,7 @@ class Builder:
         self.connections = []
         self.pending_conn = {}
         self.traced_sinks = set()
+        self.sock_proto = {}
         self.outputs = {}
         self.t0 = min(first_seen.values()) if first_seen else 0.0
         roots = [pid for pid in first_seen if pid not in parent_of]
@@ -469,9 +472,28 @@ class Builder:
 
     def socket_key(self, p, raw_fd):
         fd, deco = fd_arg(raw_fd)
-        if deco and deco.startswith("socket:"):
-            return deco
-        return (p.pid, fd)
+        m = SOCK_DECO_RE.match(deco or "")
+        if m is None:
+            return (p.pid, fd)
+        key = f"socket:[{m.group(2)}]"
+        if m.group(1) in DECO_PROTO:
+            self.sock_proto.setdefault(key, DECO_PROTO[m.group(1)])
+        return key
+
+    def on_socket(self, p, call):
+        if not call.ok or len(call.args) < 2:
+            return
+        if call.args[0] in ("AF_UNIX", "AF_LOCAL"):
+            proto = "unix"
+        elif "SOCK_STREAM" in call.args[1]:
+            proto = "tcp"
+        elif "SOCK_DGRAM" in call.args[1]:
+            proto = "udp"
+        else:
+            proto = "unknown"
+        m = SOCK_DECO_RE.match(call.ret_deco or "")
+        if m:
+            self.sock_proto[f"socket:[{m.group(2)}]"] = proto
 
     def on_connect(self, p, call):
         if len(call.args) < 2:
@@ -492,8 +514,9 @@ class Builder:
         if not m or p.scope != "command":
             return
         ip = norm_ip(m.group(2))
+        proto = self.sock_proto.get(key, "unknown")
         if call.ok:
-            result, err = "ok", None
+            result, err = ("udp_noop" if proto == "udp" else "ok"), None
         elif call.err == "EINPROGRESS":
             result, err = "inprogress", None
         elif call.ret is None:
@@ -503,6 +526,7 @@ class Builder:
         conn = {
             "pid": p.pid,
             "family": family,
+            "proto": proto,
             "ip": ip,
             "port": int(m.group(1)),
             "host": self.hosts.get(ip),
@@ -542,11 +566,12 @@ class Builder:
         if not call.args:
             return
         fd, deco = fd_arg(call.args[0])
-        if deco and deco.startswith("socket:") and deco in self.pending_conn:
+        key = self.socket_key(p, call.args[0])
+        if key in self.pending_conn:
             if call.ok:
-                self.settle(deco, None)
+                self.settle(key, None)
             elif call.err in FAIL_RESULTS:
-                self.settle(deco, call.err)
+                self.settle(key, call.err)
         if fd not in (1, 2) or p.scope != "command" or not call.ok:
             return
         if deco and (deco in self.traced_sinks or deco == "/dev/null"):
