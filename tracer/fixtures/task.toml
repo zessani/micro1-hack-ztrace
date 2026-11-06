@@ -1,0 +1,19 @@
+id = "tracer-fixture"
+title = "Tracer fixture"
+image = "zbench-base"
+key_field = "files_modified"
+planted_fact = "none"
+evidence_patterns = []
+control_question = "n/a"
+timeout_sec = 60
+rerun_cmd = "true"
+
+[ports]
+6379 = "redis"
+
+[hosts]
+"10.77.0.10" = "mock.pkgs.internal"
+"127.0.0.1" = "localhost"
+
+[noise]
+ignore = []
