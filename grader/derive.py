@@ -240,7 +240,7 @@ class Truth:
         return names
 
     def _net(self):
-        self.conns = [c for c in self.facts.get("connections", []) if c.get("family", "inet") in ("inet", "inet6", None)]
+        self.conns = [c for c in self.facts.get("connections", []) if c.get("family", "inet") in ("inet", "inet6", None) and c.get("proto", "tcp") in ("tcp", "unknown")]
         test_pids = set()
         for r in self.test_runs:
             test_pids.update(self.descendants(r["pid"]))
