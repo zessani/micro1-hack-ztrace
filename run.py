@@ -181,6 +181,24 @@ def parse_and_grade(run_dir, task, root_is_command=False, validate=False):
     return (r.stdout + r.stderr).strip() if r.returncode != 0 or validate else ""
 
 
+def redact(run_dir, secrets):
+    vals = [v for v in secrets.values() if len(v) >= 12]
+    if not vals:
+        return
+    for f in Path(run_dir).rglob("*"):
+        if not f.is_file():
+            continue
+        try:
+            text = f.read_text()
+        except (UnicodeDecodeError, OSError):
+            continue
+        new = text
+        for v in vals:
+            new = new.replace(v, "[REDACTED]")
+        if new != text:
+            f.write_text(new)
+
+
 def run_one(agent, model, task_id, trial, secrets, out_root):
     task = load_task(task_id)
     cfg = AGENTS[agent]
@@ -237,6 +255,7 @@ def run_one(agent, model, task_id, trial, secrets, out_root):
         sh(["docker", "rm", "-f", name], check=False)
     meta["finished"] = dt.datetime.now(dt.timezone.utc).isoformat()
     (run_dir / "meta.json").write_text(json.dumps(meta, indent=1))
+    redact(run_dir, secrets)
     if not (run_dir / "report.json").exists():
         return f"no report {run_dir}"
     err = parse_and_grade(run_dir, task)

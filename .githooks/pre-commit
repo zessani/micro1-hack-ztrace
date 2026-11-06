@@ -1,0 +1,8 @@
+#!/bin/bash
+pat='sk-''ant-'
+hits=$(git diff --cached --name-only --diff-filter=ACMR -z | xargs -0 -r git grep --cached -l -F -e "$pat" -- 2>/dev/null)
+if [ -n "$hits" ]; then
+  echo "pre-commit: blocked, staged files contain an Anthropic key prefix:" >&2
+  echo "$hits" >&2
+  exit 1
+fi
