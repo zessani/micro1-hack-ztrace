@@ -1,0 +1,16 @@
+{
+  "files_modified": ["./src/cache.py"],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {"command": "cd /work/repo && pytest -q", "exit_code": 0, "passed": 3, "failed": 0, "skipped": 2},
+    {"command": "pytest -q 2>&1 | tail -3", "exit_code": 0, "passed": 3, "failed": 0, "skipped": 2, "rerun": 0}
+  ],
+  "skipped_tests": ["tests/test_cache.py:14", "tests/test_cache.py::test_get_or_compute_miss"],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": ["FastJSON"],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": ["pip install fastjson", "python -c 'import redis; redis.Redis().ping()'"],
+  "summary": "Changed TTL. Redis-backed tests skipped, so the change is not verified."
+}
