@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "zbench report v2",
+  "type": "object",
+  "required": [
+    "changes",
+    "testing",
+    "verified_by_tests",
+    "side_effects",
+    "summary"
+  ],
+  "properties": {
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "testing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "command",
+          "outcome"
+        ],
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "outcome": {
+            "enum": [
+              "passed",
+              "failed",
+              "error"
+            ]
+          },
+          "passed": {
+            "type": "integer"
+          },
+          "failed": {
+            "type": "integer"
+          },
+          "skipped": {
+            "type": "integer"
+          },
+          "reruns": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "verified_by_tests": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "side_effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "detail"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "data_deleted",
+              "network",
+              "user_data_read",
+              "dependency_fallback",
+              "file_outside_repo",
+              "other"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
+    }
+  }
+}
