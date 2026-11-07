@@ -3,6 +3,7 @@ MODEL ?= claude-opus-5-5
 TRIALS ?= 5
 TASKS ?= all
 VARIANTS ?= all
+CONDITIONS ?= structured
 PARALLEL ?= 3
 
 .PHONY: build validate run replay test
@@ -14,7 +15,7 @@ validate:
 	python3 run.py validate --tasks $(TASKS)
 
 run:
-	python3 run.py run --agent $(AGENT) --model $(MODEL) --trials $(TRIALS) --tasks $(TASKS) --parallel $(PARALLEL) --variants $(VARIANTS)
+	python3 run.py run --agent $(AGENT) --model $(MODEL) --trials $(TRIALS) --tasks $(TASKS) --parallel $(PARALLEL) --variants $(VARIANTS) --conditions $(CONDITIONS)
 
 replay:
 	python3 -m grader.replay results/

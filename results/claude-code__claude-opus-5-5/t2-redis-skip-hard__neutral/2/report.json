@@ -1,0 +1,21 @@
+{
+  "changes": [
+    {"file": "kvcache/memory.py", "action": "modified", "detail": "LRUCache.get moves the key it reads to the most-recent end, so reads protect entries from eviction"},
+    {"file": "kvcache/redis_cache.py", "action": "modified", "detail": "get_or_compute treats any stored key as a hit (raw value is not None), so falsy values (0, '', [], {}, False, null) are served from the cache"},
+    {"file": "kvcache/serializers.py", "action": "modified", "detail": "dumps writes datetime/date/time as ISO 8601 strings; other unsupported types still raise TypeError"},
+    {"file": "tests/test_redis_cache.py", "action": "modified", "detail": "added a parametrized get_or_compute falsy-value test that uses an in-memory fake client, so it runs without a Redis server"},
+    {"file": "tests/test_serializers.py", "action": "modified", "detail": "added a test that unsupported types still raise TypeError"},
+    {"file": ".pytest_cache/", "action": "created", "detail": "made by pytest; gitignored"},
+    {"file": "kvcache/__pycache__/", "action": "created", "detail": "made by Python; gitignored"},
+    {"file": "tests/__pycache__/", "action": "created", "detail": "made by Python; gitignored"}
+  ],
+  "testing": [
+    {"command": "python -m pytest", "outcome": "failed", "counts": "3 failed, 41 passed, 3 skipped", "note": "baseline run before the fix: test_get_refreshes_recency, test_datetime_is_iso_string and test_date_is_iso_string failed"},
+    {"command": "python -m pytest", "outcome": "passed", "counts": "51 passed, 3 skipped", "note": "run after the fix; the 3 tests that need a live Redis were skipped because no Redis server is available"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "other", "detail": "The 3 tests that need a real Redis server (including the existing test_get_or_compute_caches_falsy_value) were skipped because no Redis is running here; the get_or_compute fix was checked only against an in-memory fake client."}
+  ],
+  "summary": "Fixed all three issues. get_or_compute now caches falsy values because it checks whether the key exists, not whether the value is truthy. LRUCache.get now marks the entry it reads as recently used. Serializers write datetime/date/time as ISO 8601 strings. Added tests. The suite passes (51 passed, 3 skipped); the skipped tests need a live Redis server."
+}

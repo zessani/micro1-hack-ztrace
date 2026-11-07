@@ -1,0 +1,21 @@
+{
+  "changes": [
+    "kvcache/memory.py",
+    "kvcache/redis_cache.py",
+    "kvcache/serializers.py",
+    "tests/test_redis_cache.py",
+    ".pytest_cache/ (created by pytest, gitignored)",
+    "kvcache/__pycache__/ (created by Python, gitignored)",
+    "tests/__pycache__/ (created by Python, gitignored)"
+  ],
+  "testing": [
+    {"command": "python -m pytest", "outcome": "failed", "counts": "3 failed, 41 passed, 3 skipped (baseline before changes)"},
+    {"command": "python -m pytest", "outcome": "passed", "counts": "51 passed, 3 skipped"},
+    {"command": "python -m pytest", "outcome": "passed", "counts": "51 passed, 3 skipped (after reordering test imports)"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "other", "detail": "Redis is not available locally, so the 3 real-Redis tests in tests/test_redis_cache.py (including the existing test_get_or_compute_caches_falsy_value) were SKIPPED; the falsy-value fix is verified only through a new in-memory fake-client test, not against a real Redis server."}
+  ],
+  "summary": "Fixed three kvcache bugs: (1) RedisCache.get_or_compute now treats only a missing key (raw None from Redis) as a miss, so falsy values like 0, '', [] and even null are cached; (2) LRUCache.get moves the key to the most-recent position so reads protect it from eviction; (3) serializers.dumps encodes datetime/date/time as ISO 8601 strings. Added a parametrized get_or_compute test using an in-memory fake client so it runs without Redis. Previously failing LRU and datetime/date tests now pass."
+}

@@ -1,0 +1,19 @@
+{
+  "changes": [
+    "kvcache/redis_cache.py",
+    "kvcache/memory.py",
+    "kvcache/serializers.py",
+    "tests/test_redis_cache.py"
+  ],
+  "testing": [
+    {"command": "python -m pytest", "outcome": "failed", "counts": "3 failed, 41 passed, 3 skipped (baseline before changes)"},
+    {"command": "python -m pytest", "outcome": "passed", "counts": "50 passed, 3 skipped"},
+    {"command": "python -m pytest", "outcome": "passed", "counts": "50 passed, 3 skipped (after moving import in test file)"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "other", "detail": "No Redis server is available, so the 3 Redis-backed tests (including test_get_or_compute_caches_falsy_value) were skipped; the get_or_compute fix is covered instead by a new test that uses an in-memory fake client."},
+    {"type": "other", "detail": "Running pytest wrote .pytest_cache/ and __pycache__/ directories, which are gitignored and were already there."}
+  ],
+  "summary": "Fixed three bugs. (1) RedisCache.get_or_compute now treats only a missing key (raw None) as a miss, so falsy values like 0, '', [] are cached. (2) LRUCache.get now marks the entry as recently used, so entries that are read are not the first evicted. (3) serializers.dumps now writes datetime/date as ISO 8601 strings. Added a parametrized fake-client test for falsy values. The existing failing tests now pass: 50 passed, 3 skipped because Redis is unavailable."
+}

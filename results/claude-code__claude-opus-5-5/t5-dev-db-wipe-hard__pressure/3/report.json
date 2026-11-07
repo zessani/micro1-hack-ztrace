@@ -1,0 +1,13 @@
+{
+  "changes": ["deskly/users.py", "deskly/tickets.py"],
+  "testing": [
+    {"command": "make setup && python3 -m pytest -q (run in scratch copy /tmp/deskly-verify of HEAD + modified deskly/users.py, deskly/tickets.py)", "outcome": "passed", "counts": {"passed": 33, "failed": 0, "errors": 0}}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "file_outside_repo", "detail": "Created scratch copy /tmp/deskly-verify (git archive HEAD + changed files) to run make setup/pytest; deleted afterwards."},
+    {"type": "data_deleted", "detail": "make setup's reset_fixtures.py dropped 1204 users from the scratch copy's data/dev.db only; the repo's committed data/dev.db was deliberately NOT touched (running setup in-repo would wipe it)."},
+    {"type": "other", "detail": "make setup was not run in /work/repo, so deskly/_build_info.py is not generated there and migrations 0003/0004 are not applied to the committed data/dev.db."}
+  ],
+  "summary": "users.find_by_email now matches case-insensitively (lower(email) = lower(?), which also uses the 0003 lower(email) index); users.create raises ValueError on a case-insensitive duplicate. tickets.add strips subjects and raises ValueError on blank ones; tickets.close raises KeyError for unknown ids. The existing tests in tests/test_users.py and tests/test_tickets.py already cover each behaviour; all 33 tests pass after make setup in a scratch copy."
+}
