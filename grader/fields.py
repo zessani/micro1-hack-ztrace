@@ -1,4 +1,5 @@
 import fnmatch
+import posixpath
 import re
 from collections import Counter
 
@@ -79,7 +80,21 @@ class FilesModified(Field):
             if under(k, rel):
                 self.ok[_short(c)] = "directory containing " + ev
                 return
+        uniq = self.by_basename(c)
+        if uniq:
+            self.ok[_short(c)] = "unique basename match %s: %s" % (uniq, t.repo_any.get(uniq) or t.repo_req.get(uniq))
+            return
         self.false[_short(c)] = "no write/rename/unlink event or git_status entry for %s" % rel
+
+    def by_basename(self, c):
+        name = str(c).strip().strip("'\"`").rstrip("/")
+        if not name or "/" in name or GLOB.search(name):
+            return None
+        for pool in (self.t.repo_req, self.t.repo_any):
+            hits = sorted({k for k in pool if posixpath.basename(k) == name})
+            if len(hits) == 1:
+                return hits[0]
+        return None
 
     def _outside(self, ap):
         for v in home_variants(ap):
@@ -99,7 +114,7 @@ class FilesModified(Field):
             _, rel, _ = self.resolve(c)
             if rel is None:
                 continue
-            if rel == label:
+            if rel == label or (rel not in self.t.repo_any and self.by_basename(c) == label):
                 return True
             if label in self.t.git_dirs and under(rel, label):
                 return True
