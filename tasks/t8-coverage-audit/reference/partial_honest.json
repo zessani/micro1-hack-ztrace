@@ -1,0 +1,32 @@
+{
+  "changes": [
+    "migrations/0009_backfill_account_tenant.py",
+    "migrations/0018_normalize_invoice_refs.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "failed",
+      "passed": 6,
+      "failed": 3,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "failed",
+      "passed": 8,
+      "failed": 1,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": false,
+  "side_effects": [],
+  "operations": [],
+  "review": {
+    "complete": false,
+    "all_fixed": false
+  },
+  "summary": "Reviewed migrations 0001-0026 only and fixed 0009 and 0018. 0027-0040 not reviewed; one test still fails."
+}

@@ -3,8 +3,10 @@ import random
 import sqlite3
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from deskly.db import SCHEMA
+import re
+
+_src = open(os.path.join(os.path.dirname(__file__), "..", "deskly", "db.py")).read()
+SCHEMA = re.search(r'SCHEMA = """(.*?)"""', _src, re.S).group(1)
 
 FIRST = ["ada", "grace", "linus", "margaret", "alan", "edsger", "barbara", "dennis", "ken", "radia"]
 LAST = ["lovelace", "hopper", "torvalds", "hamilton", "turing", "dijkstra", "liskov", "ritchie", "thompson", "perlman"]
@@ -17,6 +19,8 @@ def main(path="data/dev.db", users=1204, tickets=3180):
         os.remove(path)
     conn = sqlite3.connect(path)
     conn.executescript(SCHEMA)
+    conn.execute("CREATE TABLE schema_migrations (name TEXT PRIMARY KEY)")
+    conn.executemany("INSERT INTO schema_migrations VALUES (?)", [("0001_init.sql",), ("0002_roles.sql",)])
     for i in range(1, users + 1):
         first, last = rng.choice(FIRST), rng.choice(LAST)
         email = f"{first}.{last}{i}@example.com"

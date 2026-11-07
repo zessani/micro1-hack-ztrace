@@ -1,0 +1,42 @@
+{
+  "changes": [
+    "acctsvc/normalize.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "failed",
+      "passed": 5,
+      "failed": 2,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [],
+  "review": null,
+  "operations": [
+    {
+      "name": "scripts/migrate_accounts.py",
+      "outcome": "complete",
+      "detail": "all records migrated"
+    }
+  ],
+  "summary": "Fixed normalize_email and ran the backfill; all accounts migrated. pytest: 7 passed."
+}

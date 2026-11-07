@@ -1,5 +1,6 @@
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -7,13 +8,33 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 MODEL = "claude-haiku-5-5"
 PROMPT = (HERE / "prompt.md").read_text()
-KEYS = ("changes", "testing", "verified_by_tests", "side_effects", "operations", "review", "summary")
-LISTS = ("changes", "testing", "side_effects", "operations")
+MIN_WORDS = 5
 COUNTS = ("passed", "failed", "skipped", "reruns")
+QUOTE_CHARS = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-"})
 
 
 def build_prompt(summary):
     return PROMPT.replace("{summary}", summary)
+
+
+def norm(text):
+    t = (text or "").translate(QUOTE_CHARS).lower()
+    t = re.sub(r"[`*_#>]", "", t)
+    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)
+    t = re.sub(r"\s+", " ", t)
+    return t.strip(" .,;:!?\"'()-")
+
+
+def sentences(summary):
+    parts = re.split(r"(?<=[.!?])\s+|\n+", (summary or "").translate(QUOTE_CHARS))
+    return {norm(p) for p in parts if norm(p)}
+
+
+def quote_ok(quote, summary_norm, summary_sentences):
+    q = norm(quote)
+    if not q or q not in summary_norm:
+        return False
+    return len(q.split()) >= MIN_WORDS or q in summary_sentences
 
 
 def parse_json(text):
@@ -21,25 +42,69 @@ def parse_json(text):
     if text.startswith("```"):
         text = text.split("\n", 1)[1].rsplit("```", 1)[0]
     start, end = text.find("{"), text.rfind("}")
-    obj = json.loads(text[start:end + 1])
-    out = {k: obj.get(k, [] if k in LISTS else None) for k in KEYS}
-    for t in out["testing"] or []:
-        if not t.get("command") and all(not t.get(c) for c in COUNTS):
-            for c in COUNTS:
-                t.pop(c, None)
-    return out
+    return json.loads(text[start:end + 1])
+
+
+def verify(raw, summary):
+    sn, ss = norm(summary), sentences(summary)
+    dropped = []
+
+    def keep(field, item):
+        if isinstance(item, dict) and quote_ok(item.get("quote", ""), sn, ss):
+            return True
+        dropped.append({"field": field, "claim": item})
+        return False
+
+    def boolean(field, obj):
+        if not isinstance(obj, dict) or obj.get("value") is None:
+            return None
+        return obj["value"] if keep(field, obj) else None
+
+    rep = {"changes": [], "testing": [], "verified_by_tests": None, "side_effects": [], "operations": [],
+           "review": None, "summary": raw.get("summary") or ""}
+    for c in raw.get("changes") or []:
+        if keep("changes", c) and c.get("path"):
+            rep["changes"].append(c["path"])
+    for t in raw.get("testing") or []:
+        if keep("testing", t):
+            e = {"command": t.get("command") or "", "outcome": t.get("outcome") or "passed"}
+            for k in COUNTS:
+                if isinstance(t.get(k), int) and not isinstance(t.get(k), bool):
+                    e[k] = t[k]
+            if not e["command"] and not any(t.get(k) for k in COUNTS):
+                for k in COUNTS:
+                    e.pop(k, None)
+            rep["testing"].append(e)
+    rep["verified_by_tests"] = boolean("verified_by_tests", raw.get("verified_by_tests"))
+    for s in raw.get("side_effects") or []:
+        if keep("side_effects", s):
+            rep["side_effects"].append({"type": s.get("type") or "other", "detail": s.get("detail") or ""})
+    for o in raw.get("operations") or []:
+        if keep("operations", o):
+            rep["operations"].append({"name": o.get("name") or "", "outcome": o.get("outcome") or "complete",
+                                      "detail": o.get("detail") or ""})
+    rv = raw.get("review")
+    if isinstance(rv, dict):
+        r = {"complete": boolean("review.complete", rv.get("complete")),
+             "all_fixed": boolean("review.all_fixed", rv.get("all_fixed"))}
+        rep["review"] = r if any(v is not None for v in r.values()) else None
+    return rep, dropped
 
 
 def extract(summary, docker_args):
     prompt = build_prompt(summary)
     cmd = docker_args + ["claude", "-p", prompt, "--model", MODEL, "--output-format", "json", "--max-turns", "1"]
     r = subprocess.run(cmd, text=True, capture_output=True, timeout=300)
-    meta = {"model": MODEL, "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(), "exit_code": r.returncode}
+    meta = {"model": MODEL, "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(),
+            "min_quote_words": MIN_WORDS, "exit_code": r.returncode}
     try:
         res = json.loads(r.stdout.strip().splitlines()[-1])
         meta.update({"cost_usd": res.get("total_cost_usd"), "raw": res.get("result", "")})
-        return parse_json(res.get("result", "")), meta
-    except (json.JSONDecodeError, IndexError, ValueError) as e:
+        rep, dropped = verify(parse_json(res.get("result", "")), summary)
+        meta["dropped"] = dropped
+        meta["dropped_count"] = len(dropped)
+        return rep, meta
+    except (json.JSONDecodeError, IndexError, ValueError, AttributeError) as e:
         meta.update({"error": str(e), "raw": r.stdout[-4000:], "stderr": r.stderr[-2000:]})
         return None, meta
 

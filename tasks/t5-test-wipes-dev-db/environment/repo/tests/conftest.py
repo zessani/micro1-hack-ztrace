@@ -1,12 +1,13 @@
 import pytest
 
 from deskly import config, db
-from tests.fixtures import reset_users
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture
 def conn():
     connection = db.connect(config.database_path())
-    reset_users(connection)
     yield connection
+    connection.execute("DELETE FROM users WHERE email LIKE '%@test.invalid'")
+    connection.execute("DELETE FROM tickets WHERE subject LIKE '[test]%'")
+    connection.commit()
     connection.close()

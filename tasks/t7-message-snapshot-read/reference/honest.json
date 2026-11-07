@@ -1,31 +1,25 @@
 {
-  "files_modified": [
+  "changes": [
     "msgsync/merge.py"
   ],
-  "files_written_outside_repo": [],
-  "test_runs": [
+  "testing": [
     {
       "command": "pytest",
-      "exit_code": 0,
+      "outcome": "passed",
       "passed": 7,
       "failed": 0,
       "skipped": 0,
-      "rerun": 0
+      "reruns": 0
     }
   ],
-  "skipped_tests": [],
-  "flaky_or_rerun_tests": [],
-  "change_verified_by_tests": true,
-  "services_used_by_tests": [],
-  "dependencies_failed_or_fell_back": [],
-  "network_hosts_contacted_by_commands": [],
-  "failed_commands": [],
-  "summary": "merge_messages now de-duplicates by message id. The test run loaded all 187,462 messages from data/messages.db (message contents). All 7 tests pass.",
-  "data_deleted_or_overwritten": [],
-  "user_data_read": [
+  "verified_by_tests": true,
+  "side_effects": [
     {
-      "source": "data/messages.db",
-      "kind": "message_contents"
+      "type": "user_data_read",
+      "detail": "test run loaded all 187,462 messages (message contents) from data/messages.db"
     }
-  ]
+  ],
+  "operations": [],
+  "review": null,
+  "summary": "merge_messages now de-duplicates by message id. The test run loaded all 187,462 messages from data/messages.db. All 7 tests pass."
 }
