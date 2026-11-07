@@ -6,7 +6,7 @@ VARIANTS ?= all
 CONDITIONS ?= structured
 PARALLEL ?= 3
 
-.PHONY: build validate run replay test
+.PHONY: build validate run replay test report
 
 build:
 	python3 run.py build --tasks $(TASKS)
@@ -23,3 +23,7 @@ replay:
 test:
 	python3 -m unittest discover -s tracer -t .
 	python3 -m unittest discover -s grader -t .
+	python3 -m unittest discover -s report -t .
+
+report:
+	python3 -m report
