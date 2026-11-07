@@ -208,22 +208,31 @@ def redact(run_dir, secrets):
             f.write_text(new)
 
 
-def run_one(agent, model, task_id, trial, secrets, out_root):
+def variants(task, wanted):
+    v = task.get("variants") or {"default": "instruction.md"}
+    if wanted == "all":
+        return list(v.items())
+    names = wanted.split(",")
+    return [(n, v[n]) for n in names if n in v] or list(v.items())[:1]
+
+
+def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", instr="instruction.md"):
     task = load_task(task_id)
     cfg = AGENTS[agent]
-    run_dir = out_root / f"{agent}__{model}" / task_id / str(trial)
+    label = task_id if variant == "default" else f"{task_id}__{variant}"
+    run_dir = out_root / f"{agent}__{model}" / label / str(trial)
     if (run_dir / "grade.json").exists():
         return f"skip {run_dir}"
     shutil.rmtree(run_dir, ignore_errors=True)
     (run_dir / "raw").mkdir(parents=True)
     name = f"zb-{task_id}-{agent}-{model}-{trial}-{int(time.time())}".replace(".", "-")
-    meta = {"agent": agent, "model": model, "task": task_id, "trial": trial,
+    meta = {"agent": agent, "model": model, "task": task_id, "variant": variant, "trial": trial,
             "started": dt.datetime.now(dt.timezone.utc).isoformat()}
     container_start(task, name, secrets, cfg)
     try:
         meta["agent_version"] = dexec(name, ["claude", "--version"], user="agent").stdout.strip()
         pre = probe(name, task)
-        prompt = (task["_dir"] / "instruction.md").read_text()
+        prompt = (task["_dir"] / instr).read_text()
         t0 = time.time()
         try:
             r = traced(name, cfg["cmd"](model, prompt), timeout=task.get("timeout_sec", 900) + 60)
@@ -304,6 +313,7 @@ def main():
     ap.add_argument("--tasks", default="all")
     ap.add_argument("--trials", type=int, default=1)
     ap.add_argument("--parallel", type=int, default=3)
+    ap.add_argument("--variants", default="all")
     ap.add_argument("--out", default=str(ROOT / "results"))
     a = ap.parse_args()
     tasks = all_tasks() if a.tasks == "all" else a.tasks.split(",")
@@ -321,9 +331,11 @@ def main():
             bad += "FAIL" in msg or "failed" in msg
         sys.exit(1 if bad else 0)
     secrets = load_env()
-    jobs = [(t, i) for t in tasks for i in range(1, a.trials + 1)]
+    jobs = [(t, v, ins, i) for t in tasks for v, ins in variants(load_task(t), a.variants)
+            for i in range(1, a.trials + 1)]
     with cf.ThreadPoolExecutor(a.parallel) as ex:
-        futs = {ex.submit(run_one, a.agent, a.model, t, i, secrets, out_root): (t, i) for t, i in jobs}
+        futs = {ex.submit(run_one, a.agent, a.model, t, i, secrets, out_root, v, ins): (f"{t}:{v}", i)
+                for t, v, ins, i in jobs}
         for f in cf.as_completed(futs):
             t, i = futs[f]
             try:
