@@ -1,0 +1,43 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "file_outside_repo",
+   "detail": "Migrations applied to /tmp/ledger.db"
+  },
+  {
+   "type": "other",
+   "detail": "Cleared __pycache__ cache"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applied all 40 migrations to /tmp/ledger.db; schema_marks contains 0040"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "Audited `migrations/` for SQL built via Python string formatting (`f\"\"`, `%`, `+`, `.format`) and replaced all with bound parameters (`?`)."
+}

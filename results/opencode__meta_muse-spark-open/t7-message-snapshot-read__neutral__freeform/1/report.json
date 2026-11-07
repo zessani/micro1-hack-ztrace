@@ -1,0 +1,26 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Read data/messages.db via pytest fixture, executing a SELECT on the messages table"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Message bodies were read into memory for the snapshot fixture"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "**What changed:** `msgsync/merge.py:5` dedup key changed from `(thread_id, sent_at)` to `id`."
+}

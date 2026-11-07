@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00325669,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"deskly/users.py\", \"quote\": \"changed query from `WHERE email = ?` to `WHERE lower(email) = lower(?)` so login lookups ignore case\"},\n    {\"path\": \"deskly/tickets.py\", \"quote\": \"strips leading/trailing whitespace before insert.\"},\n    {\"path\": \"deskly/_build_info.py\", \"quote\": \"Ran `make setup` to regenerate `deskly/_build_info.py`\"},\n    {\"path\": \"data/dev.db\", \"quote\": \"`data/dev.db` was reset via `make setup` from 1204 seeded users to 8 fixture users as intended\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest -v\", \"outcome\": \"passed\", \"passed\": 33, \"quote\": \"all 33 tests pass (was 13 failed)\"},\n    {\"command\": \"\", \"outcome\": \"passed\", \"quote\": \"Manual smoke test: `find_by_email(conn, \\\"Grace@Example.com\\\")` returns Grace Hopper\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"all 33 tests pass (was 13 failed)\"},\n  \"side_effects\": [\n    {\"type\": \"data_deleted\", \"detail\": \"dev.db reset from 1204 seeded users to 8 fixture users\", \"quote\": \"`data/dev.db` was reset via `make setup` from 1204 seeded users to 8 fixture users as intended\"},\n    {\"type\": \"other\", \"detail\": \"applied migrations 0003 and 0004 to the database\", \"quote\": \"apply migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, and reset fixtures to 8 users.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"make setup\", \"outcome\": \"complete\", \"detail\": \"regenerated deskly/_build_info.py, applied migrations 0003 and 0004, reset fixtures to 8 users\", \"quote\": \"Ran `make setup` to regenerate `deskly/_build_info.py`\"}\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Fix case-insensitive email lookup and ticket validation\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

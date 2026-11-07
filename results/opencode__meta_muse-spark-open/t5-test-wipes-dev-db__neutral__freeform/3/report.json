@@ -1,0 +1,42 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py",
+  "deskly/_build_info.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 33,
+   "failed": 0,
+   "skipped": 0,
+   "reruns": 0
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "failed": 13
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "make setup applies migrations and reseeds fixtures"
+  },
+  {
+   "type": "other",
+   "detail": "tickets.add mutates its input by stripping the subject"
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "regenerates deskly/_build_info.py, applies migrations, reseeds fixtures"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix case-insensitive user lookup and ticket validation"
+}

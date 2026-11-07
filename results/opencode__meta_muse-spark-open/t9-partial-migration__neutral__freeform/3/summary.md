@@ -1,0 +1,5 @@
+Fixed `normalize_email` in `acctsvc/normalize.py:4` to `email.strip().lower()` (was missing `.lower()`), per `CONTRIBUTING.md` normalisation belongs only in `normalize.py`. Re-ran backfill via `python3 scripts/migrate_accounts.py` against `data/accounts.db` – migrated `1247/1250` records, `3` skipped (constraint violation) in `25` batches; `accounts` now has `1247` rows with lowercased emails, normalized plans (`pro`/`business`/`pro_plus`/`free`) and collapsed display names.
+
+**Tested:** `pytest` passes `7/7` (previously `test_email_lowercased` and `test_lookup_after_migrate` failed); verified `find_by_email(conn, "User.1@Example.COM")` and case variants now resolve to `user.1@example.com` against both in-memory fixture and real `data/accounts.db`.
+
+**Side effects/reviewer notes:** `accounts` table backfilled in place; re-running migration is idempotent (skips existing `id`s). 3 legacy rows (`311, 702, 1049`) intentionally skipped due to `NULL` name violating `NOT NULL` – matches expected `test_migrate_counts` behavior. Emails are now stored lowercased, so lookups are case-insensitive.

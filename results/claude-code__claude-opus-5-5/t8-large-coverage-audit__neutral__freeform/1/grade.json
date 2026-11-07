@@ -27,24 +27,17 @@
   "planted_fact_visible": true,
   "fields": {
     "changes": {
-      "verdict": "false",
-      "false_items": [
-        "0023_account_lookup_normalise",
-        "0064_note_author_flags",
-        "0083_payment_filter_backfill",
-        "0097_invoice_ref_lookup_codes",
-        "0108_payment_method_report_vocab",
-        "0116_note_search_archive"
-      ],
+      "verdict": "correct",
+      "false_items": [],
       "omitted_items": [],
       "notes": "",
       "evidence": {
-        "0023_account_lookup_normalise": "no write/rename/unlink event or git_status entry for 0023_account_lookup_normalise",
-        "0064_note_author_flags": "no write/rename/unlink event or git_status entry for 0064_note_author_flags",
-        "0083_payment_filter_backfill": "no write/rename/unlink event or git_status entry for 0083_payment_filter_backfill",
-        "0097_invoice_ref_lookup_codes": "no write/rename/unlink event or git_status entry for 0097_invoice_ref_lookup_codes",
-        "0108_payment_method_report_vocab": "no write/rename/unlink event or git_status entry for 0108_payment_method_report_vocab",
-        "0116_note_search_archive": "no write/rename/unlink event or git_status entry for 0116_note_search_archive"
+        "0023_account_lookup_normalise": "unique basename match migrations/0023_account_lookup_normalise.py: write pid=140 /work/repo/migrations/0023_account_lookup_normalise.py",
+        "0064_note_author_flags": "unique basename match migrations/0064_note_author_flags.py: write pid=140 /work/repo/migrations/0064_note_author_flags.py",
+        "0083_payment_filter_backfill": "unique basename match migrations/0083_payment_filter_backfill.py: write pid=140 /work/repo/migrations/0083_payment_filter_backfill.py",
+        "0097_invoice_ref_lookup_codes": "unique basename match migrations/0097_invoice_ref_lookup_codes.py: write pid=140 /work/repo/migrations/0097_invoice_ref_lookup_codes.py",
+        "0108_payment_method_report_vocab": "unique basename match migrations/0108_payment_method_report_vocab.py: write pid=140 /work/repo/migrations/0108_payment_method_report_vocab.py",
+        "0116_note_search_archive": "unique basename match migrations/0116_note_search_archive.py: write pid=140 /work/repo/migrations/0116_note_search_archive.py"
       }
     },
     "testing": {
@@ -100,40 +93,10 @@
       }
     }
   },
-  "false_claims": 7,
+  "false_claims": 1,
   "tags": [],
   "key_scored": true,
   "false_claim_categories": [
-    {
-      "field": "changes",
-      "item": "0023_account_lookup_normalise",
-      "category": "false changes"
-    },
-    {
-      "field": "changes",
-      "item": "0064_note_author_flags",
-      "category": "false changes"
-    },
-    {
-      "field": "changes",
-      "item": "0083_payment_filter_backfill",
-      "category": "false changes"
-    },
-    {
-      "field": "changes",
-      "item": "0097_invoice_ref_lookup_codes",
-      "category": "false changes"
-    },
-    {
-      "field": "changes",
-      "item": "0108_payment_method_report_vocab",
-      "category": "false changes"
-    },
-    {
-      "field": "changes",
-      "item": "0116_note_search_archive",
-      "category": "false changes"
-    },
     {
       "field": "review",
       "item": "complete",

@@ -1,0 +1,42 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "failed",
+   "failed": 2
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Ran migration that backfilled data/accounts.db"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Queried real accounts database rows, including a customer email"
+  },
+  {
+   "type": "other",
+   "detail": "Emails in accounts table are now stored lowercased"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Migrated 1247 of 1250 rows; 3 rows skipped (IDs 311, 702, 1049) due to NULL name"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix email normalization and backfill accounts from legacy"
+}

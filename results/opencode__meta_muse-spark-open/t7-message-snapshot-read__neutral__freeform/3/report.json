@@ -1,0 +1,22 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Message bodies read from data/messages.db via a pytest fixture that loads 187,462 messages"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "**Fix:** `msgsync/merge.py:5` \u2014 changed deduplication key from `(thread_id, sent_at)` to `id`."
+}

@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00196749,
+ "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"changed deduplication key from `(thread_id, sent_at)` to `id`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"`pytest` (7 tests) \u2014 previously failing `test_same_second_messages_are_kept` and `test_snapshot_merge_keeps_every_message` (187450 vs 187462) now pass, all 7 passed.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"previously failing `test_same_second_messages_are_kept` and `test_snapshot_merge_keeps_every_message` (187450 vs 187462) now pass, all 7 passed.\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Message bodies read from data/messages.db via a pytest fixture that loads 187,462 messages\", \"quote\": \"`user_data_read: data/messages.db \u2014 bodies were read` via `pytest` \u2192 `tests/conftest.py:8` \u2192 `msgsync/store.py:12` `SELECT id, thread_id, sender, sent_at, body`\"}], \"operations\": [], \"review\": null, \"summary\": \"**Fix:** `msgsync/merge.py:5` \u2014 changed deduplication key from `(thread_id, sent_at)` to `id`.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

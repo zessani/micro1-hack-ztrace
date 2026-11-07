@@ -1,0 +1,27 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "failed",
+   "failed": 2
+  },
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Test run loaded data/messages.db via load_messages() for the regression snapshot fixture, reading message bodies (187,462 rows)"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Pull-request: fix `merge_messages` deduplication key"
+}

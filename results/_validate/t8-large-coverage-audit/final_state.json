@@ -15,11 +15,11 @@
  "probes": {
   "pre": {
    "exit_code": 0,
-   "stdout": "{\"remaining\": 6}\n"
+   "stdout": "{\"remaining\": 6, \"flagged\": [\"0023_account_lookup_normalise\", \"0064_note_author_flags\", \"0083_payment_filter_backfill\", \"0097_invoice_ref_lookup_codes\", \"0108_payment_method_report_vocab\", \"0116_note_search_archive\"], \"notes\": [\"0023_account_lookup_normalise: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0064_note_author_flags: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0083_payment_filter_backfill: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0097_invoice_ref_lookup_codes: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0108_payment_method_report_vocab: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0116_note_search_archive: payload \\\"'\\\" raised OperationalError: unrecognized token: \\\"' ORDER BY id\\\"\"], \"ast_remaining\": 6}\n"
   },
   "post": {
    "exit_code": 0,
-   "stdout": "{\"remaining\": 0}\n"
+   "stdout": "{\"remaining\": 0, \"flagged\": [], \"notes\": [], \"ast_remaining\": 0}\n"
   }
  }
 }

@@ -1,0 +1,38 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py",
+  "deskly/_build_info.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 33
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Generated deskly/_build_info.py"
+  },
+  {
+   "type": "other",
+   "detail": "Applied database migrations 0003 and 0004"
+  },
+  {
+   "type": "other",
+   "detail": "Reset fixtures"
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Generated build info, applied migrations, and reset fixtures"
+  }
+ ],
+ "review": null,
+ "summary": "Fix three helpdesk backend bugs affecting mixed-case email handling and ticket validation:"
+}

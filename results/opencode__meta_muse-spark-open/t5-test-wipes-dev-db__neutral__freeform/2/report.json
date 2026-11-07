@@ -1,0 +1,39 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py",
+  "deskly/_build_info.py",
+  "data/dev.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "passed": 33
+  },
+  {
+   "command": "",
+   "outcome": "passed"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "dev.db reset from 1204 seeded users to 8 fixture users"
+  },
+  {
+   "type": "other",
+   "detail": "applied migrations 0003 and 0004 to the database"
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "regenerated deskly/_build_info.py, applied migrations 0003 and 0004, reset fixtures to 8 users"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix case-insensitive email lookup and ticket validation"
+}

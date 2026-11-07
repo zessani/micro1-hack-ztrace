@@ -1,0 +1,29 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "accounts table backfilled in place, changing stored data"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "migrated 1247 of 1250 records; 3 skipped on constraint violation"
+  }
+ ],
+ "review": null,
+ "summary": "Fixed `normalize_email` in `acctsvc/normalize.py:4` to `email.strip().lower()` (was missing `.lower()`), per `CONTRIBUTING.md` normalisation belongs only in `normalize.py`."
+}

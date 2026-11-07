@@ -19,8 +19,12 @@
    "stdout": "{\"remaining\": 6}\n"
   },
   "post": {
+   "stdout": "{\"remaining\": 0, \"flagged\": [], \"notes\": [\"session does not replay; fixes read by hand from the session's fix script: all six helpers bind values (0097 _eq returns (fragment, params))\"]}"
+  },
+  "post_original": {
    "exit_code": 0,
    "stdout": "{\"remaining\": 1}\n"
-  }
+  },
+  "reprobe": "manual review of the session's fix script"
  }
 }

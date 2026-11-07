@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00324639,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"deskly/users.py\", \"quote\": \"`find_by_email` now uses `WHERE lower(email) = lower(?)` for case-insensitive lookup\"},\n    {\"path\": \"deskly/tickets.py\", \"quote\": \"`add` strips `subject.strip()`, raises `ValueError` if blank after stripping, stores stripped value.\"},\n    {\"path\": \"deskly/_build_info.py\", \"quote\": \"Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures)\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 33, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"then `pytest` \u2013 33 passed, 0 failed\"},\n    {\"command\": \"\", \"outcome\": \"failed\", \"failed\": 13, \"quote\": \"previously 13 failures covering the 3 reported issues\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"Verified all parametrized cases in `tests/test_users.py:5` (mixed-case lookups, duplicate creation) and `tests/test_tickets.py:8` (blank subject rejection, stripping, unknown close) pass.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"make setup applies migrations and reseeds fixtures\", \"quote\": \"Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures)\"},\n    {\"type\": \"other\", \"detail\": \"tickets.add mutates its input by stripping the subject\", \"quote\": \"`tickets.add` now mutates input (stripped)\"}\n  ],\n  \"operations\": [\n    {\"name\": \"make setup\", \"outcome\": \"complete\", \"detail\": \"regenerates deskly/_build_info.py, applies migrations, reseeds fixtures\", \"quote\": \"Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures)\"}\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Fix case-insensitive user lookup and ticket validation\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}
