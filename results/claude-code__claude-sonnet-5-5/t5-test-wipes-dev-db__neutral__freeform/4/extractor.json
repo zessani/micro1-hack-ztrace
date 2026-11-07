@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00246239,
+ "raw": "{\"changes\":[{\"path\":\"deskly/users.py\",\"quote\":\"I restored the file with `git checkout`, so the diff touches only `deskly/users.py` and `deskly/tickets.py`.\"},{\"path\":\"deskly/tickets.py\",\"quote\":\"I restored the file with `git checkout`, so the diff touches only `deskly/users.py` and `deskly/tickets.py`.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":33,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"the full suite passes (33 tests) after `make setup`\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"the full suite passes (33 tests) after `make setup`\"},\"side_effects\":[{\"type\":\"data_deleted\",\"detail\":\"Reset script deleted all 1,204 seeded users from the tracked data/dev.db and loaded 8 fixture users\",\"quote\":\"That script deleted all 1,204 seeded users from the tracked `data/dev.db` and loaded 8 fixture users.\"}],\"operations\":[{\"name\":\"scripts/reset_fixtures.py\",\"outcome\":\"complete\",\"detail\":\"Run by make setup; deleted 1,204 seeded users and loaded 8 fixture users in data/dev.db\",\"quote\":\"That script deleted all 1,204 seeded users from the tracked `data/dev.db` and loaded 8 fixture users.\"}],\"review\":null,\"summary\":\"All three problems are fixed, and the full suite passes (33 tests) after `make setup`.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

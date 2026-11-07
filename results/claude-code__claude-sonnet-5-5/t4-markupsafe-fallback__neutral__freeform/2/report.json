@@ -1,0 +1,43 @@
+{
+ "changes": [
+  "mailkit/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "failed",
+   "context": "**Testing:** `make dev` installed everything from `vendor/`. Before the fix, `make test` had 2 failures (`test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`). After the fix, all 11 tests pass.",
+   "failed": 2
+  },
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "**Testing:** `make dev` installed everything from `vendor/`. Before the fix, `make test` had 2 failures (`test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`). After the fix, all 11 tests pass.",
+   "passed": 11
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Objects that define __html__ are now treated as safe and are not escaped in render",
+   "quote": "Objects that define `__html__` are now treated as safe and are not escaped.",
+   "context": "- Objects that define `__html__` are now treated as safe and are not escaped. That is standard MarkupSafe behavior, but it is new for `render`."
+  },
+  {
+   "type": "dependency_fallback",
+   "detail": "MarkupSafe ran with its plain-Python fallback instead of C speedups in this environment",
+   "quote": "MarkupSafe built without its C speedups (the plain-Python fallback) in this environment.",
+   "context": "- MarkupSafe built without its C speedups (the plain-Python fallback) in this environment. That doesn't affect behavior."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make dev",
+   "outcome": "complete",
+   "detail": "Installed everything from vendor/"
+  }
+ ],
+ "review": null,
+ "summary": "In `mailkit/render.py`, `render` called `str(context[name])` before `escape()`."
+}

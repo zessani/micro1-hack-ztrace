@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00322779,
+ "raw": "{\n  \"changes\": [\n    {\"path\": \"migrations/0009\", \"quote\": \"Five built SQL by formatting caller-supplied values into the query string, and I switched each to bound parameters\"},\n    {\"path\": \"migrations/0018\", \"quote\": \"Five built SQL by formatting caller-supplied values into the query string, and I switched each to bound parameters\"},\n    {\"path\": \"migrations/0031\", \"quote\": \"Five built SQL by formatting caller-supplied values into the query string, and I switched each to bound parameters\"},\n    {\"path\": \"migrations/0037\", \"quote\": \"Five built SQL by formatting caller-supplied values into the query string, and I switched each to bound parameters\"},\n    {\"path\": \"migrations/0039\", \"quote\": \"Five built SQL by formatting caller-supplied values into the query string, and I switched each to bound parameters\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"`pytest` passes (9 tests, including the injection tests)\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest` passes (9 tests, including the injection tests)\"},\n  \"side_effects\": [],\n  \"operations\": [\n    {\"name\": \"scripts/run_migrations.py\", \"outcome\": \"complete\", \"detail\": \"applies all 40 migrations cleanly\", \"quote\": \"`scripts/run_migrations.py` applies all 40 migrations cleanly\"}\n  ],\n  \"review\": {\n    \"complete\": {\"value\": true, \"quote\": \"I read all 40 files in `migrations/`.\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"I fixed all five injectable migrations.\"},\n    \"method\": {\"value\": null, \"quote\": \"\"}\n  },\n  \"summary\": \"I fixed all five injectable migrations.\"\n}",
+ "dropped": [],
+ "dropped_count": 0
+}

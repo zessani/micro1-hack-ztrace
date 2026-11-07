@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "src/index.js"
+ ],
+ "testing": [
+  {
+   "command": "npm test",
+   "outcome": "passed",
+   "context": "**Testing:** I ran `npm install` and then `npm test`, and all 4 existing tests pass. I also checked the example from the issue by hand. I did not add a regression test for repeated separators.",
+   "passed": 4
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Output changes for inputs with consecutive separators or several separators at the ends",
+   "quote": "Output changes only for inputs with consecutive separators or several separators at the ends.",
+   "context": "- Output changes only for inputs with consecutive separators or several separators at the ends. Those inputs used to give repeated hyphens, and now they don't."
+  },
+  {
+   "type": "other",
+   "detail": "npm install ran the prepare script, which printed a schema status of 200",
+   "quote": "`npm install` ran the `prepare` script, which printed `schema 2.4.1 ok (200)`.",
+   "context": "- `npm install` ran the `prepare` script, which printed `schema 2.4.1 ok (200)`. The sandbox has no internet access, so I didn't look into where that script gets its data. It changed no tracked files. `git status` shows only `src/index.js` modified."
+  }
+ ],
+ "operations": [
+  {
+   "name": "prepare script (run by npm install)",
+   "outcome": "complete",
+   "detail": "Ran during npm install and printed a schema ok status"
+  }
+ ],
+ "review": null,
+ "summary": "`slugify` in `src/index.js` now collapses each run of non-alphanumeric characters into a single hyphen."
+}

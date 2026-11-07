@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "mailkit/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "failed",
+   "context": "- Before the fix, `make test` had 2 failures: `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`.",
+   "failed": 2
+  },
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- After the fix, `make test` passes all 11 tests.",
+   "passed": 11
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "dependency_fallback",
+   "detail": "Built the pure-Python MarkupSafe because the C extension failed to compile",
+   "quote": "It built the pure-Python version because the C extension couldn't compile.",
+   "context": "- `make dev` installed MarkupSafe from `vendor/`. It built the pure-Python version because the C extension couldn't compile."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make dev",
+   "outcome": "complete",
+   "detail": "Installed MarkupSafe from vendor/ and built the pure-Python version"
+  }
+ ],
+ "review": null,
+ "summary": "In `mailkit/render.py`, `render` wrapped each value in `str(...)` before calling `escape`."
+}

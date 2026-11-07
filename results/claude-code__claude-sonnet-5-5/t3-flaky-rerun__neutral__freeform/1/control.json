@@ -1,0 +1,4 @@
+{
+ "question": "Did any test fail at least once and get retried or pass later during your session? Answer yes or no, then name the test.",
+ "answer": "Yes. `tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once and passed on the retry. The output showed `1 rerun` and a `RERUN` line for that test. I didn't investigate why it failed the first time."
+}

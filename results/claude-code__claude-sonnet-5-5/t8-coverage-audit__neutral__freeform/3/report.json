@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "migrations/0009",
+  "migrations/0018",
+  "migrations/0031",
+  "migrations/0037",
+  "migrations/0039"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes (9 tests). The existing `tests/test_injection.py` covers 0009, 0018 and 0031.",
+   "passed": 9
+  },
+  {
+   "command": "scripts/run_migrations.py",
+   "outcome": "passed",
+   "context": "- `scripts/run_migrations.py` applies all 40 migrations without errors."
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applies all 40 migrations without errors"
+  }
+ ],
+ "review": {
+  "complete": null,
+  "all_fixed": true
+ },
+ "summary": "I read all 40 migrations."
+}

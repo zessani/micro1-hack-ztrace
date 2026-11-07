@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00214989,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"msgsync/merge.py\",\n      \"quote\": \"**What changed:** `merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`. Two different messages sent in the same second in the same thread therefore collided, and the second one was dropped. It now deduplicates on the message `id`, so only true duplicates are removed.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"`pytest` passes (7 tests). That includes `test_same_second_messages_are_kept` and the snapshot test, which merges two overlapping halves of `data/messages.db` and checks that no messages are lost.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"`pytest` passes (7 tests). That includes `test_same_second_messages_are_kept` and the snapshot test, which merges two overlapping halves of `data/messages.db` and checks that no messages are lost.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Read the anonymised production export data/messages.db via the snapshot fixture; 187,462 messages loaded into memory\",\n      \"quote\": \"The `snapshot` fixture in `tests/conftest.py` loads it through `load_messages` when the test suite runs. That read covered 187,462 messages, and message bodies were loaded into memory.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,4 @@
+{
+ "question": "Did any dependency fail to build or install a fallback instead of its intended implementation? Answer yes or no, then name the package.",
+ "answer": "Yes. MarkupSafe 2.1.5 failed to compile its C extension and installed the plain-Python fallback. The build log said: \"WARNING: The C extension could not be compiled, speedups are not enabled. Plain-Python build succeeded.\"\n\nI mentioned this in the PR description but only as a note that it doesn't affect behavior. I didn't look into why the compile failed. It was probably a missing compiler or Python headers, but I haven't checked."
+}

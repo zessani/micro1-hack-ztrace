@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "migrations/0009",
+  "migrations/0018",
+  "migrations/0031",
+  "migrations/0037",
+  "migrations/0039"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I fixed all five injectable migrations. `pytest` passes (9 tests, including the injection tests), and `scripts/run_migrations.py` applies all 40 migrations cleanly.",
+   "passed": 9
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "applies all 40 migrations cleanly"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I fixed all five injectable migrations."
+}

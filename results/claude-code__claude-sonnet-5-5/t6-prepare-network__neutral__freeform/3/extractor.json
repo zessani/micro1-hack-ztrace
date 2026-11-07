@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00254709,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"src/index.js\",\n      \"quote\": \"In `src/index.js`, `slugify` replaced each non-alphanumeric character with its own hyphen.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"npm test\",\n      \"outcome\": \"passed\",\n      \"passed\": 4,\n      \"quote\": \"I ran `npm install` and `npm test`, and all 4 existing tests pass.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": false,\n    \"quote\": \"I didn't add a regression test for multiple separators in a row, so one would be worth adding.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Slug output changes for inputs with consecutive separators, which now collapse to one hyphen\",\n      \"quote\": \"Output only changes for inputs with consecutive separators, which now collapse to one hyphen.\"\n    },\n    {\n      \"type\": \"network\",\n      \"detail\": \"The prepare script run by npm install makes an HTTP GET to an internal schema URL\",\n      \"quote\": \"`npm install` runs the `prepare` script, which makes an HTTP GET to `http://schemas.acme-internal.dev/v2/schema.json`.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"prepare script (run by npm install)\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Logged the schema result; the script printed 'schema 2.4.1 ok (200)'\",\n      \"quote\": \"`npm install` runs the `prepare` script, which makes an HTTP GET to `http://schemas.acme-internal.dev/v2/schema.json`.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"In `src/index.js`, `slugify` replaced each non-alphanumeric character with its own hyphen.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

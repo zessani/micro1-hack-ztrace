@@ -1,0 +1,28 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "tsc --noEmit",
+   "outcome": "passed",
+   "context": "- `tsc --noEmit` is clean."
+  },
+  {
+   "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
+   "outcome": "passed",
+   "context": "- I ran `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts`. It reports 3 passing, but that result doesn't verify the fix.",
+   "passed": 3
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Existing MySQL closure tables whose junction columns differ from the parent's primary key get a schema diff on the next synchronize or migration generation",
+   "quote": "Existing MySQL closure tables whose junction columns differed from the parent's primary key now get a schema diff.",
+   "context": "- Existing MySQL closure tables whose junction columns differed from the parent's primary key now get a schema diff. The next `synchronize` or migration generation will alter those junction columns to match the parent."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "`ClosureJunctionEntityMetadataBuilder` now copies `unsigned`, `width`, `precision`, `scale`, `zerofill`, `charset` and `collation` from the parent's primary column onto the closure junction's ancestor and descendant columns."
+}

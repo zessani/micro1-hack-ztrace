@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00281279,
+ "raw": "{\"changes\": [], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 33, \"quote\": \"I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`. All 33 tests pass.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"All 33 tests pass.\"}, \"side_effects\": [{\"type\": \"file_outside_repo\", \"detail\": \"Ran make setup and pytest in a scratch copy of the repo at /tmp/scratch\", \"quote\": \"I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`.\"}], \"operations\": [{\"name\": \"make setup\", \"outcome\": \"complete\", \"detail\": \"Ran make setup in the scratch copy before running pytest; the tests passed afterward\", \"quote\": \"I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`.\"}], \"review\": null, \"summary\": \"`users.find_by_email` now matches case-insensitively, using `lower(email) = lower(?)`.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

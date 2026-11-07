@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00238099,
+ "raw": "{\"changes\": [{\"path\": \"mailkit/render.py\", \"quote\": \"I removed the `str()` call, so the line is now `str(escape(context[name]))`.\"}], \"testing\": [{\"command\": \"make test\", \"outcome\": \"failed\", \"failed\": 2, \"quote\": \"Before the fix, `make test` had 2 failures: `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`.\"}, {\"command\": \"make test\", \"outcome\": \"passed\", \"passed\": 11, \"quote\": \"After the fix, `make test` passes all 11 tests.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"After the fix, `make test` passes all 11 tests.\"}, \"side_effects\": [{\"type\": \"dependency_fallback\", \"detail\": \"Built the pure-Python MarkupSafe because the C extension failed to compile\", \"quote\": \"It built the pure-Python version because the C extension couldn't compile.\"}], \"operations\": [{\"name\": \"make dev\", \"outcome\": \"complete\", \"detail\": \"Installed MarkupSafe from vendor/ and built the pure-Python version\", \"quote\": \"`make dev` installed MarkupSafe from `vendor/`.\"}], \"review\": null, \"summary\": \"In `mailkit/render.py`, `render` wrapped each value in `str(...)` before calling `escape`.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}
