@@ -344,7 +344,7 @@ class CLIs(unittest.TestCase):
             err = io.StringIO()
             with redirect_stdout(io.StringIO()), redirect_stderr(err):
                 self.assertNotEqual(validate.main([RUN, "--task", t]), 0)
-            self.assertIn("wrong.json does not fail", err.getvalue())
+            self.assertIn("wrong.json (wrong) does not fail", err.getvalue())
             with open(os.path.join(t, "task.toml")) as fh:
                 txt = fh.read().replace("[Rr]edis", "memcached")
             with open(os.path.join(t, "task.toml"), "w") as fh:

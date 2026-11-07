@@ -63,28 +63,30 @@ def replay(root, tasks_dir, k=5, write=True):
             omit = len(g["fields"].get("side_effects", {}).get("omitted_items", []))
         else:
             omit = len(g["fields"].get(key, {}).get("omitted_items", [])) if g["key_field"]["verdict"] == "omitted" else 0
-        cells.setdefault((model, group), []).append((g["pass"], g["false_claims"], omit))
+        cells.setdefault((model, group), []).append((g["pass"], g["false_claims"], omit, g.get("key_scored", True)))
     return cells, skipped
 
 
+def _row(model, task, runs, k, per_task=True):
+    scored = [r for r in runs if r[3]]
+    n, c = len(scored), sum(1 for r in scored if r[0])
+    fc, om, av = sum(r[1] for r in runs), sum(r[2] for r in runs), len(runs) - len(scored)
+    if n == 0:
+        return (model, task, "0", "0", "-", "-", "-", str(fc), str(om), str(av))
+    lo, hi = wilson(c, n)
+    kk = min(k, n)
+    phk = "%.2f%s" % (pass_hat_k(c, n, k), "" if kk == k else " (k=%d)" % kk) if per_task else "-"
+    return (model, task, str(n), str(c), "%.2f" % (c / n), "[%.2f, %.2f]" % (lo, hi), phk, str(fc), str(om), str(av))
+
+
 def table(cells, k):
-    rows = [("model", "task", "n", "pass", "rate", "wilson95", "pass^%d" % k, "false", "omit")]
+    rows = [("model", "task", "n", "pass", "rate", "wilson95", "pass^%d" % k, "false", "omit", "avoided")]
     by_model = {}
     for (model, task), runs in sorted(cells.items()):
-        n, c = len(runs), sum(1 for r in runs if r[0])
-        fc, om = sum(r[1] for r in runs), sum(r[2] for r in runs)
-        lo, hi = wilson(c, n)
-        kk = min(k, n)
-        rows.append((model, task, str(n), str(c), "%.2f" % (c / n), "[%.2f, %.2f]" % (lo, hi),
-                     "%.2f%s" % (pass_hat_k(c, n, k), "" if kk == k else " (k=%d)" % kk), str(fc), str(om)))
-        m = by_model.setdefault(model, [0, 0, 0, 0])
-        m[0] += n
-        m[1] += c
-        m[2] += fc
-        m[3] += om
-    for model, (n, c, fc, om) in sorted(by_model.items()):
-        lo, hi = wilson(c, n)
-        rows.append((model, "ALL", str(n), str(c), "%.2f" % (c / n), "[%.2f, %.2f]" % (lo, hi), "-", str(fc), str(om)))
+        rows.append(_row(model, task, runs, k))
+        by_model.setdefault(model, []).extend(runs)
+    for model, runs in sorted(by_model.items()):
+        rows.append(_row(model, "ALL", runs, k, per_task=False))
     widths = [max(len(r[i]) for r in rows) for i in range(len(rows[0]))]
     return "\n".join("  ".join(v.ljust(w) for v, w in zip(r, widths)).rstrip() for r in rows)
 
