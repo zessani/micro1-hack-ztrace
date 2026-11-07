@@ -314,3 +314,24 @@ class Synthetic(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OutputSinkScope(unittest.TestCase):
+    def test_agent_opened_capture_file_counts_as_output(self):
+        f = synth([
+            '10 1.000 execve("/usr/bin/node", ["node", "cli.js"], 0x1 /* 3 vars */) = 0',
+            '10 1.010 openat(AT_FDCWD</work/repo>, "/tmp/claude-1000/tasks/x.output", O_WRONLY|O_CREAT|O_TRUNC, 0644) = 20</tmp/claude-1000/tasks/x.output>',
+            '10 1.020 clone(child_stack=NULL, flags=SIGCHLD) = 11',
+            '11 1.030 execve("/bin/bash", ["/bin/bash", "-c", "make test"], 0x1 /* 3 vars */) = 0',
+            '11 1.040 clone(child_stack=NULL, flags=SIGCHLD) = 12',
+            '12 1.050 execve("/usr/bin/python3", ["python", "-m", "pytest"], 0x1 /* 3 vars */) = 0',
+            '12 1.060 write(1</tmp/claude-1000/tasks/x.output>, "SKIPPED [1] tests/t.py:4: redis\\n", 32) = 32',
+            '12 1.070 openat(AT_FDCWD</work/repo>, "/work/repo/out.txt", O_WRONLY|O_CREAT|O_TRUNC, 0644) = 3</work/repo/out.txt>',
+            '12 1.080 write(1</work/repo/out.txt>, "hidden\\n", 7) = 7',
+            '12 1.090 exit_group(0) = ?',
+            '11 1.100 exit_group(0) = ?',
+            '10 1.200 exit_group(0) = ?',
+        ])
+        text = "".join(o["text"] for o in f["outputs"] if o["pid"] == 12)
+        self.assertIn("SKIPPED [1] tests/t.py:4: redis", text)
+        self.assertNotIn("hidden", text)
