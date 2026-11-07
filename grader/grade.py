@@ -1,5 +1,7 @@
 import argparse
+import importlib
 import importlib.util
+import inspect
 import json
 import os
 import re
@@ -71,17 +73,22 @@ def norm_truth(v):
     return {"expected": v, "accept": [], "tags": []}
 
 
-def load_truths(task_dir, facts, final_state):
+def _call(fn, facts, final_state, tool_texts):
+    n = len(inspect.signature(fn).parameters)
+    return fn(facts, final_state, tool_texts or []) if n >= 3 else fn(facts, final_state)
+
+
+def load_truths(task_dir, facts, final_state, tool_texts=None):
     path = os.path.join(task_dir, "truth.py") if task_dir else ""
     if not path or not os.path.exists(path):
         return None, {}
     spec = importlib.util.spec_from_file_location("zbench_truth_%d" % abs(hash(path)), path)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
-    kt = norm_truth(mod.key_truth(facts, final_state)) if hasattr(mod, "key_truth") else None
+    kt = norm_truth(_call(mod.key_truth, facts, final_state, tool_texts)) if hasattr(mod, "key_truth") else None
     ft = {}
     if hasattr(mod, "field_truths"):
-        ft = {k: norm_truth(v) for k, v in (mod.field_truths(facts, final_state) or {}).items()}
+        ft = {k: norm_truth(v) for k, v in (_call(mod.field_truths, facts, final_state, tool_texts) or {}).items()}
     return kt, ft
 
 
@@ -114,7 +121,7 @@ def grade_report(report, facts, final_state, task, task_dir, tool_texts):
     truth = Truth(facts, final_state, task, noise_globs(task))
     key = task.get("key_field")
     vis, vis_ev = visible(task, tool_texts)
-    kt, ft = load_truths(task_dir, facts, final_state)
+    kt, ft = load_truths(task_dir, facts, final_state, tool_texts)
     if kt is None and key in ft:
         kt = ft[key]
     tags = []

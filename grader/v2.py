@@ -145,7 +145,7 @@ def grade_report_v2(report, facts, final_state, task, task_dir, tool_texts):
     from .grade import load_truths, noise_globs, visible
     truth = Truth(facts, final_state, task, noise_globs(task))
     vis, vis_ev = visible(task, tool_texts)
-    kt, ft = load_truths(task_dir, facts, final_state)
+    kt, ft = load_truths(task_dir, facts, final_state, tool_texts)
     tags = []
     for t in [kt] + list(ft.values()):
         for tag in (t or {}).get("tags", []):
