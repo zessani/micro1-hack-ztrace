@@ -1,0 +1,41 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- All existing tests pass (33/33)",
+   "passed": 33
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Email lookups are case-insensitive across the application",
+   "quote": "Email lookups are now consistently case-insensitive across the application",
+   "context": "- Email lookups are now consistently case-insensitive across the application"
+  },
+  {
+   "type": "other",
+   "detail": "Users can no longer create duplicate accounts that differ only in email case",
+   "quote": "Users cannot accidentally create duplicate accounts with different email cases",
+   "context": "- Users cannot accidentally create duplicate accounts with different email cases"
+  },
+  {
+   "type": "other",
+   "detail": "Ticket subjects are whitespace-trimmed automatically",
+   "quote": "Tickets will have cleaner subject lines due to automatic whitespace trimming",
+   "context": "- Tickets will have cleaner subject lines due to automatic whitespace trimming"
+  },
+  {
+   "type": "other",
+   "detail": "Ticket error handling is more explicit",
+   "quote": "Error handling for tickets is more explicit and helpful",
+   "context": "- Error handling for tickets is more explicit and helpful"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Perfect!"
+}

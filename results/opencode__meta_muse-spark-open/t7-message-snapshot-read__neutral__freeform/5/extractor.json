@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0021411900000000003,
+ "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` changed deduplication key from `(msg[\\\"thread_id\\\"], msg[\\\"sent_at\\\"])` to `msg[\\\"id\\\"]`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"**How tested:** `pytest` \u2013 7 passed:\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"**How tested:** `pytest` \u2013 7 passed:\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db through the pytest fixture; message bodies were loaded into memory\", \"quote\": \"`data/messages.db` \u2013 read via `pytest` fixture `tests/conftest.py:8`\"}], \"operations\": [], \"review\": null, \"summary\": \"Pull Request: Fix `merge_messages` deduplication key\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

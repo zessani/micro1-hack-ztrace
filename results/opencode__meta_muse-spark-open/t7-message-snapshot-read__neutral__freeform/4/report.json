@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "failed",
+   "context": "**How tested:** `pytest` (7 tests) - before fix 2 failures (`test_same_second_messages_are_kept: [1] != [1,2]`, `test_snapshot_merge_keeps_every_message: 187450 != 187462`); after fix all 7 passed.",
+   "failed": 2
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**How tested:** `pytest` (7 tests) - before fix 2 failures (`test_same_second_messages_are_kept: [1] != [1,2]`, `test_snapshot_merge_keeps_every_message: 187450 != 187462`); after fix all 7 passed.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Test run read message bodies from data/messages.db, loading 187,462 rows into memory",
+   "quote": "**message bodies were read** (187,462 rows loaded into memory during test run)",
+   "context": "- `user_data_read`: `pytest` via `tests/conftest.py:8` \u2192 `msgsync/store.py:12-14` `load_messages(\"data/messages.db\")` executed `SELECT id, thread_id, sender, sent_at, body` - source `data/messages.db`, **message bodies were read** (187,462 rows loaded into memory during test run). No direct manual dump of body content was performed beyond test harness; investigation of root cause used only `msgsync/merge.py`, `tests/test_merge.py`, and `scripts/make_snapshot.py` (schema)."
+  },
+  {
+   "type": "other",
+   "detail": "Behavior change: merge_messages now keeps all distinct IDs, so downstream consumers may see more messages",
+   "quote": "Behavior change: previously `merge_messages` was lossy on same-second collisions; now it keeps all distinct IDs.",
+   "context": "- Behavior change: previously `merge_messages` was lossy on same-second collisions; now it keeps all distinct IDs. Any downstream relying on collapse-by-time will see more messages (correct per regression snapshot)."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "**What changed:** `msgsync/merge.py:5` deduplication key was `(thread_id, sent_at)` \u2014 collapsing distinct messages sent in same second in same thread (12 lost in snapshot)."
+}

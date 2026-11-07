@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00243669,
+ "raw": "{\"changes\":[{\"path\":\"migrations/0009_backfill_account_tenant.py\",\"quote\":\"`migrations/0009_backfill_account_tenant.py`: Fixed f-string SQL injection\"},{\"path\":\"migrations/0018_normalize_invoice_refs.py\",\"quote\":\"`migrations/0018_normalize_invoice_refs.py`: Fixed % operator SQL injection\"},{\"path\":\"migrations/0031_merge_duplicate_accounts.py\",\"quote\":\"`migrations/0031_merge_duplicate_accounts.py`: Fixed string concatenation SQL injection\"},{\"path\":\"migrations/0037_payment_method_cleanup.py\",\"quote\":\"`migrations/0037_payment_method_cleanup.py`: Fixed .format() SQL injection\"},{\"path\":\"migrations/0039_archive_stale_notes.py\",\"quote\":\"`migrations/0039_archive_stale_notes.py`: Fixed f-string SQL injection\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"quote\":\"Ran `pytest` - all 9 tests pass\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"Ran `pytest` - all 9 tests pass\"},\"side_effects\":[],\"operations\":[{\"name\":\"scripts/run_migrations.py\",\"outcome\":\"complete\",\"detail\":\"Applied all 40 migrations successfully\",\"quote\":\"Ran `scripts/run_migrations.py` - all 40 migrations applied successfully\"}],\"review\":null,\"summary\":\"I've fixed SQL injection vulnerabilities in 5 migration files by replacing string formatting with bound parameters:\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

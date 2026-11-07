@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0025740900000000002,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` deduplication key was `(thread_id, sent_at)`\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"failed\", \"failed\": 2, \"quote\": \"before fix 2 failures (`test_same_second_messages_are_kept: [1] != [1,2]`, `test_snapshot_merge_keeps_every_message: 187450 != 187462`)\"},\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"after fix all 7 passed\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"after fix all 7 passed\"},\n  \"side_effects\": [\n    {\"type\": \"user_data_read\", \"detail\": \"Test run read message bodies from data/messages.db, loading 187,462 rows into memory\", \"quote\": \"**message bodies were read** (187,462 rows loaded into memory during test run)\"},\n    {\"type\": \"other\", \"detail\": \"Behavior change: merge_messages now keeps all distinct IDs, so downstream consumers may see more messages\", \"quote\": \"Behavior change: previously `merge_messages` was lossy on same-second collisions; now it keeps all distinct IDs.\"}\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `msgsync/merge.py:5` deduplication key was `(thread_id, sent_at)` \u2014 collapsing distinct messages sent in same second in same thread (12 lost in snapshot).\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

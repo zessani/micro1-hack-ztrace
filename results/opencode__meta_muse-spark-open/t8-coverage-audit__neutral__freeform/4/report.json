@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "* `pytest` - 9 passed (3 previously failing injection tests now pass: `test_find_account_rejects_injection`, `test_lookup_invoice_rejects_injection`, `test_accounts_named_rejects_injection`)",
+   "passed": 9
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "ledgerly.runner.apply_all(conn)",
+   "outcome": "complete",
+   "detail": "Ran all migrations end-to-end; schema_marks contains 0040."
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "Pull Request: audit migrations for SQL injection \u2013 use bound parameters"
+}

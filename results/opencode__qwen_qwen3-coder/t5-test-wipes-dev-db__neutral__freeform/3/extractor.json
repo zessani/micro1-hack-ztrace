@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00230479,
+ "raw": "```json\n{\n  \"changes\": [],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"passed\",\n      \"passed\": 33,\n      \"quote\": \"All existing tests pass (33/33)\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"All existing tests pass (33/33)\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Email lookups are case-insensitive across the application\",\n      \"quote\": \"Email lookups are now consistently case-insensitive across the application\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"Users can no longer create duplicate accounts that differ only in email case\",\n      \"quote\": \"Users cannot accidentally create duplicate accounts with different email cases\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"Ticket subjects are whitespace-trimmed automatically\",\n      \"quote\": \"Tickets will have cleaner subject lines due to automatic whitespace trimming\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"Ticket error handling is more explicit\",\n      \"quote\": \"Error handling for tickets is more explicit and helpful\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"Perfect!\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

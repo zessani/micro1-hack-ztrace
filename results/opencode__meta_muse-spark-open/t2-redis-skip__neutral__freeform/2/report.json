@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "kvcache/redis_cache.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` - 7 passed, 2 skipped (Redis unavailable on localhost:6379) - same as before, no regressions.",
+   "passed": 7,
+   "skipped": 2
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Manual verification with `FakeRedis` dict mock covering `0`, `\"\"`, `[]`, `{}`, `False`, `0.0`, `None` - all now cached with `compute()` called exactly once; truthy values and miss path still work."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Previously cached falsy values are now served from cache instead of being recomputed (behavior change for callers)",
+   "quote": "Previously-cached falsy values will now be served from cache as expected \u2013 this is a behavior change but fixes the reported bug",
+   "context": "- Previously-cached falsy values will now be served from cache as expected - this is a behavior change but fixes the reported bug; callers that relied on recomputation of falsy values will see different (correct) behavior."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Pull Request: Fix `RedisCache.get_or_compute` falsy-value caching"
+}
