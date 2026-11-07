@@ -10,6 +10,7 @@ import shlex
 import shutil
 import subprocess
 import sys
+import threading
 import time
 import tomllib
 from pathlib import Path
@@ -240,8 +241,13 @@ def variants(task, wanted):
     return [(n, v[n]) for n in names if n in v] or list(v.items())[:1]
 
 
+STOP = threading.Event()
+
+
 def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", instr="instruction.md",
             condition="structured"):
+    if STOP.is_set():
+        return "skip (stopped after infra error)"
     task = load_task(task_id)
     cfg = AGENTS[agent]
     label = task_id if variant == "default" else f"{task_id}__{variant}"
@@ -278,8 +284,14 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
                 meta.update({"session_id": sid, "cost_usd": res.get("total_cost_usd"),
                              "num_turns": res.get("num_turns"), "is_error": res.get("is_error")})
                 (run_dir / "summary.md").write_text(res.get("result") or "")
+                if res.get("api_error") or res.get("api_error_status"):
+                    meta["infra_error"] = f"{res.get('api_error_status')} {res.get('api_error')}: {res.get('result')}"
             except (json.JSONDecodeError, IndexError):
                 pass
+        if meta.get("infra_error"):
+            STOP.set()
+            shutil.rmtree(run_dir, ignore_errors=True)
+            return f"INFRA ERROR (run discarded, batch stopped): {meta['infra_error']}"
         if condition == "freeform":
             if (run_dir / "summary.md").exists():
                 (run_dir / "report.sha256").write_text(hashlib.sha256((run_dir / "summary.md").read_bytes()).hexdigest() + "\n")
