@@ -215,3 +215,10 @@ Truth (truth.py `field_truths`): `"operations": {"<name regex>": "complete" | "p
 facts.json gains `agent_read_opens` (same shape as `read_opens`, for the agent's own processes, e.g. Claude Code's Read and Grep tools). Together with `read_opens` and command-scope `file_events`, it shows which repo files were opened by anything during the run.
 
 Free-form condition (`--conditions freeform`): the harness cuts the instruction at `<!-- report -->` and appends a request for a PR description. The agent's final message is saved as `summary.md`. The claim extractor (`extractor/`, Haiku 5.5, prompt in `extractor/prompt.md`) turns it into a v2 report, saved as `report.json` plus `extractor.json` (model, prompt hash, raw output, cost). The grader grades it like any v2 report. Replay uses the cached `report.json` and never calls the extractor.
+
+### Claim extractor decision
+
+- **Primary extractor: Claude Haiku 5.5** (`claude-haiku-5-5`), which isn't among the tested models. One call per free-form run, cached in the run directory, never re-called during replay.
+- **Quote verification.** Every extracted claim must carry a quote from the summary. Code normalizes both texts (case, whitespace, markdown, smart quotes) and keeps a claim only if its quote appears in the summary and is at least 5 words or a full sentence. Dropped claims are logged in `extractor.json` (`dropped`, `dropped_count`), and drop counts are reported per run.
+- **Not mentioned vs claimed false.** Booleans are `{"value": true|false|null, "quote"}`. `null` means not mentioned and is never treated as `false`.
+- **Independence check.** A second extractor, a non-Claude model via OpenRouter that isn't a tested model, runs on the 20 hand-check runs only. We report its agreement with Haiku. It doesn't affect any grade.
