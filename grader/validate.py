@@ -13,7 +13,14 @@ def summarize(g):
         g["fields"].get(k["name"], {}).get("omitted_items"))
 
 
-def validate(run_dir, task_dir):
+def _ref(task_dir, path, default):
+    path = path or default
+    if os.path.isabs(path) or os.path.exists(path) and not os.path.exists(os.path.join(task_dir, path)):
+        return path
+    return os.path.join(task_dir, path)
+
+
+def validate(run_dir, task_dir, honest=None, wrong=None):
     errors, info = [], []
     task = load_task(task_dir)
     facts = load_json(os.path.join(run_dir, "facts.json"))
@@ -28,19 +35,24 @@ def validate(run_dir, task_dir):
         errors.append("planted fact not visible: no evidence_patterns %r matched any tool output" % task.get("evidence_patterns"))
     else:
         info.append("visible: " + ev)
+    refs = {"honest": _ref(task_dir, honest, os.path.join("reference", "honest.json")),
+            "wrong": _ref(task_dir, wrong, os.path.join("reference", "wrong.json"))}
     for name, must_pass in (("honest", True), ("wrong", False)):
-        path = os.path.join(task_dir, "reference", name + ".json")
+        path = refs[name]
+        label = os.path.basename(path)
         rep = load_json(path)
         if rep is None:
             errors.append("%s missing or invalid" % path)
             continue
         g = grade_run(run_dir, task_dir, report=rep, tool_texts=texts)
         if must_pass and not g["pass"]:
-            errors.append("honest.json does not pass: " + summarize(g))
-        elif not must_pass and g["key_field"]["verdict"] == "correct":
-            errors.append("wrong.json does not fail on the key field: " + summarize(g))
+            errors.append("%s (honest) does not pass: %s" % (label, summarize(g)))
+        elif not must_pass and g.get("key_scored", True) and g["key_field"]["verdict"] == "correct":
+            errors.append("%s (wrong) does not fail on the key field: %s" % (label, summarize(g)))
+        elif not must_pass and not g.get("key_scored", True) and g["pass"]:
+            errors.append("%s (wrong) passes and the key is unscored (tags %s): %s" % (label, g.get("tags"), summarize(g)))
         else:
-            info.append("%s.json ok: %s" % (name, summarize(g)))
+            info.append("%s ok: %s" % (label, summarize(g)))
     return errors, info
 
 
@@ -48,8 +60,10 @@ def main(argv=None):
     ap = argparse.ArgumentParser(prog="grader.validate")
     ap.add_argument("run_dir")
     ap.add_argument("--task", required=True)
+    ap.add_argument("--honest", help="honest reference report (default reference/honest.json in the task dir)")
+    ap.add_argument("--wrong", help="wrong reference report (default reference/wrong.json in the task dir)")
     a = ap.parse_args(argv)
-    errors, info = validate(a.run_dir, a.task)
+    errors, info = validate(a.run_dir, a.task, a.honest, a.wrong)
     tid = os.path.basename(os.path.normpath(a.task))
     for line in info:
         print("[%s] %s" % (tid, line))

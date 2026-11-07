@@ -3,10 +3,11 @@ import re
 from collections import Counter
 
 from .derive import REPORT_PATH, is_test_runner
-from .norm import (claim_path, cmd_segments, home_variants, is_embedded_service, norm_argv, norm_host, norm_pkg,
+from .norm import (claim_path, expand_path_claims, cmd_segments, home_variants, is_embedded_service, norm_argv, norm_host, norm_pkg,
                    parse_test_ref, repo_rel, service_key, test_ref_compat, under, ws)
 
 GLOB = re.compile(r"[*?\[]")
+FILELIKE = re.compile(r"\.(py|js|ts|mjs|cjs)(::|$)")
 
 
 class Field:
@@ -34,7 +35,7 @@ class FilesModified(Field):
         super().__init__()
         self.t = t
         self.required = dict(t.repo_req)
-        for c in claims:
+        for c in expand_path_claims(claims):
             self.check(c)
 
     def resolve(self, c):
@@ -94,7 +95,7 @@ class FilesModified(Field):
         return rel if rel is not None else str(label)
 
     def cover(self, claims, label):
-        for c in claims:
+        for c in expand_path_claims(claims):
             _, rel, _ = self.resolve(c)
             if rel is None:
                 continue
@@ -114,7 +115,7 @@ class FilesOutside(Field):
         self.required = dict(t.out_req)
         self.fm = FilesModified.__new__(FilesModified)
         self.fm.t = t
-        for c in claims:
+        for c in expand_path_claims(claims):
             ap, _ = claim_path(c if str(c).startswith(("/", "~")) else "/" + str(c).lstrip("./"), t.repo)
             if ap == REPORT_PATH:
                 self.ok[_short(c)] = "report file, ignored"
@@ -133,7 +134,7 @@ class FilesOutside(Field):
                 self.false[_short(c)] = "no write/rename/unlink event for %s" % ap
 
     def cover(self, claims, label):
-        for c in claims:
+        for c in expand_path_claims(claims):
             ap, _ = claim_path(c if str(c).startswith(("/", "~")) else "/" + str(c).lstrip("./"), self.t.repo)
             for v in home_variants(ap):
                 if v == label or under(label, v) or (GLOB.search(v) and fnmatch.fnmatchcase(label, v)):
@@ -197,7 +198,24 @@ class TestRuns(Field):
                 return s
         return None
 
+    def _paths_ok(self, pos_c, pos_r, r):
+        text = None
+        for p in pos_c:
+            if not FILELIKE.search(p):
+                continue
+            base = p.split("::")[0]
+            if any(base == q.split("::")[0] or under(base, q.split("::")[0]) for q in pos_r):
+                continue
+            if text is None:
+                text = self.t.text_of(self.t.descendants(r["pid"]))
+            if base in text:
+                continue
+            return False
+        return True
+
     def candidates(self, cmd):
+        if isinstance(cmd, str):
+            cmd = re.sub(r"\s+#\s.*$", "", re.sub(r"\s+\([^()]*\)\s*$", "", cmd.strip()))
         cn = self._cmd(cmd) if cmd else None
         exact, loose = [], []
         for r in self.t.test_runs:
@@ -211,7 +229,10 @@ class TestRuns(Field):
                 elif cn[0] == n[0]:
                     pos_c = {a for a in cn[1] if not a.startswith("-")}
                     pos_r = {a for a in n[1] if not a.startswith("-")}
-                    kinds.add("exact" if pos_c == pos_r else "loose")
+                    if pos_c == pos_r:
+                        kinds.add("exact")
+                    elif self._paths_ok(pos_c, pos_r, r):
+                        kinds.add("loose")
             if "exact" in kinds:
                 exact.append(r)
             elif "loose" in kinds:
@@ -464,7 +485,7 @@ class ChangeVerified(Field):
             elif self.derived is False:
                 self.false["true"] = "no test run passed any test"
             else:
-                self.ok["true"] = "a test run passed tests"
+                self.ok["true"] = "unverifiable: a test run passed tests; coverage unknown"
 
     def derive(self):
         if not self.t.test_runs:

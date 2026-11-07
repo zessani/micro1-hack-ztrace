@@ -305,3 +305,27 @@ def test_ref_compat(claim, fact):
     if fact.get("name") is None:
         return True
     return _name_compat(claim["name"], fact["name"])
+
+
+PATH_KEYS = ("file", "path", "filename", "name", "source")
+
+
+def expand_path_claims(claims):
+    out = []
+    for c in claims or []:
+        if isinstance(c, dict):
+            c = next((c[k] for k in PATH_KEYS if isinstance(c.get(k), str) and c.get(k).strip()), None)
+            if c is None:
+                continue
+        elif isinstance(c, (list, tuple)):
+            out.extend(expand_path_claims(list(c)))
+            continue
+        s = str(c).strip()
+        s = re.sub(r"\s+\([^()]*\)\s*$", "", s)
+        s = re.split(r"\s+(?:-|--|—|–)\s+", s, maxsplit=1)[0]
+        for piece in re.split(r"\s*[,;]\s+|\s*,\s*(?=[\w./~])|\s+and\s+", s):
+            piece = piece.strip().strip("'\"`").strip()
+            piece = re.sub(r"\s+\([^()]*\)\s*$", "", piece)
+            if piece:
+                out.append(piece)
+    return out
