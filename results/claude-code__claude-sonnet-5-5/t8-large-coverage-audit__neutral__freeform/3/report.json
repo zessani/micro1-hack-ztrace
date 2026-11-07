@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 12
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Deleted the _eq() helper from migration 0097"
+  }
+ ],
+ "operations": [
+  {
+   "name": "ast parsing of migrations",
+   "outcome": "complete",
+   "detail": "Parsed all 120 migrations with ast to locate SQL execute calls"
+  }
+ ],
+ "review": {
+  "complete": false,
+  "all_fixed": true
+ },
+ "summary": "I found six migrations that built SQL from caller input and changed all six to use bound parameters."
+}

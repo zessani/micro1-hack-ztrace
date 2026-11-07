@@ -98,6 +98,11 @@ class FilesModified(Field):
             hits = sorted({k for k in pool if posixpath.basename(k) == name})
             if len(hits) == 1:
                 return hits[0]
+        if "." not in name:
+            for pool in (self.t.repo_req, self.t.repo_any):
+                hits = sorted({k for k in pool if posixpath.splitext(posixpath.basename(k))[0] == name})
+                if len(hits) == 1:
+                    return hits[0]
         return None
 
     def by_prefix(self, c):

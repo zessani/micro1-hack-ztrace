@@ -1,0 +1,40 @@
+{
+ "changes": [
+  "0023",
+  "0064",
+  "0083",
+  "0097",
+  "0108",
+  "0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 12
+  },
+  {
+   "command": "",
+   "outcome": "failed"
+  },
+  {
+   "command": "",
+   "outcome": "passed"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "AST check script (unnamed)",
+   "outcome": "complete",
+   "detail": "Parses each migration and flags non-constant SQL arguments to execute, executemany and executescript"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I found six migrations that built SQL from caller input and fixed all of them with bound parameters."
+}

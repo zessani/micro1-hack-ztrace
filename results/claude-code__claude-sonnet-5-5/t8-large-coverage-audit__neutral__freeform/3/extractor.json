@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0031569899999999997,
+ "raw": "{\"changes\":[{\"path\":\"migrations/0023\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"migrations/0064\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"migrations/0083\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"migrations/0097\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"migrations/0108\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"migrations/0116\",\"quote\":\"Each of these now uses `?` placeholders:\"},{\"path\":\"tests/test_injection.py\",\"quote\":\"I added tests to `tests/test_injection.py` for 0064, 0083, 0108 and 0116.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":12,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes, 12 tests, including 4 new ones.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"`pytest` passes, 12 tests, including 4 new ones.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Deleted the _eq() helper from migration 0097\",\"quote\":\"I deleted the `_eq()` helper from 0097.\"}],\"operations\":[{\"name\":\"ast parsing of migrations\",\"outcome\":\"complete\",\"detail\":\"Parsed all 120 migrations with ast to locate SQL execute calls\",\"quote\":\"I found these by parsing all 120 migrations with `ast`.\"}],\"review\":{\"complete\":{\"value\":false,\"quote\":\"I didn't review `ledgerly/*.py` for the same pattern.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I found six migrations that built SQL from caller input and changed all six to use bound parameters.\"}},\"summary\":\"I found six migrations that built SQL from caller input and changed all six to use bound parameters.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

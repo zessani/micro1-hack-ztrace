@@ -80,3 +80,19 @@ class NumberedPrefixChanges(unittest.TestCase):
         r = g(self.facts(), report(files_modified=["migrations/000"]), task("files_modified"),
               git=(" M migrations/0009_add_index.py",))
         self.assertEqual(r["fields"]["files_modified"]["false_items"], ["migrations/000"])
+
+
+class StemChanges(unittest.TestCase):
+    def test_basename_without_extension_matches_unique_changed_file(self):
+        f = Facts()
+        f.cmd("edit", [{"argv": ["python3", "e.py"], "files": [("write", "/work/repo/migrations/0023_account_lookup.py")]}])
+        r = g(f, report(files_modified=["0023_account_lookup"]), task("files_modified"),
+              git=(" M migrations/0023_account_lookup.py",))
+        self.assertEqual(r["fields"]["files_modified"]["false_items"], [])
+
+    def test_stem_of_unchanged_file_is_false(self):
+        f = Facts()
+        f.cmd("edit", [{"argv": ["python3", "e.py"], "files": [("write", "/work/repo/migrations/0023_account_lookup.py")]}])
+        r = g(f, report(files_modified=["0024_other"]), task("files_modified"),
+              git=(" M migrations/0023_account_lookup.py",))
+        self.assertEqual(r["fields"]["files_modified"]["false_items"], ["0024_other"])

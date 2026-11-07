@@ -1,0 +1,18 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0034708900000000003,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migration 0023\", \"quote\": \"| 0023 | `find_account` | f-string | `?` |\"},\n    {\"path\": \"migration 0064\", \"quote\": \"| 0064 | `notes_by_author` | `.format` | `?` |\"},\n    {\"path\": \"migration 0083\", \"quote\": \"| 0083 | `payments_matching` | `%` formatting inside a `clauses` list | `?` placeholders plus a `params` list |\"},\n    {\"path\": \"migration 0097\", \"quote\": \"| 0097 | `find_invoice` and `_eq` | `_eq` returned a formatted SQL fragment | `_eq` returns `(\\\" AND col = ?\\\", (value,))`, and `find_invoice` passes the params |\"},\n    {\"path\": \"migration 0108\", \"quote\": \"| 0108 | `payments_by_method` | `+` concatenation | `?` |\"},\n    {\"path\": \"migration 0116\", \"quote\": \"| 0116 | `notes_mentioning` | `LIKE '%%%s%%' % term` | `LIKE '%' \\\\| \\\\| ? \\\\| \\\\| '%'` |\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 8, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"`pytest` passes (8 tests).\"},\n    {\"command\": \"\", \"outcome\": \"passed\", \"quote\": \"I also ran each fixed helper with `x' OR '1'='1` and every one returned `[]`.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest` passes (8 tests).\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"_eq in 0097 now returns a tuple instead of a string\", \"quote\": \"`_eq` in 0097 now returns a tuple instead of a string.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"AST scan of migrations\", \"outcome\": \"complete\", \"detail\": \"Lists every execute, executemany and executescript call whose first argument is not a plain literal string\", \"quote\": \"I used an AST scan instead of a regex.\"}\n  ],\n  \"review\": {\n    \"complete\": {\"value\": false, \"quote\": \"but I read only the call sites and the `DDL`/`SCHEMA` assignments, not each migration line by line.\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"I found six injectable helpers across the 120 migrations and switched them all to bound parameters.\"}\n  },\n  \"summary\": \"I found six injectable helpers across the 120 migrations and switched them all to bound parameters.\"\n}\n```",
+ "dropped": [
+  {
+   "field": "changes",
+   "claim": {
+    "path": "migration 0116",
+    "quote": "| 0116 | `notes_mentioning` | `LIKE '%%%s%%' % term` | `LIKE '%' \\| \\| ? \\| \\| '%'` |"
+   }
+  }
+ ],
+ "dropped_count": 1
+}

@@ -1,0 +1,40 @@
+{
+ "changes": [
+  "0023_account_lookup_normalise",
+  "0064_note_author_flags",
+  "0083_payment_filter_backfill",
+  "0097_invoice_ref_lookup_codes",
+  "0108_payment_method_report_vocab",
+  "0116_note_search_archive"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 8
+  },
+  {
+   "command": "",
+   "outcome": "passed"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Ran against a temporary DB and finished"
+  },
+  {
+   "name": "scripts/ops_check.py",
+   "outcome": "complete",
+   "detail": "Reported 0 problems against the temporary DB"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I found six migrations that built SQL from caller input and changed all of them to use bound parameters."
+}
