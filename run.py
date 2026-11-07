@@ -191,7 +191,7 @@ def copy_out(name, src, dst):
     return sh(["docker", "cp", f"{name}:{src}", str(dst)], check=False).returncode == 0
 
 
-def parse_and_grade(run_dir, task, root_is_command=False, validate=False):
+def parse_and_grade(run_dir, task, root_is_command=False, validate=False, refs=None):
     facts_cmd = [sys.executable, "-m", "tracer.parse", str(run_dir / "raw" / "trace"),
                  "--task", str(task["_dir"] / "task.toml"), "-o", str(run_dir / "facts.json")]
     if root_is_command:
@@ -204,7 +204,10 @@ def parse_and_grade(run_dir, task, root_is_command=False, validate=False):
         with open(run_dir / "tool_outputs.jsonl", "w") as f:
             for o in facts.get("outputs", []):
                 f.write(json.dumps({"tool": f"pid{o['pid']}:fd{o['fd']}", "text": o["text"]}) + "\n")
-        r = sh([sys.executable, "-m", "grader.validate", str(run_dir), "--task", str(task["_dir"])], check=False)
+        vcmd = [sys.executable, "-m", "grader.validate", str(run_dir), "--task", str(task["_dir"])]
+        if refs:
+            vcmd += ["--honest", str(task["_dir"] / refs[0]), "--wrong", str(task["_dir"] / refs[1])]
+        r = sh(vcmd, check=False)
     else:
         r = sh([sys.executable, "-m", "grader.grade", str(run_dir), "--task", str(task["_dir"]),
                 "-o", str(run_dir / "grade.json")], check=False)
@@ -315,15 +318,22 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
     return err or f"ok {run_dir}"
 
 
-def validate_one(task_id, out_root):
+def validate_pairs(task):
+    pairs = [("", "solution/solve.sh", None)]
+    for x in task.get("validate_extra", []):
+        pairs.append((x["name"], x["solve"], (x["honest"], x["wrong"])))
+    return pairs
+
+
+def validate_one(task_id, out_root, name_suffix="", solve="solution/solve.sh", refs=None):
     task = load_task(task_id)
-    run_dir = out_root / "_validate" / task_id
+    run_dir = out_root / "_validate" / (task_id + (f"__{name_suffix}" if name_suffix else ""))
     shutil.rmtree(run_dir, ignore_errors=True)
     (run_dir / "raw").mkdir(parents=True)
     name = f"zb-validate-{task_id}-{int(time.time())}"
     container_start(task, name, {}, None)
     try:
-        sh(["docker", "cp", str(task["_dir"] / "solution" / "solve.sh"), f"{name}:/opt/zbench/solve.sh"])
+        sh(["docker", "cp", str(task["_dir"] / solve), f"{name}:/opt/zbench/solve.sh"])
         dexec(name, ["chmod", "755", "/opt/zbench/solve.sh"])
         pre = probe(name, task)
         r = traced(name, ["bash", "/opt/zbench/solve.sh"], root_is_command=True, timeout=900)
@@ -332,7 +342,7 @@ def validate_one(task_id, out_root):
         (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task, pre), indent=1))
     finally:
         sh(["docker", "rm", "-f", name], check=False)
-    return parse_and_grade(run_dir, task, root_is_command=True, validate=True)
+    return parse_and_grade(run_dir, task, root_is_command=True, validate=True, refs=refs)
 
 
 def all_tasks():
@@ -361,9 +371,10 @@ def main():
     if a.mode == "validate":
         bad = 0
         for t in tasks:
-            msg = validate_one(t, out_root)
-            print(f"[{t}] {msg}")
-            bad += "FAIL" in msg or "failed" in msg
+            for suffix, solve, refs in validate_pairs(load_task(t)):
+                msg = validate_one(t, out_root, suffix, solve, refs)
+                print(f"[{t}{':' + suffix if suffix else ''}] {msg}")
+                bad += "FAIL" in msg or "failed" in msg
         sys.exit(1 if bad else 0)
     secrets = load_env()
     conds = ["structured", "freeform"] if a.conditions == "all" else a.conditions.split(",")

@@ -31,3 +31,9 @@ pressure = "instruction_pressure.md"
 
 [noise]
 ignore = []
+
+[[validate_extra]]
+name = "partial"
+solve = "reference/partial_solve.sh"
+honest = "reference/partial_honest.json"
+wrong = "reference/partial_wrong.json"
