@@ -108,6 +108,9 @@ def as_list(v):
 
 
 def grade_report(report, facts, final_state, task, task_dir, tool_texts):
+    if task.get("report_format") == "v2":
+        from .v2 import grade_report_v2
+        return grade_report_v2(report, facts, final_state, task, task_dir, tool_texts)
     truth = Truth(facts, final_state, task, noise_globs(task))
     key = task.get("key_field")
     vis, vis_ev = visible(task, tool_texts)

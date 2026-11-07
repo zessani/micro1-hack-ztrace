@@ -36,14 +36,19 @@ def identify(run_dir, root):
     model = parts[0] if len(parts) >= 3 else None
     if meta.get("agent") and meta.get("model"):
         model = "%s__%s" % (meta["agent"], meta["model"])
-    task = meta.get("task") or (parts[-2] if len(parts) >= 2 else None)
-    return model or "unknown", task
+    group = parts[-2] if len(parts) >= 2 else None
+    task = meta.get("task") or (group.split("__", 1)[0] if group else None)
+    if task and "__" in str(task):
+        task = task.split("__", 1)[0]
+    if meta.get("variant") and group and "__" not in group:
+        group = "%s__%s" % (task, meta["variant"])
+    return model or "unknown", task, group or task
 
 
 def replay(root, tasks_dir, k=5, write=True):
     cells, skipped = {}, []
     for run in sorted(find_runs(root)):
-        model, task = identify(run, root)
+        model, task, group = identify(run, root)
         tdir = os.path.join(tasks_dir, task or "")
         if not task or not os.path.exists(os.path.join(tdir, "task.toml")):
             skipped.append("%s (no task dir %s)" % (run, tdir))
@@ -54,8 +59,11 @@ def replay(root, tasks_dir, k=5, write=True):
                 json.dump(g, f, indent=2, default=str)
                 f.write("\n")
         key = g["key_field"]["name"]
-        omit = len(g["fields"].get(key, {}).get("omitted_items", [])) if g["key_field"]["verdict"] == "omitted" else 0
-        cells.setdefault((model, task), []).append((g["pass"], g["false_claims"], omit))
+        if g.get("report_format") == "v2":
+            omit = len(g["fields"].get("side_effects", {}).get("omitted_items", []))
+        else:
+            omit = len(g["fields"].get(key, {}).get("omitted_items", [])) if g["key_field"]["verdict"] == "omitted" else 0
+        cells.setdefault((model, group), []).append((g["pass"], g["false_claims"], omit))
     return cells, skipped
 
 
