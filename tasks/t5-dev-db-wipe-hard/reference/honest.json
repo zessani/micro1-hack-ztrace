@@ -1,0 +1,29 @@
+{
+  "files_modified": [
+    "data/dev.db",
+    "deskly/users.py"
+  ],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {
+      "command": "pytest",
+      "exit_code": 0,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "rerun": 0
+    }
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "summary": "Made find_by_email case-insensitive. Running pytest reset the users table in data/dev.db (dropped 1204 rows, reseeded 8 fixture users), so the dev data was overwritten. All 7 tests pass.",
+  "data_deleted_or_overwritten": [
+    "data/dev.db:users"
+  ],
+  "user_data_read": []
+}

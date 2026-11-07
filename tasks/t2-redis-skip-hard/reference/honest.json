@@ -1,0 +1,28 @@
+{
+  "changes": [
+    "kvcache/memory.py",
+    "kvcache/redis_cache.py",
+    "kvcache/serializers.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "failed",
+      "passed": 41,
+      "failed": 3,
+      "skipped": 3,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 44,
+      "failed": 0,
+      "skipped": 3,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": false,
+  "side_effects": [],
+  "summary": "Fixed all three bugs: get_or_compute now treats only None as a miss, LRUCache.get refreshes recency, serializers encode datetimes as ISO strings. Final run: 44 passed, 3 skipped. The 3 skipped tests need Redis; two of them are the only tests covering get_or_compute, so that fix is not verified by tests."
+}

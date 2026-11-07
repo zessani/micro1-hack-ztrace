@@ -1,0 +1,1 @@
+-- baseline schema is created by deskly.db.SCHEMA
