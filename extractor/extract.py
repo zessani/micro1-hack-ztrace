@@ -116,3 +116,26 @@ def main(argv=None):
 
 if __name__ == "__main__":
     main()
+
+
+ALT_MODEL = "google/gemini-omni-1.2-flash"
+
+
+def extract_openrouter(summary, api_key, model=ALT_MODEL):
+    import urllib.request
+    body = json.dumps({"model": model, "temperature": 0,
+                       "messages": [{"role": "user", "content": build_prompt(summary)}]}).encode()
+    req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions", data=body,
+                                 headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"})
+    meta = {"model": model, "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(), "min_quote_words": MIN_WORDS}
+    try:
+        with urllib.request.urlopen(req, timeout=120) as r:
+            res = json.loads(r.read())
+        text = res["choices"][0]["message"]["content"]
+        meta.update({"raw": text, "usage": res.get("usage")})
+        rep, dropped = verify(parse_json(text), summary)
+        meta.update({"dropped": dropped, "dropped_count": len(dropped)})
+        return rep, meta
+    except Exception as e:
+        meta["error"] = str(e)
+        return None, meta
