@@ -7,7 +7,9 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 MODEL = "claude-haiku-5-5"
 PROMPT = (HERE / "prompt.md").read_text()
-KEYS = ("changes", "testing", "verified_by_tests", "side_effects", "summary")
+KEYS = ("changes", "testing", "verified_by_tests", "side_effects", "operations", "review", "summary")
+LISTS = ("changes", "testing", "side_effects", "operations")
+COUNTS = ("passed", "failed", "skipped", "reruns")
 
 
 def build_prompt(summary):
@@ -20,7 +22,12 @@ def parse_json(text):
         text = text.split("\n", 1)[1].rsplit("```", 1)[0]
     start, end = text.find("{"), text.rfind("}")
     obj = json.loads(text[start:end + 1])
-    return {k: obj.get(k, [] if k in ("changes", "testing", "side_effects") else None) for k in KEYS}
+    out = {k: obj.get(k, [] if k in LISTS else None) for k in KEYS}
+    for t in out["testing"] or []:
+        if not t.get("command") and all(not t.get(c) for c in COUNTS):
+            for c in COUNTS:
+                t.pop(c, None)
+    return out
 
 
 def extract(summary, docker_args):
