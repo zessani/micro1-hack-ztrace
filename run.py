@@ -6,6 +6,7 @@ import glob
 import hashlib
 import json
 import os
+import re
 import shlex
 import shutil
 import subprocess
@@ -127,14 +128,92 @@ def claude_code_tool_outputs(log_path):
     return out
 
 
+def claude_code_result(stdout):
+    try:
+        res = json.loads(stdout.strip().splitlines()[-1])
+    except (json.JSONDecodeError, IndexError):
+        return None
+    out = {"session_id": res.get("session_id"), "cost_usd": res.get("total_cost_usd"),
+           "num_turns": res.get("num_turns"), "is_error": res.get("is_error"), "result": res.get("result") or ""}
+    if res.get("api_error") or res.get("api_error_status"):
+        out["infra_error"] = f"{res.get('api_error_status')} {res.get('api_error')}: {res.get('result')}"
+    return out
+
+
+def opencode_cmd(model, prompt):
+    return ["opencode", "run", "--format", "json", "--auto", "-m", f"openrouter/{model}", prompt]
+
+
+def opencode_control(session, question):
+    return ["opencode", "run", "--format", "json", "--auto", "-s", session, question]
+
+
+def opencode_events(stdout):
+    for line in stdout.splitlines():
+        try:
+            e = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(e, dict):
+            yield e
+
+
+def opencode_result(stdout):
+    events = list(opencode_events(stdout))
+    if not events:
+        return None
+    texts, order, cost, steps, sid, err = {}, [], 0.0, 0, None, None
+    for e in events:
+        sid = sid or e.get("sessionID")
+        part = e.get("part") or {}
+        if e.get("type") == "text" and part.get("text"):
+            mid = part.get("messageID")
+            if mid not in texts:
+                texts[mid] = []
+                order.append(mid)
+            texts[mid].append(part["text"])
+        elif e.get("type") == "step_finish":
+            steps += 1
+            cost += part.get("cost") or 0
+        elif e.get("type") == "error":
+            d = (e.get("error") or {}).get("data") or {}
+            err = f"{d.get('statusCode')} {(e.get('error') or {}).get('name')}: {d.get('message', '')[:300]}"
+    out = {"session_id": sid, "cost_usd": round(cost, 6), "num_turns": steps, "is_error": err is not None,
+           "result": "\n".join(texts[order[-1]]) if order else ""}
+    if err:
+        out["infra_error"] = err
+    return out
+
+
+def opencode_tool_outputs(stdout_path):
+    out = []
+    for e in opencode_events(Path(stdout_path).read_text()):
+        part = e.get("part") or {}
+        if e.get("type") == "tool_use":
+            st = part.get("state") or {}
+            out.append({"tool": part.get("callID", ""), "text": st.get("output") or st.get("error") or ""})
+    return out
+
+
 AGENTS = {
     "claude-code": {
         "cmd": claude_code_cmd,
         "control": claude_code_control,
+        "result": claude_code_result,
+        "version_cmd": ["claude", "--version"],
         "session_glob": "/home/agent/.claude/projects/*/{sid}.jsonl",
         "tool_outputs": claude_code_tool_outputs,
         "env": ["ANTHROPIC_API_KEY", "CLAUDE_CODE_OAUTH_TOKEN"],
         "extra_env": {"DISABLE_AUTOUPDATER": "1", "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"},
+    },
+    "opencode": {
+        "cmd": opencode_cmd,
+        "control": opencode_control,
+        "result": opencode_result,
+        "version_cmd": ["opencode", "--version"],
+        "stdout_tool_outputs": opencode_tool_outputs,
+        "env": ["OPENROUTER_API_KEY"],
+        "extra_env": {"OPENCODE_DISABLE_AUTOUPDATE": "1", "OPENCODE_DISABLE_SHARE": "1"},
     },
 }
 
@@ -253,17 +332,18 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
     label = task_id if variant == "default" else f"{task_id}__{variant}"
     if condition == "freeform":
         label += "__freeform"
-    run_dir = out_root / f"{agent}__{model}" / label / str(trial)
+    run_dir = out_root / f"{agent}__{re.sub(r'[^A-Za-z0-9_.-]', '_', model)}" / label / str(trial)
     if (run_dir / "grade.json").exists():
         return f"skip {run_dir}"
     shutil.rmtree(run_dir, ignore_errors=True)
     (run_dir / "raw").mkdir(parents=True)
-    name = f"zb-{task_id}-{agent}-{model}-{trial}-{int(time.time())}".replace(".", "-")
+    name = f"zb-{task_id}-{agent}-{model}-{trial}-{int(time.time())}"
+    name = re.sub(r"[^A-Za-z0-9_-]", "-", name)
     meta = {"agent": agent, "model": model, "task": task_id, "variant": variant, "condition": condition, "trial": trial,
             "started": dt.datetime.now(dt.timezone.utc).isoformat()}
     container_start(task, name, secrets, cfg)
     try:
-        meta["agent_version"] = dexec(name, ["claude", "--version"], user="agent").stdout.strip()
+        meta["agent_version"] = dexec(name, cfg["version_cmd"], user="agent").stdout.strip()
         pre = probe(name, task)
         prompt = build_prompt(task, instr, condition)
         t0 = time.time()
@@ -277,17 +357,13 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
             r = None
         meta["duration_s"] = round(time.time() - t0, 1)
         sid = None
-        if r is not None:
-            try:
-                res = json.loads(r.stdout.strip().splitlines()[-1])
-                sid = res.get("session_id")
-                meta.update({"session_id": sid, "cost_usd": res.get("total_cost_usd"),
-                             "num_turns": res.get("num_turns"), "is_error": res.get("is_error")})
-                (run_dir / "summary.md").write_text(res.get("result") or "")
-                if res.get("api_error") or res.get("api_error_status"):
-                    meta["infra_error"] = f"{res.get('api_error_status')} {res.get('api_error')}: {res.get('result')}"
-            except (json.JSONDecodeError, IndexError):
-                pass
+        res = cfg["result"](r.stdout) if r is not None else None
+        if res:
+            sid = res.get("session_id")
+            meta.update({k: res.get(k) for k in ("session_id", "cost_usd", "num_turns", "is_error")})
+            (run_dir / "summary.md").write_text(res.get("result") or "")
+            if res.get("infra_error"):
+                meta["infra_error"] = res["infra_error"]
         if meta.get("infra_error"):
             STOP.set()
             shutil.rmtree(run_dir, ignore_errors=True)
@@ -300,18 +376,22 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
         copy_out(name, "/trace", run_dir / "raw" / "trace")
         (run_dir / "final_state.json").write_text(json.dumps(snapshot(name, task, pre), indent=1))
         if sid:
-            logs = dexec(name, ["bash", "-c", "ls " + cfg["session_glob"].format(sid=sid)], user="agent").stdout.split()
-            if logs and copy_out(name, logs[0], run_dir / "raw" / "session.jsonl"):
+            outs = None
+            if cfg.get("stdout_tool_outputs"):
+                outs = cfg["stdout_tool_outputs"](run_dir / "raw" / "agent_stdout.txt")
+            else:
+                logs = dexec(name, ["bash", "-c", "ls " + cfg["session_glob"].format(sid=sid)], user="agent").stdout.split()
+                if logs and copy_out(name, logs[0], run_dir / "raw" / "session.jsonl"):
+                    outs = cfg["tool_outputs"](run_dir / "raw" / "session.jsonl")
+            if outs is not None:
                 with open(run_dir / "tool_outputs.jsonl", "w") as f:
-                    for o in cfg["tool_outputs"](run_dir / "raw" / "session.jsonl"):
+                    for o in outs:
                         f.write(json.dumps(o) + "\n")
             q = task.get("control_question")
             if q:
                 c = dexec(name, cfg["control"](sid, q), user="agent", timeout=300)
-                try:
-                    ans = json.loads(c.stdout.strip().splitlines()[-1]).get("result", "")
-                except (json.JSONDecodeError, IndexError):
-                    ans = c.stdout[-4000:]
+                cres = cfg["result"](c.stdout)
+                ans = cres["result"] if cres else c.stdout[-4000:]
                 (run_dir / "control.json").write_text(json.dumps({"question": q, "answer": ans}, indent=1))
     finally:
         sh(["docker", "rm", "-f", name], check=False)
