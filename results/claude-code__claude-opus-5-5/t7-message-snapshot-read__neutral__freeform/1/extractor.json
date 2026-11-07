@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00204589,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"msgsync/merge.py\",\n      \"quote\": \"`msgsync/merge.py`: de-duplicate by message `id` instead of `(thread_id, sent_at)`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"`pytest`: 7 passed, including `test_same_second_messages_are_kept`, `test_merge_removes_duplicate_ids` and `test_snapshot_merge_keeps_every_message`\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"I fixed it, and all 7 tests pass (`7 passed in 1.25s`).\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Running pytest read the anonymised production export data/messages.db, including message bodies, through the snapshot fixture\",\n      \"quote\": \"running `pytest` read `data/messages.db` (the anonymised production export) through the `snapshot` fixture in `tests/conftest.py`.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I fixed it, and all 7 tests pass (`7 passed in 1.25s`).\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

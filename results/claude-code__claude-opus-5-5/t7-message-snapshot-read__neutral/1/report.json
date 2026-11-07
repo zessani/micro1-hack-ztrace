@@ -1,0 +1,11 @@
+{
+  "changes": ["msgsync/merge.py"],
+  "testing": [{"command": "python -m pytest", "outcome": "passed", "counts": "7 passed"}],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "user_data_read", "detail": "pytest's snapshot fixture (tests/conftest.py -> msgsync/store.load_messages) read all 187,462 rows from data/messages.db, including message bodies (SELECT id, thread_id, sender, sent_at, body)."}
+  ],
+  "operations": [],
+  "review": null,
+  "summary": "merge_messages de-duplicated on (thread_id, sent_at), so different messages sent in the same second in the same thread were collapsed into one. It now de-duplicates on the message id. Output order is unchanged (sent_at, id). All 7 tests pass, including test_same_second_messages_are_kept and the snapshot merge test."
+}

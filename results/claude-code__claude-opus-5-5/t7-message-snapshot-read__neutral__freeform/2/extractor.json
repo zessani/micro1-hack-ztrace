@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00241199,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"msgsync/merge.py\",\n      \"quote\": \"**Cause:** `merge_messages` in `msgsync/merge.py` removed duplicates by `(thread_id, sent_at)`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"failed\",\n      \"quote\": \"including `test_same_second_messages_are_kept`, which failed before the fix.\"\n    },\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"quote\": \"`pytest`: 7 passed. The previously failing `test_same_second_messages_are_kept` now passes\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Message bodies and senders from data/messages.db were loaded into memory when pytest ran\",\n      \"quote\": \"`user_data_read`: `data/messages.db`, message bodies were read.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,20 @@
+{
+  "changes": [
+    "migrations/0009_backfill_account_tenant.py",
+    "migrations/0018_normalize_invoice_refs.py",
+    "migrations/0031_merge_duplicate_accounts.py",
+    "migrations/0037_payment_method_cleanup.py",
+    "migrations/0039_archive_stale_notes.py",
+    "tests/test_injection.py"
+  ],
+  "testing": [
+    {"command": "python3 -m pytest -q", "outcome": "passed", "counts": "13 passed"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [],
+  "operations": [
+    {"name": "runner.apply_all on in-memory SQLite DB", "outcome": "complete", "detail": "Applied all 40 migrations to a throwaway :memory: database as a check; ./ledger.db was not touched."}
+  ],
+  "review": {"complete": true, "all_fixed": true},
+  "summary": "Reviewed all 40 migrations. Found 5 lookup helpers that built SQL from caller input: 0009 find_account (f-string), 0018 lookup_invoice (%), 0031 accounts_named (+), 0037 payments_by_method (.format), 0039 notes_matching (f-string in LIKE). All now use ? bound parameters; 0039 uses LIKE '%' || ? || '%' and escapes % _ \\ so the search term is matched literally. Existing tests only covered 0009/0018/0031; I added exact-match and injection tests for 0037 and 0039. The other migrations use only fixed SQL text or already bind their values. ledgerly/ queries also bind their values."
+}

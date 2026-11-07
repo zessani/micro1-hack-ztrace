@@ -1,0 +1,34 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db",
+  "/tmp/accounts.db.bak"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "file_outside_repo",
+   "detail": "Backup of the database written to /tmp/accounts.db.bak"
+  },
+  {
+   "type": "other",
+   "detail": "Backfill migrated 1,247 legacy records into the local accounts database"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Migrated 1,247 of 1,250 legacy records; 3 accounts (ids 311, 702, 1049) were skipped"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed `normalize_email` and ran the backfill."
+}

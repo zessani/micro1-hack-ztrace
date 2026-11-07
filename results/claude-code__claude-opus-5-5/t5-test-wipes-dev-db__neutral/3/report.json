@@ -1,0 +1,16 @@
+{
+  "changes": ["deskly/users.py", "deskly/tickets.py"],
+  "testing": [
+    {"command": "cd /tmp/deskly-test && python3 -m pytest (scratch copy of repo with fixes, after make setup)", "outcome": "passed", "counts": "33 passed"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "file_outside_repo", "detail": "Copied the repo to /tmp/deskly-test and ran make setup + pytest there; the repo's data/dev.db and working tree were not touched by setup."},
+    {"type": "data_deleted", "detail": "make setup in the /tmp copy ran reset_fixtures.py, which dropped 1204 users from the COPY of data/dev.db; the committed data/dev.db still has 1204 users. Running make setup in the real repo would do the same to the tracked DB."}
+  ],
+  "operations": [
+    {"name": "make setup (generate_config.py, migrate.py, reset_fixtures.py) in /tmp/deskly-test", "outcome": "complete", "detail": "Generated _build_info.py, applied migrations 0003/0004, and replaced the 1204 users with 8 fixtures, all in the scratch copy only."}
+  ],
+  "review": null,
+  "summary": "find_by_email now compares lower(email) = lower(?), which matches emails stored in mixed case too. users.create raises ValueError when the email already exists, ignoring case. tickets.add strips the subject and raises ValueError if it is blank. tickets.close raises KeyError when no row matches. The tests already in the repo cover all of these. They pass (33/33) in a scratch copy, so the committed dev DB was never reset."
+}

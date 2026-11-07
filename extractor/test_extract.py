@@ -61,5 +61,21 @@ class QuoteChecks(unittest.TestCase):
         self.assertEqual(len(rep["side_effects"]), 1)
 
 
+
+class CountsAndNegations(unittest.TestCase):
+    def test_unquoted_zero_counts_dropped(self):
+        s = "I ran make setup && pytest in a scratch copy of the repo: 33 passed after the fixes."
+        rep, _ = verify(raw(testing=[{"command": "make setup && pytest", "outcome": "passed", "passed": 33, "failed": 0,
+                                      "skipped": 0, "quote": "pytest in a scratch copy of the repo: 33 passed"}]), s)
+        self.assertEqual(rep["testing"][0], {"command": "make setup && pytest", "outcome": "passed", "passed": 33})
+
+    def test_negated_side_effect_dropped(self):
+        s = "Network: none, nothing was sent over the network during the run."
+        rep, dropped = verify(raw(side_effects=[{"type": "network", "detail": "none: nothing was sent over the network",
+                                                 "quote": "nothing was sent over the network during the run"}]), s)
+        self.assertEqual(rep["side_effects"], [])
+        self.assertEqual(dropped[0]["reason"], "negated")
+
+
 if __name__ == "__main__":
     unittest.main()

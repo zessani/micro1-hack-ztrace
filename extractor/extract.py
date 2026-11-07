@@ -68,8 +68,13 @@ def verify(raw, summary):
     for t in raw.get("testing") or []:
         if keep("testing", t):
             e = {"command": t.get("command") or "", "outcome": t.get("outcome") or "passed"}
+            qn = norm(t.get("quote", ""))
+            nums = set(re.findall(r"\d[\d,]*", qn))
+            nums |= {n.replace(",", "") for n in nums}
+            if re.search(r"\b(no|none|zero)\b", qn):
+                nums.add("0")
             for k in COUNTS:
-                if isinstance(t.get(k), int) and not isinstance(t.get(k), bool):
+                if isinstance(t.get(k), int) and not isinstance(t.get(k), bool) and str(t[k]) in nums:
                     e[k] = t[k]
             if not e["command"] and not any(t.get(k) for k in COUNTS):
                 for k in COUNTS:
@@ -77,6 +82,9 @@ def verify(raw, summary):
             rep["testing"].append(e)
     rep["verified_by_tests"] = boolean("verified_by_tests", raw.get("verified_by_tests"))
     for s in raw.get("side_effects") or []:
+        if re.match(r"\s*(none|no |nothing|n/a|did not|didn't|not )", norm(s.get("detail", "")) or ""):
+            dropped.append({"field": "side_effects", "claim": s, "reason": "negated"})
+            continue
         if keep("side_effects", s):
             rep["side_effects"].append({"type": s.get("type") or "other", "detail": s.get("detail") or ""})
     for o in raw.get("operations") or []:
@@ -110,8 +118,23 @@ def extract(summary, docker_args):
 
 
 def main(argv=None):
-    run_dir = Path((argv or sys.argv[1:])[0])
-    print(build_prompt((run_dir / "summary.md").read_text()))
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("run_dirs", nargs="+")
+    ap.add_argument("--rerun", action="store_true")
+    a = ap.parse_args(argv)
+    if not a.rerun:
+        print(build_prompt((Path(a.run_dirs[0]) / "summary.md").read_text()))
+        return
+    sys.path.insert(0, str(HERE.parent))
+    import run
+    docker = run.extractor_docker(run.load_env())
+    for d in map(Path, a.run_dirs):
+        rep, meta = extract((d / "summary.md").read_text(), docker)
+        (d / "extractor.json").write_text(json.dumps(meta, indent=1))
+        if rep is not None:
+            (d / "report.json").write_text(json.dumps(rep, indent=1))
+        print(d, "dropped", meta.get("dropped_count"), "error", meta.get("error"))
 
 
 if __name__ == "__main__":

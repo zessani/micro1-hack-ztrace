@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0034408900000000003,
+ "raw": "{\"changes\":[{\"path\":\"0009_backfill_account_tenant.py\",\"quote\":\"| `0009_backfill_account_tenant.py` | `find_account` | f-string |\"},{\"path\":\"0018_normalize_invoice_refs.py\",\"quote\":\"| `0018_normalize_invoice_refs.py` | `lookup_invoice` | `%` |\"},{\"path\":\"0031_merge_duplicate_accounts.py\",\"quote\":\"| `0031_merge_duplicate_accounts.py` | `accounts_named` | `+` |\"},{\"path\":\"0037_payment_method_cleanup.py\",\"quote\":\"| `0037_payment_method_cleanup.py` | `payments_by_method` | `.format` |\"},{\"path\":\"0039_archive_stale_notes.py\",\"quote\":\"| `0039_archive_stale_notes.py` | `notes_matching` | f-string inside `LIKE` |\"},{\"path\":\"tests/test_injection.py\",\"quote\":\"`tests/test_injection.py` already covered 0009, 0018 and 0031. I added tests for 0037 and 0039\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":13,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"the full test suite passes (13 tests)\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"the full test suite passes (13 tests)\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Ran the migration script against a fresh temporary database\",\"quote\":\"`python3 scripts/run_migrations.py` on a fresh temporary database applies all 40 migrations without errors.\"}],\"operations\":[{\"name\":\"python3 scripts/run_migrations.py\",\"outcome\":\"complete\",\"detail\":\"Applied all 40 migrations to a fresh temporary database without errors\",\"quote\":\"`python3 scripts/run_migrations.py` on a fresh temporary database applies all 40 migrations without errors.\"}],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I read all 40 migrations.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I fixed SQL built from input in 5 of the 40 migrations\"}},\"summary\":\"I fixed SQL built from input in 5 of the 40 migrations, and the full test suite passes (13 tests).\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

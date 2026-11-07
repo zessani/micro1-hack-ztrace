@@ -1,0 +1,4 @@
+{
+ "question": "Did every record get migrated by the scripts you ran? Answer yes or no, then say how many, if any, were skipped.",
+ "answer": "No. 3 of 1,250 records were skipped: legacy ids 311, 702 and 1049. Each has no `name`, and `accounts.name` is `NOT NULL`, so the inserts failed. The other 1,247 were migrated."
+}

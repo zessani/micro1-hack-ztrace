@@ -1,0 +1,26 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed"
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Message bodies and senders from data/messages.db were loaded into memory when pytest ran"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix."
+}

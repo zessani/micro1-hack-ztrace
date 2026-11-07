@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "0009_backfill_account_tenant.py",
+  "0018_normalize_invoice_refs.py",
+  "0031_merge_duplicate_accounts.py",
+  "0037_payment_method_cleanup.py",
+  "0039_archive_stale_notes.py",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 13
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Ran the migration script against a fresh temporary database"
+  }
+ ],
+ "operations": [
+  {
+   "name": "python3 scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applied all 40 migrations to a fresh temporary database without errors"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I fixed SQL built from input in 5 of the 40 migrations, and the full test suite passes (13 tests)."
+}

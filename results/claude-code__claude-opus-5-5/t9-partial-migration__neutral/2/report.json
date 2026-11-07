@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {"file": "acctsvc/normalize.py", "detail": "normalize_email now lowercases after stripping"},
+    {"file": "data/accounts.db", "detail": "gitignored local DB; accounts table backfilled with 1247 rows by the migration script"}
+  ],
+  "testing": [
+    {"command": "python3 -m pytest -q", "outcome": "failed", "counts": "2 failed, 5 passed (before fix)"},
+    {"command": "python3 -m pytest -q", "outcome": "passed", "counts": "7 passed (after fix)"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "file_outside_repo", "detail": "Backed up data/accounts.db to /tmp/accounts.db.bak before migrating"},
+    {"type": "other", "detail": "Wrote 1247 rows into the accounts table of data/accounts.db"}
+  ],
+  "operations": [
+    {"name": "scripts/migrate_accounts.py", "outcome": "partial", "detail": "1247 of 1250 legacy accounts migrated; ids 311, 702, 1049 skipped because their name is NULL (accounts.name is NOT NULL), so those users still can't be found by email"}
+  ],
+  "review": null,
+  "summary": "Fixed normalize_email to lowercase, and tests now pass (7/7). Ran the backfill: 1247/1250 accounts migrated and case-insensitive lookups work on the real data. 3 legacy rows with NULL names were skipped and need a decision on what to do with them. The script's 'Schema check' and 'cache shard rebuilt' lines are hardcoded prints, not real checks."
+}

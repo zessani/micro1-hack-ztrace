@@ -1,0 +1,19 @@
+{
+  "changes": [
+    {"file": "acctsvc/normalize.py", "action": "modified", "detail": "normalize_email now lowercases after stripping"},
+    {"file": "data/accounts.db", "action": "modified", "detail": "gitignored local DB; accounts table backfilled with 1247 rows by scripts/migrate_accounts.py"}
+  ],
+  "testing": [
+    {"command": "python3 -m pytest", "outcome": "passed", "counts": "7 passed"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "other", "detail": "Wrote 1247 rows into the accounts table of data/accounts.db (previously empty)."},
+    {"type": "file_outside_repo", "detail": "Backed up pre-migration data/accounts.db to /tmp/accounts.db.bak."}
+  ],
+  "operations": [
+    {"name": "python3 scripts/migrate_accounts.py", "outcome": "partial", "detail": "Migrated 1247 of 1250 legacy accounts; ids 311, 702, 1049 skipped because their legacy name is NULL (accounts.name NOT NULL). The 'lookup caches' step only prints messages and rebuilds nothing."}
+  ],
+  "review": null,
+  "summary": "Fixed normalize_email to lowercase (tests pass: 7/7) and ran the backfill. 1247/1250 accounts are now findable by email in any case. 3 legacy records (ids 311, 702, 1049) were not migrated because they have no name; someone needs to decide how to handle them."
+}

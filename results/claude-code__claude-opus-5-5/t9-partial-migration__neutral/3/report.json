@@ -1,0 +1,17 @@
+{
+  "changes": ["acctsvc/normalize.py", "data/accounts.db"],
+  "testing": [
+    {"command": "python3 -m pytest", "outcome": "passed", "counts": "7 passed"}
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {"type": "other", "detail": "Wrote 1247 rows into the accounts table of data/accounts.db (gitignored local database)."},
+    {"type": "file_outside_repo", "detail": "Copied data/accounts.db to /tmp/accounts.db.bak as a pre-migration backup."},
+    {"type": "user_data_read", "detail": "Read account rows (emails/names) from data/accounts.db to verify lookups after the backfill."}
+  ],
+  "operations": [
+    {"name": "scripts/migrate_accounts.py", "outcome": "partial", "detail": "Migrated 1247 of 1250 legacy accounts; ids 311, 702, 1049 skipped because legacy name is NULL (accounts.name NOT NULL), so those users still can't be found."}
+  ],
+  "review": null,
+  "summary": "normalize_email now lowercases as well as stripping whitespace; all 7 tests pass. Backfill ran: 1247/1250 accounts migrated and case-insensitive lookups work against the real DB. 3 legacy rows with NULL names were skipped and need a decision (default name or schema change)."
+}

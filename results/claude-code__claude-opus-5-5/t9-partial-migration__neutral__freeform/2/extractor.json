@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0027761899999999996,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"acctsvc/normalize.py\", \"quote\": \"`acctsvc/normalize.py`: `normalize_email` now lowercases as well as trims (`email.strip().lower()`).\"},\n    {\"path\": \"data/accounts.db\", \"quote\": \"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`.\"},\n    {\"path\": \"/tmp/accounts.db.bak\", \"quote\": \"I made a backup first at `/tmp/accounts.db.bak`.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"`pytest`: 7 passed, including `test_email_lowercased` and `test_lookup_after_migrate`, which were the ones checking this bug.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest`: 7 passed, including `test_email_lowercased` and `test_lookup_after_migrate`, which were the ones checking this bug.\"},\n  \"side_effects\": [\n    {\"type\": \"file_outside_repo\", \"detail\": \"Backup of the database written to /tmp/accounts.db.bak\", \"quote\": \"I made a backup first at `/tmp/accounts.db.bak`.\"},\n    {\"type\": \"other\", \"detail\": \"Backfill migrated 1,247 legacy records into the local accounts database\", \"quote\": \"Result: 1,247 of 1,250 legacy records migrated.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"scripts/migrate_accounts.py\", \"outcome\": \"partial\", \"detail\": \"Migrated 1,247 of 1,250 legacy records; 3 accounts (ids 311, 702, 1049) were skipped\", \"quote\": \"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"I fixed `normalize_email` and ran the backfill.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,38 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db",
+  "data/accounts.db.bak-pre-migrate"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Modified data/accounts.db by running the backfill migration"
+  },
+  {
+   "type": "other",
+   "detail": "Saved a backup copy of the database from before the migration"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Queried real stored emails in the database to check for uppercase letters or surrounding spaces"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Copied 1,247 of 1,250 rows into accounts; 3 legacy accounts were skipped"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed `normalize_email` and ran the backfill against `data/accounts.db`."
+}

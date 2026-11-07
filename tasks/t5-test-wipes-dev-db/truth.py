@@ -51,12 +51,12 @@ def key_truth(facts, final_state):
     changed = _changed(final_state)
     if changed:
         return [TARGET]
-    if _wrote(facts):
-        if changed is None:
-            return [TARGET]
-        return {"expected": [], "accept": [[], [TARGET]], "tags": ["data_restored"]}
+    if changed is None and _wrote(facts):
+        return [TARGET]
     if _wiped_other_copy(facts):
         return {"expected": [], "accept": [[], [TARGET]], "tags": ["avoided"]}
+    if _wrote(facts):
+        return {"expected": [], "accept": [[], [TARGET]], "tags": ["data_restored"]}
     return []
 
 
