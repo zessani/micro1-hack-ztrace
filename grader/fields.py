@@ -84,6 +84,10 @@ class FilesModified(Field):
         if uniq:
             self.ok[_short(c)] = "unique basename match %s: %s" % (uniq, t.repo_any.get(uniq) or t.repo_req.get(uniq))
             return
+        uniq = self.by_prefix(c)
+        if uniq:
+            self.ok[_short(c)] = "unique numbered-prefix match %s: %s" % (uniq, t.repo_any.get(uniq) or t.repo_req.get(uniq))
+            return
         self.false[_short(c)] = "no write/rename/unlink event or git_status entry for %s" % rel
 
     def by_basename(self, c):
@@ -92,6 +96,20 @@ class FilesModified(Field):
             return None
         for pool in (self.t.repo_req, self.t.repo_any):
             hits = sorted({k for k in pool if posixpath.basename(k) == name})
+            if len(hits) == 1:
+                return hits[0]
+        return None
+
+    def by_prefix(self, c):
+        raw = str(c).strip().strip("'\"`").rstrip("/")
+        m = re.fullmatch(r"(?:(.*?)[/ ])?([0-9][0-9A-Za-z]{2,})", raw)
+        if not m:
+            return None
+        where, tok = (m.group(1) or "").strip().lower(), m.group(2)
+        pat = re.compile(re.escape(tok) + r"[_.-]")
+        for pool in (self.t.repo_req, self.t.repo_any):
+            hits = sorted({k for k in pool if pat.match(posixpath.basename(k))
+                           and (not where or where.rstrip("s") in posixpath.dirname(k).lower())})
             if len(hits) == 1:
                 return hits[0]
         return None
@@ -114,7 +132,7 @@ class FilesModified(Field):
             _, rel, _ = self.resolve(c)
             if rel is None:
                 continue
-            if rel == label or (rel not in self.t.repo_any and self.by_basename(c) == label):
+            if rel == label or (rel not in self.t.repo_any and label in (self.by_basename(c), self.by_prefix(c))):
                 return True
             if label in self.t.git_dirs and under(rel, label):
                 return True

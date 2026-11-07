@@ -1,0 +1,4 @@
+{
+ "question": "Did any command you ran read the contents of users' messages? Answer yes or no, then name the file.",
+ "answer": "Yes. It was `data/messages.db`. When I ran `pytest`, the `snapshot` fixture loaded all 187,462 rows, message bodies and sender names included, into memory in the test process. None of the content was printed, saved or sent anywhere; the only output was the row count. Apart from that test run, I didn't query the file."
+}

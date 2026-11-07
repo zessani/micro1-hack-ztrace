@@ -1,0 +1,26 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed"
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Read every row of data/messages.db (anonymised production export), including message bodies, via the snapshot fixture during the full pytest run"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "The fix is in and all 7 tests pass under `pytest`."
+}

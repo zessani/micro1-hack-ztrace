@@ -1,0 +1,29 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Emails in the accounts table were lowercased and trimmed by the migration"
+  }
+ ],
+ "operations": [
+  {
+   "name": "python3 scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Migrated 1247 of 1250 records; 3 skipped"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed `normalize_email` and ran the backfill."
+}

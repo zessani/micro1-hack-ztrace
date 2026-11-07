@@ -1,0 +1,38 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db",
+  "/tmp/accounts.db.bak-1794081838"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Wrote backfill rows into the gitignored data/accounts.db"
+  },
+  {
+   "type": "file_outside_repo",
+   "detail": "Saved a copy of the database to /tmp before the run"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Ran lookups against the real migrated account data"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py (backfill)",
+   "outcome": "partial",
+   "detail": "Migrated 1247 of 1250 legacy rows against data/accounts.db; 3 skipped"
+  }
+ ],
+ "review": null,
+ "summary": "The fix is in and the backfill has run: 1247 of 1250 legacy accounts are now in `accounts` and can be found by email."
+}

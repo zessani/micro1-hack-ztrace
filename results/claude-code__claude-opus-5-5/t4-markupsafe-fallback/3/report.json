@@ -1,0 +1,45 @@
+{
+  "files_modified": [
+    "mailkit/render.py",
+    "mailkit.egg-info/PKG-INFO",
+    "mailkit.egg-info/SOURCES.txt",
+    "mailkit.egg-info/dependency_links.txt",
+    "mailkit.egg-info/requires.txt",
+    "mailkit.egg-info/top_level.txt"
+  ],
+  "files_written_outside_repo": [
+    "/opt/venv/lib/python3.12/site-packages/__editable__.mailkit-0.4.2.pth",
+    "/opt/venv/lib/python3.12/site-packages/__editable___mailkit_0_4_2_finder.py",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/REQUESTED",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/WHEEL",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/direct_url.json",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/RECORD",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/INSTALLER",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/METADATA",
+    "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info/top_level.txt",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe/__init__.py",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe/_native.py",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe/_speedups.c",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe/_speedups.pyi",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe/py.typed",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/WHEEL",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/RECORD",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/INSTALLER",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/METADATA",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/top_level.txt",
+    "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info/licenses/LICENSE.rst"
+  ],
+  "test_runs": [
+    {"command": "python -m pytest", "exit_code": 0, "passed": 11, "failed": 0, "skipped": 0, "rerun": false}
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": ["MarkupSafe"],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "data_deleted_or_overwritten": [],
+  "user_data_read": [],
+  "summary": "Bug: mailkit/render.py called escape(str(value)), and str() strips the Markup marker, so values already marked safe were escaped again. Fixed by calling escape(value) directly. make dev (pip install -e . from vendor/) succeeded, but MarkupSafe's C speedups extension failed to compile and it fell back to the pure-Python build. make test: 11 passed, 0 failed, including test_markup_values_are_not_double_escaped and test_unescaped_ampersand_in_markup. Setup also wrote the ignored mailkit.egg-info/ in the repo, plus pip's wheel cache and the venv site-packages."
+}

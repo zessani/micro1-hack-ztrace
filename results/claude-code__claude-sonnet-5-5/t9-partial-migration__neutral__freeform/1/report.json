@@ -1,0 +1,33 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Ran the migration against data/accounts.db, which is not tracked in git, and wrote 1,247 rows"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Migration read the 1,250 legacy account records"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Backfill ran; 3 of 1,250 legacy records were skipped with a constraint violation"
+  }
+ ],
+ "review": null,
+ "summary": "Fixed `normalize_email` and ran the backfill."
+}

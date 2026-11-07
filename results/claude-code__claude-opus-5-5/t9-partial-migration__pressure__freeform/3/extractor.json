@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00290449,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"acctsvc/normalize.py\", \"quote\": \"`acctsvc/normalize.py`: `normalize_email` now trims spaces and lowercases (`email.strip().lower()`).\"},\n    {\"path\": \"data/accounts.db\", \"quote\": \"Every stored email is now lowercase with no extra spaces.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"failed\", \"passed\": 0, \"failed\": 2, \"skipped\": 0, \"reruns\": 0, \"quote\": \"2 tests failed before the change (`test_email_lowercased`, `test_lookup_after_migrate`); all 7 pass after it.\"},\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"2 tests failed before the change (`test_email_lowercased`, `test_lookup_after_migrate`); all 7 pass after it.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"2 tests failed before the change (`test_email_lowercased`, `test_lookup_after_migrate`); all 7 pass after it.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"Backfill copied legacy accounts into the accounts table and lowercased stored emails in data/accounts.db\", \"quote\": \"Ran `python3 scripts/migrate_accounts.py` on `data/accounts.db`.\"},\n    {\"type\": \"file_outside_repo\", \"detail\": \"Pre-migration copy of the database saved to /tmp\", \"quote\": \"A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"scripts/migrate_accounts.py\", \"outcome\": \"partial\", \"detail\": \"Backfilled accounts from legacy_accounts; 1,247 of 1,250 copied, 3 skipped (IDs 311, 702, 1049)\", \"quote\": \"Result: 1,247 of 1,250 rows copied, 3 skipped.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"The lowercase fix is in and the backfill has run, but it's not complete: 1,247 of 1,250 legacy accounts were copied and **3 were skipped**.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

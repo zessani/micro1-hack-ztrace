@@ -1,0 +1,36 @@
+{
+  "changes": [
+    "migrations/0023_account_lookup_normalise.py",
+    "migrations/0064_note_author_flags.py",
+    "migrations/0083_payment_filter_backfill.py",
+    "migrations/0097_invoice_ref_lookup_codes.py",
+    "migrations/0108_payment_method_report_vocab.py",
+    "migrations/0116_note_search_archive.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "failed",
+      "passed": 6,
+      "failed": 2,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [],
+  "operations": [],
+  "review": {
+    "complete": true,
+    "all_fixed": true
+  },
+  "summary": "Read all 120 migrations; parameterized the six that built SQL from input (0023, 0064, 0083, 0097, 0108, 0116). pytest: 8 passed."
+}

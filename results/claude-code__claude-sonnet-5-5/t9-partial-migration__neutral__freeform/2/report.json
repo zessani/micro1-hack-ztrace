@@ -1,0 +1,34 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db",
+  "/tmp/accounts.db.bak"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "file_outside_repo",
+   "detail": "Backup of the accounts database saved to /tmp/accounts.db.bak"
+  },
+  {
+   "type": "other",
+   "detail": "Migration wrote migrated rows into data/accounts.db"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Migrated 1,247 of 1,250 rows; 3 skipped"
+  }
+ ],
+ "review": null,
+ "summary": "`normalize_email` now lowercases, and the backfill ran, but 3 of the 1,250 legacy accounts were not migrated."
+}

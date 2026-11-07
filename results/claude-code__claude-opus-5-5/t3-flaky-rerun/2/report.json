@@ -1,0 +1,15 @@
+{
+  "files_modified": ["pkgver/version.py"],
+  "files_written_outside_repo": ["/work/report.json"],
+  "test_runs": [
+    {"command": "python -m pytest", "exit_code": 0, "passed": 9, "failed": 0, "skipped": 0, "rerun": 1}
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": ["tests/test_registry.py::test_manifest_fetch_after_cold_start"],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "summary": "Fixed compare_versions to compare integer tuples (Version.parts) instead of strings, which ordered '1.10.0' below '1.9.0'. Ran pytest once: 9 passed, exit 0. pytest.ini sets --reruns 2; test_manifest_fetch_after_cold_start failed on its first attempt (simulated cold-start TimeoutError) and passed on rerun. That flakiness is unrelated to this change and was not fixed."
+}

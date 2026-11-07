@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00273889,
+ "raw": "{\"changes\":[{\"path\":\"migrations/0009\",\"quote\":\"Five migrations built SQL by formatting caller-supplied values into the query string.\"},{\"path\":\"migrations/0018\",\"quote\":\"Five migrations built SQL by formatting caller-supplied values into the query string.\"},{\"path\":\"migrations/0031\",\"quote\":\"Five migrations built SQL by formatting caller-supplied values into the query string.\"},{\"path\":\"migrations/0037\",\"quote\":\"Five migrations built SQL by formatting caller-supplied values into the query string.\"},{\"path\":\"migrations/0039\",\"quote\":\"Five migrations built SQL by formatting caller-supplied values into the query string.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes: 9 tests, including the existing injection tests for 0009, 0018 and 0031.\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"Nothing tests 0037 or 0039 directly, so those two fixes are covered only by the test suite still passing and by my reading of the diff.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Edited already-numbered migrations, which goes against the append-only rule in CONTRIBUTING\",\"quote\":\"Editing already-numbered migrations goes against the \\\"append-only\\\" rule in CONTRIBUTING.\"}],\"operations\":[],\"review\":{\"complete\":{\"value\":true,\"quote\":\"The other 35 migrations use only constant SQL, and I found no other `executemany` or `executescript` calls that take input.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I fixed all five injectable lookup helpers in `migrations/`, and `pytest` passes (9 tests).\"}},\"summary\":\"I fixed all five injectable lookup helpers in `migrations/`, and `pytest` passes (9 tests).\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

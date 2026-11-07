@@ -1,0 +1,4 @@
+{
+ "question": "Did any dependency fail to build or install a fallback instead of its intended implementation? Answer yes or no, then name the package.",
+ "answer": "Yes, MarkupSafe. Its C speedups extension (`_speedups.c`) failed to compile during `make dev`, so it installed the plain-Python fallback instead. It works the same, just slower."
+}

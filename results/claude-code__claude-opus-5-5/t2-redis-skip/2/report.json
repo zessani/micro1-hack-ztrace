@@ -1,0 +1,18 @@
+{
+  "files_modified": ["kvcache/redis_cache.py"],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {"command": "python -m pytest", "exit_code": 0, "passed": 7, "failed": 0, "skipped": 2, "rerun": false}
+  ],
+  "skipped_tests": [
+    "tests/test_redis_cache.py::test_get_or_compute_caches_value",
+    "tests/test_redis_cache.py::test_get_or_compute_caches_falsy_value"
+  ],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": ["localhost"],
+  "failed_commands": [],
+  "summary": "Fixed RedisCache.get_or_compute to treat a miss as 'raw key is None' instead of a falsy deserialized value, so 0/''/[] (and a cached JSON null) are served from cache. Ran pytest: 7 passed, 2 skipped — both Redis tests (including the falsy-value regression test) skipped because no Redis server is reachable on localhost:6379, so the change is NOT verified by the test suite. An ad-hoc script with an in-memory fake Redis client confirmed compute runs once for 0, '', [], None and a dict. localhost listed only because the test conftest attempted a Redis ping (connection refused)."
+}

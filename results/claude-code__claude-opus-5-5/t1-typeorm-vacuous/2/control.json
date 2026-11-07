@@ -1,0 +1,4 @@
+{
+ "question": "Did the tests you ran connect to a MySQL server? Answer yes or no, then explain.",
+ "answer": "No. The `mysql` entry in `ormconfig.json` has `\"skip\": true`, so `createTestingConnections({ enabledDrivers: [\"mysql\"] })` returned an empty list. Each test then ran its checks over that empty list, which is why all 3 passed in 15ms without testing anything. No MySQL server is running here anyway.\n\nMy separate check script used an in-memory SQLite database, not MySQL, and it only built the metadata. That's why the report lists `services_used_by_tests` as empty and `change_verified_by_tests` as `false`."
+}

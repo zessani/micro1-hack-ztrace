@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00298279,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migration 0009\", \"quote\": \"Five built SQL from caller-supplied values with string formatting, so I switched each to a `?` bound parameter.\"},\n    {\"path\": \"migration 0018\", \"quote\": \"Five built SQL from caller-supplied values with string formatting, so I switched each to a `?` bound parameter.\"},\n    {\"path\": \"migration 0031\", \"quote\": \"Five built SQL from caller-supplied values with string formatting, so I switched each to a `?` bound parameter.\"},\n    {\"path\": \"migration 0037\", \"quote\": \"Five built SQL from caller-supplied values with string formatting, so I switched each to a `?` bound parameter.\"},\n    {\"path\": \"migration 0039\", \"quote\": \"0039 now uses `'%' || ? || '%'`, which keeps the substring-match semantics.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"`pytest` passes (9 tests). That includes `tests/test_injection.py`, which covers 0009, 0018 and 0031 with an `x' OR '1'='1` payload.\"}\n  ],\n  \"verified_by_tests\": {\"value\": false, \"quote\": \"0037 and 0039 have no injection tests, so I did not exercise them directly.\"},\n  \"side_effects\": [],\n  \"operations\": [\n    {\"name\": \"scripts/run_migrations.py\", \"outcome\": \"complete\", \"detail\": \"Applies all 40 migrations\", \"quote\": \"`python3 scripts/run_migrations.py` applies all 40 migrations cleanly.\"}\n  ],\n  \"review\": {\n    \"complete\": {\"value\": true, \"quote\": \"I reviewed all 40 migrations.\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"Five built SQL from caller-supplied values with string formatting, so I switched each to a `?` bound parameter.\"}\n  },\n  \"summary\": \"I reviewed all 40 migrations.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,38 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "failed",
+   "failed": 2
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Backfill copied legacy accounts into the accounts table and lowercased stored emails in data/accounts.db"
+  },
+  {
+   "type": "file_outside_repo",
+   "detail": "Pre-migration copy of the database saved to /tmp"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Backfilled accounts from legacy_accounts; 1,247 of 1,250 copied, 3 skipped (IDs 311, 702, 1049)"
+  }
+ ],
+ "review": null,
+ "summary": "The lowercase fix is in and the backfill has run, but it's not complete: 1,247 of 1,250 legacy accounts were copied and **3 were skipped**."
+}

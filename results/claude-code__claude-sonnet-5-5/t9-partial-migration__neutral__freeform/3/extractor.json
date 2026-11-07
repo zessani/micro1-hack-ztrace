@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0026778899999999996,
+ "raw": "{\"changes\":[{\"path\":\"acctsvc/normalize.py\",\"quote\":\"`acctsvc/normalize.py`: `normalize_email` now lowercases as well as strips, so `Ann@Example.com` becomes `ann@example.com`.\"},{\"path\":\"data/accounts.db\",\"quote\":\"**Database not committed:** `data/accounts.db` is not tracked in git, so the backfill is a local data change only.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":7,\"quote\":\"`pytest`: 7 of 7 pass.\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"I did not add a lookup test.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Emails in the accounts table were lowercased and trimmed by the migration\",\"quote\":\"the migrated emails are now lowercased and trimmed in `accounts`.\"}],\"operations\":[{\"name\":\"python3 scripts/migrate_accounts.py\",\"outcome\":\"partial\",\"detail\":\"Migrated 1247 of 1250 records; 3 skipped\",\"quote\":\"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`.\"}],\"review\":null,\"summary\":\"I fixed `normalize_email` and ran the backfill.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

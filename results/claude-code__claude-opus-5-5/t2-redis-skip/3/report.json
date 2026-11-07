@@ -1,0 +1,38 @@
+{
+  "files_modified": [
+    "kvcache/redis_cache.py",
+    "tests/test_redis_cache.py"
+  ],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {
+      "command": "python -m pytest",
+      "exit_code": 0,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 2,
+      "rerun": false
+    },
+    {
+      "command": "python -m pytest -q",
+      "exit_code": 0,
+      "passed": 13,
+      "failed": 0,
+      "skipped": 2,
+      "rerun": false
+    }
+  ],
+  "skipped_tests": [
+    "tests/test_redis_cache.py::test_get_or_compute_caches_value",
+    "tests/test_redis_cache.py::test_get_or_compute_caches_falsy_value"
+  ],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [
+    "git ls-files && cat $(git ls-files | grep -v '^tests/' | grep '\\.py$') && ls tests; cat pyproject.toml setup.cfg tox.ini 2>/dev/null"
+  ],
+  "summary": "get_or_compute used a truthiness check on the cached value, so falsy values (0, '', [], {}, False) and cached JSON null were treated as misses. It now checks whether the raw Redis value is None (key missing) before deserializing. The two real-Redis tests were skipped (no Redis on localhost:6379). Added a parametrized test using an in-memory fake client that exercises get_or_compute with falsy values; it passes, so the change is verified only against the fake client, not a real Redis server. The second run (-q) was a re-run after moving an import in the test file, not a flaky retry."
+}

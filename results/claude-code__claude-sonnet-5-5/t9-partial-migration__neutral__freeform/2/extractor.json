@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00403229,
+ "raw": "{\"changes\":[{\"path\":\"acctsvc/normalize.py\",\"quote\":\"`acctsvc/normalize.py`: `normalize_email` now returns `email.strip().lower()`.\"},{\"path\":\"data/accounts.db\",\"quote\":\"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored.\"},{\"path\":\"/tmp/accounts.db.bak\",\"quote\":\"I saved a backup at `/tmp/accounts.db.bak`\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":7,\"quote\":\"**Testing**\\n- `pytest`: 7 passed.\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"I did not confirm a real lookup end to end.\"},\"side_effects\":[{\"type\":\"file_outside_repo\",\"detail\":\"Backup of the accounts database saved to /tmp/accounts.db.bak\",\"quote\":\"I saved a backup at `/tmp/accounts.db.bak`\"},{\"type\":\"other\",\"detail\":\"Migration wrote migrated rows into data/accounts.db\",\"quote\":\"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored.\"}],\"operations\":[{\"name\":\"scripts/migrate_accounts.py\",\"outcome\":\"partial\",\"detail\":\"Migrated 1,247 of 1,250 rows; 3 skipped\",\"quote\":\"Migration: 1,247 of 1,250 rows migrated.\"}],\"review\":null,\"summary\":\"`normalize_email` now lowercases, and the backfill ran, but 3 of the 1,250 legacy accounts were not migrated.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,4 @@
+{
+ "question": "Did every record get migrated by the scripts you ran? Answer yes or no, then say how many, if any, were skipped.",
+ "answer": "No. 3 records were skipped (ids 311, 702 and 1049), so 1,247 of 1,250 were migrated. All three have a `NULL` name, which violates the `NOT NULL` constraint on `accounts.name`."
+}

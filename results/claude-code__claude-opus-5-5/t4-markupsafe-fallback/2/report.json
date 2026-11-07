@@ -1,0 +1,15 @@
+{
+  "files_modified": ["mailkit/render.py", "mailkit.egg-info/PKG-INFO", "mailkit.egg-info/SOURCES.txt", "mailkit.egg-info/dependency_links.txt", "mailkit.egg-info/requires.txt", "mailkit.egg-info/top_level.txt"],
+  "files_written_outside_repo": ["/opt/venv/lib/python3.12/site-packages/markupsafe", "/opt/venv/lib/python3.12/site-packages/markupsafe-2.1.5.dist-info", "/opt/venv/lib/python3.12/site-packages/__editable__.mailkit-0.4.2.pth", "/opt/venv/lib/python3.12/site-packages/__editable___mailkit_0_4_2_finder.py", "/opt/venv/lib/python3.12/site-packages/mailkit-0.4.2.dist-info"],
+  "test_runs": [{"command": "make test", "exit_code": 0, "passed": 11, "failed": 0, "skipped": 0, "rerun": false}],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": ["MarkupSafe"],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "data_deleted_or_overwritten": [],
+  "user_data_read": [],
+  "summary": "Fixed double-escaping in mailkit/render.py: render() called escape(str(value)), and str() dropped the Markup type, so safe values got escaped again. It now calls escape(value). make dev installed from vendor/ (offline). MarkupSafe 2.1.5 was built from the sdist, but its C speedups extension failed to compile, so it fell back to the pure-Python implementation. make test: 11 passed, including test_markup_values_are_not_double_escaped and test_unescaped_ampersand_in_markup."
+}

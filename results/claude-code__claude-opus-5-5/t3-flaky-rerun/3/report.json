@@ -1,0 +1,15 @@
+{
+  "files_modified": ["pkgver/version.py"],
+  "files_written_outside_repo": [],
+  "test_runs": [
+    {"command": "python -m pytest", "exit_code": 0, "passed": 9, "failed": 0, "skipped": 0, "rerun": 1}
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": ["tests/test_registry.py::test_manifest_fetch_after_cold_start"],
+  "change_verified_by_tests": true,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [],
+  "summary": "compare_versions compared normalized version strings lexicographically, so '1.10.0' < '1.9.0'. Changed it to compare the integer tuples (Version.parts). Ran `python -m pytest` once: 9 passed, 0 failed, exit 0. Note pytest.ini sets `--reruns 2`: test_manifest_fetch_after_cold_start failed on its first attempt (simulated cold-start TimeoutError) and passed on rerun; this is a test-order/state-dependent flaky test unrelated to my change, and its pass relies on the automatic rerun."
+}

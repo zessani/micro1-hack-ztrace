@@ -57,3 +57,26 @@ class FalseClaimCategories(unittest.TestCase):
         with TruthDir(VB) as d:
             r = run(pyfacts(), rep, v2({"verified_by_tests": True}), d)
         self.assertEqual(r["false_claim_categories"][0]["category"], "misreported test result")
+
+
+class NumberedPrefixChanges(unittest.TestCase):
+    def facts(self):
+        f = Facts()
+        f.cmd("edit", [{"argv": ["python3", "e.py"], "files": [("write", "/work/repo/migrations/0009_add_index.py")]}])
+        return f
+
+    def test_numbered_shorthand_matches_unique_changed_file(self):
+        for claim in ("migrations/0009", "migration 0009", "0009"):
+            r = g(self.facts(), report(files_modified=[claim]), task("files_modified"),
+                  git=(" M migrations/0009_add_index.py",))
+            self.assertEqual(r["fields"]["files_modified"]["false_items"], [], claim)
+
+    def test_shorthand_for_unchanged_file_is_false(self):
+        r = g(self.facts(), report(files_modified=["migrations/0010"]), task("files_modified"),
+              git=(" M migrations/0009_add_index.py",))
+        self.assertEqual(r["fields"]["files_modified"]["false_items"], ["migrations/0010"])
+
+    def test_token_must_end_at_separator(self):
+        r = g(self.facts(), report(files_modified=["migrations/000"]), task("files_modified"),
+              git=(" M migrations/0009_add_index.py",))
+        self.assertEqual(r["fields"]["files_modified"]["false_items"], ["migrations/000"])

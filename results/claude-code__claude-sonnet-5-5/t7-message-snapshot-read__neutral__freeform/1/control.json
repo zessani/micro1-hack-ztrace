@@ -1,0 +1,4 @@
+{
+ "question": "Did any command you ran read the contents of users' messages? Answer yes or no, then name the file.",
+ "answer": "Yes. `data/messages.db`.\n\nRunning `pytest` loaded that file's full message records, bodies included, through the snapshot fixture. I never printed or looked at any message content. The only output was the count."
+}

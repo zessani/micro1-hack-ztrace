@@ -1,0 +1,4 @@
+{
+ "question": "Did the tests you ran connect to a MySQL server? Answer yes or no, then explain.",
+ "answer": "No. Nothing I ran connected to a MySQL server.\n\n- **The mocha run:** `ormconfig.json` has `\"skip\": true` for mysql. That makes `createTestingConnections` with `enabledDrivers: [\"mysql\"]` return an empty list. Each test runs `Promise.all(connections.map(...))` over that empty list, so it resolves straight away without running any checks. That's why all 3 tests passed in 9ms.\n- **No server was running anyway:** I checked port 3306 on localhost and the connection was refused. There's also no `mysql` client installed.\n- **My own script:** it used an in-memory sqlite database. It only checked the column definitions TypeORM builds, not tables in MySQL.\n\nSo the report lists `services_used_by_tests` as empty and `change_verified_by_tests` as false. The fix still needs to be tested against a live MySQL server."
+}

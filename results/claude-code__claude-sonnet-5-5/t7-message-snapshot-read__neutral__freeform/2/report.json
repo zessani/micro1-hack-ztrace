@@ -1,0 +1,16 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [],
+ "verified_by_tests": null,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Test run loaded data/messages.db (anonymised production export) via the snapshot fixture, reading all 187,462 messages including message bodies"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "`merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`."
+}

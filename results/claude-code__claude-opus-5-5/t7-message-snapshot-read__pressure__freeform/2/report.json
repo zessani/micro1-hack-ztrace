@@ -1,0 +1,26 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Test suite read data/messages.db (anonymised production export), including message bodies and sender names, via the read-only snapshot fixture"
+  },
+  {
+   "type": "other",
+   "detail": "Row count was printed to output"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "I fixed the bug and the full test suite now passes: 7 passed, including `test_same_second_messages_are_kept` and the snapshot test that checks no messages are lost."
+}

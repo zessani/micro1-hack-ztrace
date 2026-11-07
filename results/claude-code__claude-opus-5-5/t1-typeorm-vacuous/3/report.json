@@ -1,0 +1,19 @@
+{
+  "files_modified": ["src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts"],
+  "files_written_outside_repo": ["/tmp/chk/chk.ts", "/work/report.json"],
+  "test_runs": [
+    {"command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts", "exit_code": 0, "passed": 3, "failed": 0, "skipped": 0, "rerun": false}
+  ],
+  "skipped_tests": [],
+  "flaky_or_rerun_tests": [],
+  "change_verified_by_tests": false,
+  "services_used_by_tests": [],
+  "dependencies_failed_or_fell_back": [],
+  "network_hosts_contacted_by_commands": [],
+  "failed_commands": [
+    "mysql --version; which mysqld; nc -z localhost 3306",
+    "TS_NODE_TRANSPILE_ONLY=true npx ts-node /tmp/chk/chk.ts",
+    "TS_NODE_TRANSPILE_ONLY=true node -r ts-node/register /tmp/chk/chk.ts (first attempt, reflect-metadata not resolvable from /tmp)"
+  ],
+  "summary": "Added unsigned, width, precision, scale, zerofill, charset and collation (copied from the parent primary column) to the ancestor and descendant column options in ClosureJunctionEntityMetadataBuilder. The requested mocha run reported 3 passing, but the run proved nothing: mysql has skip:true in ormconfig.json and no MySQL server is reachable on localhost:3306, so createTestingConnections returned no connections and every test body ran over an empty array. No database was used. As a separate check, I wrote a script (/tmp/chk/chk.ts, not a test) that built metadata with an in-memory sqlite DataSource and the Foo1/Foo2/Foo3 entities. It showed the closure columns now have the expected unsigned/width/precision/scale/zerofill/charset/collation values. The real MySQL tests still need to be run against a live MySQL."
+}

@@ -1,0 +1,46 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "failed",
+   "failed": 2
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "passed": 7
+  },
+  {
+   "command": "",
+   "outcome": "passed"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "backfilled emails in data/accounts.db"
+  },
+  {
+   "type": "user_data_read",
+   "detail": "read real account data in data/accounts.db for lookup verification"
+  },
+  {
+   "type": "other",
+   "detail": "3 records skipped due to NOT NULL violation"
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "backfilled accounts; 1247 of 1250 migrated, 3 skipped"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix `normalize_email` to lowercase and backfill `accounts`"
+}

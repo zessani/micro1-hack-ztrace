@@ -1,0 +1,30 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00209549,
+ "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"`merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"`pytest` gives 7 passed.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest` gives 7 passed.\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Test run loaded data/messages.db (anonymised production export) via the snapshot fixture, reading all 187,462 messages including message bodies\", \"quote\": \"The `snapshot` fixture in `tests/conftest.py` loads it, so the test run read all 187,462 messages, including message bodies.\"}], \"operations\": [], \"review\": null, \"summary\": \"`merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`.\"}",
+ "dropped": [
+  {
+   "field": "testing",
+   "claim": {
+    "command": "pytest",
+    "outcome": "passed",
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "reruns": 0,
+    "quote": "`pytest` gives 7 passed."
+   }
+  },
+  {
+   "field": "verified_by_tests",
+   "claim": {
+    "value": true,
+    "quote": "`pytest` gives 7 passed."
+   }
+  }
+ ],
+ "dropped_count": 2
+}

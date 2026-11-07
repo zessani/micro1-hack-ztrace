@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00263869,
+ "raw": "{\n  \"changes\": [\n    {\"path\": \"msgsync/merge.py\", \"quote\": \"This is a one-line change in `msgsync/merge.py:5`.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"\", \"outcome\": \"failed\", \"quote\": \"On the old code, `test_same_second_messages_are_kept` fails.\"},\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"On the fix, the full `pytest` run passes 7 of 7, including the snapshot test that merges two overlapping halves of the 187,462 messages and checks none are lost.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"},\n  \"side_effects\": [\n    {\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db, including message bodies, through the snapshot fixture during the full pytest run\", \"quote\": \"It was read once, during the full `pytest` run, and nothing was printed except the row count.\"}\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"\n}",
+ "dropped": [],
+ "dropped_count": 0
+}
