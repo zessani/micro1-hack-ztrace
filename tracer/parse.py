@@ -311,6 +311,7 @@ class Builder:
         self.tgid = {}
         self.file_events = []
         self.read_opens = []
+        self.agent_read_opens = []
         self.read_seen = set()
         self.connections = []
         self.pending_conn = {}
@@ -432,8 +433,6 @@ class Builder:
             self.read_open(p, call, fd_index, path_index)
 
     def read_open(self, p, call, fd_index, path_index):
-        if p.scope != "command":
-            return
         path = self.path_at(p, call, fd_index, path_index)
         if path is None or not path.startswith(REPO_ROOT + "/"):
             return
@@ -445,7 +444,8 @@ class Builder:
         if key in self.read_seen:
             return
         self.read_seen.add(key)
-        self.read_opens.append({"pid": p.pid, "path": path, "t": rel(call.t, self.t0)})
+        dest = self.read_opens if p.scope == "command" else self.agent_read_opens
+        dest.append({"pid": p.pid, "path": path, "t": rel(call.t, self.t0)})
 
     def on_open(self, p, call):
         self.on_openat(p, call, None, 0, 1)
@@ -635,6 +635,7 @@ class Builder:
             "processes": [p.to_json(self.t0) for p in procs],
             "file_events": self.file_events,
             "read_opens": self.read_opens,
+            "agent_read_opens": self.agent_read_opens,
             "connections": self.connections,
             "outputs": outputs,
             "tracer_version": TRACER_VERSION,

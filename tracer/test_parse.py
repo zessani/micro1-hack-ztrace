@@ -38,7 +38,7 @@ class FakeAgentTrace(unittest.TestCase):
         self.assertEqual(f["repo_root"], "/work/repo")
         self.assertEqual(f["tracer_version"], "0.1")
         self.assertEqual(set(f), {"schema", "repo_root", "root_pid", "processes", "file_events",
-                                  "read_opens", "connections", "outputs", "tracer_version"})
+                                  "read_opens", "agent_read_opens", "connections", "outputs", "tracer_version"})
         root = [p for p in f["processes"] if p["pid"] == f["root_pid"]][0]
         self.assertEqual(root["argv"][0], "node")
         self.assertIsNone(root["ppid"])
