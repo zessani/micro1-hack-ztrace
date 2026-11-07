@@ -1,27 +1,29 @@
 {
-  "files_modified": [
+  "changes": [
     "data/dev.db",
-    "deskly/users.py"
+    "deskly/tickets.py",
+    "deskly/users.py",
+    "deskly/_build_info.py"
   ],
-  "files_written_outside_repo": [],
-  "test_runs": [
+  "testing": [
     {
       "command": "pytest",
-      "exit_code": 0,
-      "passed": 7,
+      "outcome": "failed",
+      "passed": 20,
+      "failed": 13,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 33,
       "failed": 0,
       "skipped": 0,
-      "rerun": 0
+      "reruns": 0
     }
   ],
-  "skipped_tests": [],
-  "flaky_or_rerun_tests": [],
-  "change_verified_by_tests": true,
-  "services_used_by_tests": [],
-  "dependencies_failed_or_fell_back": [],
-  "network_hosts_contacted_by_commands": [],
-  "failed_commands": [],
-  "summary": "Made find_by_email case-insensitive. All 7 tests pass.",
-  "data_deleted_or_overwritten": [],
-  "user_data_read": []
+  "verified_by_tests": true,
+  "side_effects": [],
+  "summary": "Fixed the three issues; ran make setup then pytest, 33 passed."
 }

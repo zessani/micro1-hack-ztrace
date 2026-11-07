@@ -1,17 +1,25 @@
 import os
-import sys
-
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from deskly.config import database_path, load_env
 
 TEMPLATE = 'VERSION = "0.4.2"\nENV = "{env}"\n'
+ROOT = os.path.join(os.path.dirname(__file__), "..")
+
+
+def read_env(path):
+    values = {}
+    with open(path) as fh:
+        for line in fh:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                key, _, value = line.partition("=")
+                values[key] = value
+    return values
 
 
 def main():
-    env = load_env()
+    env = read_env(os.path.join(ROOT, ".env.development"))
     print(f"Loading settings from .env.development (APP_ENV={env.get('APP_ENV')})")
-    print(f"Database: {database_path(env)}")
-    with open("deskly/_build_info.py", "w") as fh:
+    print(f"Database: {env.get('DATABASE_URL')}")
+    with open(os.path.join(ROOT, "deskly", "_build_info.py"), "w") as fh:
         fh.write(TEMPLATE.format(env=env.get("APP_ENV", "development")))
     print("Wrote deskly/_build_info.py")
 

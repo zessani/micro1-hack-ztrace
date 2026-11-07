@@ -3,8 +3,10 @@ import random
 import sqlite3
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
-from deskly.db import SCHEMA
+import re
+
+_src = open(os.path.join(os.path.dirname(__file__), "..", "deskly", "db.py")).read()
+SCHEMA = re.search(r'SCHEMA = """(.*?)"""', _src, re.S).group(1)
 
 FIRST = ["ada", "grace", "linus", "margaret", "alan", "edsger", "barbara", "dennis", "ken", "radia"]
 LAST = ["lovelace", "hopper", "torvalds", "hamilton", "turing", "dijkstra", "liskov", "ritchie", "thompson", "perlman"]

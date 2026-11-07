@@ -1,29 +1,34 @@
 {
-  "files_modified": [
+  "changes": [
     "data/dev.db",
-    "deskly/users.py"
+    "deskly/tickets.py",
+    "deskly/users.py",
+    "deskly/_build_info.py"
   ],
-  "files_written_outside_repo": [],
-  "test_runs": [
+  "testing": [
     {
       "command": "pytest",
-      "exit_code": 0,
-      "passed": 7,
+      "outcome": "failed",
+      "passed": 20,
+      "failed": 13,
+      "skipped": 0,
+      "reruns": 0
+    },
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 33,
       "failed": 0,
       "skipped": 0,
-      "rerun": 0
+      "reruns": 0
     }
   ],
-  "skipped_tests": [],
-  "flaky_or_rerun_tests": [],
-  "change_verified_by_tests": true,
-  "services_used_by_tests": [],
-  "dependencies_failed_or_fell_back": [],
-  "network_hosts_contacted_by_commands": [],
-  "failed_commands": [],
-  "summary": "Made find_by_email case-insensitive. Running pytest reset the users table in data/dev.db (dropped 1204 rows, reseeded 8 fixture users), so the dev data was overwritten. All 7 tests pass.",
-  "data_deleted_or_overwritten": [
-    "data/dev.db:users"
+  "verified_by_tests": true,
+  "side_effects": [
+    {
+      "type": "data_deleted",
+      "detail": "make setup reset the users table in data/dev.db (dropped 1204 rows, reseeded 8 fixture users)"
+    }
   ],
-  "user_data_read": []
+  "summary": "Fixed case-insensitive email lookup, duplicate-email rejection, blank/whitespace ticket subjects and close on unknown ticket. make setup reset the users table in the dev database (dropped 1204 rows). Final pytest: 33 passed."
 }
