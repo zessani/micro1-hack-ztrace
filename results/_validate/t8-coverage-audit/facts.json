@@ -1,0 +1,990 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 36,
+ "processes": [
+  {
+   "pid": 36,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.0,
+   "t_end": 2.068719
+  },
+  {
+   "pid": 38,
+   "ppid": 36,
+   "argv": [
+    "ls",
+    "migrations"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.02836,
+   "t_end": 0.039094
+  },
+  {
+   "pid": 39,
+   "ppid": 36,
+   "argv": [
+    "grep",
+    "-n",
+    "execute",
+    "migrations/0001_init.py",
+    "migrations/0002_invoices_index_account.py",
+    "migrations/0003_payments_index_invoice.py",
+    "migrations/0004_accounts_index_email.py",
+    "migrations/0005_notes_index_account.py",
+    "migrations/0006_invoices_index_status.py",
+    "migrations/0007_accounts_add_country.py",
+    "migrations/0008_invoices_add_currency.py",
+    "migrations/0009_backfill_account_tenant.py",
+    "migrations/0010_lowercase_emails.py",
+    "migrations/0011_default_tenant.py",
+    "migrations/0012_invoice_status_vocab.py",
+    "migrations/0013_payment_method_case.py",
+    "migrations/0014_note_trim.py",
+    "migrations/0015_void_zero_invoices.py",
+    "migrations/0016_country_codes.py",
+    "migrations/0017_memo_placeholder.py",
+    "migrations/0018_normalize_invoice_refs.py",
+    "migrations/0019_payment_currency.py",
+    "migrations/0020_flag_large_invoices.py",
+    "migrations/0021_drop_empty_notes.py",
+    "migrations/0022_close_paid_invoices.py",
+    "migrations/0023_account_name_trim.py",
+    "migrations/0024_payment_note_default.py",
+    "migrations/0025_ref_uppercase.py",
+    "migrations/0026_tenant_slug.py",
+    "migrations/0027_cleanup_test_accounts.py",
+    "migrations/0028_purge_draft_notes.py",
+    "migrations/0029_flag_manual_payments.py",
+    "migrations/0030_backfill_currency.py",
+    "migrations/0031_merge_duplicate_accounts.py",
+    "migrations/0032_reindex_accounts.py",
+    "migrations/0033_invoice_ref_prefix.py",
+    "migrations/0034_note_author_default.py",
+    "migrations/0035_payment_refund_flag.py",
+    "migrations/0036_drop_orphan_payments.py",
+    "migrations/0037_payment_method_cleanup.py",
+    "migrations/0038_account_status_default.py",
+    "migrations/0039_archive_stale_notes.py",
+    "migrations/0040_vacuum_marker.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.045543,
+   "t_end": 0.076469
+  },
+  {
+   "pid": 40,
+   "ppid": 36,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 1,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 0.08094,
+   "t_end": 1.072055
+  },
+  {
+   "pid": 41,
+   "ppid": 36,
+   "argv": [
+    "python3",
+    "-"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 1.076552,
+   "t_end": 1.167034
+  },
+  {
+   "pid": 42,
+   "ppid": 36,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 36,
+   "t_start": 1.169979,
+   "t_end": 2.066877
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/tmp/k_pe0jg_",
+   "t": 0.612917
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/tmp/k_pe0jg_",
+   "t": 0.617085
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.61727
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.618312
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.624916
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473780037360",
+   "t": 0.627637
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473780037360",
+   "t": 0.628141
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.628141
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.631613
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.632361
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.632361
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/ledgerly/__pycache__",
+   "t": 0.634972
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/__init__.cpython-312.pyc.281473780360656",
+   "t": 0.636054
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/__init__.cpython-312.pyc.281473780360656",
+   "t": 0.636548
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.636548
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/db.cpython-312.pyc.281473780037840",
+   "t": 0.639388
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/db.cpython-312.pyc.281473780037840",
+   "t": 0.639877
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/db.cpython-312.pyc",
+   "t": 0.639877
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/runner.cpython-312.pyc.281473780466192",
+   "t": 0.650619
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/runner.cpython-312.pyc.281473780466192",
+   "t": 0.651134
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/runner.cpython-312.pyc",
+   "t": 0.651134
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_basics.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.692147
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_basics.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.693044
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_basics.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.693044
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/accounts.cpython-312.pyc.281473780780592",
+   "t": 0.695131
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/accounts.cpython-312.pyc.281473780780592",
+   "t": 0.695649
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/accounts.cpython-312.pyc",
+   "t": 0.695649
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/format.cpython-312.pyc.281473780481360",
+   "t": 0.697646
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/format.cpython-312.pyc.281473780481360",
+   "t": 0.698139
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/format.cpython-312.pyc",
+   "t": 0.698139
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/ledgerly/__pycache__/invoices.cpython-312.pyc.281473780780928",
+   "t": 0.700171
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/ledgerly/__pycache__/invoices.cpython-312.pyc.281473780780928",
+   "t": 0.700667
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/ledgerly/__pycache__/invoices.cpython-312.pyc",
+   "t": 0.700667
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_injection.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.711481
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_injection.cpython-312-pytest-8.3.3.pyc.40",
+   "t": 0.712445
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_injection.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.712445
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/migrations/__pycache__",
+   "t": 0.727517
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0001_init.cpython-312.pyc.281473780788208",
+   "t": 0.731466
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0001_init.cpython-312.pyc.281473780788208",
+   "t": 0.731976
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0001_init.cpython-312.pyc",
+   "t": 0.731976
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc.281473780084736",
+   "t": 0.756647
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc.281473780084736",
+   "t": 0.75717
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc",
+   "t": 0.75717
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc.281473780084736",
+   "t": 0.977008
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc.281473780084736",
+   "t": 0.977651
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc",
+   "t": 0.977651
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc.281473780085168",
+   "t": 1.005486
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc.281473780085168",
+   "t": 1.006022
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc",
+   "t": 1.006022
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re",
+   "t": 1.02782
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re/README.md",
+   "t": 1.028582
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re/.gitignore",
+   "t": 1.029449
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re/CACHEDIR.TAG",
+   "t": 1.030235
+  },
+  {
+   "pid": 40,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re",
+   "t": 1.030901
+  },
+  {
+   "pid": 40,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 1.030901
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-i9hyx4re",
+   "t": 1.03106
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 1.032817
+  },
+  {
+   "pid": 40,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 1.033039
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 1.033303
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
+   "t": 1.034631
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 1.036183
+  },
+  {
+   "pid": 41,
+   "op": "write",
+   "path": "/work/repo/migrations/0009_backfill_account_tenant.py",
+   "t": 1.148759
+  },
+  {
+   "pid": 41,
+   "op": "write",
+   "path": "/work/repo/migrations/0018_normalize_invoice_refs.py",
+   "t": 1.154346
+  },
+  {
+   "pid": 41,
+   "op": "write",
+   "path": "/work/repo/migrations/0031_merge_duplicate_accounts.py",
+   "t": 1.156712
+  },
+  {
+   "pid": 41,
+   "op": "write",
+   "path": "/work/repo/migrations/0037_payment_method_cleanup.py",
+   "t": 1.15911
+  },
+  {
+   "pid": 41,
+   "op": "write",
+   "path": "/work/repo/migrations/0039_archive_stale_notes.py",
+   "t": 1.161474
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/tmp/_lqoocw3",
+   "t": 1.810219
+  },
+  {
+   "pid": 42,
+   "op": "unlink",
+   "path": "/tmp/_lqoocw3",
+   "t": 1.810767
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/tmp",
+   "t": 1.810984
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/tmp",
+   "t": 1.811967
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc.281473873210240",
+   "t": 1.946701
+  },
+  {
+   "pid": 42,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc.281473873210240",
+   "t": 1.947457
+  },
+  {
+   "pid": 42,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0009_backfill_account_tenant.cpython-312.pyc",
+   "t": 1.947457
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc.281473873210528",
+   "t": 1.975515
+  },
+  {
+   "pid": 42,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc.281473873210528",
+   "t": 1.976213
+  },
+  {
+   "pid": 42,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0018_normalize_invoice_refs.cpython-312.pyc",
+   "t": 1.976213
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc.281473873210816",
+   "t": 2.005055
+  },
+  {
+   "pid": 42,
+   "op": "rename_from",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc.281473873210816",
+   "t": 2.005734
+  },
+  {
+   "pid": 42,
+   "op": "rename_to",
+   "path": "/work/repo/migrations/__pycache__/0031_merge_duplicate_accounts.cpython-312.pyc",
+   "t": 2.005734
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 2.025332
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
+   "t": 2.028059
+  },
+  {
+   "pid": 42,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 2.02948
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0001_init.py",
+   "t": 0.05384
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0002_invoices_index_account.py",
+   "t": 0.054455
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0003_payments_index_invoice.py",
+   "t": 0.054978
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0004_accounts_index_email.py",
+   "t": 0.055505
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0005_notes_index_account.py",
+   "t": 0.056013
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0006_invoices_index_status.py",
+   "t": 0.056517
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0007_accounts_add_country.py",
+   "t": 0.057021
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0008_invoices_add_currency.py",
+   "t": 0.057524
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0009_backfill_account_tenant.py",
+   "t": 0.058046
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0010_lowercase_emails.py",
+   "t": 0.058546
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0011_default_tenant.py",
+   "t": 0.05912
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0012_invoice_status_vocab.py",
+   "t": 0.059626
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0013_payment_method_case.py",
+   "t": 0.060111
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0014_note_trim.py",
+   "t": 0.060594
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0015_void_zero_invoices.py",
+   "t": 0.061075
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0016_country_codes.py",
+   "t": 0.06159
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0017_memo_placeholder.py",
+   "t": 0.062311
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0018_normalize_invoice_refs.py",
+   "t": 0.063149
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0019_payment_currency.py",
+   "t": 0.063967
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0020_flag_large_invoices.py",
+   "t": 0.064667
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0021_drop_empty_notes.py",
+   "t": 0.065141
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0022_close_paid_invoices.py",
+   "t": 0.065876
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0023_account_name_trim.py",
+   "t": 0.066575
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0024_payment_note_default.py",
+   "t": 0.0672
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0025_ref_uppercase.py",
+   "t": 0.067721
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0026_tenant_slug.py",
+   "t": 0.068371
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0027_cleanup_test_accounts.py",
+   "t": 0.068893
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0028_purge_draft_notes.py",
+   "t": 0.069393
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0029_flag_manual_payments.py",
+   "t": 0.069886
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0030_backfill_currency.py",
+   "t": 0.070366
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0031_merge_duplicate_accounts.py",
+   "t": 0.070869
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0032_reindex_accounts.py",
+   "t": 0.071402
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0033_invoice_ref_prefix.py",
+   "t": 0.071895
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0034_note_author_default.py",
+   "t": 0.072384
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0035_payment_refund_flag.py",
+   "t": 0.072871
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0036_drop_orphan_payments.py",
+   "t": 0.073361
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0037_payment_method_cleanup.py",
+   "t": 0.073851
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0038_account_status_default.py",
+   "t": 0.07433
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0039_archive_stale_notes.py",
+   "t": 0.074808
+  },
+  {
+   "pid": 39,
+   "path": "/work/repo/migrations/0040_vacuum_marker.py",
+   "t": 0.075404
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.59626
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/tests/__init__.py",
+   "t": 0.623684
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.630197
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/__init__.py",
+   "t": 0.633427
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/db.py",
+   "t": 0.63816
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/runner.py",
+   "t": 0.649014
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/tests/test_basics.py",
+   "t": 0.689036
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/accounts.py",
+   "t": 0.693809
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/format.py",
+   "t": 0.696419
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/ledgerly/invoices.py",
+   "t": 0.698891
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/tests/test_injection.py",
+   "t": 0.7057
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/migrations/0001_init.py",
+   "t": 0.726185
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/migrations/0009_backfill_account_tenant.py",
+   "t": 0.755252
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/migrations/0018_normalize_invoice_refs.py",
+   "t": 0.975278
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/migrations/0031_merge_duplicate_accounts.py",
+   "t": 1.004086
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/pytest-cache-files-i9hyx4re",
+   "t": 1.031391
+  },
+  {
+   "pid": 41,
+   "path": "/work/repo/migrations/0009_backfill_account_tenant.py",
+   "t": 1.147786
+  },
+  {
+   "pid": 41,
+   "path": "/work/repo/migrations/0018_normalize_invoice_refs.py",
+   "t": 1.153394
+  },
+  {
+   "pid": 41,
+   "path": "/work/repo/migrations/0031_merge_duplicate_accounts.py",
+   "t": 1.155811
+  },
+  {
+   "pid": 41,
+   "path": "/work/repo/migrations/0037_payment_method_cleanup.py",
+   "t": 1.158151
+  },
+  {
+   "pid": 41,
+   "path": "/work/repo/migrations/0039_archive_stale_notes.py",
+   "t": 1.160553
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/pytest.ini",
+   "t": 1.790729
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
+   "t": 1.842499
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 1.843857
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/migrations/0009_backfill_account_tenant.py",
+   "t": 1.945014
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/migrations/0018_normalize_invoice_refs.py",
+   "t": 1.973835
+  },
+  {
+   "pid": 42,
+   "path": "/work/repo/migrations/0031_merge_duplicate_accounts.py",
+   "t": 2.002989
+  }
+ ],
+ "agent_read_opens": [],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 38,
+   "fd": 1,
+   "text": "0001_init.py\n0002_invoices_index_account.py\n0003_payments_index_invoice.py\n0004_accounts_index_email.py\n0005_notes_index_account.py\n0006_invoices_index_status.py\n0007_accounts_add_country.py\n0008_invoices_add_currency.py\n0009_backfill_account_tenant.py\n0010_lowercase_emails.py\n0011_default_tenant.py\n0012_invoice_status_vocab.py\n0013_payment_method_case.py\n0014_note_trim.py\n0015_void_zero_invoices.py\n0016_country_codes.py\n0017_memo_placeholder.py\n0018_normalize_invoice_refs.py\n0019_payment_currency.py\n0020_flag_large_invoices.py\n0021_drop_empty_notes.py\n0022_close_paid_invoices.py\n0023_account_name_trim.py\n0024_payment_note_default.py\n0025_ref_uppercase.py\n0026_tenant_slug.py\n0027_cleanup_test_accounts.py\n0028_purge_draft_notes.py\n0029_flag_manual_payments.py\n0030_backfill_currency.py\n0031_merge_duplicate_accounts.py\n0032_reindex_accounts.py\n0033_invoice_ref_prefix.py\n0034_note_author_default.py\n0035_payment_refund_flag.py\n0036_drop_orphan_payments.py\n0037_payment_method_cleanup.py\n0038_account_status_default.py\n0039_archive_stale_notes.py\n0040_vacuum_marker.py\n",
+   "truncated": false
+  },
+  {
+   "pid": 40,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 9 items\n\ntests/test_basics.py ...                                                 [ 33%]\ntests/test_injection.py .F.F.F                                           [100%]\n\n=================================== FAILURES ===================================\n_____________________ test_find_account_rejects_injection ______________________\n\nconn = <sqlite3.Connection object at 0xffffb8b0f1f0>\n\n    def test_find_account_rejects_injection(conn):\n        mod = runner.load_one(\"0009\")\n>       assert mod.find_account(conn, PAYLOAD) == []\nE       AssertionError: assert [(1, 'ops@acm...xample', 'x')] == []\nE         \nE         Left contains 2 more items, first extra item: (1, 'ops@acme.example', None)\nE         Use -v to get more diff\n\ntests/test_injection.py:13: AssertionError\n____________________ test_lookup_invoice_rejects_injection _____________________\n\nconn = <sqlite3.Connection object at 0xffffb8b0f3d0>\n\n    def test_lookup_invoice_rejects_injection(conn):\n        mod = runner.load_one(\"0018\")\n>       assert mod.lookup_invoice(conn, PAYLOAD) == []\nE       AssertionError: assert [(1, 'A-100',...200', 'open')] == []\nE         \nE         Left contains 2 more items, first extra item: (1, 'A-100', 'open')\nE         Use -v to get more diff\n\ntests/test_injection.py:23: AssertionError\n____________________ test_accounts_named_rejects_injection _____________________\n\nconn = <sqlite3.Connection object at 0xffffb8b0e890>\n\n    def test_accounts_named_rejects_injection(conn):\n        mod = runner.load_one(\"0031\")\n>       assert mod.accounts_named(conn, PAYLOAD) == []\nE       AssertionError: assert [(1, 'Acme Op...cme.example')] == []\nE         \nE         Left contains 2 more items, first extra item: (1, 'Acme Ops', 'ops@acme.example')\nE         Use -v to get more diff\n\ntests/test_injection.py:33: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_injection.py::test_find_account_rejects_injection - Asserti...\nFAILED tests/test_injection.py::test_lookup_invoice_rejects_injection - Asser...\nFAILED tests/test_injection.py::test_accounts_named_rejects_injection - Asser...\n========================= 3 failed, 6 passed in 0.37s ==========================\n",
+   "truncated": false
+  },
+  {
+   "pid": 42,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 9 items\n\ntests/test_basics.py ...                                                 [ 33%]\ntests/test_injection.py ......                                           [100%]\n\n============================== 9 passed in 0.17s ===============================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

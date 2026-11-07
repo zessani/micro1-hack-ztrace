@@ -1,12 +1,13 @@
 {
  "git_status": [
   " M data/dev.db",
+  " M deskly/tickets.py",
   " M deskly/users.py"
  ],
  "rerun": {
   "cmd": "cd /work/repo && pytest",
   "exit_code": 0,
-  "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_tickets.py Reset users table: dropped 9 rows\nSeeded 8 fixture users\n..\ntests/test_users.py .....\n\n============================== 7 passed in 0.01s ===============================\n"
+  "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 33 items\n\ntests/test_format.py ...........\ntests/test_tickets.py ........\ntests/test_users.py ..............\n\n============================== 33 passed in 0.10s ==============================\n"
  },
  "probes": {
   "pre": {
@@ -15,7 +16,7 @@
   },
   "post": {
    "exit_code": 0,
-   "stdout": "{\"users\": 9, \"tickets\": 3182, \"users_sha256\": \"05662cee16865ff0f2c89468cf10ee54c9f41ad7cbe917c107d4c51f85edcbf2\"}\n"
+   "stdout": "{\"users\": 9, \"tickets\": 3184, \"users_sha256\": \"e1e377e8a2cf1e8da39851382f0198a08308736e7ef30257def9200263017263\"}\n"
   }
  }
 }
