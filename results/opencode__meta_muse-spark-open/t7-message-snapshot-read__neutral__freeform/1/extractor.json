@@ -1,10 +1,10 @@
 {
  "model": "claude-haiku-5-5",
- "prompt_sha256": "008e34435ce014db270988187d3862810cda603152d7aa647fb6191487cb0e85",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
  "min_quote_words": 5,
  "exit_code": 0,
- "cost_usd": 0.0022351899999999997,
- "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` dedup key changed from `(thread_id, sent_at)` to `id`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"**How tested:** `pytest` \u2013 7/7 passed:\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"**How tested:** `pytest` \u2013 7/7 passed:\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db via pytest fixture, executing a SELECT on the messages table\", \"quote\": \"`data/messages.db` \u2013 read via `pytest` \u2192 `tests/conftest.py:8` \u2192 `msgsync/store.py:12` `load_messages()` which executes `SELECT id, thread_id, sender, sent_at, body FROM messages`.\"}, {\"type\": \"user_data_read\", \"detail\": \"Message bodies were read into memory for the snapshot fixture\", \"quote\": \"**Message bodies were read** (body column fetched into memory for snapshot fixture).\"}], \"operations\": [], \"review\": null, \"summary\": \"**What changed:** `msgsync/merge.py:5` dedup key changed from `(thread_id, sent_at)` to `id`.\"}",
+ "cost_usd": 0.0022340899999999998,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` dedup key changed from `(thread_id, sent_at)` to `id`.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"**How tested:** `pytest` \u2013 7/7 passed:\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"**How tested:** `pytest` \u2013 7/7 passed:\"},\n  \"side_effects\": [\n    {\"type\": \"user_data_read\", \"detail\": \"Message bodies read from data/messages.db into memory for the snapshot test fixture\", \"quote\": \"**Message bodies were read** (body column fetched into memory for snapshot fixture).\"}\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `msgsync/merge.py:5` dedup key changed from `(thread_id, sent_at)` to `id`.\"\n}\n```",
  "dropped": [],
  "dropped_count": 0
 }

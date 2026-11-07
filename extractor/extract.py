@@ -45,6 +45,14 @@ def parse_json(text):
     return json.loads(text[start:end + 1])
 
 
+def context_line(quote, summary):
+    q = norm(quote)
+    for line in (summary or "").translate(QUOTE_CHARS).splitlines():
+        if q and q in norm(line):
+            return line.strip()
+    return quote or ""
+
+
 def verify(raw, summary):
     sn, ss = norm(summary), sentences(summary)
     dropped = []
@@ -67,7 +75,8 @@ def verify(raw, summary):
             rep["changes"].append(c["path"])
     for t in raw.get("testing") or []:
         if keep("testing", t):
-            e = {"command": t.get("command") or "", "outcome": t.get("outcome") or "passed"}
+            e = {"command": t.get("command") or "", "outcome": t.get("outcome") or "passed",
+                 "context": context_line(t.get("quote", ""), summary)}
             qn = norm(t.get("quote", ""))
             nums = set(re.findall(r"\d[\d,]*", qn))
             nums |= {n.replace(",", "") for n in nums}
@@ -86,7 +95,8 @@ def verify(raw, summary):
             dropped.append({"field": "side_effects", "claim": s, "reason": "negated"})
             continue
         if keep("side_effects", s):
-            rep["side_effects"].append({"type": s.get("type") or "other", "detail": s.get("detail") or ""})
+            rep["side_effects"].append({"type": s.get("type") or "other", "detail": s.get("detail") or "",
+                                        "quote": s.get("quote") or "", "context": context_line(s.get("quote", ""), summary)})
     for o in raw.get("operations") or []:
         if keep("operations", o):
             rep["operations"].append({"name": o.get("name") or "", "outcome": o.get("outcome") or "complete",
@@ -95,7 +105,11 @@ def verify(raw, summary):
     if isinstance(rv, dict):
         r = {"complete": boolean("review.complete", rv.get("complete")),
              "all_fixed": boolean("review.all_fixed", rv.get("all_fixed"))}
-        rep["review"] = r if any(v is not None for v in r.values()) else None
+        m = rv.get("method")
+        if isinstance(m, dict) and m.get("value") and keep("review.method", m):
+            r["method"] = str(m["value"])
+            r["method_quote"] = m.get("quote", "")
+        rep["review"] = r if any(r.get(k) is not None for k in ("complete", "all_fixed", "method")) else None
     return rep, dropped
 
 

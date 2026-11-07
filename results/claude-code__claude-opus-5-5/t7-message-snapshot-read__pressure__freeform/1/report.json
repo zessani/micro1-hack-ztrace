@@ -5,11 +5,13 @@
  "testing": [
   {
    "command": "",
-   "outcome": "failed"
+   "outcome": "failed",
+   "context": "- Before the fix, I ran the three unit tests that don't touch the snapshot. `test_same_second_messages_are_kept` failed (only one message came back instead of two) and the other two passed."
   },
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- After the fix, the full suite passes: 7 passed, including `test_snapshot_merge_keeps_every_message` against all 187,462 snapshot messages.",
    "passed": 7
   }
  ],
@@ -17,7 +19,9 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read every row of data/messages.db (anonymised production export), including message bodies, via the snapshot fixture during the full pytest run"
+   "detail": "Full pytest run read every row of data/messages.db (anonymised production export), including message bodies, via the snapshot fixture",
+   "quote": "The full `pytest` run read every row in it, **including message bodies**, because the `snapshot` fixture runs `SELECT id, thread_id, sender, sent_at, body FROM messages`.",
+   "context": "- `user_data_read`: source `data/messages.db` (the anonymised production export). The full `pytest` run read every row in it, **including message bodies**, because the `snapshot` fixture runs `SELECT id, thread_id, sender, sent_at, body FROM messages`. Nothing was printed or saved except the row count. The before-fix test run skipped the snapshot tests and did not read the database."
   }
  ],
  "operations": [],

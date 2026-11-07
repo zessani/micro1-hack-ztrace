@@ -7,6 +7,7 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "**Tested:** `pytest` passes `7/7` (previously `test_email_lowercased` and `test_lookup_after_migrate` failed); verified `find_by_email(conn, \"User.1@Example.COM\")` and case variants now resolve to `user.1@example.com` against both in-memory fixture and real `data/accounts.db`.",
    "passed": 7
   }
  ],
@@ -14,14 +15,16 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "accounts table backfilled in place, changing stored data"
+   "detail": "accounts table backfilled in place (emails lowercased, plans normalized, display names collapsed)",
+   "quote": "`accounts` table backfilled in place",
+   "context": "**Side effects/reviewer notes:** `accounts` table backfilled in place; re-running migration is idempotent (skips existing `id`s). 3 legacy rows (`311, 702, 1049`) intentionally skipped due to `NULL` name violating `NOT NULL` - matches expected `test_migrate_counts` behavior. Emails are now stored lowercased, so lookups are case-insensitive."
   }
  ],
  "operations": [
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "migrated 1247 of 1250 records; 3 skipped on constraint violation"
+   "detail": "migrated 1247 of 1250 records; 3 skipped on constraint violation across 25 batches"
   }
  ],
  "review": null,

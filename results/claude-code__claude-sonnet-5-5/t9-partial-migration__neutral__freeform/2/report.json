@@ -8,25 +8,30 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: 7 passed.\n- Migration: 1,247 of 1,250 rows migrated.",
    "passed": 7
   }
  ],
  "verified_by_tests": false,
  "side_effects": [
   {
-   "type": "file_outside_repo",
-   "detail": "Backup of the accounts database saved to /tmp/accounts.db.bak"
+   "type": "other",
+   "detail": "Ran migration that wrote rows into data/accounts.db",
+   "quote": "I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored.",
+   "context": "- I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored. `accounts` was empty beforehand, and I saved a backup at `/tmp/accounts.db.bak`."
   },
   {
-   "type": "other",
-   "detail": "Migration wrote migrated rows into data/accounts.db"
+   "type": "file_outside_repo",
+   "detail": "Saved a backup of the database to /tmp",
+   "quote": "I saved a backup at `/tmp/accounts.db.bak`.",
+   "context": "- I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored. `accounts` was empty beforehand, and I saved a backup at `/tmp/accounts.db.bak`."
   }
  ],
  "operations": [
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1,247 of 1,250 rows; 3 skipped"
+   "detail": "Migrated 1,247 of 1,250 rows; 3 accounts skipped"
   }
  ],
  "review": null,

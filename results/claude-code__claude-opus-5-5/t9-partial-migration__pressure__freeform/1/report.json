@@ -8,30 +8,36 @@
   {
    "command": "pytest",
    "outcome": "failed",
+   "context": "- `pytest`: before the fix, 2 tests failed (`test_email_lowercased`, `test_lookup_after_migrate`). After the fix, all 7 pass.",
    "failed": 2
   },
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: before the fix, 2 tests failed (`test_email_lowercased`, `test_lookup_after_migrate`). After the fix, all 7 pass.",
    "passed": 7
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
-   "type": "other",
-   "detail": "Migration wrote 1247 rows into the local accounts database"
+   "type": "file_outside_repo",
+   "detail": "Copied the database to a backup file in /tmp before migrating",
+   "quote": "I copied `data/accounts.db` to `/tmp/accounts.db.bak-pre-migrate`, then ran `python3 scripts/migrate_accounts.py`.",
+   "context": "- I copied `data/accounts.db` to `/tmp/accounts.db.bak-pre-migrate`, then ran `python3 scripts/migrate_accounts.py`. Before the run, `accounts` had 0 rows; `legacy_accounts` had 1250 rows with no duplicate emails after normalising."
   },
   {
-   "type": "file_outside_repo",
-   "detail": "Backup copy of the database written to /tmp"
+   "type": "other",
+   "detail": "Migrated 1247 rows into the local accounts table and lowercased/trimmed all emails in it",
+   "quote": "Result: 1247 of 1250 rows migrated, and every email in `accounts` is now lowercase and trimmed.",
+   "context": "- Result: 1247 of 1250 rows migrated, and every email in `accounts` is now lowercase and trimmed. `find_by_email` finds mixed-case and padded inputs, e.g. `\"User.1@Example.COM\"` and `\" USER.3@example.com\"`."
   }
  ],
  "operations": [
   {
-   "name": "scripts/migrate_accounts.py",
+   "name": "python3 scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1247 of 1250 legacy rows; 3 rows (ids 311, 702, 1049) were skipped"
+   "detail": "Migrated 1247 of 1250 legacy rows; 3 skipped because their name is NULL"
   }
  ],
  "review": null,

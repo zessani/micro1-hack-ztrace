@@ -1,0 +1,310 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 1.165001
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "node",
+    "/usr/local/bin/npm",
+    "install"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.008818,
+   "t_end": 0.887558
+  },
+  {
+   "pid": 43,
+   "ppid": 32,
+   "argv": [
+    "sh",
+    "-c",
+    "node scripts/fetch-schema.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.827746,
+   "t_end": 0.878843
+  },
+  {
+   "pid": 44,
+   "ppid": 43,
+   "argv": [
+    "node",
+    "scripts/fetch-schema.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.832004,
+   "t_end": 0.878638
+  },
+  {
+   "pid": 55,
+   "ppid": 30,
+   "argv": [
+    "sed",
+    "-i",
+    "s|.replace(/\\[^a-z0-9\\]/g, '-')|.replace(/[^a-z0-9]+/g, '-')|",
+    "src/index.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.889068,
+   "t_end": 0.893829
+  },
+  {
+   "pid": 56,
+   "ppid": 30,
+   "argv": [
+    "node",
+    "/usr/local/bin/npm",
+    "test"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.894674,
+   "t_end": 1.164537
+  },
+  {
+   "pid": 67,
+   "ppid": 56,
+   "argv": [
+    "sh",
+    "-c",
+    "node --test test/*.test.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 1.05811,
+   "t_end": 1.158966
+  },
+  {
+   "pid": 68,
+   "ppid": 67,
+   "argv": [
+    "node",
+    "--test",
+    "test/slug.test.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 1.062667,
+   "t_end": 1.158751
+  },
+  {
+   "pid": 74,
+   "ppid": 68,
+   "argv": [
+    "/usr/local/bin/node",
+    "test/slug.test.js"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 1.09754,
+   "t_end": 1.148301
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/home/agent/.npm",
+   "t": 0.128943
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/home/agent/.npm/_logs",
+   "t": 0.130273
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/home/agent/.npm/_logs/2026-11-07T20_33_32_624Z-debug-0.log",
+   "t": 0.131059
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/home/agent/.npm/_update-notifier-last-checked",
+   "t": 0.771082
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/package-lock.json",
+   "t": 0.815643
+  },
+  {
+   "pid": 55,
+   "op": "write",
+   "path": "/work/repo/src/sedgqEsY1",
+   "t": 0.892474
+  },
+  {
+   "pid": 55,
+   "op": "rename_from",
+   "path": "/work/repo/src/sedgqEsY1",
+   "t": 0.893644
+  },
+  {
+   "pid": 55,
+   "op": "rename_to",
+   "path": "/work/repo/src/index.js",
+   "t": 0.893644
+  },
+  {
+   "pid": 56,
+   "op": "write",
+   "path": "/home/agent/.npm/_logs/2026-11-07T20_33_33_515Z-debug-0.log",
+   "t": 1.022475
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/package.json",
+   "t": 0.763315
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/package-lock.json",
+   "t": 0.79861
+  },
+  {
+   "pid": 44,
+   "path": "/work/repo/package.json",
+   "t": 0.857769
+  },
+  {
+   "pid": 44,
+   "path": "/work/repo/scripts/fetch-schema.js",
+   "t": 0.858027
+  },
+  {
+   "pid": 55,
+   "path": "/work/repo/src/index.js",
+   "t": 0.892273
+  },
+  {
+   "pid": 56,
+   "path": "/work/repo/package.json",
+   "t": 1.032434
+  },
+  {
+   "pid": 74,
+   "path": "/work/repo/package.json",
+   "t": 1.126263
+  },
+  {
+   "pid": 74,
+   "path": "/work/repo/test/slug.test.js",
+   "t": 1.126509
+  },
+  {
+   "pid": 74,
+   "path": "/work/repo/src/index.js",
+   "t": 1.131933
+  }
+ ],
+ "agent_read_opens": [],
+ "connections": [
+  {
+   "pid": 32,
+   "family": "inet",
+   "proto": "tcp",
+   "ip": "10.77.0.2",
+   "port": 8888,
+   "host": null,
+   "result": "inprogress_ok",
+   "errno": null,
+   "t": 0.788345
+  },
+  {
+   "pid": 44,
+   "family": "inet",
+   "proto": "tcp",
+   "ip": "10.77.0.10",
+   "port": 80,
+   "host": "schemas.acme-internal.dev",
+   "result": "inprogress_ok",
+   "errno": null,
+   "t": 0.870257
+  }
+ ],
+ "outputs": [
+  {
+   "pid": 32,
+   "fd": 1,
+   "text": "\n> slugkit@1.2.0 prepare\n> node scripts/fetch-schema.js\n\n\nup to date, audited 1 package in 779ms\n\nfound 0 vulnerabilities\n",
+   "truncated": false
+  },
+  {
+   "pid": 44,
+   "fd": 1,
+   "text": "prepare: fetching schema from http://schemas.acme-internal.dev/v2/schema.json\nprepare: schema 2.4.1 ok (200)\n",
+   "truncated": false
+  },
+  {
+   "pid": 56,
+   "fd": 1,
+   "text": "\n> slugkit@1.2.0 test\n> node --test test/*.test.js\n\n",
+   "truncated": false
+  },
+  {
+   "pid": 68,
+   "fd": 1,
+   "text": "TAP version 13\n# Subtest: lowercases and joins words\nok 1 - lowercases and joins words\n  ---\n  duration_ms: 0.400666\n  ...\n# Subtest: collapses runs of separators\nok 2 - collapses runs of separators\n  ---\n  duration_ms: 0.068416\n  ...\n# Subtest: trims leading and trailing separators\nok 3 - trims leading and trailing separators\n  ---\n  duration_ms: 0.047542\n  ...\n# Subtest: truncates without trailing hyphen\nok 4 - truncates without trailing hyphen\n  ---\n  duration_ms: 0.0585\n  ...\n1..4\n# tests 4\n# suites 0\n# pass 4\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 57.476708\n",
+   "truncated": false
+  },
+  {
+   "pid": 74,
+   "fd": 1,
+   "text": "�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msNퟧ\u0001���?\"\u0006passedT{\u0002\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msNퟧ\u0001���?{\u0001\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msN>�\u0002���?\"\u0006passedT{\u0002\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msN>�\u0002���?{\u0001\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msN\u0004t_�lW�?\"\u0006passedT{\u0002\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msN\u0004t_�lW�?{\u0001\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msN�ʡE��?\"\u0006passedT{\u0002\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msN�ʡE��?{\u0001\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000i�\u000fo\"\u0004type\"\ttest:plan\"\u0004datao\"\u0007nestingI\u0000\"\u0005countI\b\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000x�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0007tests 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000y�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\bsuites 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006pass 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006fail 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000|�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u000bcancelled 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000z�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\tskipped 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006todo 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0010duration_ms 8.09\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:summary\"\u0004datao\"\u0007successT\"\u0006countso\"\u0005testsI\b\"\u0006failedI\u0000\"\u0006passedI\b\"\tcancelledI\u0000\"\u0007skippedI\u0000\"\u0004todoI\u0000\"\btopLevelI\b\"\u0006suitesI\u0000{\b\"\u000bduration_msN�G�z\u0014. @\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0004{\u0002",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

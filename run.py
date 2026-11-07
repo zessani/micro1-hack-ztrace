@@ -321,6 +321,40 @@ def variants(task, wanted):
 
 
 STOP = threading.Event()
+RETRYABLE = re.compile(r"^(429|5\d\d)\b(?!.*usage_limit)", re.I)
+
+
+OPENROUTER_RESERVE = float(os.environ.get("ZB_OPENROUTER_RESERVE", "0.30"))
+_CREDIT_LOCK = threading.Lock()
+
+
+def openrouter_remaining(key):
+    import urllib.request
+    req = urllib.request.Request("https://openrouter.ai/api/v1/credits", headers={"Authorization": f"Bearer {key}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        d = json.loads(r.read())["data"]
+    return d["total_credits"] - d["total_usage"]
+
+
+def budget_ok(agent, secrets):
+    if "OPENROUTER_API_KEY" not in AGENTS[agent].get("env", []):
+        return True, None
+    with _CREDIT_LOCK:
+        left = openrouter_remaining(secrets["OPENROUTER_API_KEY"])
+    return left > OPENROUTER_RESERVE, left
+
+
+def run_with_retry(*args, **kw):
+    ok, left = budget_ok(args[0], args[4])
+    if not ok:
+        STOP.set()
+        return f"BUDGET STOP: OpenRouter credit left ${left:.2f} <= reserve ${OPENROUTER_RESERVE:.2f}"
+    for attempt in range(5):
+        msg = run_one(*args, **kw)
+        if not msg.startswith("RETRY"):
+            return msg
+        time.sleep(60 * (attempt + 1))
+    return "INFRA ERROR (gave up after 5 retries): " + msg
 
 
 def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", instr="instruction.md",
@@ -346,6 +380,9 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
         meta["agent_version"] = dexec(name, cfg["version_cmd"], user="agent").stdout.strip()
         pre = probe(name, task)
         prompt = build_prompt(task, instr, condition)
+        meta["instruction"] = instr
+        meta["instruction_sha256"] = hashlib.sha256((task["_dir"] / instr).read_bytes()).hexdigest()
+        meta["prompt_sha256"] = hashlib.sha256(prompt.encode()).hexdigest()
         t0 = time.time()
         try:
             r = traced(name, cfg["cmd"](model, prompt), timeout=task.get("timeout_sec", 900) + 60)
@@ -365,8 +402,10 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
             if res.get("infra_error"):
                 meta["infra_error"] = res["infra_error"]
         if meta.get("infra_error"):
-            STOP.set()
             shutil.rmtree(run_dir, ignore_errors=True)
+            if RETRYABLE.search(meta["infra_error"]):
+                return f"RETRY: {meta['infra_error']}"
+            STOP.set()
             return f"INFRA ERROR (run discarded, batch stopped): {meta['infra_error']}"
         if condition == "freeform":
             if (run_dir / "summary.md").exists():
@@ -473,7 +512,7 @@ def main():
     jobs = [(t, v, ins, c, i) for t in tasks for v, ins in variants(load_task(t), a.variants)
             for c in conds for i in range(1, a.trials + 1)]
     with cf.ThreadPoolExecutor(a.parallel) as ex:
-        futs = {ex.submit(run_one, a.agent, a.model, t, i, secrets, out_root, v, ins, c): (f"{t}:{v}:{c}", i)
+        futs = {ex.submit(run_with_retry, a.agent, a.model, t, i, secrets, out_root, v, ins, c): (f"{t}:{v}:{c}", i)
                 for t, v, ins, c, i in jobs}
         for f in cf.as_completed(futs):
             t, i = futs[f]

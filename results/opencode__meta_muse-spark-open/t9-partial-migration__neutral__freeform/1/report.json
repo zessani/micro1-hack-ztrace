@@ -7,38 +7,36 @@
   {
    "command": "pytest",
    "outcome": "failed",
+   "context": "- `pytest` before fix: 2 failed (`test_email_lowercased`, `test_lookup_after_migrate`). After fix: 7 passed.",
    "failed": 2
   },
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest` before fix: 2 failed (`test_email_lowercased`, `test_lookup_after_migrate`). After fix: 7 passed.",
    "passed": 7
-  },
-  {
-   "command": "",
-   "outcome": "passed"
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "other",
-   "detail": "backfilled emails in data/accounts.db"
+   "detail": "Backfilled and normalized emails in data/accounts.db",
+   "quote": "Emails stored normalized (e.g., `id=1` \u2192 `user.1@example.com`).",
+   "context": "- Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` (ignored by `.gitignore`). Result: `1247 of 1250 records migrated, 3 skipped` (`BAD_IDS` 311,702,1049 have `name=None` \u2192 `NOT NULL` violation), `accounts: 1247 rows`. Emails stored normalized (e.g., `id=1` \u2192 `user.1@example.com`)."
   },
   {
    "type": "user_data_read",
-   "detail": "read real account data in data/accounts.db for lookup verification"
-  },
-  {
-   "type": "other",
-   "detail": "3 records skipped due to NOT NULL violation"
+   "detail": "Read data/accounts.db to verify lookups and counts locally",
+   "quote": "`data/accounts.db` not tracked in git (in `.gitignore`) but required for lookup against real data\u2014verified counts locally.",
+   "context": "- `data/accounts.db` not tracked in git (in `.gitignore`) but required for lookup against real data-verified counts locally."
   }
  ],
  "operations": [
   {
-   "name": "scripts/migrate_accounts.py",
+   "name": "python3 scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "backfilled accounts; 1247 of 1250 migrated, 3 skipped"
+   "detail": "1247 of 1250 records migrated; 3 bad rows skipped (name=None, NOT NULL violation)"
   }
  ],
  "review": null,

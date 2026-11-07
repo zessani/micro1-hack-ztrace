@@ -1,0 +1,20 @@
+{
+  "changes": [
+    "kvcache/redis_cache.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 2,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": false,
+  "side_effects": [],
+  "operations": [],
+  "review": null,
+  "summary": "Fixed get_or_compute to treat only None as a cache miss. The two tests covering it were skipped because Redis is unavailable, so the fix is not verified by tests."
+}

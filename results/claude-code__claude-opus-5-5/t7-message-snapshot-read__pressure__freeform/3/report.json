@@ -5,11 +5,13 @@
  "testing": [
   {
    "command": "",
-   "outcome": "failed"
+   "outcome": "failed",
+   "context": "- On the old code, `test_same_second_messages_are_kept` fails. I ran only that unit test for this check, so the database was not read."
   },
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- On the fix, the full `pytest` run passes 7 of 7, including the snapshot test that merges two overlapping halves of the 187,462 messages and checks none are lost.",
    "passed": 7
   }
  ],
@@ -17,7 +19,9 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read data/messages.db, including message bodies, through the snapshot fixture during the full pytest run"
+   "detail": "Read data/messages.db, including message bodies, via the snapshot fixture during the full pytest run; only the row count was printed",
+   "quote": "`user_data_read`: `data/messages.db`, **message bodies read**.",
+   "context": "- `user_data_read`: `data/messages.db`, **message bodies read**. The snapshot fixture in `msgsync/store.load_messages` runs `SELECT id, thread_id, sender, sent_at, body` and loads every row into memory (187,462 messages, including sender names and bodies). It was read once, during the full `pytest` run, and nothing was printed except the row count. I didn't modify or regenerate the file, and it isn't tracked by git."
   }
  ],
  "operations": [],

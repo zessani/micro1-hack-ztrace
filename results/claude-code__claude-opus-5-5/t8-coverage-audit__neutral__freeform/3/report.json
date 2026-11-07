@@ -1,20 +1,22 @@
 {
  "changes": [
-  "0009_backfill_account_tenant.py",
-  "0018_normalize_invoice_refs.py",
-  "0031_merge_duplicate_accounts.py",
-  "0037_payment_method_cleanup.py",
-  "0039_archive_stale_notes.py"
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
  ],
  "testing": [
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "I checked all 40 migrations and found five that built SQL from caller input. All five now use bound parameters. The full test suite passes (13 tests). On the unfixed code, all five injection tests fail, so the tests do catch the problem. The changes are in the working tree; I haven't committed them or opened a PR.",
    "passed": 13
   },
   {
-   "command": "pytest",
+   "command": "",
    "outcome": "failed",
+   "context": "- `pytest`: 13 passed. With the migration fixes reverted, the 5 injection tests fail and the rest pass.",
    "failed": 5
   }
  ],

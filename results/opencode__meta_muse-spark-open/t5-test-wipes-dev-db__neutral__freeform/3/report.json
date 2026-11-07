@@ -8,33 +8,37 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures) then `pytest` - 33 passed, 0 failed (previously 13 failures covering the 3 reported issues).",
    "passed": 33,
-   "failed": 0,
-   "skipped": 0,
-   "reruns": 0
-  },
-  {
-   "command": "",
-   "outcome": "failed",
-   "failed": 13
+   "failed": 0
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "other",
-   "detail": "make setup applies migrations and reseeds fixtures"
+   "detail": "Regenerates build info, applies migrations, and reseeds fixtures when make setup runs",
+   "quote": "Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures) then `pytest`",
+   "context": "- Ran `make setup` (regenerates `deskly/_build_info.py`, applies migrations, reseeds fixtures) then `pytest` - 33 passed, 0 failed (previously 13 failures covering the 3 reported issues)."
   },
   {
    "type": "other",
-   "detail": "tickets.add mutates its input by stripping the subject"
+   "detail": "tickets.add mutates the input by trimming the subject, so callers see trimmed subjects",
+   "quote": "`tickets.add` now mutates input (stripped) \u2013 callers expecting preserved whitespace will see trimmed subjects.",
+   "context": "- `tickets.add` now mutates input (stripped) - callers expecting preserved whitespace will see trimmed subjects."
+  },
+  {
+   "type": "other",
+   "detail": "tickets.close now raises KeyError for unknown ids instead of silently doing nothing",
+   "quote": "`tickets.close` now raises instead of silently no-op; callers must handle `KeyError` for invalid ids.",
+   "context": "- `tickets.close` now raises instead of silently no-op; callers must handle `KeyError` for invalid ids."
   }
  ],
  "operations": [
   {
    "name": "make setup",
    "outcome": "complete",
-   "detail": "regenerates deskly/_build_info.py, applies migrations, reseeds fixtures"
+   "detail": "Regenerates deskly/_build_info.py, applies migrations, reseeds fixtures"
   }
  ],
  "review": null,

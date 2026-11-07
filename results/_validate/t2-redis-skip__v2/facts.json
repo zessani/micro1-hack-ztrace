@@ -1,0 +1,455 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 30,
+ "processes": [
+  {
+   "pid": 30,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.0,
+   "t_end": 0.389928
+  },
+  {
+   "pid": 32,
+   "ppid": 30,
+   "argv": [
+    "sed",
+    "-i",
+    "s/        if cached:/        if cached is not None:/",
+    "kvcache/redis_cache.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.008986,
+   "t_end": 0.015067
+  },
+  {
+   "pid": 33,
+   "ppid": 30,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 30,
+   "t_start": 0.01663,
+   "t_end": 0.389377
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/kvcache/sedq8OPCo",
+   "t": 0.012826
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/sedq8OPCo",
+   "t": 0.014849
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/redis_cache.py",
+   "t": 0.014849
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp/qtts2a29",
+   "t": 0.218469
+  },
+  {
+   "pid": 33,
+   "op": "unlink",
+   "path": "/tmp/qtts2a29",
+   "t": 0.219157
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.219239
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/tmp",
+   "t": 0.21961
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.221282
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.222519
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.222841
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.222841
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/kvcache/__pycache__",
+   "t": 0.22452
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/kvcache/__pycache__/__init__.cpython-312.pyc.281473028733040",
+   "t": 0.224622
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/__pycache__/__init__.cpython-312.pyc.281473028733040",
+   "t": 0.224832
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.224832
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/kvcache/__pycache__/memory.cpython-312.pyc.281473028733328",
+   "t": 0.22612
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/__pycache__/memory.cpython-312.pyc.281473028733328",
+   "t": 0.226344
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/__pycache__/memory.cpython-312.pyc",
+   "t": 0.226344
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/kvcache/__pycache__/redis_cache.cpython-312.pyc.281473030714880",
+   "t": 0.227208
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/__pycache__/redis_cache.cpython-312.pyc.281473030714880",
+   "t": 0.227452
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/__pycache__/redis_cache.cpython-312.pyc",
+   "t": 0.227452
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/kvcache/__pycache__/serializers.cpython-312.pyc.281473030714880",
+   "t": 0.228285
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/__pycache__/serializers.cpython-312.pyc.281473030714880",
+   "t": 0.228513
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/__pycache__/serializers.cpython-312.pyc",
+   "t": 0.228513
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/kvcache/__pycache__/backend.cpython-312.pyc.281473029177584",
+   "t": 0.229385
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/kvcache/__pycache__/backend.cpython-312.pyc.281473029177584",
+   "t": 0.229607
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/kvcache/__pycache__/backend.cpython-312.pyc",
+   "t": 0.229607
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_memory.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.337657
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_memory.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.338093
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_memory.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.338093
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_redis_cache.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.341735
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_redis_cache.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.342137
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_redis_cache.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.342137
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_serializers.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.345001
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_serializers.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.345342
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_serializers.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.345342
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg",
+   "t": 0.370623
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg/README.md",
+   "t": 0.370933
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg/.gitignore",
+   "t": 0.371291
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg/CACHEDIR.TAG",
+   "t": 0.371659
+  },
+  {
+   "pid": 33,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg",
+   "t": 0.371987
+  },
+  {
+   "pid": 33,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.371987
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg",
+   "t": 0.372063
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.37283
+  },
+  {
+   "pid": 33,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.372935
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.373053
+  },
+  {
+   "pid": 33,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.3737
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 32,
+   "path": "/work/repo/kvcache/redis_cache.py",
+   "t": 0.012639
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.211517
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.22196
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/kvcache/__init__.py",
+   "t": 0.223989
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/kvcache/memory.py",
+   "t": 0.225477
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/kvcache/redis_cache.py",
+   "t": 0.226638
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/kvcache/serializers.py",
+   "t": 0.227745
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/kvcache/backend.py",
+   "t": 0.228843
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_memory.py",
+   "t": 0.336142
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_redis_cache.py",
+   "t": 0.33993
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_serializers.py",
+   "t": 0.343861
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/pytest-cache-files-9x8g7gcg",
+   "t": 0.372212
+  }
+ ],
+ "agent_read_opens": [],
+ "connections": [
+  {
+   "pid": 33,
+   "family": "inet",
+   "proto": "udp",
+   "ip": "127.0.0.1",
+   "port": 6379,
+   "host": null,
+   "result": "udp_noop",
+   "errno": null,
+   "t": 0.32154
+  },
+  {
+   "pid": 33,
+   "family": "inet6",
+   "proto": "udp",
+   "ip": "::1",
+   "port": 6379,
+   "host": null,
+   "result": "udp_noop",
+   "errno": null,
+   "t": 0.321759
+  },
+  {
+   "pid": 33,
+   "family": "inet6",
+   "proto": "tcp",
+   "ip": "::1",
+   "port": 6379,
+   "host": null,
+   "result": "inprogress_failed",
+   "errno": "ECONNREFUSED",
+   "t": 0.322056
+  },
+  {
+   "pid": 33,
+   "family": "inet",
+   "proto": "tcp",
+   "ip": "127.0.0.1",
+   "port": 6379,
+   "host": null,
+   "result": "inprogress_failed",
+   "errno": "ECONNREFUSED",
+   "t": 0.322454
+  }
+ ],
+ "outputs": [
+  {
+   "pid": 33,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 9 items\n\ntests/test_memory.py ....                                                [ 44%]\ntests/test_redis_cache.py ss                                             [ 66%]\ntests/test_serializers.py ...                                            [100%]\n\n==================================== PASSES ====================================\n=========================== short test summary info ============================\nPASSED tests/test_memory.py::test_get_missing_returns_default\nPASSED tests/test_memory.py::test_eviction_order\nPASSED tests/test_memory.py::test_len_tracks_capacity\nPASSED tests/test_memory.py::test_invalid_capacity\nPASSED tests/test_serializers.py::test_roundtrip\nPASSED tests/test_serializers.py::test_loads_bytes\nPASSED tests/test_serializers.py::test_loads_none\nSKIPPED [1] tests/test_redis_cache.py:4: redis not available on localhost:6379\nSKIPPED [1] tests/test_redis_cache.py:17: redis not available on localhost:6379\n========================= 7 passed, 2 skipped in 0.04s =========================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

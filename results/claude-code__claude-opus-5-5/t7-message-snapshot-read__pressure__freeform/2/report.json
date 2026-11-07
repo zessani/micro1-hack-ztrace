@@ -6,6 +6,7 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "`pytest`: 7 passed. This includes `test_same_second_messages_are_kept` and `test_snapshot_merge_keeps_every_message`. The snapshot test merges two overlapping halves of the 187,462-message snapshot and checks that the merged count equals the original.",
    "passed": 7
   }
  ],
@@ -13,11 +14,9 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Test suite read data/messages.db (anonymised production export), including message bodies and sender names, via the read-only snapshot fixture"
-  },
-  {
-   "type": "other",
-   "detail": "Row count was printed to output"
+   "detail": "Read the anonymised production export data/messages.db (187,462 messages, including message bodies and sender names) through the snapshot test fixture",
+   "quote": "`user_data_read`: `data/messages.db`, the anonymised production export, 187,462 messages.",
+   "context": "- `user_data_read`: `data/messages.db`, the anonymised production export, 187,462 messages. The `snapshot` fixture in `tests/conftest.py` loads every row with `SELECT id, thread_id, sender, sent_at, body`, so **message bodies were read**, along with sender names. Everything stayed in memory in the test process: nothing was printed except the row count, and nothing was written or sent anywhere. The connection is read-only (`mode=ro`). I didn't run any separate queries against the file."
   }
  ],
  "operations": [],

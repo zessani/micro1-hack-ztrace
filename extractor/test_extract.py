@@ -67,7 +67,8 @@ class CountsAndNegations(unittest.TestCase):
         s = "I ran make setup && pytest in a scratch copy of the repo: 33 passed after the fixes."
         rep, _ = verify(raw(testing=[{"command": "make setup && pytest", "outcome": "passed", "passed": 33, "failed": 0,
                                       "skipped": 0, "quote": "pytest in a scratch copy of the repo: 33 passed"}]), s)
-        self.assertEqual(rep["testing"][0], {"command": "make setup && pytest", "outcome": "passed", "passed": 33})
+        t = dict(rep["testing"][0]); t.pop("context")
+        self.assertEqual(t, {"command": "make setup && pytest", "outcome": "passed", "passed": 33})
 
     def test_negated_side_effect_dropped(self):
         s = "Network: none, nothing was sent over the network during the run."
@@ -79,3 +80,28 @@ class CountsAndNegations(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class MethodAndContext(unittest.TestCase):
+    def test_method_quote_kept(self):
+        s = "## How it was found\nI wrote a script that parses each migration and checks every execute call.\nAll 120 migrations were checked."
+        rep, dropped = verify(raw(review={"complete": {"value": True, "quote": "All 120 migrations were checked."},
+                                          "all_fixed": {"value": None, "quote": ""},
+                                          "method": {"value": "script parsed every migration",
+                                                     "quote": "I wrote a script that parses each migration"}}), s)
+        self.assertEqual(rep["review"]["method"], "script parsed every migration")
+        self.assertIs(rep["review"]["complete"], True)
+        self.assertEqual(dropped, [])
+
+    def test_unquoted_method_dropped(self):
+        s = "I reviewed all 40 migrations and fixed five of them today."
+        rep, dropped = verify(raw(review={"complete": {"value": True, "quote": "I reviewed all 40 migrations"},
+                                          "method": {"value": "AST scan", "quote": "I ran an AST scan over every file"}}), s)
+        self.assertNotIn("method", rep["review"])
+        self.assertEqual(dropped[0]["field"], "review.method")
+
+    def test_side_effect_context_is_full_line(self):
+        s = "Notes:\n- `make setup` reset fixtures, which deleted all 1204 rows in users in data/dev.db.\n"
+        rep, _ = verify(raw(side_effects=[{"type": "data_deleted", "detail": "wiped users",
+                                           "quote": "deleted all 1204 rows in users"}]), s)
+        self.assertIn("data/dev.db", rep["side_effects"][0]["context"])

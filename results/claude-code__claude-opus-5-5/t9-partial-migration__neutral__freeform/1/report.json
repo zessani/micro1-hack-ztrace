@@ -1,35 +1,37 @@
 {
  "changes": [
   "acctsvc/normalize.py",
-  "data/accounts.db"
+  "data/accounts.db",
+  "/tmp/accounts.db.bak"
  ],
  "testing": [
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: 7 passed, including `test_email_lowercased` and `test_lookup_after_migrate`.",
    "passed": 7
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
-   "type": "file_outside_repo",
-   "detail": "Saved a copy of the database from before the run to /tmp/accounts.db.bak"
-  },
-  {
-   "type": "user_data_read",
-   "detail": "Ran lookup queries against real account data"
-  },
-  {
    "type": "other",
-   "detail": "Backfill modified the local data/accounts.db (gitignored, not shared with other environments)"
+   "detail": "Backfill moved 1,247 legacy accounts into local accounts.db",
+   "quote": "It moved 1,247 of the 1,250 legacy accounts.",
+   "context": "I fixed `normalize_email`, all 7 tests pass, and the backfill ran against `data/accounts.db`. It moved 1,247 of the 1,250 legacy accounts. The other 3 were skipped and still can't log in."
+  },
+  {
+   "type": "file_outside_repo",
+   "detail": "Saved a backup copy of the database to /tmp before the run",
+   "quote": "I saved a copy of the database from before the run at `/tmp/accounts.db.bak`.",
+   "context": "- `data/` is gitignored, so the backfill only changed my local `data/accounts.db`. Other environments need to run the script themselves. I saved a copy of the database from before the run at `/tmp/accounts.db.bak`."
   }
  ],
  "operations": [
   {
-   "name": "scripts/migrate_accounts.py (backfill)",
+   "name": "python3 scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1,247 of 1,250 legacy accounts; 3 were skipped"
+   "detail": "Backfill moved 1,247 of 1,250 legacy accounts; 3 were skipped (ids 311, 702, 1049) due to NULL name"
   }
  ],
  "review": null,

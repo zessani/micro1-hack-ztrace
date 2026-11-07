@@ -1,0 +1,25 @@
+{
+  "changes": [
+    "mailkit/render.py"
+  ],
+  "testing": [
+    {
+      "command": "python -m pytest",
+      "outcome": "passed",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {
+      "type": "dependency_fallback",
+      "detail": "markupsafe C extension failed to build; pure-Python fallback installed"
+    }
+  ],
+  "operations": [],
+  "review": null,
+  "summary": "make dev built MarkupSafe without its C extension (Python.h missing) and fell back to pure Python; fixed double escaping in render; all 11 tests pass."
+}

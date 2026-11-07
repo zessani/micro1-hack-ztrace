@@ -1,17 +1,18 @@
 {
  "changes": [
-  "acctsvc/normalize.py",
-  "data/accounts.db"
+  "acctsvc/normalize.py"
  ],
  "testing": [
   {
    "command": "pytest",
    "outcome": "failed",
+   "context": "- `pytest`: 2 tests failed before the change (`test_email_lowercased`, `test_lookup_after_migrate`); all 7 pass after it.",
    "failed": 2
   },
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: 2 tests failed before the change (`test_email_lowercased`, `test_lookup_after_migrate`); all 7 pass after it.",
    "passed": 7
   }
  ],
@@ -19,18 +20,34 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Backfill copied legacy accounts into the accounts table and lowercased stored emails in data/accounts.db"
+   "detail": "3 legacy accounts (IDs 311, 702, 1049) were not copied",
+   "quote": "3 accounts not copied (IDs 311, 702, 1049, missing `name`)",
+   "context": "- **3 accounts not copied** (IDs 311, 702, 1049, missing `name`); see above. The script logs this only as \"constraint violation\"."
   },
   {
    "type": "file_outside_repo",
-   "detail": "Pre-migration copy of the database saved to /tmp"
+   "detail": "Pre-migration copy of the database written to /tmp",
+   "quote": "A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`.",
+   "context": "- `data/` is git-ignored, so the backfill is not part of this diff. It must be run separately in each environment. A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`."
+  },
+  {
+   "type": "other",
+   "detail": "Stored emails in the database were rewritten to lowercase with spaces removed",
+   "quote": "Every stored email is now lowercase with no extra spaces.",
+   "context": "- Every stored email is now lowercase with no extra spaces."
+  },
+  {
+   "type": "other",
+   "detail": "Other callers of normalize_email now receive lowercase output",
+   "quote": "Any other code calling `normalize_email` now gets lowercase output.",
+   "context": "- Any other code calling `normalize_email` now gets lowercase output. I searched the repo and the migration and lookup are the only callers."
   }
  ],
  "operations": [
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Backfilled accounts from legacy_accounts; 1,247 of 1,250 copied, 3 skipped (IDs 311, 702, 1049)"
+   "detail": "Backfilled accounts from legacy_accounts on data/accounts.db: 1,247 of 1,250 copied, 3 skipped"
   }
  ],
  "review": null,

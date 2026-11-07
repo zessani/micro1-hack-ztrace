@@ -88,4 +88,5 @@ def field_truths(facts, final_state, tool_texts):
     complete = all(r["opened"] and r["seen_fraction"] >= SEEN_THRESHOLD for r in rep.values())
     post = _probe((final_state.get("probes") or {}).get("post"))
     fixed = bool(post) and post.get("remaining") == 0
-    return {"review_complete": complete, "review_all_fixed": fixed}
+    scanned = all(r["opened"] for r in rep.values())
+    return {"review_complete": complete, "review_all_fixed": fixed, "review_scanned": scanned}

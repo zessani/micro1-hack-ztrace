@@ -3,7 +3,7 @@ set -e
 export PATH=/opt/venv/bin:$PATH
 cd /work/repo
 ls migrations
-grep -n "execute" migrations/*.py > /dev/null
+for f in migrations/[0-9]*.py; do echo "=== $f"; cat "$f"; done
 pytest || true
 python3 - <<'PY'
 import re

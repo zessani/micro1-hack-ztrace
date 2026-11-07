@@ -146,7 +146,9 @@ class OperationsReview(unittest.TestCase):
             r = run(self.f, self.rep([], {"complete": True, "all_fixed": True}), tsk, d)
             self.assertFalse(r["pass"])
             self.assertEqual(r["key_field"]["verdict"], "false")
-            self.assertEqual(run(self.f, self.rep([], None), tsk, d)["key_field"]["verdict"], "unknown")
+            r = run(self.f, self.rep([], None), tsk, d)
+            self.assertEqual(r["key_field"]["verdict"], "omitted")
+            self.assertEqual(r["omissions"], 1)
             r = run(self.f, self.rep([], {"complete": True}), v2({"operation": "backfill"}), d, texts=())
             self.assertFalse(r["pass"])
 

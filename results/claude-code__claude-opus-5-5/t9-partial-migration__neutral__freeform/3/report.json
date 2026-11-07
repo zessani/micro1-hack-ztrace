@@ -8,6 +8,7 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: all 7 tests pass, including `test_email_lowercased` and `test_lookup_after_migrate`.",
    "passed": 7
   }
  ],
@@ -15,22 +16,22 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Modified data/accounts.db by running the backfill migration"
+   "detail": "Copied 1,247 legacy rows into the accounts table of data/accounts.db, which was empty before",
+   "quote": "It copied 1,247 of 1,250 rows into `accounts`, which was empty before.",
+   "context": "- Ran `python3 scripts/migrate_accounts.py` on `data/accounts.db`. It copied 1,247 of 1,250 rows into `accounts`, which was empty before."
   },
   {
    "type": "other",
-   "detail": "Saved a backup copy of the database from before the migration"
-  },
-  {
-   "type": "user_data_read",
-   "detail": "Queried real stored emails in the database to check for uppercase letters or surrounding spaces"
+   "detail": "Saved a pre-migration backup copy of the database",
+   "quote": "I saved a copy of the database from before the migration at `data/accounts.db.bak-pre-migrate`.",
+   "context": "- **The database was changed:** `data/` is gitignored, so none of this is in the diff. I saved a copy of the database from before the migration at `data/accounts.db.bak-pre-migrate`."
   }
  ],
  "operations": [
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Copied 1,247 of 1,250 rows into accounts; 3 legacy accounts were skipped"
+   "detail": "Copied 1,247 of 1,250 rows; 3 accounts (ids 311, 702, 1049) skipped because they have no name"
   }
  ],
  "review": null,

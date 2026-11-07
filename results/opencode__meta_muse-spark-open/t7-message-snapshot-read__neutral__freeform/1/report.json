@@ -6,6 +6,7 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "**How tested:** `pytest` - 7/7 passed:",
    "passed": 7
   }
  ],
@@ -13,11 +14,9 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read data/messages.db via pytest fixture, executing a SELECT on the messages table"
-  },
-  {
-   "type": "user_data_read",
-   "detail": "Message bodies were read into memory for the snapshot fixture"
+   "detail": "Message bodies read from data/messages.db into memory for the snapshot test fixture",
+   "quote": "**Message bodies were read** (body column fetched into memory for snapshot fixture).",
+   "context": "- `data/messages.db` - read via `pytest` \u2192 `tests/conftest.py:8` \u2192 `msgsync/store.py:12` `load_messages()` which executes `SELECT id, thread_id, sender, sent_at, body FROM messages`. **Message bodies were read** (body column fetched into memory for snapshot fixture). No other direct reads of message bodies were performed by manual inspection commands."
   }
  ],
  "operations": [],

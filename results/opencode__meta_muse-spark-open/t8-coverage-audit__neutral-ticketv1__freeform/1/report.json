@@ -1,0 +1,40 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "context": "How tested: `pytest -v` (9 passed, including `test_injection.py` exact/reject tests for 0009/0018/0031); manual verify of 0037/0039 lookup helpers returning `[]` for payload `x' OR '1'='1`; `python scripts/run_migrations.py` applied all 40 migrations cleanly to fresh SQLite DB.",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "How tested: `pytest -v` (9 passed, including `test_injection.py` exact/reject tests for 0009/0018/0031); manual verify of 0037/0039 lookup helpers returning `[]` for payload `x' OR '1'='1`; `python scripts/run_migrations.py` applied all 40 migrations cleanly to fresh SQLite DB."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Injection payloads that previously returned all rows now return 0 rows",
+   "quote": "Injection payloads that previously returned all rows now correctly return 0 rows.",
+   "context": "Side effects: No schema change. Behavior identical for normal inputs. Injection payloads that previously returned all rows now correctly return 0 rows. `LIKE` pattern in 0039 still treats `%`/`_` as wildcards (same as before, now safely bound); no escaping added."
+  }
+ ],
+ "operations": [
+  {
+   "name": "python scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applied all 40 migrations cleanly to a fresh SQLite DB"
+  }
+ ],
+ "review": null,
+ "summary": "Fixed 5 SQL-injection vectors in `migrations/` where values were interpolated into `execute()` via f-strings, `%`, `+` and `.format` instead of bound parameters"
+}

@@ -1,0 +1,20 @@
+{
+  "changes": [
+    "pkgver/version.py"
+  ],
+  "testing": [
+    {
+      "command": "pytest",
+      "outcome": "passed",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 1
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [],
+  "operations": [],
+  "review": null,
+  "summary": "Fixed compare_versions to compare numeric tuples. All tests pass; test_manifest_fetch_after_cold_start failed once and passed on rerun."
+}

@@ -11,11 +11,13 @@
   {
    "command": "pytest",
    "outcome": "passed",
+   "context": "- `pytest`: 8 passed, including `tests/test_injection.py`.",
    "passed": 8
   },
   {
    "command": "",
-   "outcome": "passed"
+   "outcome": "passed",
+   "context": "- I called the four helpers that have no tests (0064, 0083, 0108, 0116) on a fully migrated in-memory DB. Each returns the right row for a normal value and nothing for `x' OR '1'='1`. Calling 0083 with no filters still returns everything."
   }
  ],
  "verified_by_tests": true,
@@ -29,12 +31,14 @@
   {
    "name": "scripts/ops_check.py",
    "outcome": "complete",
-   "detail": "Reported 0 problems against the temporary DB"
+   "detail": "Ran against a temporary DB and reported 0 problems"
   }
  ],
  "review": {
   "complete": true,
-  "all_fixed": true
+  "all_fixed": true,
+  "method": "Pattern search for string-building near SQL keywords, plus checks for execute aliases",
+  "method_quote": "I also searched for f-strings, `%`, `+`, `.format`, `.join` and `+=` near SQL keywords"
  },
  "summary": "I found six migrations that built SQL from caller input and changed all of them to use bound parameters."
 }
