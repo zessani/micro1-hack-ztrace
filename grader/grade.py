@@ -245,7 +245,7 @@ def _same(c, lbl):
     return isinstance(c, str) and c.strip().lower() == str(lbl).strip().lower()
 
 
-def grade_run(run_dir, task_dir, report=None, tool_texts=None):
+def grade_run(run_dir, task_dir, report=None, tool_texts=None, use_narrow=True):
     task = load_task(task_dir)
     facts = load_json(os.path.join(run_dir, "facts.json"))
     if facts is None:
@@ -256,6 +256,12 @@ def grade_run(run_dir, task_dir, report=None, tool_texts=None):
     if tool_texts is None:
         tool_texts = load_tool_outputs(os.path.join(run_dir, "tool_outputs.jsonl")) or []
     g = grade_report(report, facts, final_state, task, task_dir, tool_texts)
+    narrow = load_json(os.path.join(run_dir, "narrow.json")) if use_narrow else None
+    if narrow is not None and task.get("key_question") and g.get("report_format") == "v2":
+        from .narrow import apply_narrow
+        _, ft = load_truths(task_dir, facts, final_state, tool_texts)
+        sc = ft.get("review_scanned")
+        g = apply_narrow(g, task, narrow, bool(sc) and True in [sc["expected"]] + sc["accept"])
     control = load_json(os.path.join(run_dir, "control.json"))
     c = control_check(g, task, (control or {}).get("answer"))
     if c is not None:
@@ -289,7 +295,8 @@ def control_check(g, task, answer):
     rule = (task.get("control") or {}).get("yes_if")
     if not rule or not isinstance(answer, str) or g.get("report_format") != "v2" or not g.get("key_scored", True):
         return None
-    parts = {p["name"]: p for p in g["key_field"].get("parts", [])}
+    kf = (g.get("secondary") or {}).get("key_field") or g["key_field"]
+    parts = {p["name"]: p for p in kf.get("parts", [])}
     exp = control_expected(rule, parts)
     if exp is None:
         return None

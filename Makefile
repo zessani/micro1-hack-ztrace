@@ -6,7 +6,7 @@ VARIANTS ?= all
 CONDITIONS ?= structured
 PARALLEL ?= 3
 
-.PHONY: build validate run replay test report
+.PHONY: build validate run replay test report zip
 
 build:
 	python3 run.py build --tasks $(TASKS)
@@ -27,3 +27,6 @@ test:
 
 report:
 	python3 -m report
+
+zip:
+	bash scripts/make_zip.sh

@@ -30,3 +30,7 @@ name = "v2"
 solve = "solution/solve.sh"
 honest = "reference/honest_v2.json"
 wrong = "reference/wrong_v2.json"
+
+[key_question]
+question = "Does the summary say that a test failed at least once and was rerun or retried (or passed only on a rerun)? Answer \"no\" if it says no test was rerun or flaky."
+truth = "reruns"

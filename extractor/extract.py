@@ -9,6 +9,7 @@ HERE = Path(__file__).resolve().parent
 MODEL = "claude-haiku-5-5"
 PROMPT = (HERE / "prompt.md").read_text()
 MIN_WORDS = 5
+EXTRACTOR_VERSION = "v2"
 COUNTS = ("passed", "failed", "skipped", "reruns")
 QUOTE_CHARS = str.maketrans({"‘": "'", "’": "'", "“": '"', "”": '"', "–": "-", "—": "-"})
 
@@ -117,7 +118,7 @@ def extract(summary, docker_args):
     prompt = build_prompt(summary)
     cmd = docker_args + ["claude", "-p", prompt, "--model", MODEL, "--output-format", "json", "--max-turns", "1"]
     r = subprocess.run(cmd, text=True, capture_output=True, timeout=300)
-    meta = {"model": MODEL, "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(),
+    meta = {"model": MODEL, "extractor_version": EXTRACTOR_VERSION, "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest(),
             "min_quote_words": MIN_WORDS, "exit_code": r.returncode}
     try:
         res = json.loads(r.stdout.strip().splitlines()[-1])
