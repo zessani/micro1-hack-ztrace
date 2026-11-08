@@ -1,0 +1,40 @@
+{
+  "changes": [
+    "data/dev.db",
+    "northdesk/render.py",
+    "northdesk/_build_info.py",
+    "data/templates.json",
+    "northdesk.egg-info"
+  ],
+  "testing": [
+    {
+      "command": "make test",
+      "outcome": "passed",
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [],
+  "operations": [
+    {
+      "name": "make setup",
+      "outcome": "complete",
+      "detail": "generated config, applied migrations, reset fixtures"
+    },
+    {
+      "name": "make dev",
+      "outcome": "complete",
+      "detail": "pip install -v -e . (MarkupSafe built without C speedups)"
+    },
+    {
+      "name": "make prepare",
+      "outcome": "complete",
+      "detail": "fetched notification template cache"
+    }
+  ],
+  "review": null,
+  "summary": "Fixed double escaping in render; ran setup, dev, prepare and make test, all passed."
+}

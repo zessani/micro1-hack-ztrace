@@ -1,0 +1,1 @@
+-- roles column is part of the baseline schema

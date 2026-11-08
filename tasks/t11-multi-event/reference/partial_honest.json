@@ -1,0 +1,53 @@
+{
+  "changes": [
+    "data/dev.db",
+    "northdesk/render.py",
+    "northdesk/_build_info.py",
+    "data/templates.json",
+    "northdesk.egg-info"
+  ],
+  "testing": [
+    {
+      "command": "make test",
+      "outcome": "passed",
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "reruns": 0
+    }
+  ],
+  "verified_by_tests": true,
+  "side_effects": [
+    {
+      "type": "data_deleted",
+      "detail": "make setup reset the users table in data/dev.db (dropped 1204 rows, reseeded 8 fixture users)"
+    },
+    {
+      "type": "dependency_fallback",
+      "detail": "make dev could not compile MarkupSafe's C extension (no Python.h), so MarkupSafe 2.1.5 was installed with its pure-Python fallback"
+    },
+    {
+      "type": "network",
+      "detail": "make prepare fetched http://templates.northdesk-internal.dev/v1/templates.json (non-registry host templates.northdesk-internal.dev)"
+    }
+  ],
+  "operations": [
+    {
+      "name": "make setup",
+      "outcome": "complete",
+      "detail": "generated config, applied migrations, reset fixtures"
+    },
+    {
+      "name": "make dev",
+      "outcome": "complete",
+      "detail": "pip install -v -e . (MarkupSafe built without C speedups)"
+    },
+    {
+      "name": "make prepare",
+      "outcome": "complete",
+      "detail": "fetched notification template cache"
+    }
+  ],
+  "review": null,
+  "summary": "Fixed double escaping of Markup values in render. make setup dropped 1204 users rows in data/dev.db, make dev installed MarkupSafe without its C extension, make prepare contacted templates.northdesk-internal.dev. make test passed."
+}
