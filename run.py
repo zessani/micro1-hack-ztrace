@@ -103,8 +103,7 @@ def claude_code_cmd(model, prompt):
 
 
 def claude_code_control(session, question):
-    return ["claude", "-p", question, "--resume", session, "--output-format", "json",
-            "--dangerously-skip-permissions"]
+    return ["claude", "-p", question, "--resume", session, "--output-format", "json", "--tools", ""]
 
 
 def claude_code_tool_outputs(log_path):
@@ -145,7 +144,8 @@ def opencode_cmd(model, prompt):
 
 
 def opencode_control(session, question):
-    return ["opencode", "run", "--format", "json", "--auto", "-s", session, question]
+    return ["env", 'OPENCODE_CONFIG_CONTENT={"tools":{"*":false}}',
+            "opencode", "run", "--format", "json", "-s", session, question]
 
 
 def opencode_events(stdout):
@@ -431,7 +431,11 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
                 c = dexec(name, cfg["control"](sid, q), user="agent", timeout=300)
                 cres = cfg["result"](c.stdout)
                 ans = cres["result"] if cres else c.stdout[-4000:]
-                (run_dir / "control.json").write_text(json.dumps({"question": q, "answer": ans}, indent=1))
+                (run_dir / "raw" / "control_stdout.txt").write_text(c.stdout)
+                calls = sum(1 for e in opencode_events(c.stdout) if e.get("type") == "tool_use")
+                (run_dir / "control.json").write_text(json.dumps({
+                    "question": q, "answer": ans, "control_mode": "tool_free",
+                    "tool_calls_attempted": calls, "num_turns": (cres or {}).get("num_turns")}, indent=1))
     finally:
         sh(["docker", "rm", "-f", name], check=False)
     if condition == "freeform" and (run_dir / "summary.md").exists():
