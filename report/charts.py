@@ -1,7 +1,7 @@
 """Inline SVG charts, generated in Python (no JS)."""
 from html import escape
 
-from .core import MAIN_MODELS, HARD, TASK_ORDER
+from .core import MAIN_MODELS, HARD, TASK_ORDER, OPUS, T8, TICKET_V1
 
 FONT = "font-family='Helvetica,Arial,sans-serif'"
 INK, MUTE, GRID, BAR, ERR = "#1f2933", "#52606d", "#d9dee3", "#2f6f9f", "#102a43"
@@ -57,6 +57,40 @@ def chart_pass_rate(agg):
     return _svg(W, H, "".join(b), "Pass rate per model with Wilson 95% intervals")
 
 
+def chart_hard(agg):
+    """Headline: hard-set pass rate per model with Wilson 95% bars, main matrix."""
+    models = agg.get("main", {}).get("models", {})
+    W, H, L, R, T = 760, 130 + 62 * len(MAIN_MODELS), 230, 40, 60
+    pw = W - L - R
+    present = [t for t in HARD if any(t in md["tasks"] for md in models.values())]
+    b = [_t(W / 2, 26, "Pass rate on the hard set, main matrix (Wilson 95% interval)", 15, "middle", weight="bold"),
+         _t(W / 2, 44, "freeform, neutral; avoided runs excluded from n", 11, "middle", MUTE)]
+    for i in range(6):
+        x = L + pw * i / 5
+        b.append("<line x1='%.1f' y1='%d' x2='%.1f' y2='%d' stroke='%s'/>" % (x, T - 6, x, H - 70, GRID))
+        b.append(_t(x, H - 54, "%d%%" % (i * 20), 11, "middle", MUTE))
+    for j, m in enumerate(MAIN_MODELS):
+        y = T + 62 * j
+        o = models.get(m, {}).get("by_set", {}).get("hard")
+        b.append(_t(L - 10, y + 22, SHORT[m], 12, "end"))
+        if not o or not o["n"]:
+            b.append(_t(L + 6, y + 22, "no scored runs", 12, fill=MUTE))
+            continue
+        x1 = L + pw * o["pass_rate"]
+        b.append("<rect x='%d' y='%d' width='%.1f' height='26' fill='%s'/>" % (L, y + 8, x1 - L, BAR))
+        lo, hi = L + pw * o["ci_low"], L + pw * o["ci_high"]
+        yc = y + 21
+        b.append("<g stroke='%s' stroke-width='2'><line x1='%.1f' y1='%d' x2='%.1f' y2='%d'/>"
+                 "<line x1='%.1f' y1='%d' x2='%.1f' y2='%d'/><line x1='%.1f' y1='%d' x2='%.1f' y2='%d'/></g>"
+                 % (ERR, lo, yc, hi, yc, lo, yc - 7, lo, yc + 7, hi, yc - 7, hi, yc + 7))
+        b.append(_t(L + 4, y + 52, "%s  (%d/%d)  95%% CI %s-%s"
+                    % (_pct(o["pass_rate"]), o["passes"], o["n"], _pct(o["ci_low"]), _pct(o["ci_high"])),
+                    11, fill=MUTE))
+    b.append(_t(L, H - 34, "Hard set: " + ", ".join(present), 10, fill=MUTE))
+    b.append(_t(L, H - 20, "Opus ran t8-coverage-audit with ticket v1 only.", 10, fill=MUTE))
+    return _svg(W, H, "".join(b), "Hard-set pass rate per model with Wilson 95% intervals")
+
+
 def _cell_color(rate):
     stops = [(0.0, (200, 80, 70)), (0.5, (236, 200, 110)), (1.0, (80, 160, 130))]
     for (a, ca), (c, cc) in zip(stops, stops[1:]):
@@ -73,7 +107,7 @@ def chart_grid(agg):
     cw, ch, L, T = 96, 64, 210, 185
     W, H = L + cw * len(tasks) + 60, T + ch * len(MAIN_MODELS) + 30
     b = [_t(W / 2, 26, "Models x tasks, main matrix", 15, "middle", weight="bold"),
-         _t(W / 2, 44, "cell: pass/n, F = key fact misstated, O = key fact not stated; colour = pass rate", 11, "middle", MUTE)]
+         _t(W / 2, 44, "cell: pass/n, F = key fact misstated, O = key fact not stated; colour = pass rate; Opus on t8-coverage-audit = ticket v1", 11, "middle", MUTE)]
     for i, t in enumerate(tasks):
         x = L + cw * i + cw / 2
         tag = "hard" if t in HARD else "reliable"
@@ -95,33 +129,40 @@ def chart_grid(agg):
                 l2 = "F%d O%d" % (c["false_claims"], c["omissions"])
             b.append("<rect x='%d' y='%d' width='%d' height='%d' fill='%s' stroke='#fff' stroke-width='2'/>"
                      % (x, y, cw, ch, fill))
-            b.append(_t(x + cw / 2, y + 28, l1, 15, "middle", weight="bold"))
+            b.append(_t(x + cw / 2, y + 24, l1, 15, "middle", weight="bold"))
             if l2:
-                b.append(_t(x + cw / 2, y + 48, l2, 12, "middle"))
+                b.append(_t(x + cw / 2, y + 42, l2, 12, "middle"))
+            if m == OPUS and t == T8 and c:
+                b.append(_t(x + cw / 2, y + 58, TICKET_V1, 10, "middle", weight="bold"))
     return _svg(W, H, "".join(b), "Models by tasks grid of pass rates")
 
 
 def chart_kbds(agg):
-    """(c) disclosed only when asked: control answer right, summary missed or misstated the key fact."""
+    """(c) disclosed only when asked: share of runs where the summary missed the fact and the control answer stated it."""
     models = agg.get("main", {}).get("models", {})
-    W, H, L, R, T = 760, 90 + 50 * len(MAIN_MODELS), 230, 60, 70
+    W, H, L, R, T = 760, 130 + 50 * len(MAIN_MODELS), 230, 40, 70
     vals = [models.get(m, {}).get("overall", {}) for m in MAIN_MODELS]
-    top = max([v.get("runs_with_control", 0) for v in vals] + [1])
-    pw = W - L - R - 260
+    pw = W - L - R - 200
     b = [_t(W / 2, 26, "Disclosed only when asked, main matrix", 15, "middle", weight="bold"),
-         _t(W / 2, 44, "control answer was right but the summary missed the key fact; control steps where tools were used are excluded",
-            11, "middle", MUTE)]
+         _t(W / 2, 44, "share of runs whose summary missed the fact while the control answer stated it",
+            11, "middle", MUTE),
+         _t(W / 2, 58, "control steps where tools were used are excluded from n", 11, "middle", MUTE)]
+    for i in range(6):
+        x = L + pw * i / 5
+        b.append("<line x1='%.1f' y1='%d' x2='%.1f' y2='%d' stroke='%s'/>" % (x, T - 6, x, H - 50, GRID))
+        b.append(_t(x, H - 34, "%d%%" % (i * 20), 11, "middle", MUTE))
     for j, m in enumerate(MAIN_MODELS):
         y = T + 50 * j
         v = vals[j]
         k, n, x = v.get("knew_but_didnt_say", 0), v.get("runs_with_control", 0), v.get("control_excluded", 0)
         b.append(_t(L - 10, y + 20, SHORT[m], 12, "end"))
-        b.append("<rect x='%d' y='%d' width='%.1f' height='24' fill='#eef0f2'/>" % (L, y + 4, max(pw * n / top, 1)))
+        b.append("<rect x='%d' y='%d' width='%d' height='24' fill='#eef0f2'/>" % (L, y + 4, pw))
+        share = k / n if n else 0
         if k:
-            b.append("<rect x='%d' y='%d' width='%.1f' height='24' fill='#c0504d'/>" % (L, y + 4, pw * k / top))
-        b.append(_t(L + pw * n / top + 8, y + 21, "%d of %d runs with a usable control answer (%d excluded)" % (k, n, x),
-                    11, fill=MUTE))
-    return _svg(W, H, "".join(b), "Disclosed only when asked per model")
+            b.append("<rect x='%d' y='%d' width='%.1f' height='24' fill='#c0504d'/>" % (L, y + 4, pw * share))
+        lab = "n=%d: %d runs (%s), %d excluded" % (n, k, _pct(share), x) if n else "no usable control answers"
+        b.append(_t(L + pw + 8, y + 21, lab, 11, fill=MUTE))
+    return _svg(W, H, "".join(b), "Disclosed only when asked per model, as a share of runs")
 
 
 def chart_audit(rows_agg):

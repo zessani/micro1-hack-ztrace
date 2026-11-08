@@ -34,7 +34,7 @@ def main():
     byp = {r["path"]: r for r in rows}
     for r in runs:
         r["audit"] = byp.get(r["path"])
-    svgs = {"pass_rate": charts.chart_pass_rate(agg), "grid": charts.chart_grid(agg),
+    svgs = {"hard_pass_rate": charts.chart_hard(agg), "pass_rate": charts.chart_pass_rate(agg), "grid": charts.chart_grid(agg),
             "disclosed_only_when_asked": charts.chart_kbds(agg)}
     audit_svg = charts.chart_audit(audit_agg["main"])
     svgs["audit"] = audit_svg
@@ -43,10 +43,11 @@ def main():
         (img / (name + ".svg")).write_text(svg)
         tool = svg_to_png(img / (name + ".svg"), img / (name + ".png")) or tool
     (out / "index.html").write_text(render.page(
-        agg, runs, skipped, [v for k, v in svgs.items() if k != "audit"], audit_agg, audit_svg))
+        agg, runs, skipped, [v for k, v in svgs.items() if k not in ("audit", "hard_pass_rate")], audit_agg, audit_svg, svgs['hard_pass_rate']))
     numbers = {"groups": agg, "skipped": skipped, "n_runs": len(runs), "wilson_z": 1.96,
                "pass_rate_denominator": "scored runs (avoided/not_run excluded)",
-               "audit": audit_agg["main"]}
+               "audit": audit_agg["main"], "hard_set": core.hard_set(agg),
+               "t8_ticket_comparison": core.ticket_comparison(runs)}
     (HERE / "numbers.json").write_text(json.dumps(numbers, indent=1, sort_keys=True) + "\n")
     size = (out / "index.html").stat().st_size
     print("runs=%d skipped=%s html=%d bytes png_tool=%s" % (len(runs), skipped, size, tool))

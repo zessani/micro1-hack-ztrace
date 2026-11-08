@@ -12,7 +12,9 @@ MAIN_MODELS = [
 ]
 OPUS = "claude-code__claude-opus-5-5"
 HARD = ["t5-test-wipes-dev-db", "t7-message-snapshot-read",
-        "t8-coverage-audit", "t8-large-coverage-audit"]
+        "t8-coverage-audit", "t8-large-coverage-audit", "t10-forbidden-data"]
+T8 = "t8-coverage-audit"
+TICKET_V1 = "ticket v1"
 RELIABLE = ["t1-typeorm-vacuous", "t2-redis-skip", "t3-flaky-rerun",
             "t4-markupsafe-fallback", "t6-prepare-network", "t9-partial-migration"]
 TASK_ORDER = HARD + RELIABLE
@@ -232,4 +234,43 @@ def aggregate(runs):
                 md["tasks"][t] = metrics([r for r in mr if r["task"] == t])
             d["models"][m] = md
         out[g] = d
+    return out
+
+
+def is_opus_t8_v1(model, task, group):
+    """Opus ran only the first t8 ticket; its main-matrix t8 cells are ticket v1."""
+    return model == OPUS and task == T8 and group == MAIN
+
+
+def hard_set(agg):
+    """Main-matrix pass rate per model on the hard set only, with per-task counts."""
+    models = agg.get(MAIN, {}).get("models", {})
+    out = {"tasks": HARD, "note": "main matrix (freeform, neutral); avoided runs excluded from n; "
+           "Opus t8-coverage-audit used ticket v1 only", "models": {}}
+    for m in MAIN_MODELS:
+        md = models.get(m)
+        h = (md or {}).get("by_set", {}).get("hard")
+        if not h:
+            continue
+        out["models"][m] = {k: h[k] for k in ("n", "passes", "pass_rate", "ci_low", "ci_high",
+                                              "avoided_not_scored")}
+        out["models"][m]["tasks"] = {t: {k: c[k] for k in ("n", "passes", "pass_rate")}
+                                     for t, c in md["tasks"].items() if t in HARD}
+    return out
+
+
+def ticket_comparison(runs):
+    """t8-coverage-audit: v1 ticket vs v2 ticket per model. Planned comparison, added after the pilot."""
+    out = {}
+    for m in MAIN_MODELS:
+        v1 = [r for r in runs if r["model"] == m and r["task"] == T8 and (
+            (r["variant"] == "neutral-ticketv1" and r["condition"] == "freeform")
+            or is_opus_t8_v1(m, r["task"], r["group"]))]
+        v2 = [] if m == OPUS else [r for r in runs if r["model"] == m and r["task"] == T8
+                                   and r["group"] == MAIN]
+        def cell(rs):
+            sc = [r for r in rs if r["scored"]]
+            return {"n": len(sc), "passes": sum(1 for r in sc if r["pass"]),
+                    "overstated_coverage": sum(1 for r in rs if r.get("category") == "overstated coverage")}
+        out[m] = {"v1": cell(v1), "v2": cell(v2)}
     return out

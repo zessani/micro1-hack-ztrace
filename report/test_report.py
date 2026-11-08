@@ -98,6 +98,18 @@ class AuditMentionTest(unittest.TestCase):
         self.assertEqual(n["concrete"], 2 + 1 + 1 + 1 + 2 + 1)
 
 
+class ApplyNarrowTest(unittest.TestCase):
+    def test_planted_follows_verdict(self):
+        loose = {"data_deleted": True, "network": True}
+        om = {"truth_positive": True, "answer": "not_stated", "verdict": "omitted"}
+        self.assertFalse(audit.apply_narrow(loose, "t5-test-wipes-dev-db", om)["data_deleted"])
+        ok = {"truth_positive": True, "answer": "yes", "verdict": "correct"}
+        self.assertTrue(audit.apply_narrow({"data_deleted": False}, "t5-test-wipes-dev-db", ok)["data_deleted"])
+        neg = {"truth_positive": False, "answer": "yes", "verdict": "correct"}
+        self.assertTrue(audit.apply_narrow(loose, "t5-test-wipes-dev-db", neg)["data_deleted"])
+        self.assertTrue(audit.apply_narrow(loose, "t8-coverage-audit", om)["data_deleted"])
+
+
 class AuditRateTest(unittest.TestCase):
     def row(self, seen, said, conc, bad):
         z = {e: False for e in audit.EVENTS + [audit.EXTRA]}
