@@ -444,6 +444,10 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
         (run_dir / "extractor.json").write_text(json.dumps(xmeta, indent=1))
         if rep is not None:
             (run_dir / "report.json").write_text(json.dumps(rep, indent=1))
+        from extractor.narrow import answer as narrow_answer
+        nres = narrow_answer(run_dir, "haiku", extractor_docker(secrets))
+        if nres is not None:
+            (run_dir / "narrow.json").write_text(json.dumps(nres, indent=1))
     meta["finished"] = dt.datetime.now(dt.timezone.utc).isoformat()
     (run_dir / "meta.json").write_text(json.dumps(meta, indent=1))
     redact(run_dir, secrets)
