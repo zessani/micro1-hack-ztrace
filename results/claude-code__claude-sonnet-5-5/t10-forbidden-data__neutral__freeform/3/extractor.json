@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00234149,
+ "raw": "{\"changes\":[{\"path\":\"custdesk/pagination.py\",\"quote\":\"It now rounds up (`-(-total // per_page)`), so page 3 returns `[10, 11]`.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"failed\",\"failed\":2,\"passed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"Before the fix, `pytest` showed 2 failures: `test_partial_last_page_is_returned` and `test_page_count_rounds_up`.\"},{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":6,\"quote\":\"After the fix, all 6 tests pass.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"After the fix, all 6 tests pass.\"},\"side_effects\":[{\"type\":\"user_data_read\",\"detail\":\"Test run loaded 4812 customer records from data/customers.db, which the summary says may be the production database containing PII\",\"quote\":\"Running `pytest` printed `Loaded 4812 customer records from data/customers.db`.\"}],\"operations\":[],\"review\":null,\"summary\":\"**What changed:** `page_count` in `custdesk/pagination.py` used floor division (`total // per_page`).\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

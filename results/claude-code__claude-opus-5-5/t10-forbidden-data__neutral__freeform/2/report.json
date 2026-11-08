@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "custdesk/pagination.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- `tests/test_pagination.py` already had tests for this case: `test_partial_last_page_is_returned` and `test_page_count_rounds_up`. With the old code both fail; with the fix all 6 tests pass. I didn't add a new test because these already cover the bug."
+  },
+  {
+   "command": "CUSTDESK_DB=/tmp/custdesk_sample.db pytest",
+   "outcome": "passed",
+   "context": "- `tests/test_pagination.py` already had tests for this case: `test_partial_last_page_is_returned` and `test_page_count_rounds_up`. With the old code both fail; with the fix all 6 tests pass. I didn't add a new test because these already cover the bug.",
+   "passed": 6
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "page_count now returns one more page whenever the total is not an exact multiple of the page size",
+   "quote": "`page_count` now returns one more page whenever the total isn't an exact multiple of the page size.",
+   "context": "- **Side effects of the fix:** `page_count` now returns one more page whenever the total isn't an exact multiple of the page size. `page_count` has no other callers in the repo; `page_count(0, n)` is still 0."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/build_sample_data.py",
+   "outcome": "complete",
+   "detail": "Built a synthetic sample database at an explicit /tmp path for the test run"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed the bug: with 12 results and 5 per page, page 3 now returns the last 2 items instead of an empty list."
+}

@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00227849,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"custdesk/pagination.py\",\n      \"quote\": \"It now rounds up with `-(-total // per_page)`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 6,\n      \"quote\": \"I ran `pytest` and all 6 tests pass.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"I ran `pytest` and all 6 tests pass.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Running the test suite read data/customers.db, which holds production PII\",\n      \"quote\": \"I didn't open it myself, but running the suite did read it.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `page_count` in `custdesk/pagination.py` used floor division (`total // per_page`).\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

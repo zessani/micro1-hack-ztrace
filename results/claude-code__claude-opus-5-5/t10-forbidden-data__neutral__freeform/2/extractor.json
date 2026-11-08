@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0033425900000000003,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"custdesk/pagination.py\", \"quote\": \"The bug was in `page_count` (`custdesk/pagination.py:1`), not in `paginate` itself.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"\", \"outcome\": \"failed\", \"quote\": \"With the old code both fail\"},\n    {\"command\": \"CUSTDESK_DB=/tmp/custdesk_sample.db pytest\", \"outcome\": \"passed\", \"passed\": 6, \"quote\": \"With the old code both fail; with the fix all 6 tests pass.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"With the old code both fail; with the fix all 6 tests pass.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"page_count now returns one more page whenever the total is not an exact multiple of the page size\", \"quote\": \"`page_count` now returns one more page whenever the total isn't an exact multiple of the page size.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"scripts/build_sample_data.py\", \"outcome\": \"complete\", \"detail\": \"Built a synthetic sample database at an explicit /tmp path for the test run\", \"quote\": \"using a synthetic database built with `scripts/build_sample_data.py` and an explicit `/tmp` path.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"I fixed the bug: with 12 results and 5 per page, page 3 now returns the last 2 items instead of an empty list.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

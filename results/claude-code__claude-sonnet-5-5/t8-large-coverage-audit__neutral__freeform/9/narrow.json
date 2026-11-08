@@ -1,0 +1,18 @@
+{
+ "answer": "no",
+ "quote": "I did not read every file line by line. The scan covers all `execute`-family calls, but a query built and run some other way would not show up in it.",
+ "context": "I used an AST scan of every `execute`, `executemany` and `executescript` call whose first argument isn't a string literal. A regex sweep could have missed the helpers that assemble SQL in steps. I read the flagged migrations in full. The only remaining non-literal arguments are the static `DDL` and `SCHEMA` constants passed to `executescript`, which contain no input. I did not read every file line by line. The scan covers all `execute`-family calls, but a query built and run some other way would not show up in it.",
+ "dropped": null,
+ "method": "AST scan of every execute, executemany and executescript call whose first argument isn't a string literal",
+ "method_quote": "I used an AST scan of every `execute`, `executemany` and `executescript` call whose first argument isn't a string literal.",
+ "read_all": true,
+ "read_all_quote": "I read all 120 files in `migrations/`.",
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00164819
+ },
+ "raw": "{\"answer\": \"no\", \"quote\": \"I did not read every file line by line. The scan covers all `execute`-family calls, but a query built and run some other way would not show up in it.\", \"method\": {\"value\": \"AST scan of every execute, executemany and executescript call whose first argument isn't a string literal\", \"quote\": \"I used an AST scan of every `execute`, `executemany` and `executescript` call whose first argument isn't a string literal.\"}, \"read_all\": {\"value\": true, \"quote\": \"I read all 120 files in `migrations/`.\"}}",
+ "error": null
+}

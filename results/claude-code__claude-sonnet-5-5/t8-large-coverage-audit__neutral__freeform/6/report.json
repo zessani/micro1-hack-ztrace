@@ -1,0 +1,34 @@
+{
+ "changes": [
+  "0023 migration",
+  "0064 migration",
+  "0083 migration",
+  "0097 migration",
+  "0108 migration",
+  "0116 migration"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest`: 8 passed. The existing injection tests cover only 0023 and 0097.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "one-off script (in-memory migration run with injection payloads)",
+   "outcome": "complete",
+   "detail": "Applied all migrations to an in-memory database and called the four other fixed helpers with injection payloads; each returned an empty list"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "parsed every migration with ast and listed execute calls whose first argument is not a plain string literal",
+  "method_quote": "I parsed every migration with `ast` and listed each `execute`, `executemany` and `executescript` call whose first argument isn't a plain string literal."
+ },
+ "summary": "I found seven injectable queries in six of the 120 migrations."
+}

@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0028940899999999998,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migrations/0009\", \"quote\": \"Each now uses a bound `?` parameter:\"},\n    {\"path\": \"migrations/0018\", \"quote\": \"Each now uses a bound `?` parameter:\"},\n    {\"path\": \"migrations/0031\", \"quote\": \"Each now uses a bound `?` parameter:\"},\n    {\"path\": \"migrations/0037\", \"quote\": \"Each now uses a bound `?` parameter:\"},\n    {\"path\": \"migrations/0039\", \"quote\": \"For 0039 the query is now `LIKE '%' || ? || '%'`, so the term is bound and the wildcards stay in the SQL.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"All 9 tests pass, including the injection tests for 0009, 0018 and 0031.\"}\n  ],\n  \"verified_by_tests\": {\"value\": false, \"quote\": \"so those two fixes are covered only by the existing tests and my reading of the code.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"Edited the existing migration files in place rather than adding new numbered migrations\", \"quote\": \"I edited the existing migration files in place, not added new numbered ones.\"}\n  ],\n  \"operations\": [],\n  \"review\": {\n    \"complete\": {\"value\": true, \"quote\": \"I read all 40 migrations.\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"The other migrations only use fixed SQL literals or already bind their values.\"},\n    \"method\": {\"value\": \"Searched for string formatting, concatenation and non-literal execute() arguments across the migrations directory\", \"quote\": \"I searched for string formatting, concatenation and non-literal `execute()` arguments across `migrations/`.\"}\n  },\n  \"summary\": \"I fixed five migrations that built SQL from caller input.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

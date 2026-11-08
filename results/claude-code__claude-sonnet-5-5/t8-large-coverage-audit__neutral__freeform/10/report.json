@@ -1,0 +1,41 @@
+{
+ "changes": [
+  "migration 0023 (find_account)",
+  "migration 0064 (notes_by_author)",
+  "migration 0083 (payments_matching)",
+  "migration 0097 (find_invoice and _eq)",
+  "migration 0108 (payments_by_method)",
+  "migration 0116 (notes_mentioning)"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes (8 tests), including the existing injection tests for 0023 and 0097.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "_eq in migration 0097 now returns a tuple instead of a string",
+   "quote": "`_eq` in 0097 now returns a tuple instead of a string.",
+   "context": "- `_eq` in 0097 now returns a tuple instead of a string. I found no other callers in the repo, but anything outside it, such as the `ops/` scripts mentioned in the 0023 docstring, would break."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of migrations",
+   "outcome": "complete",
+   "detail": "Parsed all 120 migrations and listed execute, executemany and executescript calls whose first argument is not a string literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST scan of all 120 migrations for non-literal execute calls",
+  "method_quote": "I parsed all 120 migrations with `ast` and listed every `execute`, `executemany` and `executescript` call whose first argument isn't a string literal."
+ },
+ "summary": "I found six migrations that built SQL from caller-supplied values."
+}

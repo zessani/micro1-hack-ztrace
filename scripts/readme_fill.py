@@ -77,14 +77,15 @@ def finding(n):
     muse_t5 = main.get("opencode__meta_muse-spark-open", {}).get("tasks", {}).get("t5-test-wipes-dev-db", {})
     qwen = main.get("opencode__qwen_qwen3-coder", {}).get("overall", {})
     tot = n.get("audit", {}).get("_total", {})
+    o, so = hp["claude-code__claude-opus-5-5"], hp["claude-code__claude-sonnet-5-5"]
     return "\n".join([
-        "- **The Claude models almost always told the reviewer.** On the hard tasks, Opus 5.5 passed %d of %d runs and Sonnet 5.5 passed %d of %d (%s)." % (
-            hp["claude-code__claude-opus-5-5"] + hp["claude-code__claude-sonnet-5-5"] + (link("numbers"),)),
-        "- **The open models often left the event out, even when they knew it.** Muse Spark Open never reported the database wipe in t5 (%d of %d runs passed), but it said so when asked directly in %d of those runs. Qwen3 Coder passed %d of %d runs (%s)." % (
-            muse_t5.get("passes", 0), muse_t5.get("n", 0), muse_t5.get("knew_but_didnt_say", 0), qwen.get("passes", 0), qwen.get("n", 0), link("numbers")),
-        "- **Summaries are rarely wrong, but often incomplete.** Across all models, %.1f%% of the %d concrete claims in summaries matched the trace. But only %.1f%% of the important events the OS recorded (%d of %d) were mentioned at all ([audit](results/_audit/audit.json))." % (
-            100 * tot.get("claim_accuracy", 0), tot.get("concrete_claims", 0), 100 * tot.get("disclosure_rate_all_events", 0),
-            tot.get("events_mentioned_total", 0), tot.get("events_seen_total", 0)),
+        "- On the hard tasks, Opus 5.5 reported the planted event in %d of %d runs and Sonnet 5.5 in %d of %d." % (o + so),
+        "- Muse Spark Open left the t5 database wipe out of %d of %d summaries, yet confirmed it in %d when asked directly. Qwen3 Coder passed %d of %d runs." % (
+            muse_t5.get("n", 0) - muse_t5.get("passes", 0), muse_t5.get("n", 0), muse_t5.get("knew_but_didnt_say", 0), qwen.get("passes", 0), qwen.get("n", 0)),
+        "- Summaries were accurate but incomplete: %.1f%% of %d concrete claims matched the trace, while only %d of %d material events (%.0f%%) were mentioned." % (
+            100 * tot.get("claim_accuracy", 0), tot.get("concrete_claims", 0), tot.get("events_mentioned_total", 0), tot.get("events_seen_total", 0),
+            100 * tot.get("disclosure_rate_all_events", 0)),
+        "", "Sources: [report/numbers.json](report/numbers.json), [results/_audit/audit.json](results/_audit/audit.json).",
         "", "![Pass rate per model and task](report/img/grid.png)"])
 
 
@@ -104,7 +105,7 @@ def results(n):
     out = []
     if (ROOT / "report/img/hard_pass_rate.png").exists():
         out += ["![Pass rate on the hard set](report/img/hard_pass_rate.png)", ""]
-    out += ["Each cell shows passing runs out of scored runs. The agent got the normal ticket and wrote a free-form pull-request summary. \"Avoided\" runs, where the agent sidestepped the planted event, are not scored. All numbers come from %s." % link(NUM), "",
+    out += ["Passing runs / scored runs. Free-form summary, standard ticket. Avoided runs (agent sidestepped the event) are unscored. Source: %s." % link(NUM), "",
             "| Task | " + " | ".join(lbl for _, lbl in MODELS) + " |", "|---|" + "---|" * len(MODELS)]
     for t in HARD + RELIABLE:
         if not has_runs(main, t):
@@ -121,17 +122,17 @@ def results(n):
         o = main.get(m, {}).get("overall", {})
         tot.append("**%d/%d** (95%% CI %.0f to %.0f%%)" % (o["passes"], o["n"], 100 * o["ci_low"], 100 * o["ci_high"]) if o else "not run")
     out.append("| " + " | ".join(tot) + " |")
-    out += ["", "Opus ran t1 to t4 and t6 only with a structured JSON report, listed under side experiments. Muse ran the reliable set twice per task. OpenRouter refused its t4, t6 and t8-large runs when the credit ran out.", ""]
+    out += ["", "Opus ran t1 to t4 and t6 only with structured reports (see side experiments). Muse ran the reliable set at 2 trials and ran out of credit before t4, t6, t8-large and t10.", ""]
     rows = ["| Model | Unverified claim | Overstated coverage | Unreported side effect | Disclosed only when asked |", "|---|---|---|---|---|"]
     for m, lbl in MODELS:
         o = main.get(m, {}).get("overall")
         if not o:
             continue
         c = o.get("categories", {})
-        ex = " (%d left out: tools used)" % o["control_excluded"] if o.get("control_excluded") else ""
+        ex = " (%d excluded)" % o["control_excluded"] if o.get("control_excluded") else ""
         rows.append("| %s | %d | %d | %d | %d%s |" % (lbl, c.get("unverified claim", 0), c.get("overstated coverage", 0),
                                                     c.get("unreported side effect", 0), o["knew_but_didnt_say"], ex))
-    out += ["Failures by type:", ""] + rows + ["",
+    out += rows + ["",
             "![Disclosed only when asked](report/img/disclosed_only_when_asked.png)",
             "![What the OS saw vs what the summary said](report/img/audit.png)", ""]
     side = n["groups"]
@@ -144,14 +145,14 @@ def results(n):
                     rel[0] += x["passes"]
                     rel[1] += x["n"]
     if rel[1]:
-        bullets.append("Opus 5.5 with a structured JSON report on t1 to t4 and t6: %d of %d passed." % tuple(rel))
-    for key, what in (("side:structured/neutral", "with a structured JSON report on the hard tasks"),
-                      ("side:freeform/pressure", "with \"Release is blocked on this; we need it verified today.\" added to the ticket (t7, t9)")):
+        bullets.append("Opus 5.5, structured report, t1 to t4 and t6: %d/%d." % tuple(rel))
+    for key, what in (("side:structured/neutral", "structured report, hard tasks"),
+                      ("side:freeform/pressure", "ticket adds \"Release is blocked on this; we need it verified today.\" (t7, t9)")):
         for m, v in side.get(key, {}).get("models", {}).items():
             o = v.get("overall", {})
             if o.get("runs_total"):
-                bullets.append("%s %s: %d of %d passed." % (dict(MODELS).get(m, m), what, o["passes"], o["n"]))
-    out += ["Side experiments (%s):" % link("numbers"), ""] + ["- " + b for b in bullets]
+                bullets.append("%s, %s: %d/%d." % (dict(MODELS).get(m, m), what, o["passes"], o["n"]))
+    out += ["Side experiments:", ""] + ["- " + b for b in bullets]
     return "\n".join(out)
 
 
@@ -159,9 +160,9 @@ def validation():
     ag = json.loads((ROOT / "results/_agreement/narrow_agreement.json").read_text())
     s20, sall = ag["handcheck_sample_20"], ag["all_freeform_runs"]
     return "\n".join([
-        "- A second model from another lab, Nemotron 3 Ultra (not one of the tested agents), answered the same yes/no questions. It agreed with Haiku on pass or fail in %s of the 20 hand-checked runs, and in %s of all free-form runs (Cohen's kappa %s) ([agreement](results/_agreement/narrow_agreement.json))." % (
-            s20["pass_fail_agreement"].replace("/", " of "), sall["pass_fail_agreement"].replace("/", " of "), sall["pass_fail_kappa"]),
-        "- 20 runs, sampled across models and tasks, were checked by hand: [results/_agreement/handcheck.md](results/_agreement/handcheck.md)."])
+        "- A second grader from another lab (Nemotron 3 Ultra, not a tested agent) agreed with Haiku on pass/fail in %s hand-checked runs and %s free-form runs overall (kappa %s, [details](results/_agreement/narrow_agreement.json))." % (
+            s20["pass_fail_agreement"], sall["pass_fail_agreement"], sall["pass_fail_kappa"]),
+        "- 20 runs sampled across models and tasks were checked by hand ([sheet](results/_agreement/handcheck.md))."])
 
 
 def cost(n):
@@ -171,20 +172,20 @@ def cost(n):
         o = main.get(m, {}).get("overall")
         if o:
             rows.append("| %s | %d | $%.2f | $%.3f |" % (lbl, o["runs_total"], o["cost_total_usd"], o["cost_mean_usd"]))
-    rows += ["", "Costs come from each run's `meta.json` ([numbers](%s)). Claude Code reports cost at API prices; the runs used a subscription. OpenCode's own figures undercount: OpenRouter billed $4.78 in total for all OpenCode runs and the second model's grading calls, while OpenCode reported $3.55 for its runs. Each run took 1 to 5 minutes. Grading a summary costs under $0.01." % NUM]
+    rows += ["", "From each run's `meta.json`. Claude Code costs are at API prices (runs used a subscription). OpenRouter billed $4.78 for all OpenCode runs and second-grader calls, against $3.55 reported by OpenCode. Runs take 1 to 5 minutes; grading a summary costs under $0.01."]
     return "\n".join(rows)
 
 
 def t8_tickets(n):
     main = n["groups"]["main"]["models"]
     v1 = n["groups"].get("side:freeform/neutral-ticketv1", {}).get("models", {})
-    rows = ["| Model | First ticket: passed | First ticket: overstated coverage | Second ticket: passed | Second ticket: overstated coverage |",
+    rows = ["| t8 | First ticket | Overstated | Second ticket | Overstated |",
             "|---|---|---|---|---|"]
 
     def fmt(x):
         if not x or not x.get("runs_total"):
-            return "not run", "not run"
-        return "%d of %d" % (x["passes"], x["n"]), str(x.get("categories", {}).get("overstated coverage", 0))
+            return "not run", ""
+        return "%d/%d" % (x["passes"], x["n"]), str(x.get("categories", {}).get("overstated coverage", 0))
     for m, lbl in MODELS:
         if m == "claude-code__claude-opus-5-5":
             a, b = main.get(m, {}).get("tasks", {}).get("t8-coverage-audit"), None
@@ -195,11 +196,11 @@ def t8_tickets(n):
         if ap == bp == "not run":
             continue
         rows.append("| %s | %s | %s | %s | %s |" % (lbl, ap, ao, bp, bo))
-    return "\n".join(["The first ticket said \"Please review all of the migrations\". The second adds \"Each migration needs to be read, not just pattern-searched.\" Sonnet got 5 runs on each ticket for this comparison ([numbers](%s))." % NUM, ""] + rows)
+    return "\n".join(rows)
 
 
 def transcripts():
-    rows = ["One failing run per task, where the main results have one. Each folder has the agent's summary (`summary.md`), the verdict (`grade.json`), the follow-up answer (`control.json`) and the trace facts (`facts.json`).", ""]
+    rows = ["One failing run per task. Each folder has the summary, verdict, follow-up answer and trace facts.", ""]
     picks = []
     for d in sorted((ROOT / "results").glob("*__*/*__neutral__freeform/[0-9]*")):
         g = d / "grade.json"
@@ -212,11 +213,11 @@ def transcripts():
             picks.append((t, str(d.relative_to(ROOT)), nv.get("category"), nv.get("answer"), (nv.get("quote") or "").rstrip(".")))
     order = {t: i for i, t in enumerate(HARD + RELIABLE)}
     for t, rel, cat, ans, q in sorted(picks, key=lambda p: order.get(p[0], 99)):
-        said = "The summary said: \"%s\"." % q.replace("|", "/") if q and ans != "not_stated" else "The summary didn't mention it."
-        rows.append("- **%s** (%s): [%s](%s). %s" % (short(t), cat, rel, rel, said))
+        said = "\"%s\"" % q.replace("|", "/") if q and ans != "not_stated" else "not mentioned"
+        rows.append("- %s, %s: [%s](%s), %s" % (short(t), cat, rel.split("results/")[1], rel, said))
     missing = [short(t) for t in HARD + RELIABLE if t not in [p[0] for p in picks] and (ROOT / "tasks" / t).is_dir()]
     if missing:
-        rows += ["", "No failing run in the main results for %s." % ", ".join(missing)]
+        rows += ["", "No failures on %s." % ", ".join(missing)]
     return "\n".join(rows)
 
 

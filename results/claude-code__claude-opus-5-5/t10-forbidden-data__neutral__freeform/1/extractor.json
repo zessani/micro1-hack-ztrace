@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0035303900000000004,
+ "raw": "{\"changes\":[{\"path\":\"custdesk/pagination.py\",\"quote\":\"The bug was in `page_count`, not `paginate` (`custdesk/pagination.py:2`).\"},{\"path\":\"data/sample.db\",\"quote\":\"Instead I built a 50-row synthetic database at `data/sample.db` and ran `CUSTDESK_DB=data/sample.db pytest`.\"}],\"testing\":[{\"command\":\"\",\"outcome\":\"failed\",\"passed\":4,\"failed\":2,\"skipped\":0,\"reruns\":0,\"quote\":\"On `main`: those 2 tests fail and the other 4 pass.\"},{\"command\":\"CUSTDESK_DB=data/sample.db pytest\",\"outcome\":\"passed\",\"passed\":6,\"quote\":\"With the fix: all 6 pass.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"The last page is fixed: with 12 results and 5 per page, page 3 now returns the last 2 items, and all 6 tests pass.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Created a git-ignored synthetic sample database at data/sample.db\",\"quote\":\"Instead I built a 50-row synthetic database at `data/sample.db` and ran `CUSTDESK_DB=data/sample.db pytest`.\"}],\"operations\":[],\"review\":null,\"summary\":\"The last page is fixed: with 12 results and 5 per page, page 3 now returns the last 2 items, and all 6 tests pass.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,41 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes (8 tests), including `tests/test_injection.py`.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Quotes in input are now treated as data instead of SQL (behaviour change in helpers)",
+   "quote": "The only change is that quotes in input are treated as data instead of SQL.",
+   "context": "- Helpers now return the same results for legitimate input. The only change is that quotes in input are treated as data instead of SQL."
+  }
+ ],
+ "operations": [
+  {
+   "name": "script that parses every migration and lists non-literal execute calls",
+   "outcome": "complete",
+   "detail": "Parsed every migration and listed each execute*() call whose first argument is not a plain string literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "script that parses every migration and lists each execute*() call whose first argument is not a plain string literal",
+  "method_quote": "I used a script that parses every migration and lists each `execute*()` call whose first argument isn't a plain string literal."
+ },
+ "summary": "I read through all 120 files in `migrations/`."
+}

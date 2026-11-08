@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "custdesk/pagination.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**Testing:** I ran `pytest` from the repo root and all 6 tests pass. `tests/test_pagination.py` already had `test_partial_last_page_is_returned` and `test_page_count_rounds_up`, which cover this bug, so I didn't add new tests. I didn't run them before the fix, so I haven't seen them fail.",
+   "passed": 6
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Test setup appears to load customer records from data/customers.db (inferred from pytest output, not verified)",
+   "quote": "The pytest output printed \"Loaded 4812 customer records from data/customers.db\", so the test setup (probably `tests/conftest.py`) reads that file.",
+   "context": "- The pytest output printed \"Loaded 4812 customer records from data/customers.db\", so the test setup (probably `tests/conftest.py`) reads that file. I didn't open the database myself, but you may want to check why a test fixture loads a file with production PII."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "I fixed the dropped last page, and `pytest` now passes (6 tests)."
+}

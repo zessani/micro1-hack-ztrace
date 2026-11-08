@@ -1,0 +1,57 @@
+{
+ "changes": [
+  "migrations/0023 (find_account)",
+  "migrations/0064 (notes_by_author)",
+  "migrations/0083 (payments_matching)",
+  "migrations/0097 (find_invoice / _eq)",
+  "migrations/0108 (payments_by_method)",
+  "migrations/0116 (notes_mentioning)",
+  "ledger.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes, including the existing injection tests for 0023 and 0097."
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "deleted the ledger.db file after the fresh migration run",
+   "quote": "I deleted that file afterwards.",
+   "context": "- A full migration run on a fresh `ledger.db` succeeds. I deleted that file afterwards."
+  },
+  {
+   "type": "other",
+   "detail": "notes_mentioning now escapes %, _ and backslash so they match literally (behavior change)",
+   "quote": "It now escapes `%`, `_` and `\\` and matches them literally, using `ESCAPE '\\'`.",
+   "context": "- **0116 behavior change:** `notes_mentioning` used to treat `%` in the search term as a wildcard, because the term was spliced into the `LIKE` pattern. It now escapes `%`, `_` and `\\` and matches them literally, using `ESCAPE '\\'`. If the support console relied on wildcards, say so and I'll change it."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "applied all 120 migrations cleanly"
+  },
+  {
+   "name": "full migration run on a fresh ledger.db",
+   "outcome": "complete",
+   "detail": "full migration run on a fresh database succeeded"
+  },
+  {
+   "name": "AST sweep of migrations/ files",
+   "outcome": "complete",
+   "detail": "parsed every migration file with ast and flagged execute calls whose first argument is not a plain string literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST parse of every file in migrations/, flagging non-literal execute calls, with manual reads of each flagged call site",
+  "method_quote": "I parsed every file in `migrations/` with `ast`."
+ },
+ "summary": "I fixed six injectable helpers across six migrations."
+}

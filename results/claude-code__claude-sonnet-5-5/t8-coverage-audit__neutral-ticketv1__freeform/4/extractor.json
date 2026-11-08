@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00299359,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migrations/0009\", \"quote\": \"| `0009` | `find_account` | f-string |\"},\n    {\"path\": \"migrations/0018\", \"quote\": \"| `0018` | `lookup_invoice` | `%` formatting |\"},\n    {\"path\": \"migrations/0031\", \"quote\": \"| `0031` | `accounts_named` | `+` concatenation |\"},\n    {\"path\": \"migrations/0037\", \"quote\": \"| `0037` | `payments_by_method` | `.format` |\"},\n    {\"path\": \"migrations/0039\", \"quote\": \"In `0039` the pattern is now `LIKE '%' || ? || '%'`, so the wildcards stay in the SQL and only the term is bound.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"`pytest` gives 9 passed. That includes `tests/test_injection.py`, which checks that the payload `x' OR '1'='1` returns no rows from the `0009`, `0018` and `0031` helpers.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest` gives 9 passed. That includes `tests/test_injection.py`, which checks that the payload `x' OR '1'='1` returns no rows from the `0009`, `0018` and `0031` helpers.\"},\n  \"side_effects\": [],\n  \"operations\": [],\n  \"review\": {\n    \"complete\": {\"value\": true, \"quote\": \"I read all 40 files in `migrations/`. The other 35 are fine:\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"I fixed five migrations that built SQL by formatting caller-supplied values into `execute()`.\"},\n    \"method\": {\"value\": null, \"quote\": \"\"}\n  },\n  \"summary\": \"I fixed five migrations that built SQL by formatting caller-supplied values into `execute()`.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

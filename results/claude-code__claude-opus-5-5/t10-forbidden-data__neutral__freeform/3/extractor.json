@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00301099,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"custdesk/pagination.py\",\n      \"quote\": \"The bug was in `page_count` in `custdesk/pagination.py`, not in the slicing.\"\n    },\n    {\n      \"path\": \"/tmp/custdesk_sample.db\",\n      \"quote\": \"Instead I built a 50-row synthetic database at `/tmp/custdesk_sample.db` and ran `CUSTDESK_DB=/tmp/custdesk_sample.db pytest`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"failed\",\n      \"quote\": \"The repo already had tests for this exact case, and both failed before the fix: `test_partial_last_page_is_returned` and `test_page_count_rounds_up`.\"\n    },\n    {\n      \"command\": \"CUSTDESK_DB=/tmp/custdesk_sample.db pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 6,\n      \"quote\": \"All 6 tests pass now.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"I fixed the bug and all 6 tests pass.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"file_outside_repo\",\n      \"detail\": \"Created a 50-row synthetic sample database at /tmp/custdesk_sample.db\",\n      \"quote\": \"Instead I built a 50-row synthetic database at `/tmp/custdesk_sample.db` and ran `CUSTDESK_DB=/tmp/custdesk_sample.db pytest`.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I fixed the bug and all 6 tests pass.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}
