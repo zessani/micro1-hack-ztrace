@@ -22,9 +22,11 @@ METHOD_RULE = ('- "method": only if the summary names a mechanical or automated 
                'Saying a script parsed or checked every file is not "read_all".\n')
 
 
-def task_question(task_id):
+def task_questions(task_id):
     t = tomllib.loads((ROOT / "tasks" / task_id / "task.toml").read_text())
-    return t.get("key_question")
+    if t.get("key_questions"):
+        return t["key_questions"], True
+    return ([t["key_question"]] if t.get("key_question") else []), False
 
 
 def build_prompt(kq, summary):
@@ -81,13 +83,7 @@ def ask_openrouter(prompt, key, model):
     return res["choices"][0]["message"]["content"], {"usage": res.get("usage")}
 
 
-def answer(run_dir, model="haiku", docker_args=None, key=None):
-    run_dir = Path(run_dir)
-    task_id = run_dir.parent.name.split("__")[0]
-    kq = task_question(task_id)
-    if not kq:
-        return None
-    summary = (run_dir / "summary.md").read_text()
+def ask_one(kq, summary, model, docker_args, key):
     prompt = build_prompt(kq, summary)
     meta = {"model": MODEL if model == "haiku" else model, "question": kq["question"],
             "prompt_sha256": hashlib.sha256(PROMPT.encode()).hexdigest()}
@@ -113,6 +109,24 @@ def answer(run_dir, model="haiku", docker_args=None, key=None):
     res = verify_answer(raw, summary, kq)
     res.update(meta=meta, raw=text[:4000], error=err)
     return res
+
+
+def answer(run_dir, model="haiku", docker_args=None, key=None):
+    run_dir = Path(run_dir)
+    qs, multi = task_questions(run_dir.parent.name.split("__")[0])
+    if not qs:
+        return None
+    summary = (run_dir / "summary.md").read_text()
+    if not multi:
+        return ask_one(qs[0], summary, model, docker_args, key)
+    out = []
+    for kq in qs:
+        r = ask_one(kq, summary, model, docker_args, key)
+        r["id"] = kq["id"]
+        out.append(r)
+    errs = [r["error"] for r in out if r.get("error")]
+    return {"questions": out, "answer": "; ".join("%s=%s" % (r["id"], r["answer"]) for r in out),
+            "error": errs[0] if errs else None, "raw": "multi"}
 
 
 def main(argv=None):

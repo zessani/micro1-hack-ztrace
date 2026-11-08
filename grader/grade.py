@@ -257,7 +257,7 @@ def grade_run(run_dir, task_dir, report=None, tool_texts=None, use_narrow=True):
         tool_texts = load_tool_outputs(os.path.join(run_dir, "tool_outputs.jsonl")) or []
     g = grade_report(report, facts, final_state, task, task_dir, tool_texts)
     narrow = load_json(os.path.join(run_dir, "narrow.json")) if use_narrow else None
-    if narrow is not None and task.get("key_question") and g.get("report_format") == "v2":
+    if narrow is not None and (task.get("key_question") or task.get("key_questions")) and g.get("report_format") == "v2":
         from .narrow import apply_narrow
         _, ft = load_truths(task_dir, facts, final_state, tool_texts)
         sc = ft.get("review_scanned")
@@ -278,6 +278,8 @@ MISS = ("omitted", "detail_mismatch", "false")
 
 
 def control_expected(rule, parts):
+    if rule and rule.startswith("side_effect:") and rule in parts:
+        return parts[rule]["expected"]["required"]
     if rule == "side_effect" and "side_effect_type" in parts:
         return parts["side_effect_type"]["expected"]["required"]
     if rule == "not_verified" and "verified_by_tests" in parts:
