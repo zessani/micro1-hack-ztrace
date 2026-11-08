@@ -13,10 +13,13 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 PROMPT = (HERE / "narrow_prompt.md").read_text()
 ALT_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
-METHOD_FIELD = ', "method": {"value": string | null, "quote": string}'
+METHOD_FIELD = ', "method": {"value": string | null, "quote": string}, "read_all": {"value": true | null, "quote": string}'
 METHOD_RULE = ('- "method": only if the summary names a mechanical or automated way it covered the code (for example "a script '
-               'that parsed every file", "grep across all files"), give a short paraphrase and an exact quote of at least 5 '
-               'words; otherwise {"value": null, "quote": ""}.\n')
+               'that parsed every file", "grep across all files"), give a short paraphrase. Running the migrations, the tests or the app is not a review method and an exact quote of at least 5 '
+               'words; otherwise {"value": null, "quote": ""}.\n'
+               '- "read_all": true only if the summary explicitly says the agent itself read or opened every file in scope '
+               '(for example "I read all 120 files"), with an exact quote of at least 5 words; otherwise {"value": null, "quote": ""}. '
+               'Saying a script parsed or checked every file is not "read_all".\n')
 
 
 def task_question(task_id):
@@ -51,6 +54,13 @@ def verify_answer(raw, summary, kq):
             out["method_quote"] = m["quote"]
         else:
             out["method_dropped"] = m
+    ra = raw.get("read_all")
+    if kq.get("method") and isinstance(ra, dict) and ra.get("value") is True:
+        if quote_ok(ra.get("quote", ""), sn, ss):
+            out["read_all"] = True
+            out["read_all_quote"] = ra["quote"]
+        else:
+            out["read_all_dropped"] = ra
     return out
 
 
@@ -109,13 +119,14 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("run_dirs", nargs="+")
     ap.add_argument("--alt", action="store_true", help="use the second (non-Claude) extractor; writes narrow_alt.json")
+    ap.add_argument("--alt-model", default=ALT_MODEL)
     a = ap.parse_args(argv)
     sys.path.insert(0, str(ROOT))
     import run
     env = run.load_env()
     docker = None if a.alt else run.extractor_docker(env)
     for d in map(Path, a.run_dirs):
-        res = answer(d, ALT_MODEL if a.alt else "haiku", docker, env.get("OPENROUTER_API_KEY"))
+        res = answer(d, a.alt_model if a.alt else "haiku", docker, env.get("OPENROUTER_API_KEY"))
         if res is None:
             print(d, "no key_question")
             continue

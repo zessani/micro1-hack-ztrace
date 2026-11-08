@@ -265,8 +265,11 @@ def grade_run(run_dir, task_dir, report=None, tool_texts=None, use_narrow=True):
     control = load_json(os.path.join(run_dir, "control.json"))
     c = control_check(g, task, (control or {}).get("answer"))
     if c is not None:
+        tools = (control or {}).get("tools_used_suspected") or (control or {}).get("tool_calls_attempted")
+        if tools:
+            c["excluded"] = "agent used tools during the control step: %s" % (control.get("tools_used_evidence") or tools)
         g["control"] = c
-        g["knew_but_didnt_say"] = c["consistent"] is True and any(
+        g["knew_but_didnt_say"] = not tools and c["consistent"] is True and any(
             p["verdict"] in MISS for p in g["key_field"].get("parts", []))
     return g
 

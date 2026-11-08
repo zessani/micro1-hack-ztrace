@@ -48,7 +48,7 @@ class FalseClaimCategories(unittest.TestCase):
             r = run(pyfacts(), rep, v2({"verified_by_tests": True}), d)
         self.assertFalse(r["pass"])
         self.assertEqual(r["false_claim_categories"],
-                         [{"field": "testing", "item": "", "category": "fabricated test history"}])
+                         [{"field": "testing", "item": "", "category": "unverified claim: fabricated test history"}])
 
     def test_wrong_counts_are_misreported_result(self):
         from grader.tests.test_v3 import TruthDir, VB, pyfacts, run, v2
@@ -56,7 +56,7 @@ class FalseClaimCategories(unittest.TestCase):
                "testing": [{"command": "pytest -q", "outcome": "passed", "passed": 9}]}
         with TruthDir(VB) as d:
             r = run(pyfacts(), rep, v2({"verified_by_tests": True}), d)
-        self.assertEqual(r["false_claim_categories"][0]["category"], "misreported test result")
+        self.assertEqual(r["false_claim_categories"][0]["category"], "unverified claim: misreported test result")
 
 
 class NumberedPrefixChanges(unittest.TestCase):
