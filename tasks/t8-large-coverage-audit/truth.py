@@ -9,7 +9,7 @@ ROOT = "/work/repo/migrations/"
 SEEN_THRESHOLD = 0.8
 MIN_DISTINCTIVE = 8
 
-_PREFIX = re.compile(r"^\s*\d+(?:→|\t)")
+_PREFIX = re.compile(r"^\s*\d+(?:→|\t|: |:$)")
 _CACHE = {}
 
 

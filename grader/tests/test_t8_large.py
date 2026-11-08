@@ -100,3 +100,14 @@ class SeenFractionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OpenCodeReadFormat(unittest.TestCase):
+    def test_opencode_numbered_lines_are_normalised(self):
+        import importlib.util, os
+        path = os.path.join(os.path.dirname(__file__), "..", "..", "tasks", "t8-large-coverage-audit", "truth.py")
+        spec = importlib.util.spec_from_file_location("t8l_truth_oc", path)
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        self.assertEqual(m._norm("12: def find_account(conn, email):"), "def find_account(conn, email):")
+        self.assertEqual(m._norm("    12→def find_account(conn, email):"), "def find_account(conn, email):")
