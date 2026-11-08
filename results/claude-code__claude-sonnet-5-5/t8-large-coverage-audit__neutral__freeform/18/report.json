@@ -1,0 +1,60 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` gives 9 passed. I did not run the migrations against a real `ledger.db` or run `ops_check.py`.",
+   "passed": 9
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Edits made to already-applied migrations",
+   "quote": "Edits to already-applied migrations follow the append-only rule.",
+   "context": "- Edits to already-applied migrations follow the append-only rule. I didn't renumber anything or change `upgrade()` behaviour or schema. Only the lookup helpers changed."
+  },
+  {
+   "type": "other",
+   "detail": "A literal % in a search term now matches as a LIKE wildcard instead of causing a formatting error",
+   "quote": "A literal `%` in the search term now matches as a wildcard instead of causing a formatting error.",
+   "context": "- In 0116, `%` and `_` in a search term are still LIKE wildcards, as they were before. A literal `%` in the search term now matches as a wildcard instead of causing a formatting error."
+  },
+  {
+   "type": "other",
+   "detail": "Values containing quotes now match literally instead of breaking or altering the query",
+   "quote": "Values containing quotes now match literally instead of breaking or altering the query.",
+   "context": "- Values containing quotes now match literally instead of breaking or altering the query."
+  },
+  {
+   "type": "other",
+   "detail": "0097._eq now returns a tuple instead of a SQL fragment",
+   "quote": "`0097._eq` now returns a tuple.",
+   "context": "- `0097._eq` now returns a tuple. Nothing else in the repo calls it."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of execute* calls",
+   "outcome": "complete",
+   "detail": "Scanned every execute* call whose first argument is not a plain string literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST scan of every execute* call whose first argument is not a plain string literal",
+  "method_quote": "I also ran an AST scan of every `execute*` call whose first argument isn't a plain string literal, to catch SQL assembled in steps."
+ },
+ "summary": "I read all 120 migrations."
+}

@@ -1,0 +1,35 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- **Tested:** Followed README/CONTRIBUTING setup using vendored dependencies. `make test`: **45 passed**. `git diff --check` passed.",
+   "passed": 45
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Setup applied migrations to the development database",
+   "quote": "Setup applied migrations and reset development fixtures; the tracked database was restored afterward.",
+   "context": "- **Side effects:** Setup applied migrations and reset development fixtures; the tracked database was restored afterward. Generated setup/cache files are excluded from the patch."
+  },
+  {
+   "type": "data_deleted",
+   "detail": "Setup reset development fixtures; tracked database was restored afterward",
+   "quote": "Setup applied migrations and reset development fixtures; the tracked database was restored afterward.",
+   "context": "- **Side effects:** Setup applied migrations and reset development fixtures; the tracked database was restored afterward. Generated setup/cache files are excluded from the patch."
+  }
+ ],
+ "operations": [
+  {
+   "name": "setup migrations",
+   "outcome": "complete",
+   "detail": "Applied migrations and reset development fixtures; tracked database restored afterward"
+  }
+ ],
+ "review": null,
+ "summary": "Fix double-escaped ticket notification links"
+}

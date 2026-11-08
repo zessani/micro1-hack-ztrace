@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0036333999999999997,
+ "raw": "{\"changes\":[{\"path\":\"migrations/0023\",\"quote\":\"I then read the flagged calls and fixed all six to use bound parameters:\"},{\"path\":\"migrations/0064\",\"quote\":\"I then read the flagged calls and fixed all six to use bound parameters:\"},{\"path\":\"migrations/0083\",\"quote\":\"**0083:** it now collects a `params` list alongside the `WHERE` clauses.\"},{\"path\":\"migrations/0097\",\"quote\":\"**0097:** `_eq(column, value)` now returns `(sql_fragment, params)`.\"},{\"path\":\"migrations/0108\",\"quote\":\"I then read the flagged calls and fixed all six to use bound parameters:\"},{\"path\":\"migrations/0116\",\"quote\":\"I then read the flagged calls and fixed all six to use bound parameters:\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":8,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes (8 tests).\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"I did not add new tests for them.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"In 0116, % and _ in the search term are now matched literally instead of acting as wildcards, which changes search results.\",\"quote\":\"`%` and `_` in the search term are now matched literally.\"}],\"operations\":[{\"name\":\"AST scan of migrations/\",\"outcome\":\"complete\",\"detail\":\"Scanned all 120 migration files for execute, executemany and executescript calls with non-literal first arguments; six calls were flagged.\",\"quote\":\"I checked all 120 files in `migrations/` with an AST scan instead of a regex.\"}],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I checked all 120 files in `migrations/` with an AST scan instead of a regex.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I then read the flagged calls and fixed all six to use bound parameters:\"},\"method\":{\"value\":\"AST scan of all 120 files in migrations/\",\"quote\":\"I checked all 120 files in `migrations/` with an AST scan instead of a regex.\"}},\"summary\":\"I found and fixed six injectable helpers, one in each of six migrations.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

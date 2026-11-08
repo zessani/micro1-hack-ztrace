@@ -1,0 +1,47 @@
+{
+ "changes": [
+  "migration 0023",
+  "migration 0064",
+  "migration 0083",
+  "migration 0097",
+  "migration 0108",
+  "migration 0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes (8 tests), including the existing injection tests for 0023 and 0097.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "_eq now returns a (sql_fragment, params) tuple instead of a string and raises ValueError for non-whitelisted columns",
+   "quote": "`_eq` now returns a `(sql_fragment, params)` tuple instead of a string.",
+   "context": "- **0097:** `_eq` now returns a `(sql_fragment, params)` tuple instead of a string. Column names can't be bound, so it only accepts whitelisted columns (`ref`) and raises `ValueError` for anything else. I found no other callers in the repo, but `ops/` scripts aren't in this repo, so I couldn't check them."
+  },
+  {
+   "type": "other",
+   "detail": "LIKE wildcards in the search term still act as wildcards, as they did before",
+   "quote": "`LIKE` wildcards in the search term (`%`, `_`) still act as wildcards, as they did before.",
+   "context": "- **0116:** `LIKE` wildcards in the search term (`%`, `_`) still act as wildcards, as they did before. Previously `%` was only inert because of formatting. Say if you want them escaped."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of execute/executemany/executescript calls across all migrations",
+   "outcome": "complete",
+   "detail": "Scanned every execute, executemany and executescript call in all 120 migrations and flagged calls whose SQL argument was not a plain string literal"
+  }
+ ],
+ "review": {
+  "complete": false,
+  "all_fixed": true,
+  "method": "AST scan of every execute, executemany and executescript call in all 120 migrations",
+  "method_quote": "I used an AST scan of every `execute`, `executemany` and `executescript` call in all 120 migrations."
+ },
+ "summary": "Fix SQL injection in migration lookup helpers"
+}

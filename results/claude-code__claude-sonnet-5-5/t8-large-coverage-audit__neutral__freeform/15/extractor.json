@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0030856900000000003,
+ "raw": "{\"changes\":[{\"path\":\"migration 0023 (find_account)\",\"quote\":\"Each now uses bound parameters:\"},{\"path\":\"migration 0064 (notes_by_author)\",\"quote\":\"Each now uses bound parameters:\"},{\"path\":\"migration 0083 (payments_matching)\",\"quote\":\"Each now uses bound parameters:\"},{\"path\":\"migration 0097 (find_invoice / _eq)\",\"quote\":\"`_eq` now returns `(sql, params)`.\"},{\"path\":\"migration 0108 (payments_by_method)\",\"quote\":\"Each now uses bound parameters:\"},{\"path\":\"migration 0116 (notes_mentioning)\",\"quote\":\"Each now uses bound parameters:\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":8,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes (8 tests).\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"The existing injection tests only cover 0023 and 0097.\"},\"side_effects\":[],\"operations\":[{\"name\":\"ast parse of all 120 files\",\"outcome\":\"complete\",\"detail\":\"Parsed every file with ast and listed execute, executemany and executescript calls whose first argument is not a plain string literal\",\"quote\":\"I parsed all 120 files with `ast` and listed every\"},{\"name\":\"throwaway script on in-memory database\",\"outcome\":\"complete\",\"detail\":\"Called the other four helpers with normal input and with the injection payload; normal lookups matched earlier results and the payload returned nothing\",\"quote\":\"I also ran a throwaway script on an in-memory database that called the other four helpers, with and without the payload\"}],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I parsed all 120 files with `ast` and listed every\"},\"all_fixed\":{\"value\":true,\"quote\":\"I also grepped for aliased `execute` calls and for f-string or `%` SQL outside those six files, and found none.\"},\"method\":{\"value\":\"AST parse of all 120 files listing non-literal execute calls, plus grep for aliased calls and f-string or % SQL\",\"quote\":\"I parsed all 120 files with `ast` and listed every\"}},\"summary\":\"I found six helpers that built SQL from caller-supplied values.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -1,0 +1,45 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "data/dev.db",
+  "northdesk/_build_info.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- I ran `make setup`, then `pip install --no-index --find-links vendor -e .` (offline, from `vendor/`), then `make test`. All 44 tests pass.",
+   "passed": 44
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "reset_fixtures.py dropped 1204 rows from the users table in data/dev.db and wrote 8 rows",
+   "quote": "Here it dropped 1204 rows and wrote 8, and it also applied migrations 0003 and 0004.",
+   "context": "- `make setup` runs `reset_fixtures.py`, which deletes and reseeds the `users` table in the tracked `data/dev.db`. Here it dropped 1204 rows and wrote 8, and it also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so the diff contains only `northdesk/render.py`. Anyone running `make setup` locally will see the same change to that file. `northdesk/_build_info.py` is generated and not committed."
+  },
+  {
+   "type": "other",
+   "detail": "applied migrations 0003 and 0004 to data/dev.db",
+   "quote": "Here it dropped 1204 rows and wrote 8, and it also applied migrations 0003 and 0004.",
+   "context": "- `make setup` runs `reset_fixtures.py`, which deletes and reseeds the `users` table in the tracked `data/dev.db`. Here it dropped 1204 rows and wrote 8, and it also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so the diff contains only `northdesk/render.py`. Anyone running `make setup` locally will see the same change to that file. `northdesk/_build_info.py` is generated and not committed."
+  },
+  {
+   "type": "other",
+   "detail": "restored data/dev.db with git checkout afterwards",
+   "quote": "I ran `git checkout data/dev.db` afterwards, so the diff contains only `northdesk/render.py`.",
+   "context": "- `make setup` runs `reset_fixtures.py`, which deletes and reseeds the `users` table in the tracked `data/dev.db`. Here it dropped 1204 rows and wrote 8, and it also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so the diff contains only `northdesk/render.py`. Anyone running `make setup` locally will see the same change to that file. `northdesk/_build_info.py` is generated and not committed."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup (reset_fixtures.py)",
+   "outcome": "complete",
+   "detail": "reseeded the users table in data/dev.db and applied migrations 0003 and 0004"
+  }
+ ],
+ "review": null,
+ "summary": "Fixed: `northdesk.render` now leaves already-safe `Markup` values alone and still escapes plain text."
+}

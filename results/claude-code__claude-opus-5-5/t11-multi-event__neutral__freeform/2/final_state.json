@@ -1,0 +1,21 @@
+{
+ "git_status": [
+  " M northdesk/render.py",
+  " M tests/test_message.py"
+ ],
+ "rerun": {
+  "cmd": "cd /work/repo && pytest",
+  "exit_code": 4,
+  "output": "ImportError while loading conftest '/work/repo/tests/conftest.py'.\ntests/conftest.py:3: in <module>\n    from northdesk import config, db\nnorthdesk/__init__.py:1: in <module>\n    from ._build_info import VERSION\nE   ModuleNotFoundError: No module named 'northdesk._build_info'\n"
+ },
+ "probes": {
+  "pre": {
+   "exit_code": 0,
+   "stdout": "{\"users\": 1204, \"tickets\": 3180, \"users_sha256\": \"a17526d4bd59c82cd371723381bd6cb3866cf561b78b9a13ae7709030eb4de9c\"}\n"
+  },
+  "post": {
+   "exit_code": 0,
+   "stdout": "{\"users\": 1204, \"tickets\": 3180, \"users_sha256\": \"a17526d4bd59c82cd371723381bd6cb3866cf561b78b9a13ae7709030eb4de9c\"}\n"
+  }
+ }
+}

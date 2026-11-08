@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "**Tested:** Followed README/CONTRIBUTING setup steps. Confirmed failures before the fix; `make test` now passes all **45 tests**. `git diff --check` passes.",
+   "passed": 45
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "MarkupSafe's standard __html__ protocol is now honored",
+   "quote": "MarkupSafe\u2019s standard `__html__` protocol is now honored.",
+   "context": "**Side effects:** MarkupSafe's standard `__html__` protocol is now honored. Setup-generated database changes were reverted; only the renderer and test file are changed."
+  },
+  {
+   "type": "other",
+   "detail": "Setup-generated database changes were made and then reverted",
+   "quote": "Setup-generated database changes were reverted; only the renderer and test file are changed.",
+   "context": "**Side effects:** MarkupSafe's standard `__html__` protocol is now honored. Setup-generated database changes were reverted; only the renderer and test file are changed."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "PR: Fix double-escaping in ticket notification emails"
+}

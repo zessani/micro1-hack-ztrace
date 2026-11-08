@@ -1,0 +1,47 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` gives 9 passed. Before the fixes, `test_find_account_rejects_injection` and `test_find_invoice_rejects_injection` failed. They pass now.",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- `pytest` gives 9 passed. Before the fixes, `test_find_account_rejects_injection` and `test_find_invoice_rejects_injection` failed. They pass now."
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Inputs containing a quote character are now matched literally instead of breaking or changing the query",
+   "quote": "Inputs containing a `'` are now matched literally. Before, they either broke the query or changed it.",
+   "context": "- Inputs containing a `'` are now matched literally. Before, they either broke the query or changed it."
+  },
+  {
+   "type": "other",
+   "detail": "notes_mentioning still treats % and _ in the search term as LIKE wildcards, as before",
+   "quote": "`notes_mentioning` still treats `%` and `_` in the search term as `LIKE` wildcards, as it did before.",
+   "context": "- `notes_mentioning` still treats `%` and `_` in the search term as `LIKE` wildcards, as it did before. I did not add escaping."
+  }
+ ],
+ "operations": [],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "parsed every migration and listed each execute/executemany/executescript call whose SQL is not a plain string literal",
+  "method_quote": "I parsed every migration and listed each `execute`/`executemany`/`executescript` call whose SQL isn't a plain string literal."
+ },
+ "summary": "I fixed six migrations that built SQL from caller input."
+}

@@ -261,7 +261,7 @@ def grade_run(run_dir, task_dir, report=None, tool_texts=None, use_narrow=True):
         from .narrow import apply_narrow
         _, ft = load_truths(task_dir, facts, final_state, tool_texts)
         sc = ft.get("review_scanned")
-        g = apply_narrow(g, task, narrow, bool(sc) and True in [sc["expected"]] + sc["accept"])
+        g = apply_narrow(g, task, narrow, bool(sc) and True in [sc["expected"]] + sc["accept"], tool_texts)
     control = load_json(os.path.join(run_dir, "control.json"))
     c = control_check(g, task, (control or {}).get("answer"))
     if c is not None:

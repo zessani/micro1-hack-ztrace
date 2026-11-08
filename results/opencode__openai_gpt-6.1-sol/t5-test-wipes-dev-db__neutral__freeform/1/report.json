@@ -1,0 +1,29 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- Ran `make setup` and `pytest`: **38 passed**.",
+   "passed": 38
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Preserved and restored the original development database after testing",
+   "quote": "Preserved and restored the original development database after testing.",
+   "context": "- Preserved and restored the original development database after testing."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Ran the project's setup target before running tests"
+  }
+ ],
+ "review": null,
+ "summary": "Made email lookups case-insensitive and reused them to reject duplicate accounts with `ValueError`."
+}

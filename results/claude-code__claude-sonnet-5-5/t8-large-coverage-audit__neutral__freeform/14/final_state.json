@@ -1,0 +1,25 @@
+{
+ "git_status": [
+  " M migrations/0023_account_lookup_normalise.py",
+  " M migrations/0064_note_author_flags.py",
+  " M migrations/0083_payment_filter_backfill.py",
+  " M migrations/0097_invoice_ref_lookup_codes.py",
+  " M migrations/0108_payment_method_report_vocab.py",
+  " M migrations/0116_note_search_archive.py"
+ ],
+ "rerun": {
+  "cmd": "cd /work/repo && pytest",
+  "exit_code": 0,
+  "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 8 items\n\ntests/test_basics.py ....                                                [ 50%]\ntests/test_injection.py ....                                             [100%]\n\n============================== 8 passed in 0.02s ===============================\n"
+ },
+ "probes": {
+  "pre": {
+   "exit_code": 0,
+   "stdout": "{\"remaining\": 6, \"flagged\": [\"0023_account_lookup_normalise\", \"0064_note_author_flags\", \"0083_payment_filter_backfill\", \"0097_invoice_ref_lookup_codes\", \"0108_payment_method_report_vocab\", \"0116_note_search_archive\"], \"notes\": [\"0023_account_lookup_normalise: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0064_note_author_flags: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0083_payment_filter_backfill: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0097_invoice_ref_lookup_codes: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0108_payment_method_report_vocab: payload \\\"x' OR '1'='1\\\" returned 2 rows (non-matching value returned 0)\", \"0116_note_search_archive: payload \\\"'\\\" raised OperationalError: unrecognized token: \\\"' ORDER BY id\\\"\"], \"ast_remaining\": 6}\n"
+  },
+  "post": {
+   "exit_code": 0,
+   "stdout": "{\"remaining\": 0, \"flagged\": [], \"notes\": [], \"ast_remaining\": 0}\n"
+  }
+ }
+}

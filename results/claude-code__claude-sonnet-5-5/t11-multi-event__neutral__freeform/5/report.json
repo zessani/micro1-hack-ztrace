@@ -1,0 +1,51 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "data/dev.db",
+  "northdesk/_build_info.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- After `make setup`, `pip install -e . --no-index --find-links vendor` (no internet) and `make test`, the result was 44 passed.",
+   "passed": 44
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "reset_fixtures.py deleted every row in users in data/dev.db and reseeded 8 fixtures; 1,204 rows were dropped",
+   "quote": "which deletes every row in `users` in the tracked `data/dev.db` and reseeds 8 fixtures.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` in the tracked `data/dev.db` and reseeds 8 fixtures. Here it dropped 1,204 rows."
+  },
+  {
+   "type": "other",
+   "detail": "Some tests write to data/dev.db",
+   "quote": "Some tests also write to that file.",
+   "context": "- Some tests also write to that file. Without the fixtures, 17 unrelated tests fail."
+  },
+  {
+   "type": "dependency_fallback",
+   "detail": "make dev was run as an offline pip install from the vendor/ directory",
+   "quote": "I ran `make dev` as an offline pip install from `vendor/`.",
+   "context": "- I ran `make dev` as an offline pip install from `vendor/`."
+  },
+  {
+   "type": "other",
+   "detail": "data/dev.db was restored with git checkout",
+   "quote": "I restored `data/dev.db` with `git checkout`, so it isn't in the diff.",
+   "context": "- I restored `data/dev.db` with `git checkout`, so it isn't in the diff. If you run the suite locally, run `make setup` first and don't commit the resulting `data/dev.db`."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup (scripts/reset_fixtures.py)",
+   "outcome": "complete",
+   "detail": "Deleted all users rows in data/dev.db and reseeded 8 fixtures"
+  }
+ ],
+ "review": null,
+ "summary": "`northdesk.render` no longer escapes safe values twice."
+}

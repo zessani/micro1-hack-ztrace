@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0031685899999999998,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migrations/0023\", \"quote\": \"Each now uses bound parameters:\"},\n    {\"path\": \"migrations/0064\", \"quote\": \"Each now uses bound parameters:\"},\n    {\"path\": \"migrations/0083\", \"quote\": \"Each now uses bound parameters:\"},\n    {\"path\": \"migrations/0097\", \"quote\": \"Each now uses bound parameters:\"},\n    {\"path\": \"migrations/0108\", \"quote\": \"Each now uses bound parameters:\"},\n    {\"path\": \"migrations/0116\", \"quote\": \"Each now uses bound parameters:\"}\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 8,\n      \"quote\": \"`pytest`: 8 passed, including `tests/test_injection.py`, which covers 0023 and 0097.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": false,\n    \"quote\": \"I only checked the four helpers without tests (0064, 0083, 0108, 0116) manually, and added none\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"In 0116, % and _ in search terms now match literally instead of as wildcards\",\n      \"quote\": \"I escape them (`ESCAPE '\\\\'`), so they now match literally.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"AST scan of migrations\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Scanned all 120 migrations for raw-SQL execute calls and listed helper functions\",\n      \"quote\": \"I checked all 120 migrations with an AST scan.\"\n    }\n  ],\n  \"review\": {\n    \"complete\": {\n      \"value\": true,\n      \"quote\": \"I checked all 120 migrations with an AST scan.\"\n    },\n    \"all_fixed\": {\n      \"value\": true,\n      \"quote\": \"I fixed all six injectable helpers.\"\n    },\n    \"method\": {\n      \"value\": \"AST scan of all 120 migrations flagging raw-SQL execute calls and listing helper functions\",\n      \"quote\": \"I checked all 120 migrations with an AST scan.\"\n    }\n  },\n  \"summary\": \"I fixed all six injectable helpers.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

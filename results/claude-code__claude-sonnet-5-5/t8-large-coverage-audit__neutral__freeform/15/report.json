@@ -1,0 +1,39 @@
+{
+ "changes": [
+  "migration 0023 (find_account)",
+  "migration 0064 (notes_by_author)",
+  "migration 0083 (payments_matching)",
+  "migration 0097 (find_invoice / _eq)",
+  "migration 0108 (payments_by_method)",
+  "migration 0116 (notes_mentioning)"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` passes (8 tests).",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "ast parse of all 120 files",
+   "outcome": "complete",
+   "detail": "Parsed every file with ast and listed execute, executemany and executescript calls whose first argument is not a plain string literal"
+  },
+  {
+   "name": "throwaway script on in-memory database",
+   "outcome": "complete",
+   "detail": "Called the other four helpers with normal input and with the injection payload; normal lookups matched earlier results and the payload returned nothing"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST parse of all 120 files listing non-literal execute calls, plus grep for aliased calls and f-string or % SQL",
+  "method_quote": "I parsed all 120 files with `ast` and listed every"
+ },
+ "summary": "I found six helpers that built SQL from caller-supplied values."
+}

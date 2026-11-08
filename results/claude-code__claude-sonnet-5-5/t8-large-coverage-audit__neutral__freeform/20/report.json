@@ -1,0 +1,58 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "Six helpers in `migrations/` built SQL from caller input. All six now use bound parameters, and `pytest` passes (8 passed).",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "_eq in 0097 has a new signature, _eq(column)",
+   "quote": "`_eq` in 0097 has a new signature, `_eq(column)`.",
+   "context": "- `_eq` in 0097 has a new signature, `_eq(column)`. Nothing else in the repo calls it."
+  },
+  {
+   "type": "other",
+   "detail": "Values containing a quote are now matched literally instead of breaking or altering the query",
+   "quote": "Values containing a quote are now matched literally. Before, they either broke the query or altered it.",
+   "context": "- Values containing a quote are now matched literally. Before, they either broke the query or altered it."
+  },
+  {
+   "type": "other",
+   "detail": "Migrations were changed in place; none were renumbered",
+   "quote": "I changed the migrations in place and didn't renumber any.",
+   "context": "- I changed the migrations in place and didn't renumber any. None of these edits touch `upgrade()`, so applying them to a database does the same as before."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST walk of execute, executemany and executescript calls across all migrations",
+   "outcome": "complete",
+   "detail": "Scanned every execute-family call in all 120 migrations, then read flagged helpers"
+  },
+  {
+   "name": "Second AST pass over all migrations",
+   "outcome": "complete",
+   "detail": "Confirmed the only non-constant execute arguments left are fixed SQL strings built from placeholders"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST walk of every execute, executemany and executescript call in all migrations",
+  "method_quote": "I checked every `execute`, `executemany` and `executescript` call in all 120 migrations with an AST walk."
+ },
+ "summary": "Six helpers in `migrations/` built SQL from caller input."
+}

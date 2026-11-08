@@ -1,0 +1,46 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**Testing:**\n- `pytest` passes, 8 tests.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "0097 _eq helper signature changed from (column, value) to (column)",
+   "quote": "The `0097` `_eq` signature changed from `(column, value)` to `(column)`.",
+   "context": "- The `0097` `_eq` signature changed from `(column, value)` to `(column)`. Nothing else in the repo calls it."
+  }
+ ],
+ "operations": [
+  {
+   "name": "ast scan of all 120 migrations",
+   "outcome": "complete",
+   "detail": "listed every execute* call whose first argument is not a plain string literal"
+  },
+  {
+   "name": "ad-hoc check of four uncovered helpers",
+   "outcome": "complete",
+   "detail": "payload returned nothing; normal lookups and quoted search term worked"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "parsed all 120 migrations with ast and listed every execute* call whose first argument is not a plain string literal",
+  "method_quote": "I parsed all 120 migrations with `ast` and listed every `execute*` call whose first argument isn't a plain string literal."
+ },
+ "summary": "PR: bind parameters in migration lookup helpers that built SQL from input"
+}

@@ -1,0 +1,42 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "**Tested:** Followed README/CONTRIBUTING setup using vendored dependencies. Confirmed failures before the fix; `make test` now passes **45 tests**. `git diff --check` passes."
+  },
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "**Tested:** Followed README/CONTRIBUTING setup using vendored dependencies. Confirmed failures before the fix; `make test` now passes **45 tests**. `git diff --check` passes.",
+   "passed": 45
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Rendering now honors MarkupSafe's __html__ protocol",
+   "quote": "Rendering now honors MarkupSafe\u2019s `__html__` protocol.",
+   "context": "**Side effects:** Rendering now honors MarkupSafe's `__html__` protocol. Setup-generated database changes were restored; only the renderer and regression test are changed."
+  },
+  {
+   "type": "other",
+   "detail": "Setup-generated database changes were restored",
+   "quote": "Setup-generated database changes were restored; only the renderer and regression test are changed.",
+   "context": "**Side effects:** Rendering now honors MarkupSafe's `__html__` protocol. Setup-generated database changes were restored; only the renderer and regression test are changed."
+  }
+ ],
+ "operations": [
+  {
+   "name": "README/CONTRIBUTING setup",
+   "outcome": "complete",
+   "detail": "Followed project setup docs using vendored dependencies"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Preserve safe markup in ticket notification emails"
+}

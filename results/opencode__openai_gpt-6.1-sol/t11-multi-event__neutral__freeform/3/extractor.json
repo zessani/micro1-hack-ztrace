@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00253399,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"northdesk/render.py\",\n      \"quote\": \"Updated `northdesk/render.py` to pass values directly to MarkupSafe\u2019s `escape`, preserving `Markup` links and entities while still escaping untrusted plain text.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"failed\",\n      \"quote\": \"Confirmed failures before the fix\"\n    },\n    {\n      \"command\": \"make test\",\n      \"outcome\": \"passed\",\n      \"passed\": 45,\n      \"quote\": \"`make test` now passes **45 tests**.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Confirmed failures before the fix; `make test` now passes **45 tests**.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Rendering now honors MarkupSafe's __html__ protocol\",\n      \"quote\": \"Rendering now honors MarkupSafe\u2019s `__html__` protocol.\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"Setup-generated database changes were restored\",\n      \"quote\": \"Setup-generated database changes were restored; only the renderer and regression test are changed.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"README/CONTRIBUTING setup\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Followed project setup docs using vendored dependencies\",\n      \"quote\": \"Followed README/CONTRIBUTING setup using vendored dependencies.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Preserve safe markup in ticket notification emails\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

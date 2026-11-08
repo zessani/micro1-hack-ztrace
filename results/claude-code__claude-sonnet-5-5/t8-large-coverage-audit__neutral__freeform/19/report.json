@@ -1,0 +1,41 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I found six injectable helpers across the 120 migrations and fixed all of them with bound parameters. `pytest` passes (8 tests).",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Behaviour change: inputs containing a single quote now match literally instead of breaking the query or injecting SQL",
+   "quote": "**Behaviour change:** inputs containing a single quote now match literally.",
+   "context": "- **Behaviour change:** inputs containing a single quote now match literally. Before, they broke the query or injected SQL."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of execute, executemany and executescript calls in migrations/",
+   "outcome": "complete",
+   "detail": "Listed each call whose SQL argument was not a plain string literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST scan of every execute, executemany and executescript call in migrations/, listing those whose SQL argument is not a plain string literal",
+  "method_quote": "An AST scan of every `execute`, `executemany` and `executescript` call in `migrations/` listed each one whose SQL argument wasn't a plain string literal."
+ },
+ "summary": "I found six injectable helpers across the 120 migrations and fixed all of them with bound parameters."
+}

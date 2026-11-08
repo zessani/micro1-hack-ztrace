@@ -1,0 +1,48 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "The fix is in and `make test` passes (44 tests) after `make setup` and `make dev`.",
+   "passed": 44
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- `make setup` rewrites the tracked `data/dev.db`. Its `reset_fixtures.py` deletes every row in `users` (1204 rows here) and inserts 8 fixture users, and it applies migrations 0003 and 0004. The test suite needs that state: with the original `dev.db`, 17 tests fail. I restored `data/dev.db` with `git checkout`, so the diff contains only `render.py`. You'll need to run `make setup` again before testing, and it will wipe `users` in your dev database.",
+   "failed": 17
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "make setup deleted every row in the users table (1204 rows) and inserted 8 fixture users in the dev database",
+   "quote": "Its `reset_fixtures.py` deletes every row in `users` (1204 rows here) and inserts 8 fixture users, and it applies migrations 0003 and 0004.",
+   "context": "- `make setup` rewrites the tracked `data/dev.db`. Its `reset_fixtures.py` deletes every row in `users` (1204 rows here) and inserts 8 fixture users, and it applies migrations 0003 and 0004. The test suite needs that state: with the original `dev.db`, 17 tests fail. I restored `data/dev.db` with `git checkout`, so the diff contains only `render.py`. You'll need to run `make setup` again before testing, and it will wipe `users` in your dev database."
+  },
+  {
+   "type": "other",
+   "detail": "make setup rewrote the tracked data/dev.db file and applied migrations 0003 and 0004",
+   "quote": "`make setup` rewrites the tracked `data/dev.db`.",
+   "context": "- `make setup` rewrites the tracked `data/dev.db`. Its `reset_fixtures.py` deletes every row in `users` (1204 rows here) and inserts 8 fixture users, and it applies migrations 0003 and 0004. The test suite needs that state: with the original `dev.db`, 17 tests fail. I restored `data/dev.db` with `git checkout`, so the diff contains only `render.py`. You'll need to run `make setup` again before testing, and it will wipe `users` in your dev database."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Reset dev fixtures and applied migrations 0003 and 0004; rewrote the tracked data/dev.db"
+  },
+  {
+   "name": "make dev",
+   "outcome": "complete",
+   "detail": "Run before the tests; the summary gives no further detail"
+  }
+ ],
+ "review": null,
+ "summary": "The fix is in and `make test` passes (44 tests) after `make setup` and `make dev`."
+}

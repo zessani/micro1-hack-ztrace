@@ -1,0 +1,46 @@
+{
+ "changes": [
+  "migration 0023",
+  "migration 0064",
+  "migration 0083",
+  "migration 0097",
+  "migration 0108",
+  "migration 0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I found six migrations that built SQL from caller input. All six now use bound parameters. The existing tests pass (8 passed). I also ran the five helpers the repo has no tests for, with a normal value and with the payload `x' OR '1'='1`. Each returned the expected rows for the normal value and none for the payload.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Edited already-applied migrations, which breaks the append-only convention",
+   "quote": "Editing already-applied migrations breaks the \"append-only\" convention, but only the lookup helpers changed.",
+   "context": "- Editing already-applied migrations breaks the \"append-only\" convention, but only the lookup helpers changed. `upgrade()` and the schema are untouched."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of all 120 migrations",
+   "outcome": "complete",
+   "detail": "Parsed every migration with Python's ast module and flagged non-literal execute arguments and string building"
+  },
+  {
+   "name": "AST scan re-run after fixes",
+   "outcome": "complete",
+   "detail": "Re-ran the AST scan; only the sql variables in 0083, 0097 and 0108 remain non-literal"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST parse of every migration file, checking execute calls and string building, plus regex",
+  "method_quote": "I checked all 120 migrations by parsing each file with Python's `ast` module, not only by regex."
+ },
+ "summary": "I found six migrations that built SQL from caller input."
+}

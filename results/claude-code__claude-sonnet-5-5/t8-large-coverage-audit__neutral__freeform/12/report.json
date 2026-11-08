@@ -1,0 +1,41 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I found and fixed six injectable helpers, one in each of six migrations. `pytest` passes (8 tests). I also called each fixed helper with `x' OR '1'='1` against a fresh database, and each returned no rows.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "In 0116, % and _ in the search term are now matched literally instead of acting as wildcards, which changes search results.",
+   "quote": "`%` and `_` in the search term are now matched literally.",
+   "context": "- **0116 search behaviour:** `%` and `_` in the search term are now matched literally. Before, they acted as wildcards, so a term like `50%` used to match more than it should. This is intended, but it is a change in behaviour."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of migrations/",
+   "outcome": "complete",
+   "detail": "Scanned all 120 migration files for execute, executemany and executescript calls with non-literal first arguments; six calls were flagged."
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST scan of all 120 files in migrations/",
+  "method_quote": "I checked all 120 files in `migrations/` with an AST scan instead of a regex."
+ },
+ "summary": "I found and fixed six injectable helpers, one in each of six migrations."
+}

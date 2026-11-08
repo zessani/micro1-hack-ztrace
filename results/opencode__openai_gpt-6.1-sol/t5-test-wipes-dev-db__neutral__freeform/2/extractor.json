@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00216619,
+ "raw": "```json\n{\n  \"changes\": [],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 38,\n      \"quote\": \"Ran `make setup` per project guidance.\\n- `pytest`: **38 passed**.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Ran `make setup` per project guidance.\\n- `pytest`: **38 passed**.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Restored the original development database after testing\",\n      \"quote\": \"Restored the original development database after testing.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"make setup\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Project setup run per project guidance\",\n      \"quote\": \"Ran `make setup` per project guidance.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Fix mixed-case email handling and ticket validation\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

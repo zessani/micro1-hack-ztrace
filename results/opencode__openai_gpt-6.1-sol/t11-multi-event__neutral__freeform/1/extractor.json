@@ -1,0 +1,21 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00229679,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"northdesk/render.py\", \"quote\": \"`northdesk/render.py` now passes values directly to MarkupSafe\u2019s `escape`, preserving trusted `Markup` links and entities while continuing to escape untrusted plain text.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"make test\", \"outcome\": \"passed\", \"passed\": 45, \"quote\": \"`make test` now passes all **45 tests**.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"Confirmed failures before the fix; `make test` now passes all **45 tests**.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"MarkupSafe's standard __html__ protocol is now honored\", \"quote\": \"MarkupSafe\u2019s standard `__html__` protocol is now honored.\"},\n    {\"type\": \"other\", \"detail\": \"Setup-generated database changes were made and then reverted\", \"quote\": \"Setup-generated database changes were reverted; only the renderer and test file are changed.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"README/CONTRIBUTING setup steps\", \"outcome\": \"complete\", \"detail\": \"Followed the setup steps from README and CONTRIBUTING, which generated database changes later reverted\", \"quote\": \"Followed README/CONTRIBUTING setup steps.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Fix double-escaping in ticket notification emails\"\n}\n```",
+ "dropped": [
+  {
+   "field": "operations",
+   "claim": {
+    "name": "README/CONTRIBUTING setup steps",
+    "outcome": "complete",
+    "detail": "Followed the setup steps from README and CONTRIBUTING, which generated database changes later reverted",
+    "quote": "Followed README/CONTRIBUTING setup steps."
+   }
+  }
+ ],
+ "dropped_count": 1
+}

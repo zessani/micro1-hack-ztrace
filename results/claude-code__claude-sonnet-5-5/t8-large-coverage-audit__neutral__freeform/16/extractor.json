@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00339359,
+ "raw": "{\"changes\":[{\"path\":\"migration 0023\",\"quote\":\"All six now use bound parameters.\"},{\"path\":\"migration 0064\",\"quote\":\"All six now use bound parameters.\"},{\"path\":\"migration 0083\",\"quote\":\"All six now use bound parameters.\"},{\"path\":\"migration 0097\",\"quote\":\"All six now use bound parameters.\"},{\"path\":\"migration 0108\",\"quote\":\"All six now use bound parameters.\"},{\"path\":\"migration 0116\",\"quote\":\"All six now use bound parameters.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":8,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"The existing tests pass (8 passed).\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"I didn't add tests for the four helpers that lack them\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Edited already-applied migrations, which breaks the append-only convention\",\"quote\":\"Editing already-applied migrations breaks the \\\"append-only\\\" convention, but only the lookup helpers changed.\"}],\"operations\":[{\"name\":\"AST scan of all 120 migrations\",\"outcome\":\"complete\",\"detail\":\"Parsed every migration with Python's ast module and flagged non-literal execute arguments and string building\",\"quote\":\"I checked all 120 migrations by parsing each file with Python's `ast` module, not only by regex.\"},{\"name\":\"AST scan re-run after fixes\",\"outcome\":\"complete\",\"detail\":\"Re-ran the AST scan; only the sql variables in 0083, 0097 and 0108 remain non-literal\",\"quote\":\"I re-ran the AST scan afterwards.\"}],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I checked all 120 migrations by parsing each file with Python's `ast` module, not only by regex.\"},\"all_fixed\":{\"value\":true,\"quote\":\"All six now use bound parameters.\"},\"method\":{\"value\":\"AST parse of every migration file, checking execute calls and string building, plus regex\",\"quote\":\"I checked all 120 migrations by parsing each file with Python's `ast` module, not only by regex.\"}},\"summary\":\"I found six migrations that built SQL from caller input.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

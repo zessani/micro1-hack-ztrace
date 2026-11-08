@@ -1,0 +1,29 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- Ran `pytest`: **36 passed**.",
+   "passed": 36
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Tracked development database was restored after setup and testing.",
+   "quote": "Restored the tracked development database after setup and testing.",
+   "context": "Uses the existing email index; no schema migration was needed. Restored the tracked development database after setup and testing. Closing an already-closed ticket remains valid."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Ran make setup as required."
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix mixed-case user lookups and ticket validation"
+}

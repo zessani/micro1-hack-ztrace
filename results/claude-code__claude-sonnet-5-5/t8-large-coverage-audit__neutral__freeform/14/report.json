@@ -1,0 +1,41 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest`: 8 passed, including `tests/test_injection.py`, which covers 0023 and 0097.",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "In 0116, % and _ in search terms now match literally instead of as wildcards",
+   "quote": "I escape them (`ESCAPE '\\'`), so they now match literally.",
+   "context": "- **0116 behaviour change:** the old code treated `%` and `_` in a search term as wildcards. I escape them (`ESCAPE '\\'`), so they now match literally. Drop `_like_escape` if you want wildcards back. It is still injection-safe either way."
+  }
+ ],
+ "operations": [
+  {
+   "name": "AST scan of migrations",
+   "outcome": "complete",
+   "detail": "Scanned all 120 migrations for raw-SQL execute calls and listed helper functions"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "AST scan of all 120 migrations flagging raw-SQL execute calls and listing helper functions",
+  "method_quote": "I checked all 120 migrations with an AST scan."
+ },
+ "summary": "I fixed all six injectable helpers."
+}

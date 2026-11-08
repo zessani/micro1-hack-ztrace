@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0021019899999999998,
+ "raw": "```json\n{\n  \"changes\": [],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 36,\n      \"quote\": \"Ran `pytest`: **36 passed**.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Ran `pytest`: **36 passed**.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Tracked development database was restored after setup and testing.\",\n      \"quote\": \"Restored the tracked development database after setup and testing.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"make setup\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Ran make setup as required.\",\n      \"quote\": \"Ran `make setup` as required.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Fix mixed-case user lookups and ticket validation\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

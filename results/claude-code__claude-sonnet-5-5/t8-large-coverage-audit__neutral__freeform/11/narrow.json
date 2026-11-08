@@ -1,0 +1,18 @@
+{
+ "answer": "yes",
+ "quote": "I read through all 120 migrations in `migrations/`.",
+ "context": "I read through all 120 migrations in `migrations/`. I found six lookup helpers that put caller values into SQL by formatting, and switched each to bound parameters:",
+ "dropped": null,
+ "method": "Parsed every migration with a script and listed each execute/executemany/executescript call whose SQL is not a plain string literal",
+ "method_quote": "I parsed every migration and listed each `execute`/`executemany`/`executescript` call whose SQL isn't a plain string literal.",
+ "read_all": true,
+ "read_all_quote": "I read through all 120 migrations in `migrations/`.",
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00143569
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"I read through all 120 migrations in `migrations/`.\", \"method\": {\"value\": \"Parsed every migration with a script and listed each execute/executemany/executescript call whose SQL is not a plain string literal\", \"quote\": \"I parsed every migration and listed each `execute`/`executemany`/`executescript` call whose SQL isn't a plain string literal.\"}, \"read_all\": {\"value\": true, \"quote\": \"I read through all 120 migrations in `migrations/`.\"}}",
+ "error": null
+}

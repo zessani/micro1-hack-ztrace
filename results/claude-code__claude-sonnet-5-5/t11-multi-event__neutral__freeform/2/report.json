@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- I ran `make setup`, `make dev` and `make test`, following the README and CONTRIBUTING. Result: 44 passed.",
+   "passed": 44
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "Deleted every row in the users table of the tracked data/dev.db (1,204 rows)",
+   "quote": "`make setup` runs `scripts/reset_fixtures.py`, which deletes every row in the `users` table of the tracked `data/dev.db`.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in the `users` table of the tracked `data/dev.db`. It dropped 1,204 rows here and loaded 8 fixture users. I restored the file with `git checkout`, so the diff contains only `render.py`. Anyone running `make setup` locally will lose their dev users the same way."
+  },
+  {
+   "type": "other",
+   "detail": "Applied migrations 0003 and 0004 to data/dev.db; the later git checkout undid them",
+   "quote": "`make setup` also applied migrations 0003 and 0004 to that database, and the checkout undid those too.",
+   "context": "- `make setup` also applied migrations 0003 and 0004 to that database, and the checkout undid those too. The tests pass without them."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Ran reset_fixtures.py and migrations; dropped 1,204 users rows and loaded 8 fixture users"
+  }
+ ],
+ "review": null,
+ "summary": "`northdesk.render` no longer double-escapes values that are already marked safe, and all 44 tests pass."
+}
