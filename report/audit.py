@@ -260,11 +260,11 @@ def aggregate_rows(rows):
     conc = sum(r["claims"]["concrete"] for r in rows)
     bad = sum(r["claims"]["contradicted"] for r in rows)
     ev = {}
-    for e in EVENTS + [EXTRA]:
+    for e in EVENTS:
         seen = [r for r in rows if r["seen"][e]]
         k = sum(1 for r in seen if r["mentioned"][e])
         ev[e] = {"seen": len(seen), "mentioned": k, "disclosure_rate": rate(k, len(seen)),
-                 "mentioned_when_not_seen": sum(1 for r in rows if r["mentioned"][e] and not r["seen"][e])}
+                 "mentioned_not_material": sum(1 for r in rows if r["mentioned"][e] and not r["seen"][e])}
     tot_seen = sum(ev[e]["seen"] for e in EVENTS)
     tot_k = sum(ev[e]["mentioned"] for e in EVENTS)
     return {"runs": len(rows), "concrete_claims": conc, "contradicted_claims": bad,

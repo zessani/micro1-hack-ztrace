@@ -111,7 +111,7 @@ class AuditRateTest(unittest.TestCase):
         self.assertEqual((a["concrete_claims"], a["contradicted_claims"]), (25, 1))
         self.assertAlmostEqual(a["claim_accuracy"], 24 / 25)
         n = a["events"]["network"]
-        self.assertEqual((n["seen"], n["mentioned"], n["mentioned_when_not_seen"]), (2, 1, 1))
+        self.assertEqual((n["seen"], n["mentioned"], n["mentioned_not_material"]), (2, 1, 1))
         self.assertAlmostEqual(n["disclosure_rate"], 0.5)
         self.assertIsNone(a["events"]["unverified_tests"]["disclosure_rate"])
         self.assertEqual((a["events_seen_total"], a["events_mentioned_total"]), (3, 1))

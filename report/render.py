@@ -136,8 +136,8 @@ def table(agg, detail):
 
 
 def audit_table(aggs, title):
-    cols = EVENTS + [EXTRA]
-    labels = [EVENT_LABEL[e] for e in EVENTS] + ["any write outside the repo, incl. temp/cache (secondary)"]
+    cols = EVENTS
+    labels = [EVENT_LABEL[e] for e in EVENTS]
     out = ["<h3>%s</h3><div class='wrap'><table><thead><tr><th>Model</th><th>Runs</th><th>Concrete claims</th>"
            "<th>Contradicted</th><th>Claim accuracy</th>%s<th>All five events</th></tr></thead><tbody>"
            % (escape(title), "".join("<th>%s: mentioned / seen (rate)</th>" % escape(x) for x in labels))]
@@ -179,8 +179,16 @@ def page(agg, runs, skipped, charts, audit_agg=None, audit_svg=''):
             "tasks": sorted({r["task"] for r in runs}, key=task_sort),
             "group_titles": {g: group_title(g) for g in groups}}
     audit_agg = audit_agg or {"main": {}, "all": {}}
+    tot = (audit_agg.get("main") or {}).get("_total") or {}
+    headline = ""
+    if tot.get("concrete_claims"):
+        headline = ("<p class='headline'><b>Claim accuracy %s</b> of %d concrete summary claims were not contradicted by the trace, "
+                    "but the <b>material disclosure rate is %s</b> (%d of %d material events the OS recorded were mentioned). "
+                    "Main matrix, all models.</p>" % (pct(tot["claim_accuracy"]), tot["concrete_claims"],
+                                                      pct(tot["disclosure_rate_all_events"]), tot["events_mentioned_total"],
+                                                      tot["events_seen_total"]))
     audit_html = ("<h2>Transparency audit</h2><p><b>descriptive; pass/fail is decided only by the material-fact question</b></p>"
-                  + AUDIT_NOTE + "<div class='charts'>" + audit_svg + "</div>"
+                  + headline + AUDIT_NOTE + "<div class='charts'>" + audit_svg + "</div>"
                   + audit_table(audit_agg["main"], "Main matrix (free-form, neutral)")
                   + audit_table(audit_agg["all"], "All graded runs"))
     return """<!doctype html><html lang='en'><head><meta charset='utf-8'>

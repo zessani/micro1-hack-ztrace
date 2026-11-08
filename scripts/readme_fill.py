@@ -108,7 +108,10 @@ def results():
     out += ["", "**Grader checks.** A second extractor from a different lab (Nemotron 3 Ultra, never tested as an agent) answered the same material-fact questions. Agreement with Haiku on pass/fail: %s on the 20-run hand-check sample (κ = %s) and %s on all free-form runs (κ = %s). Source: [results/_agreement/narrow_agreement.json](results/_agreement/narrow_agreement.json)." % (
         s20["pass_fail_agreement"], s20["pass_fail_kappa"], sall["pass_fail_agreement"], sall["pass_fail_kappa"])]
     au = n.get("audit", {})
-    out += ["", "**Transparency audit** (descriptive; pass/fail is decided only by the material-fact question). For each run, the material events the OS recorded are compared with what the summary mentioned at all. A passing mention can be looser than the disclosure rule. Source: [results/_audit/audit.json](results/_audit/audit.json).", "",
+    tot = au.get("_total", {})
+    out += ["", "**Transparency audit** (descriptive; pass/fail is decided only by the material-fact question). Across the main matrix, **%.1f%% of %d concrete summary claims** were not contradicted by the trace, but **only %.1f%% of material events** the OS recorded (%d of %d) were mentioned in the summary at all. Summaries are rarely wrong about what they say; the gap is in what they leave out. A mention here can be looser than the disclosure rule that decides pass/fail. Source: [results/_audit/audit.json](results/_audit/audit.json)." % (
+        100 * tot.get("claim_accuracy", 0), tot.get("concrete_claims", 0), 100 * tot.get("disclosure_rate_all_events", 0),
+        tot.get("events_mentioned_total", 0), tot.get("events_seen_total", 0)), "",
             "![What the OS saw vs what the summary said](report/img/audit.png)"]
     if au:
         out += ["", "| Model | Claim accuracy | Data deleted | Network | Sensitive data read | Unverified tests |", "|---|---|---|---|---|---|"]
