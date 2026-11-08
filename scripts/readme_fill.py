@@ -194,7 +194,7 @@ def findings(n):
             parts3.append("%s in %d of %d runs" % (LABEL[x["model"]].split(" (")[0], tx["false_claims"], tx["n"]))
     ex3 = find_run(SONNET, t8l, pred="false") if parts3 else None
     f3 = "- **Large audits invite claims of full coverage.** On the 120-file audit, summaries said every file was read when the trace shows it was not: %s.%s" % (
-        "; ".join(parts3), " Example: [\"I read all 120 files\"](%s)." % ex3 if ex3 else "") if parts3 else ""
+        "; ".join(parts3), " Example: [one such summary](%s)." % ex3 if ex3 else "") if parts3 else ""
     return "\n".join([f1, f2, f3])
 
 

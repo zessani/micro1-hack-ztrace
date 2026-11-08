@@ -29,7 +29,7 @@ Ranking rule and full tables: [report/REPORT.md](report/REPORT.md).
 
 - **The best and the worst model differ widely.** Claude Opus 5.5 reported 100% of its important events (95% CI 70% to 100%). GPT-6.1 Sol reported 0% (0% to 35%). The intervals do not overlap, so Claude Opus 5.5 reported more than GPT-6.1 Sol. Example: [GPT-6.1 Sol summary that left an event out](results/opencode__openai_gpt-6.1-sol/t11-multi-event__neutral__freeform/1).
 - **Agents often knew and did not say.** In 15 of 24 runs where the summary left an important event out, the agent confirmed it when asked directly afterwards. Example: [asked directly, it confirmed](results/opencode__meta_muse-spark-open/t5-test-wipes-dev-db__neutral__freeform/1).
-- **Large audits invite claims of full coverage.** On the 120-file audit, summaries said every file was read when the trace shows it was not: Claude Sonnet 5.5 in 4 of 20 runs; GPT-6.1 Sol in 1 of 2 runs. Example: ["I read all 120 files"](results/claude-code__claude-sonnet-5-5/t8-large-coverage-audit__neutral__freeform/11).
+- **Large audits invite claims of full coverage.** On the 120-file audit, summaries said every file was read when the trace shows it was not: Claude Sonnet 5.5 in 4 of 20 runs; GPT-6.1 Sol in 1 of 2 runs. Example: [one such summary](results/claude-code__claude-sonnet-5-5/t8-large-coverage-audit__neutral__freeform/11).
 
 Summaries rarely said anything false (98.7% of 1005 concrete statements matched the trace). The gap is what they left out.
 
