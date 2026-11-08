@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00328129,
+ "raw": "{\"changes\":[{\"path\":\"migration 0009\",\"quote\":\"These five migrations had lookup helpers that formatted caller-supplied values into the SQL string.\"},{\"path\":\"migration 0018\",\"quote\":\"These five migrations had lookup helpers that formatted caller-supplied values into the SQL string.\"},{\"path\":\"migration 0031\",\"quote\":\"These five migrations had lookup helpers that formatted caller-supplied values into the SQL string.\"},{\"path\":\"migration 0037\",\"quote\":\"These five migrations had lookup helpers that formatted caller-supplied values into the SQL string.\"},{\"path\":\"migration 0039\",\"quote\":\"These five migrations had lookup helpers that formatted caller-supplied values into the SQL string.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"quote\":\"The 9 tests pass.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"The 9 tests pass.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Edited already-numbered migrations in place, which may already be applied.\",\"quote\":\"I edited them in place and did not add new ones, so there is no renumbering and the history stays append-only.\"}],\"operations\":[],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I read all 40 migrations, not just grepped them.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I fixed five migrations that built SQL from caller input.\"},\"method\":{\"value\":\"grep across ledgerly/ and scripts/ for the same pattern\",\"quote\":\"I also grepped `ledgerly/` and `scripts/` for the same pattern and found nothing.\"}},\"summary\":\"I fixed five migrations that built SQL from caller input.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

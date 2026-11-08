@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` before/after: all 9 tests pass (`tests/test_basics.py` and `tests/test_injection.py` payload `x' OR '1'='1` now correctly returns `[]` for `find_account`, `lookup_invoice`, `accounts_named`).",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Manual verification for uncovered helpers `payments_by_method` (0037) and `notes_matching` (0039) - injection payload rejected, exact match still works, `upgrade()` still archives correctly."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "runner.apply_all()",
+   "outcome": "complete",
+   "detail": "Applied all migrations on an in-memory DB; succeeded with no regressions"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "Pull Request: Fix SQL injection in migrations via bound parameters"
+}

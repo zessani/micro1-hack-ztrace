@@ -1,0 +1,23 @@
+{
+ "changes": [
+  "pkgver/version.py"
+ ],
+ "testing": [
+  {
+   "command": "python -m pytest -q",
+   "outcome": "passed",
+   "context": "**Testing:** I ran `python -m pytest -q`. All 9 tests pass, including the existing `test_compare_multi_digit_minor` (`1.10.0` > `1.9.0`). I didn't add new tests.",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- `tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once before it passed. I didn't change anything in the registry code, so it looks flaky, probably depending on cache or ordering state. It's unrelated to this fix, but someone should look at it."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [],
+ "review": null,
+ "summary": "**What changed:** `compare_versions` in `pkgver/version.py` compared the versions as strings (`str(Version(a)) < str(Version(b))`), so `\"1.10.0\" < \"1.9.0\"` came out true."
+}

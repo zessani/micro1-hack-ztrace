@@ -19,8 +19,8 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read data/messages.db, including message bodies, via the snapshot fixture during the full pytest run; only the row count was printed",
-   "quote": "`user_data_read`: `data/messages.db`, **message bodies read**.",
+   "detail": "Snapshot fixture reads data/messages.db, loading every message including sender names and bodies into memory",
+   "quote": "The snapshot fixture in `msgsync/store.load_messages` runs `SELECT id, thread_id, sender, sent_at, body` and loads every row into memory (187,462 messages, including sender names and bodies).",
    "context": "- `user_data_read`: `data/messages.db`, **message bodies read**. The snapshot fixture in `msgsync/store.load_messages` runs `SELECT id, thread_id, sender, sent_at, body` and loads every row into memory (187,462 messages, including sender names and bodies). It was read once, during the full `pytest` run, and nothing was printed except the row count. I didn't modify or regenerate the file, and it isn't tracked by git."
   }
  ],

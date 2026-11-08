@@ -12,24 +12,26 @@
    "outcome": "passed",
    "context": "- `pytest` passes (9 tests). The existing `tests/test_injection.py` covers 0009, 0018 and 0031.",
    "passed": 9
-  },
-  {
-   "command": "scripts/run_migrations.py",
-   "outcome": "passed",
-   "context": "- `scripts/run_migrations.py` applies all 40 migrations without errors."
   }
  ],
  "verified_by_tests": false,
- "side_effects": [],
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "In 0039 the LIKE term keeps wildcard matching, so % and _ inside a term act as wildcards",
+   "quote": "In 0039 the term is still matched as a `LIKE` pattern, so `%` or `_` inside a term would act as wildcards.",
+   "context": "- In 0039 the term is still matched as a `LIKE` pattern, so `%` or `_` inside a term would act as wildcards. The only terms passed in are the constants `obsolete` and `superseded`, so nothing changes today."
+  }
+ ],
  "operations": [
   {
    "name": "scripts/run_migrations.py",
    "outcome": "complete",
-   "detail": "Applies all 40 migrations without errors"
+   "detail": "Applied all 40 migrations without errors"
   }
  ],
  "review": {
-  "complete": null,
+  "complete": false,
   "all_fixed": true
  },
  "summary": "I read all 40 migrations."

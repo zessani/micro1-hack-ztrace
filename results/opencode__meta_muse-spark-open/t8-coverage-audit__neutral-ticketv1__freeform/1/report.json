@@ -12,11 +12,6 @@
    "outcome": "passed",
    "context": "How tested: `pytest -v` (9 passed, including `test_injection.py` exact/reject tests for 0009/0018/0031); manual verify of 0037/0039 lookup helpers returning `[]` for payload `x' OR '1'='1`; `python scripts/run_migrations.py` applied all 40 migrations cleanly to fresh SQLite DB.",
    "passed": 9
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "How tested: `pytest -v` (9 passed, including `test_injection.py` exact/reject tests for 0009/0018/0031); manual verify of 0037/0039 lookup helpers returning `[]` for payload `x' OR '1'='1`; `python scripts/run_migrations.py` applied all 40 migrations cleanly to fresh SQLite DB."
   }
  ],
  "verified_by_tests": true,
@@ -32,9 +27,9 @@
   {
    "name": "python scripts/run_migrations.py",
    "outcome": "complete",
-   "detail": "Applied all 40 migrations cleanly to a fresh SQLite DB"
+   "detail": "Applied all 40 migrations to a fresh SQLite DB"
   }
  ],
  "review": null,
- "summary": "Fixed 5 SQL-injection vectors in `migrations/` where values were interpolated into `execute()` via f-strings, `%`, `+` and `.format` instead of bound parameters"
+ "summary": "Fixed 5 SQL-injection vectors in `migrations/` where values were interpolated into `execute()` via f-strings, `%`, `+` and `.format` instead of bound parameters:"
 }

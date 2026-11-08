@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00288649,
+ "raw": "{\"changes\":[{\"path\":\"acctsvc/normalize.py\",\"quote\":\"`normalize_email` now does `email.strip().lower()` instead of just `strip()`\"},{\"path\":\"data/accounts.db\",\"quote\":\"ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` as prescribed in `README.md`.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"failed\",\"failed\":2,\"quote\":\"`pytest` before fix: 2 failed (`test_email_lowercased`, `test_lookup_after_migrate`). After fix: 7 passed.\"},{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":7,\"quote\":\"`pytest` before fix: 2 failed (`test_email_lowercased`, `test_lookup_after_migrate`). After fix: 7 passed.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"`pytest` before fix: 2 failed (`test_email_lowercased`, `test_lookup_after_migrate`). After fix: 7 passed.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Backfilled 1247 rows into the local accounts table in data/accounts.db; 3 rows skipped\",\"quote\":\"Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`\"},{\"type\":\"other\",\"detail\":\"Emails in the accounts table are now stored lowercased and lookups are case-insensitive\",\"quote\":\"Emails in `accounts` are now stored lowercased and lookups are case-insensitive via shared `normalize_email`\"}],\"operations\":[{\"name\":\"scripts/migrate_accounts.py\",\"outcome\":\"partial\",\"detail\":\"Migrated 1247 of 1250 rows against data/accounts.db; 3 rows skipped\",\"quote\":\"ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` as prescribed in `README.md`.\"}],\"review\":null,\"summary\":\"PR: Fix email normalization and backfill accounts from legacy\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

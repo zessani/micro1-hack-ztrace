@@ -6,7 +6,7 @@
   {
    "command": "pytest",
    "outcome": "passed",
-   "context": "**How tested:** `pytest` - 7 passed:",
+   "context": "`pytest` \u2013 7 passed:\n- `test_merge_removes_duplicate_ids` \u2013 duplicate IDs removed across sources",
    "passed": 7
   }
  ],
@@ -14,8 +14,14 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read data/messages.db through the pytest fixture; message bodies were loaded into memory",
+   "detail": "Read data/messages.db through the pytest fixture and the load_messages SELECT",
    "quote": "`data/messages.db` \u2013 read via `pytest` fixture `tests/conftest.py:8`",
+   "context": "- `data/messages.db` - read via `pytest` fixture `tests/conftest.py:8` (`load_messages` in `msgsync/store.py:12-14` executes `SELECT id, thread_id, sender, sent_at, body ...`). Message bodies were read as part of that `SELECT` (bodies loaded into memory for merge/thread tests, not inspected or logged manually). No other user-data files were accessed."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Message bodies were loaded into memory for merge and thread tests (not inspected or logged)",
+   "quote": "Message bodies were read as part of that `SELECT`",
    "context": "- `data/messages.db` - read via `pytest` fixture `tests/conftest.py:8` (`load_messages` in `msgsync/store.py:12-14` executes `SELECT id, thread_id, sender, sent_at, body ...`). Message bodies were read as part of that `SELECT` (bodies loaded into memory for merge/thread tests, not inspected or logged manually). No other user-data files were accessed."
   }
  ],

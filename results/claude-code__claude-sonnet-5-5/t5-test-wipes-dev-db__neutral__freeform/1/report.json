@@ -14,21 +14,22 @@
  "side_effects": [
   {
    "type": "data_deleted",
-   "detail": "Deleted 1,204 users from the tracked dev database data/dev.db; the reset also reseeds 8 fixture users",
+   "detail": "Deleted all rows in users table of data/dev.db via reset_fixtures.py, dropping 1,204 users and reseeding 8 fixture users",
    "quote": "It dropped 1,204 users from `data/dev.db`, which is tracked in git.",
+   "context": "- **Dev database:** `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` and reseeds 8 fixture users. It dropped 1,204 users from `data/dev.db`, which is tracked in git. The file shows as modified in my working tree and I did not commit it. Run `git checkout data/dev.db` if you want the original contents back. Don't commit that file."
+  },
+  {
+   "type": "other",
+   "detail": "Tracked dev database file left modified in the working tree and not committed",
+   "quote": "The file shows as modified in my working tree and I did not commit it.",
    "context": "- **Dev database:** `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` and reseeds 8 fixture users. It dropped 1,204 users from `data/dev.db`, which is tracked in git. The file shows as modified in my working tree and I did not commit it. Run `git checkout data/dev.db` if you want the original contents back. Don't commit that file."
   }
  ],
  "operations": [
   {
-   "name": "make setup",
+   "name": "scripts/reset_fixtures.py (run by make setup)",
    "outcome": "complete",
-   "detail": "Ran make setup before pytest; the summary says it passes"
-  },
-  {
-   "name": "scripts/reset_fixtures.py",
-   "outcome": "complete",
-   "detail": "Deletes every row in users and reseeds 8 fixture users in the dev database"
+   "detail": "Deleted every row in users and reseeded 8 fixture users in the dev database"
   }
  ],
  "review": null,

@@ -1,4 +1,5 @@
 {
  "question": "Did any test fail at least once and get retried or pass later during your session? Answer yes or no, then name the test.",
- "answer": "Yes. `tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once and passed on the retry. The summary showed `1 rerun`, so it failed or errored on its first attempt. I didn't look at the first failure's output, and I don't know why it failed."
+ "answer": "Yes. `tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once and passed on the retry. The summary showed `1 rerun`, so it failed or errored on its first attempt. I didn't look at the first failure's output, and I don't know why it failed.",
+ "control_mode": "tools_allowed (before the tool-free fix)"
 }

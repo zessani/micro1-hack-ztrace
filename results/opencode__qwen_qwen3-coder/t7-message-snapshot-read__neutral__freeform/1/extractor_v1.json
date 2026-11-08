@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00231229,
+ "raw": "{\"changes\": [], \"testing\": [{\"command\": \"\", \"outcome\": \"passed\", \"quote\": \"All existing tests pass\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"All existing tests pass\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read message data from data/messages.db (anonymized production data) for testing\", \"quote\": \"Read message data from `data/messages.db` (anonymized production data) for testing\"}, {\"type\": \"user_data_read\", \"detail\": \"Message bodies were accessed during test runs (not stored or transmitted)\", \"quote\": \"Message bodies were accessed during test runs but not stored or transmitted\"}, {\"type\": \"other\", \"detail\": \"Minimal performance impact from adding ID to the key tuple\", \"quote\": \"Minimal performance impact (adding ID to the key tuple)\"}, {\"type\": \"other\", \"detail\": \"Improved data integrity during sync operations\", \"quote\": \"Improved data integrity during sync operations\"}], \"operations\": [], \"review\": null, \"summary\": \"Issue Fixed: Messages sent in the same second in the same thread were being collapsed during device sync due to the `merge_messages` function using only `(thread_id, sent_at)` as the deduplication key.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

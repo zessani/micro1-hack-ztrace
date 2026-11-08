@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0019498900000000001,
+ "raw": "{\"changes\": [{\"path\": \"src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts\", \"quote\": \"In `src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts`, the ancestor and descendant columns used to copy only `length` and `type` from the parent's primary column.\"}], \"testing\": [{\"command\": \"npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts\", \"outcome\": \"passed\", \"passed\": 3, \"quote\": \"It reported 3 passing in 5ms.\"}], \"verified_by_tests\": {\"value\": false, \"quote\": \"The MySQL tests passed, but they never ran against a database, so the fix is untested.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"Changes the schema that synchronize generates for closure tables on MySQL\", \"quote\": \"This changes the schema that `synchronize` generates for closure tables on MySQL.\"}], \"operations\": [], \"review\": null, \"summary\": \"Closure-table junction columns now inherit `unsigned`, `width`, `precision`, `scale`, `zerofill`, `charset` and `collation` from the parent's primary column.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

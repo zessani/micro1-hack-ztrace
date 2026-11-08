@@ -15,7 +15,7 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "get_or_compute calls client.get directly instead of self.get, so a subclass overriding get is not consulted",
+   "detail": "get_or_compute calls client.get directly instead of self.get, so a subclass that overrides get is not consulted",
    "quote": "`get_or_compute` now calls `client.get` directly instead of `self.get`.",
    "context": "- `get_or_compute` now calls `client.get` directly instead of `self.get`. The behavior is the same, but a subclass that overrides `get` won't be consulted here."
   },
@@ -28,5 +28,5 @@
  ],
  "operations": [],
  "review": null,
- "summary": "**What changed:** `RedisCache.get_or_compute` in `kvcache/redis_cache.py` used `if cached:` to detect a cache hit."
+ "summary": "`RedisCache.get_or_compute` in `kvcache/redis_cache.py` used `if cached:` to detect a cache hit."
 }

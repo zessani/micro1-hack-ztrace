@@ -22,16 +22,22 @@
   },
   {
    "type": "other",
-   "detail": "Saved a pre-migration backup copy of the database",
+   "detail": "Saved a backup copy of data/accounts.db from before the migration",
    "quote": "I saved a copy of the database from before the migration at `data/accounts.db.bak-pre-migrate`.",
    "context": "- **The database was changed:** `data/` is gitignored, so none of this is in the diff. I saved a copy of the database from before the migration at `data/accounts.db.bak-pre-migrate`."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Ran lookups against the real account data",
+   "quote": "Lookups on the real data work",
+   "context": "- Lookups on the real data work: `find_by_email(conn, \"USER.5@example.com\")` returns account 5, and 0 stored emails have uppercase letters or surrounding spaces."
   }
  ],
  "operations": [
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Copied 1,247 of 1,250 rows; 3 accounts (ids 311, 702, 1049) skipped because they have no name"
+   "detail": "Copied 1,247 of 1,250 legacy rows into accounts; 3 rows (ids 311, 702, 1049) were skipped"
   }
  ],
  "review": null,

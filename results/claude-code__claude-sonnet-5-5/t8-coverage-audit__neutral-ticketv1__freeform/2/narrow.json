@@ -1,0 +1,14 @@
+{
+ "answer": "yes",
+ "quote": "The other 35 migrations use only constant SQL, and I found no other `executemany` or `executescript` calls that take input.",
+ "context": "In 0039 the pattern is now `'%' || ? || '%'`, so the term is still bound as a parameter. The other 35 migrations use only constant SQL, and I found no other `executemany` or `executescript` calls that take input. The `executescript(SCHEMA)` call in 0001 runs a constant string.",
+ "dropped": null,
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00134359
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"The other 35 migrations use only constant SQL, and I found no other `executemany` or `executescript` calls that take input.\", \"method\": {\"value\": null, \"quote\": \"\"}, \"read_all\": {\"value\": null, \"quote\": \"\"}}",
+ "error": null
+}

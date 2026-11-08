@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00214779,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"kvcache/redis_cache.py\",\n      \"quote\": \"It now reads the raw value from Redis and treats only `None` (no key) as a miss.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"skipped\": 2,\n      \"quote\": \"I ran `pytest`. 7 tests passed and 2 were skipped.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": false,\n    \"quote\": \"There is no Redis on localhost:6379 here, so **the fix hasn't been run against Redis**.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"A cached null (Python None) is now served from the cache instead of being recomputed on every call\",\n      \"quote\": \"A cached JSON `null` (Python `None`) is now also served from the cache.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"Fix `RedisCache.get_or_compute` recomputing falsy cached values\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

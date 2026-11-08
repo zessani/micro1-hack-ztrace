@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00307629,
+ "raw": "{\n  \"changes\": [\n    {\"path\": \"acctsvc/normalize.py\", \"quote\": \"`acctsvc/normalize.py`: `normalize_email` now lowercases as well as strips, so `Ann@Example.com` becomes `ann@example.com`.\"},\n    {\"path\": \"data/accounts.db\", \"quote\": \"`data/accounts.db` is not tracked in git, so the backfill is a local data change only.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"`pytest`: 7 of 7 pass.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest`: 7 of 7 pass.\"},\n  \"side_effects\": [\n    {\"type\": \"other\", \"detail\": \"Migrated emails in accounts were lowercased and trimmed\", \"quote\": \"the migrated emails are now lowercased and trimmed in `accounts`.\"},\n    {\"type\": \"other\", \"detail\": \"Backfill changed the local database only; the database is not tracked in git\", \"quote\": \"`data/accounts.db` is not tracked in git, so the backfill is a local data change only.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"scripts/migrate_accounts.py\", \"outcome\": \"partial\", \"detail\": \"Migrated 1247 of 1250 records against data/accounts.db; 3 records skipped (legacy ids 311, 702, 1049 with NULL name)\", \"quote\": \"I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"I fixed `normalize_email` and ran the backfill.\"\n}",
+ "dropped": [],
+ "dropped_count": 0
+}

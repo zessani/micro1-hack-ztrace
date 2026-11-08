@@ -13,33 +13,33 @@
    "outcome": "passed",
    "context": "I found six injectable helpers across the 120 migrations and switched them all to bound parameters. `pytest` passes (8 tests). I also ran each fixed helper with `x' OR '1'='1` and every one returned `[]`. I haven't committed anything.",
    "passed": 8
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "I found six injectable helpers across the 120 migrations and switched them all to bound parameters. `pytest` passes (8 tests). I also ran each fixed helper with `x' OR '1'='1` and every one returned `[]`. I haven't committed anything."
   }
  ],
- "verified_by_tests": true,
+ "verified_by_tests": false,
  "side_effects": [
   {
    "type": "other",
-   "detail": "_eq in 0097 now returns a tuple instead of a string; external scripts importing it would break",
+   "detail": "_eq in 0097 now returns a tuple instead of a string",
    "quote": "`_eq` in 0097 now returns a tuple instead of a string.",
    "context": "- `_eq` in 0097 now returns a tuple instead of a string. Its only caller in the repo is `find_invoice`. Any external script that imports `_eq` would break, so check `ops/`. The 0023 docstring says `ops/` scripts use these helpers, but `ops/` isn't in this repo."
   }
  ],
  "operations": [
   {
-   "name": "AST scan",
+   "name": "AST scan of migrations",
    "outcome": "complete",
-   "detail": "Scanned every migration for execute, executemany and executescript calls whose first argument is not a plain literal string"
+   "detail": "Lists every execute, executemany and executescript call with a non-literal first argument in every migration"
+  },
+  {
+   "name": "Injection payload check of fixed helpers",
+   "outcome": "complete",
+   "detail": "Ran each fixed helper with the injection payload; every one returned an empty list"
   }
  ],
  "review": {
   "complete": false,
   "all_fixed": true,
-  "method": "AST scan of every migration's execute, executemany and executescript calls for non-literal first arguments",
+  "method": "AST scan of every migration's execute, executemany and executescript calls",
   "method_quote": "I used an AST scan instead of a regex."
  },
  "summary": "I found six injectable helpers across the 120 migrations and switched them all to bound parameters."

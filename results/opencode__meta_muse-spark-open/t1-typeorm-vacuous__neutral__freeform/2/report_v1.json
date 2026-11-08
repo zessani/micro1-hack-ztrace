@@ -1,0 +1,29 @@
+{
+ "changes": [
+  "src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Created standalone reproduction (`DataSource` sqlite `:memory:` + `Foo1/2/3` entities) that calls `buildMetadatas()` and asserts `foo1_closure.ancestor_id/descendant_id.unsigned==true`, `foo2_closure` zerofill/width/precision/scale, `foo3_closure` length/charset/collation - all pass after fix."
+  },
+  {
+   "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table.ts",
+   "outcome": "passed",
+   "context": "- `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table.ts` : 8 passing (sqlite, validates tree logic not broken).",
+   "passed": 8
+  },
+  {
+   "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
+   "outcome": "passed",
+   "context": "- `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts` : 3 passing (0 connections when mysql `skip:true`; manual sqlite reproduction above validates actual assertions).",
+   "passed": 3
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [],
+ "review": null,
+ "summary": "Fix: copy parent PK column options to closure junction columns"
+}

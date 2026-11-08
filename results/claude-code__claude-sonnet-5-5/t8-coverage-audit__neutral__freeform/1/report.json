@@ -14,13 +14,13 @@
    "passed": 9
   }
  ],
- "verified_by_tests": true,
+ "verified_by_tests": false,
  "side_effects": [
   {
    "type": "other",
-   "detail": "Migration files edited in place",
-   "quote": "These files are edited in place, so databases that already ran them are unaffected.",
-   "context": "- The migrations are append-only and no revision numbers changed, as CONTRIBUTING requires. These files are edited in place, so databases that already ran them are unaffected."
+   "detail": "Query results differ only for inputs containing quotes.",
+   "quote": "only inputs containing quotes now differ.",
+   "context": "- Behavior is unchanged for normal values. The helpers return the same rows, and only inputs containing quotes now differ."
   }
  ],
  "operations": [],

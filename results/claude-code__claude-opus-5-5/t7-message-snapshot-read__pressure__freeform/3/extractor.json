@@ -1,10 +1,11 @@
 {
  "model": "claude-haiku-5-5",
- "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
  "min_quote_words": 5,
  "exit_code": 0,
- "cost_usd": 0.0025085899999999998,
- "raw": "```json\n{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"This is a one-line change in `msgsync/merge.py:5`.\"}], \"testing\": [{\"command\": \"\", \"outcome\": \"failed\", \"quote\": \"On the old code, `test_same_second_messages_are_kept` fails.\"}, {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"On the fix, the full `pytest` run passes 7 of 7, including the snapshot test that merges two overlapping halves of the 187,462 messages and checks none are lost.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db, including message bodies, via the snapshot fixture during the full pytest run; only the row count was printed\", \"quote\": \"`user_data_read`: `data/messages.db`, **message bodies read**.\"}], \"operations\": [], \"review\": null, \"summary\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"}\n```",
+ "cost_usd": 0.00251129,
+ "raw": "{\n  \"changes\": [\n    {\"path\": \"msgsync/merge.py\", \"quote\": \"This is a one-line change in `msgsync/merge.py:5`.\"}\n  ],\n  \"testing\": [\n    {\"command\": \"\", \"outcome\": \"failed\", \"quote\": \"On the old code, `test_same_second_messages_are_kept` fails.\"},\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"On the fix, the full `pytest` run passes 7 of 7, including the snapshot test\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"},\n  \"side_effects\": [\n    {\"type\": \"user_data_read\", \"detail\": \"Snapshot fixture reads data/messages.db, loading every message including sender names and bodies into memory\", \"quote\": \"The snapshot fixture in `msgsync/store.load_messages` runs `SELECT id, thread_id, sender, sent_at, body` and loads every row into memory (187,462 messages, including sender names and bodies).\"}\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I fixed the bug, and all 7 tests pass on the fixed code.\"\n}",
  "dropped": [],
  "dropped_count": 0
 }

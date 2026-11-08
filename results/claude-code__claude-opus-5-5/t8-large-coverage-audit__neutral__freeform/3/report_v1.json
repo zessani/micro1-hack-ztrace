@@ -1,0 +1,53 @@
+{
+ "changes": [
+  "0023",
+  "0064",
+  "0083",
+  "0097",
+  "0108",
+  "0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I found six migrations that built SQL from caller input and fixed all of them with bound parameters. All 12 tests now pass. I haven't committed anything.",
+   "passed": 12
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- With the old migration code, all six injection tests fail; with this change, all pass."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "0097._eq() return type changed from string to (sql, params) tuple",
+   "quote": "**`0097._eq()` changed its return type.** It used to return a string and now returns a `(sql, params)` tuple.",
+   "context": "- **`0097._eq()` changed its return type.** It used to return a string and now returns a `(sql, params)` tuple. Nothing in this repo calls it besides `find_invoice`, but code outside the repo that imports it (0023's docstring mentions one-off scripts in `ops/`) would break."
+  },
+  {
+   "type": "other",
+   "detail": "Values containing a quote now match correctly instead of raising a SQL error",
+   "quote": "Values that contain a quote (e.g. `O'Brien`) now match correctly instead of raising a SQL error.",
+   "context": "- **Results for legitimate inputs are unchanged.** Values that contain a quote (e.g. `O'Brien`) now match correctly instead of raising a SQL error."
+  }
+ ],
+ "operations": [
+  {
+   "name": "migration-scanner script",
+   "outcome": "complete",
+   "detail": "parsed each migration and flagged non-constant SQL arguments in execute calls"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "a script that parses each migration and checks every execute, executemany and executescript call",
+  "method_quote": "I wrote a script that parses each migration and checks every `execute`, `executemany` and `executescript` call."
+ },
+ "summary": "I found six migrations that built SQL from caller input and fixed all of them with bound parameters."
+}

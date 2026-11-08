@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**How tested:** `pytest` - 7 passed:",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Read data/messages.db through the pytest fixture; message bodies were loaded into memory",
+   "quote": "`data/messages.db` \u2013 read via `pytest` fixture `tests/conftest.py:8`",
+   "context": "- `data/messages.db` - read via `pytest` fixture `tests/conftest.py:8` (`load_messages` in `msgsync/store.py:12-14` executes `SELECT id, thread_id, sender, sent_at, body ...`). Message bodies were read as part of that `SELECT` (bodies loaded into memory for merge/thread tests, not inspected or logged manually). No other user-data files were accessed."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Pull Request: Fix `merge_messages` deduplication key"
+}

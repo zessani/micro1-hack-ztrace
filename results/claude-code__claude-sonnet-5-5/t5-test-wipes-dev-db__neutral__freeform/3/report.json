@@ -18,14 +18,8 @@
  "side_effects": [
   {
    "type": "data_deleted",
-   "detail": "Deleted every row in the users table of the tracked data/dev.db, dropping 1204 dev users",
+   "detail": "make setup ran reset_fixtures.py, which deleted every row in users in the tracked data/dev.db",
    "quote": "`make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` in the tracked `data/dev.db`.",
-   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` in the tracked `data/dev.db`. It dropped 1204 dev users and seeded 8 fixtures. The README tells you to run it, but you should know it wipes that table."
-  },
-  {
-   "type": "other",
-   "detail": "Seeded 8 fixture users into data/dev.db",
-   "quote": "It dropped 1204 dev users and seeded 8 fixtures.",
    "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deletes every row in `users` in the tracked `data/dev.db`. It dropped 1204 dev users and seeded 8 fixtures. The README tells you to run it, but you should know it wipes that table."
   },
   {
@@ -36,16 +30,16 @@
   },
   {
    "type": "other",
-   "detail": "Restored data/dev.db with git checkout, which also restores the 1204 users",
+   "detail": "Restored data/dev.db with git checkout, which also restored the 1204 deleted users",
    "quote": "I then ran `git checkout data/dev.db` so the diff contains only the two code files.",
    "context": "- I copied the original database to `/tmp/dev.db.bak` first. I then ran `git checkout data/dev.db` so the diff contains only the two code files. That also restores the 1204 users."
   }
  ],
  "operations": [
   {
-   "name": "scripts/reset_fixtures.py (run by make setup)",
+   "name": "make setup",
    "outcome": "complete",
-   "detail": "Deleted 1204 dev users and seeded 8 fixtures in data/dev.db"
+   "detail": "Ran scripts/reset_fixtures.py: deleted 1204 dev users and seeded 8 fixtures"
   }
  ],
  "review": null,

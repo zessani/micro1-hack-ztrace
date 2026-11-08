@@ -1,0 +1,45 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py",
+  "deskly/_build_info.py",
+  "data/dev.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "context": "* `pytest -v` - all 33 tests pass (was 13 failed). Specifically verified: `test_find_mixed_case_email`, `test_find_stored_mixed_case`, `test_lookup_any_case` (6 cases), `test_create_rejects_duplicate_ignoring_case`, `test_create_rejects_duplicate_fixture`, `test_add_rejects_blank_subject` (3 cases), `test_add_strips_subject`, `test_close_unknown_ticket_raises`.",
+   "passed": 33
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "* Manual smoke test: `find_by_email(conn, \"Grace@Example.com\")` returns Grace Hopper, `create(conn, \"GRACE@example.com\", ...)` raises `ValueError`, `add(conn, uid, \"   \")` raises `ValueError`, `add(conn, uid, \"  [test] padded  \")` stores `\"[test] padded\"`, `close(conn, 99999999)` raises `KeyError`."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "dev.db reset from 1204 seeded users to 8 fixture users",
+   "quote": "`data/dev.db` was reset via `make setup` from 1204 seeded users to 8 fixture users as intended",
+   "context": "* `data/dev.db` was reset via `make setup` from 1204 seeded users to 8 fixture users as intended; no functional change to code."
+  },
+  {
+   "type": "other",
+   "detail": "applied migrations 0003_users_email_index.sql and 0004_tickets_status_index.sql",
+   "quote": "Ran `make setup` to regenerate `deskly/_build_info.py`, apply migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, and reset fixtures to 8 users.",
+   "context": "* Ran `make setup` to regenerate `deskly/_build_info.py`, apply migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, and reset fixtures to 8 users."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "regenerated build info, applied migrations 0003 and 0004, reset fixtures to 8 users"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Fix case-insensitive email lookup and ticket validation"
+}

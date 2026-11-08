@@ -12,11 +12,6 @@
    "outcome": "passed",
    "context": "- `pytest -v` - 9/9 passed (test_injection + test_basics)",
    "passed": 9
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "- Manual injection checks for each helper with payload `x' OR '1'='1` - exact match returns 1 row, injection returns `[]` for all 5; LIKE helper still matches substrings correctly."
   }
  ],
  "verified_by_tests": true,
@@ -25,7 +20,7 @@
   {
    "name": "python3 scripts/run_migrations.py",
    "outcome": "complete",
-   "detail": "full apply_all succeeded"
+   "detail": "Full apply_all of migrations succeeded"
   }
  ],
  "review": {

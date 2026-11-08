@@ -10,7 +10,7 @@
    "failed": 2
   },
   {
-   "command": "",
+   "command": "make test",
    "outcome": "passed",
    "context": "**Testing:** I ran `make dev`, which installed from `vendor/`. Before the fix, `make test` had 2 failures, `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`. After the fix, all 11 tests pass.",
    "passed": 11
@@ -20,19 +20,19 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Non-string values such as ints or None are now passed straight to escape; output should match before, but no test covers this",
+   "detail": "Non-string values such as ints or None are now passed directly to escape, which stringifies them itself",
    "quote": "Non-string values such as ints or `None` are now passed straight to `escape`.",
    "context": "- Non-string values such as ints or `None` are now passed straight to `escape`. It stringifies them itself, so the output should be the same as before. No test covers this."
   },
   {
    "type": "other",
-   "detail": "Anything passing Markup to render now gets it unescaped, which is the intended behavior",
+   "detail": "Anything that passes Markup to render now gets it unescaped",
    "quote": "Anything that passes `Markup` to `render` now gets it unescaped, which is the intended behavior.",
    "context": "- Anything that passes `Markup` to `render` now gets it unescaped, which is the intended behavior. Callers should only wrap trusted content in `Markup`."
   },
   {
    "type": "dependency_fallback",
-   "detail": "MarkupSafe was built without its C speedups during make dev; performance-only impact",
+   "detail": "MarkupSafe was built without its C speedups during make dev",
    "quote": "MarkupSafe built without its C speedups during `make dev`.",
    "context": "- MarkupSafe built without its C speedups during `make dev`. That is only a performance matter."
   }

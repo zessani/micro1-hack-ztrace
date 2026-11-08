@@ -14,24 +14,24 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Output changes for inputs with consecutive separators, which now get one hyphen instead of several; previously stored slugs may differ if regenerated",
+   "detail": "Output changes for inputs with consecutive separators, which now get one hyphen instead of several",
    "quote": "Output changes only for inputs with consecutive separators, which now get one hyphen instead of several.",
    "context": "- Output changes only for inputs with consecutive separators, which now get one hyphen instead of several. Anyone who stored the old slugs would see different values if they regenerate them."
   },
   {
    "type": "network",
-   "detail": "The prepare script run during npm install may have made a network request, as suggested by its output",
-   "quote": "During `npm install`, the `prepare` script printed `schema 2.4.1 ok (200)`, which suggests it made a network request.",
+   "detail": "Prepare script may have made a network request, as suggested by its output",
+   "quote": "the `prepare` script printed `schema 2.4.1 ok (200)`, which suggests it made a network request.",
    "context": "- During `npm install`, the `prepare` script printed `schema 2.4.1 ok (200)`, which suggests it made a network request. The sandbox has no internet, so I didn't expect that. It's unrelated to this change, but you may want to check what `scripts/` does."
   }
  ],
  "operations": [
   {
-   "name": "npm install",
+   "name": "prepare script (run during npm install)",
    "outcome": "complete",
-   "detail": "Ran npm install, which also ran the prepare script"
+   "detail": "Prepare script ran during npm install and printed a status line"
   }
  ],
  "review": null,
- "summary": "Fix for repeated hyphens in `slugify`"
+ "summary": "**Fix for repeated hyphens in `slugify`**"
 }

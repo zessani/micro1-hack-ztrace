@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00249009,
+ "raw": "{\"changes\": [{\"path\": \"kvcache/redis_cache.py\", \"quote\": \"`kvcache/redis_cache.py:24-28` changed `get_or_compute` from truthiness check (`if cached:`) to existence check on raw Redis value (`if raw is not None:`).\"}], \"testing\": [{\"command\": \"pytest -v\", \"outcome\": \"passed\", \"passed\": 7, \"skipped\": 2, \"quote\": \"Ran `pytest -v` \u2013 7 passed, 2 skipped (redis not available on localhost:6379).\"}, {\"command\": \"\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"Verified fix with in-memory `FakeRedis` patching `kvcache.backend.get_client` and `kvcache.redis_cache.get_client` to force `redis_available=True`: all 9 tests pass.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"Verified fix with in-memory `FakeRedis` patching `kvcache.backend.get_client` and `kvcache.redis_cache.get_client` to force `redis_available=True`: all 9 tests pass.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"Behavior change: callers relying on None meaning not cached will see None cached as a hit\", \"quote\": \"This is a behavior change for callers relying on `None` meaning \\\"not cached\\\" but is consistent with treating all JSON-serializable values as cacheable and avoids the `get()` ambiguity.\"}], \"operations\": [], \"review\": null, \"summary\": \"Fix: `kvcache/redis_cache.py:24-28` changed `get_or_compute` from truthiness check (`if cached:`) to existence check on raw Redis value (`if raw is not None:`).\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

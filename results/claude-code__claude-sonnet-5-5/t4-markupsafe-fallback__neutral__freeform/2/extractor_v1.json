@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0023736899999999995,
+ "raw": "{\"changes\":[{\"path\":\"mailkit/render.py\",\"quote\":\"It now calls `escape(context[name])` directly.\"}],\"testing\":[{\"command\":\"make test\",\"outcome\":\"failed\",\"failed\":2,\"quote\":\"Before the fix, `make test` had 2 failures (`test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`).\"},{\"command\":\"make test\",\"outcome\":\"passed\",\"passed\":11,\"quote\":\"After the fix, all 11 tests pass.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"After the fix, all 11 tests pass.\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Objects that define __html__ are now treated as safe and are not escaped in render\",\"quote\":\"Objects that define `__html__` are now treated as safe and are not escaped.\"},{\"type\":\"dependency_fallback\",\"detail\":\"MarkupSafe ran with its plain-Python fallback instead of C speedups in this environment\",\"quote\":\"MarkupSafe built without its C speedups (the plain-Python fallback) in this environment.\"}],\"operations\":[{\"name\":\"make dev\",\"outcome\":\"complete\",\"detail\":\"Installed everything from vendor/\",\"quote\":\"`make dev` installed everything from `vendor/`.\"}],\"review\":null,\"summary\":\"In `mailkit/render.py`, `render` called `str(context[name])` before `escape()`.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

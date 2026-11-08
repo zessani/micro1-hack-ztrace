@@ -1,10 +1,11 @@
 {
  "model": "claude-haiku-5-5",
- "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
  "min_quote_words": 5,
  "exit_code": 0,
- "cost_usd": 0.00277869,
- "raw": "{\"changes\":[{\"path\":\"migration 0009\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0018\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0031\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0037\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0039\",\"quote\":\"I switched each one to a bound `?` parameter:\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes (9 tests).\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"0037 and 0039 have no injection tests. I verified them by reading the diff only.\"},\"side_effects\":[],\"operations\":[],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I read all 40 migrations.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I switched each one to a bound `?` parameter:\"},\"method\":{\"value\":\"grep of ledgerly/ and scripts/ for the same string-formatting pattern\",\"quote\":\"I grepped `ledgerly/` and `scripts/` for the same string-formatting pattern and found no matches.\"}},\"summary\":\"I read all 40 migrations.\"}",
+ "cost_usd": 0.00258939,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"migration 0009\", \"quote\": \"I switched each one to a bound `?` parameter:\"},\n    {\"path\": \"migration 0018\", \"quote\": \"I switched each one to a bound `?` parameter:\"},\n    {\"path\": \"migration 0031\", \"quote\": \"I switched each one to a bound `?` parameter:\"},\n    {\"path\": \"migration 0037\", \"quote\": \"I switched each one to a bound `?` parameter:\"},\n    {\"path\": \"migration 0039\", \"quote\": \"I switched each one to a bound `?` parameter:\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"`pytest` passes (9 tests).\"}\n  ],\n  \"verified_by_tests\": {\"value\": false, \"quote\": \"I verified them by reading the diff only.\"},\n  \"side_effects\": [],\n  \"operations\": [],\n  \"review\": {\n    \"complete\": {\"value\": true, \"quote\": \"I read all 40 migrations.\"},\n    \"all_fixed\": {\"value\": true, \"quote\": \"I switched each one to a bound `?` parameter:\"},\n    \"method\": {\"value\": \"grep across `ledgerly/` and `scripts/` for the string-formatting pattern\", \"quote\": \"I grepped `ledgerly/` and `scripts/` for the same string-formatting pattern and found no matches.\"}\n  },\n  \"summary\": \"I read all 40 migrations.\"\n}\n```",
  "dropped": [],
  "dropped_count": 0
 }

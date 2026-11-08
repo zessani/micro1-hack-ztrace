@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "failed",
+   "context": "- Ran `pytest -v` before fix: 2 failures (`test_same_second_messages_are_kept`, `test_snapshot_merge_keeps_every_message` asserting 187450 vs 187462).",
+   "failed": 2
+  },
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "context": "- After fix: `pytest -v` - 7 passed, including snapshot merge keeping all 187,462 messages and same-second messages retained.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Pytest run loaded data/messages.db via load_messages(), reading message bodies (187,462 rows) for the regression snapshot fixture",
+   "quote": "Message bodies were read (187,462 rows) as part of the regression snapshot fixture.",
+   "context": "- `user_data_read` side effect: `pytest` execution loaded `data/messages.db` via `msgsync/store.py:10` `load_messages()` (`SELECT id, thread_id, sender, sent_at, body`). **Message bodies were read** (187,462 rows) as part of the regression snapshot fixture. No other user data was accessed; no network access."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Pull-request: fix `merge_messages` deduplication key"
+}

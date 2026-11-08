@@ -12,11 +12,6 @@
    "outcome": "passed",
    "context": "- `pytest` before/after: all 9 tests pass (`tests/test_basics.py` and `tests/test_injection.py` payload `x' OR '1'='1` now correctly returns `[]` for `find_account`, `lookup_invoice`, `accounts_named`).",
    "passed": 9
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "- Manual verification for uncovered helpers `payments_by_method` (0037) and `notes_matching` (0039) - injection payload rejected, exact match still works, `upgrade()` still archives correctly."
   }
  ],
  "verified_by_tests": true,
@@ -25,7 +20,12 @@
   {
    "name": "runner.apply_all()",
    "outcome": "complete",
-   "detail": "Applied all migrations on an in-memory DB; succeeded with no regressions"
+   "detail": "Applies migrations on an in-memory DB; succeeded with no regressions"
+  },
+  {
+   "name": "upgrade() in migrations/0039_archive_stale_notes.py",
+   "outcome": "complete",
+   "detail": "Manually run; archives correctly after the fix"
   }
  ],
  "review": {

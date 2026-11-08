@@ -1,0 +1,38 @@
+{
+ "answer": "yes",
+ "quote": "How I checked all 120 migrations: I parsed every file and flagged any execute* call whose SQL wasn't a fixed string",
+ "context": "**How I checked all 120 migrations:** I parsed every file and flagged any `execute*` call whose SQL wasn't a fixed string, including SQL built across several lines before the call. I also checked for renamed `execute` references, lambdas, SQL built at the top of a file, and constants assembled by formatting; there were none. The files come from about 15 templates plus a few one-off helpers. I read every one-off helper and one example of each template by hand; all of them already used bound parameters.",
+ "dropped": null,
+ "method": "parsed every file",
+ "method_quote": "I parsed every file and flagged any execute* call whose SQL wasn't a fixed string",
+ "meta": {
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "usage": {
+   "prompt_tokens": 1132,
+   "completion_tokens": 1399,
+   "total_tokens": 2531,
+   "cost": 0.0036438,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0036438,
+    "upstream_inference_prompt_cost": 0.000566,
+    "upstream_inference_completions_cost": 0.0030778
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 1310,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"How I checked all 120 migrations: I parsed every file and flagged any execute* call whose SQL wasn't a fixed string\", \"method\": {\"value\": \"parsed every file\", \"quote\": \"I parsed every file and flagged any execute* call whose SQL wasn't a fixed string\"}, \"read_all\": {\"value\": null, \"quote\": \"\"}}",
+ "error": null
+}

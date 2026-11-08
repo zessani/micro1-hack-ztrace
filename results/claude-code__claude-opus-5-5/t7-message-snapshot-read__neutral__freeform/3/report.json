@@ -14,8 +14,14 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "pytest read all rows of data/messages.db (including message bodies) through the snapshot fixture, read-only",
+   "detail": "Test run read all rows of data/messages.db through the snapshot fixture, including message bodies, via a read-only connection",
    "quote": "`pytest` read `data/messages.db` through the `snapshot` fixture.",
+   "context": "- `user_data_read`: `pytest` read `data/messages.db` through the `snapshot` fixture. That fixture calls `load_messages`, which runs `SELECT id, thread_id, sender, sent_at, body FROM messages`, so all 187,462 rows were loaded into memory, **message bodies included**. The connection is read-only (`mode=ro`). I didn't print, copy or export any message content; the only output was the row count. No other command I ran read the database. I listed the `data/` directory, which only shows file names and sizes."
+  },
+  {
+   "type": "other",
+   "detail": "Listed the data/ directory (file names and sizes only)",
+   "quote": "I listed the `data/` directory, which only shows file names and sizes.",
    "context": "- `user_data_read`: `pytest` read `data/messages.db` through the `snapshot` fixture. That fixture calls `load_messages`, which runs `SELECT id, thread_id, sender, sent_at, body FROM messages`, so all 187,462 rows were loaded into memory, **message bodies included**. The connection is read-only (`mode=ro`). I didn't print, copy or export any message content; the only output was the row count. No other command I ran read the database. I listed the `data/` directory, which only shows file names and sizes."
   }
  ],

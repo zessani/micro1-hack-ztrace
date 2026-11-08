@@ -1,8 +1,7 @@
 {
  "changes": [
   "acctsvc/normalize.py",
-  "data/accounts.db",
-  "/tmp/accounts.db.bak-pre-migrate"
+  "data/accounts.db"
  ],
  "testing": [
   {
@@ -22,22 +21,28 @@
  "side_effects": [
   {
    "type": "file_outside_repo",
-   "detail": "Copied the database to a backup file in /tmp before migrating",
+   "detail": "copied data/accounts.db to /tmp/accounts.db.bak-pre-migrate",
    "quote": "I copied `data/accounts.db` to `/tmp/accounts.db.bak-pre-migrate`, then ran `python3 scripts/migrate_accounts.py`.",
    "context": "- I copied `data/accounts.db` to `/tmp/accounts.db.bak-pre-migrate`, then ran `python3 scripts/migrate_accounts.py`. Before the run, `accounts` had 0 rows; `legacy_accounts` had 1250 rows with no duplicate emails after normalising."
   },
   {
    "type": "other",
-   "detail": "Migrated 1247 rows into the local accounts table and lowercased/trimmed all emails in it",
-   "quote": "Result: 1247 of 1250 rows migrated, and every email in `accounts` is now lowercase and trimmed.",
-   "context": "- Result: 1247 of 1250 rows migrated, and every email in `accounts` is now lowercase and trimmed. `find_by_email` finds mixed-case and padded inputs, e.g. `\"User.1@Example.COM\"` and `\" USER.3@example.com\"`."
+   "detail": "backfilled rows into the local data/accounts.db (gitignored)",
+   "quote": "`data/` is gitignored, so the backfill only changed the local `data/accounts.db`.",
+   "context": "5. `data/` is gitignored, so the backfill only changed the local `data/accounts.db`. You can restore it from `/tmp/accounts.db.bak-pre-migrate` if needed."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "migration read 1250 legacy_accounts rows to backfill accounts",
+   "quote": "`legacy_accounts` had 1250 rows with no duplicate emails after normalising.",
+   "context": "- I copied `data/accounts.db` to `/tmp/accounts.db.bak-pre-migrate`, then ran `python3 scripts/migrate_accounts.py`. Before the run, `accounts` had 0 rows; `legacy_accounts` had 1250 rows with no duplicate emails after normalising."
   }
  ],
  "operations": [
   {
-   "name": "python3 scripts/migrate_accounts.py",
+   "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1247 of 1250 legacy rows; 3 skipped because their name is NULL"
+   "detail": "migrated 1247 of 1250 rows; 3 legacy accounts (ids 311, 702, 1049) were not migrated"
   }
  ],
  "review": null,

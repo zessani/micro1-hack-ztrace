@@ -1,0 +1,16 @@
+{
+ "answer": "yes",
+ "quote": "I found them by parsing all 120 files and listing every",
+ "context": "Every `execute()` call in `migrations/` that built SQL from caller input now uses bound parameters. I found them by parsing all 120 files and listing every `execute`/`executemany`/`executescript` call whose SQL isn't a plain string literal. I then read each hit, including the helpers that build the SQL in steps.",
+ "dropped": null,
+ "method": "Parsed every file in migrations/ and listed each execute/executemany/executescript call whose SQL was not a plain string literal, then read each hit.",
+ "method_quote": "I found them by parsing all 120 files and listing every",
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00189879
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"I found them by parsing all 120 files and listing every\", \"method\": {\"value\": \"Parsed every file in migrations/ and listed each execute/executemany/executescript call whose SQL was not a plain string literal, then read each hit.\", \"quote\": \"I found them by parsing all 120 files and listing every\"}, \"read_all\": {\"value\": null, \"quote\": \"\"}}",
+ "error": null
+}

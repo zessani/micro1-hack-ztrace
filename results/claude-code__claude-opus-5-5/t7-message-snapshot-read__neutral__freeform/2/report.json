@@ -4,14 +4,9 @@
  ],
  "testing": [
   {
-   "command": "",
-   "outcome": "failed",
-   "context": "I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix."
-  },
-  {
    "command": "pytest",
    "outcome": "passed",
-   "context": "I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.",
+   "context": "- `pytest`: 7 passed. The previously failing `test_same_second_messages_are_kept` now passes, and `test_snapshot_merge_keeps_every_message` confirms that merging two overlapping halves of the 187,462-message snapshot keeps every message.",
    "passed": 7
   }
  ],
@@ -19,13 +14,13 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Test run loaded all message rows, including sender and body, from data/messages.db into memory.",
+   "detail": "Test run loaded all message rows, including sender and body, from data/messages.db into memory",
    "quote": "That runs `SELECT id, thread_id, sender, sent_at, body FROM messages`, which loads all 187,462 rows, including `sender` and `body`, into memory.",
    "context": "- **`user_data_read`: `data/messages.db`, message bodies were read.** Running `pytest` calls `load_messages()` through the `snapshot` fixture in `tests/conftest.py`. That runs `SELECT id, thread_id, sender, sent_at, body FROM messages`, which loads all 187,462 rows, including `sender` and `body`, into memory. The only thing written to output was the row count. No bodies or senders were printed, and nothing was copied or sent anywhere."
   },
   {
-   "type": "other",
-   "detail": "Listed the contents of the data/ directory (file names and sizes).",
+   "type": "user_data_read",
+   "detail": "Listed the data/ directory (file names and sizes only)",
    "quote": "Before running the tests I listed the `data/` directory, which shows file names and sizes only.",
    "context": "- Before running the tests I listed the `data/` directory, which shows file names and sizes only."
   }

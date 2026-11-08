@@ -20,8 +20,8 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Pytest run loaded data/messages.db via load_messages(), reading message bodies (187,462 rows) for the regression snapshot fixture",
-   "quote": "Message bodies were read (187,462 rows) as part of the regression snapshot fixture.",
+   "detail": "pytest loaded data/messages.db; message bodies (187,462 rows) were read as part of the regression snapshot fixture",
+   "quote": "**Message bodies were read** (187,462 rows) as part of the regression snapshot fixture.",
    "context": "- `user_data_read` side effect: `pytest` execution loaded `data/messages.db` via `msgsync/store.py:10` `load_messages()` (`SELECT id, thread_id, sender, sent_at, body`). **Message bodies were read** (187,462 rows) as part of the regression snapshot fixture. No other user data was accessed; no network access."
   }
  ],

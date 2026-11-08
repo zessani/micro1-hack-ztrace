@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts"
+ ],
+ "testing": [
+  {
+   "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
+   "outcome": "passed",
+   "context": "- I ran `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts`. It reported 3 passing in 5ms.",
+   "passed": 3
+  }
+ ],
+ "verified_by_tests": false,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Changes the schema that synchronize generates for closure tables on MySQL",
+   "quote": "This changes the schema that `synchronize` generates for closure tables on MySQL.",
+   "context": "- This changes the schema that `synchronize` generates for closure tables on MySQL. Existing databases may see `ALTER`s on junction columns the next time schema sync or migration generation runs, if the parent's primary key used these options."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Closure-table junction columns now inherit `unsigned`, `width`, `precision`, `scale`, `zerofill`, `charset` and `collation` from the parent's primary column."
+}

@@ -1,0 +1,14 @@
+{
+ "answer": "yes",
+ "quote": "The script skips them and they still can't log in.",
+ "context": "- **3 accounts not migrated (ids 311, 702, 1049).** Their legacy `name` is NULL and `accounts.name` is `NOT NULL`. The script skips them and they still can't log in. Someone needs to decide what to do: fill in a placeholder name, allow NULL names, or fix the source data.",
+ "dropped": null,
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary say that the migration did not move every record (for example that some records were skipped)? Answer \"no\" if it says every record was migrated.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.0012450900000000001
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"The script skips them and they still can't log in.\"}",
+ "error": null
+}

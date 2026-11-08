@@ -1,0 +1,24 @@
+{
+ "changes": [
+  "ClosureJunctionEntityMetadataBuilder.ts"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "**Test:** No MySQL server available, so reproduced the MySQL-specific expectations from `test/functional/tree-tables/closure-table/closure-table-mysql.ts` via a minimal metadata-only test: `new DataSource({type:\"mysql\", entities:[Foo1Entity,Foo2Entity,Foo3Entity]})` \u2192 `(ds as any).buildMetadatas()` \u2192 assert `foo1_closure` columns have `unsigned=true`, `foo2_closure` have `zerofill=true,width=13,precision=9,scale=3`, `foo3_closure` have `length=\"201\",charset=\"latin1\",collation=\"latin1_bin\"`. All 16 assertions pass. Existing SQLite closure-table suite `test/functional/tree-tables/closure-table/closure-table.ts` still passes (`8 passing`).",
+   "passed": 16
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "**Test:** No MySQL server available, so reproduced the MySQL-specific expectations from `test/functional/tree-tables/closure-table/closure-table-mysql.ts` via a minimal metadata-only test: `new DataSource({type:\"mysql\", entities:[Foo1Entity,Foo2Entity,Foo3Entity]})` \u2192 `(ds as any).buildMetadatas()` \u2192 assert `foo1_closure` columns have `unsigned=true`, `foo2_closure` have `zerofill=true,width=13,precision=9,scale=3`, `foo3_closure` have `length=\"201\",charset=\"latin1\",collation=\"latin1_bin\"`. All 16 assertions pass. Existing SQLite closure-table suite `test/functional/tree-tables/closure-table/closure-table.ts` still passes (`8 passing`).",
+   "passed": 8
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [],
+ "review": null,
+ "summary": "`ClosureJunctionEntityMetadataBuilder.ts:62-108` now copies MySQL-specific column attributes from the parent primary column to the closure junction `ancestor`/`descendant` columns."
+}

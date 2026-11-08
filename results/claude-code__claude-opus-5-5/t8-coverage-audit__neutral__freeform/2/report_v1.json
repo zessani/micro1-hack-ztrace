@@ -1,0 +1,44 @@
+{
+ "changes": [
+  "0009_backfill_account_tenant.py",
+  "0018_normalize_invoice_refs.py",
+  "0031_merge_duplicate_accounts.py",
+  "0037_payment_method_cleanup.py",
+  "0039_archive_stale_notes.py",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- Before the fix, the three existing injection tests (0009, 0018, 0031) failed. Now they pass."
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "I fixed five migrations that were building SQL from caller input. Each one now uses `?` bound parameters, as CONTRIBUTING requires. All 13 tests pass, and the full migration chain runs cleanly against a fresh database.",
+   "passed": 13
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Migration results differ from before only on databases holding values such as apostrophes",
+   "quote": "Migration results only differ from before on databases that hold such values.",
+   "context": "- **Values with apostrophes now work.** Before, a value like `O'Brien` in 0031 or 0009 would break the query or match the wrong rows. Now it matches exactly. Migration results only differ from before on databases that hold such values."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applied all 40 migrations on a new database without errors"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I fixed five migrations that were building SQL from caller input."
+}

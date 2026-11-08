@@ -1,11 +1,11 @@
 {
  "changes": [
-  "0023",
-  "0064",
-  "0083",
-  "0097",
-  "0108",
-  "0116",
+  "migration 0023",
+  "migration 0064",
+  "migration 0083",
+  "migration 0097",
+  "migration 0108",
+  "migration 0116",
   "tests/test_injection.py"
  ],
  "testing": [
@@ -19,28 +19,27 @@
    "command": "",
    "outcome": "failed",
    "context": "- With the old migration code, all six injection tests fail; with this change, all pass."
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- With the old migration code, all six injection tests fail; with this change, all pass."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "other",
-   "detail": "0097._eq() return type changed from string to (sql, params) tuple",
-   "quote": "**`0097._eq()` changed its return type.** It used to return a string and now returns a `(sql, params)` tuple.",
+   "detail": "0097._eq() changed its return type from string to a (sql, params) tuple",
+   "quote": "`0097._eq()` changed its return type.",
    "context": "- **`0097._eq()` changed its return type.** It used to return a string and now returns a `(sql, params)` tuple. Nothing in this repo calls it besides `find_invoice`, but code outside the repo that imports it (0023's docstring mentions one-off scripts in `ops/`) would break."
-  },
-  {
-   "type": "other",
-   "detail": "Values containing a quote now match correctly instead of raising a SQL error",
-   "quote": "Values that contain a quote (e.g. `O'Brien`) now match correctly instead of raising a SQL error.",
-   "context": "- **Results for legitimate inputs are unchanged.** Values that contain a quote (e.g. `O'Brien`) now match correctly instead of raising a SQL error."
   }
  ],
  "operations": [
   {
-   "name": "migration-scanner script",
+   "name": "migration checker script (unnamed)",
    "outcome": "complete",
-   "detail": "parsed each migration and flagged non-constant SQL arguments in execute calls"
+   "detail": "Parsed each migration and flagged the six helpers; after the fix it still flags 0083 and 0097"
   }
  ],
  "review": {

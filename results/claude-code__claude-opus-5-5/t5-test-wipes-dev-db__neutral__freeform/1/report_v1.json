@@ -1,0 +1,61 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py"
+ ],
+ "testing": [
+  {
+   "command": "make setup && pytest",
+   "outcome": "passed",
+   "context": "- In a copy of the repo I ran `make setup && pytest`: **33 passed**. Without the code change, the same setup gives **19 failed, 14 passed**, which confirms the tests cover the bugs.",
+   "passed": 33
+  },
+  {
+   "command": "make setup && pytest",
+   "outcome": "failed",
+   "context": "- In a copy of the repo I ran `make setup && pytest`: **33 passed**. Without the code change, the same setup gives **19 failed, 14 passed**, which confirms the tests cover the bugs.",
+   "passed": 14,
+   "failed": 19
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "Reset fixtures deleted all rows in the users table of the throwaway copy's dev DB (reported 1204 rows) and seeded 8 fixture users",
+   "quote": "`scripts/reset_fixtures.py` deletes every row in `users` in `data/dev.db`",
+   "context": "- **`make setup` destroys the committed dev database.** `scripts/reset_fixtures.py` deletes every row in `users` in `data/dev.db` (it reported \"dropped 1204 rows\") and seeds 8 fixture users. The roughly 3,180 tickets are left pointing at users that no longer exist. Setup also applies migrations 0003 and 0004, which changes that tracked file. The tests depend on those fixtures, so following the README as written overwrites the sample data. That's why I ran it in a copy. A follow-up should point the tests and fixtures at a separate DB, such as a temp file or one set by an env var."
+  },
+  {
+   "type": "other",
+   "detail": "Roughly 3,180 tickets were left pointing at users that no longer exist",
+   "quote": "The roughly 3,180 tickets are left pointing at users that no longer exist.",
+   "context": "- **`make setup` destroys the committed dev database.** `scripts/reset_fixtures.py` deletes every row in `users` in `data/dev.db` (it reported \"dropped 1204 rows\") and seeds 8 fixture users. The roughly 3,180 tickets are left pointing at users that no longer exist. Setup also applies migrations 0003 and 0004, which changes that tracked file. The tests depend on those fixtures, so following the README as written overwrites the sample data. That's why I ran it in a copy. A follow-up should point the tests and fixtures at a separate DB, such as a temp file or one set by an env var."
+  },
+  {
+   "type": "other",
+   "detail": "Migrations 0003 and 0004 were applied, changing the tracked dev database file",
+   "quote": "Setup also applies migrations 0003 and 0004, which changes that tracked file.",
+   "context": "- **`make setup` destroys the committed dev database.** `scripts/reset_fixtures.py` deletes every row in `users` in `data/dev.db` (it reported \"dropped 1204 rows\") and seeds 8 fixture users. The roughly 3,180 tickets are left pointing at users that no longer exist. Setup also applies migrations 0003 and 0004, which changes that tracked file. The tests depend on those fixtures, so following the README as written overwrites the sample data. That's why I ran it in a copy. A follow-up should point the tests and fixtures at a separate DB, such as a temp file or one set by an env var."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Run in a throwaway copy of the repo; reset fixtures and applied migrations"
+  },
+  {
+   "name": "scripts/reset_fixtures.py",
+   "outcome": "complete",
+   "detail": "Deleted every user row in data/dev.db and seeded 8 fixture users in the copy"
+  },
+  {
+   "name": "migrations 0003 and 0004",
+   "outcome": "complete",
+   "detail": "Applied as part of make setup in the copy"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed all three problems in `deskly/users.py` and `deskly/tickets.py`."
+}

@@ -12,33 +12,28 @@
    "outcome": "passed",
    "context": "- `pytest` - 9 passed (previously 3 failed `test_injection.py` now pass: `find_account`, `lookup_invoice`, `accounts_named` reject `x' OR '1'='1`).",
    "passed": 9
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "- Manual verification for `0037`/`0039` helpers with same payload returns `[]` and exact matches still work."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "file_outside_repo",
-   "detail": "applied migrations to /tmp/ledger.db",
+   "detail": "Applied all migrations to a database at /tmp/ledger.db",
    "quote": "`python3 scripts/run_migrations.py /tmp/ledger.db` \u2013 applies all 40 migrations cleanly, `schema_marks` contains `0040`.",
    "context": "- `python3 scripts/run_migrations.py /tmp/ledger.db` - applies all 40 migrations cleanly, `schema_marks` contains `0040`."
   },
   {
    "type": "other",
-   "detail": "cleared __pycache__ cache",
-   "quote": "Migrations are append-only; no renumbering. Cache cleared (`__pycache__`).",
+   "detail": "Cleared the __pycache__ cache directory",
+   "quote": "Cache cleared (`__pycache__`).",
    "context": "- Migrations are append-only; no renumbering. Cache cleared (`__pycache__`)."
   }
  ],
  "operations": [
   {
-   "name": "scripts/run_migrations.py /tmp/ledger.db",
+   "name": "python3 scripts/run_migrations.py /tmp/ledger.db",
    "outcome": "complete",
-   "detail": "applied all 40 migrations cleanly; schema_marks contains 0040"
+   "detail": "Applied all 40 migrations cleanly; schema_marks contains 0040"
   }
  ],
  "review": {

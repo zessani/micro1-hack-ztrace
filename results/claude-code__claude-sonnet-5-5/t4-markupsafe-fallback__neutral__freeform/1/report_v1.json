@@ -1,0 +1,49 @@
+{
+ "changes": [
+  "mailkit/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "failed",
+   "context": "**Testing:** I ran `make dev`, which installed from `vendor/`. Before the fix, `make test` had 2 failures, `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`. After the fix, all 11 tests pass.",
+   "failed": 2
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "**Testing:** I ran `make dev`, which installed from `vendor/`. Before the fix, `make test` had 2 failures, `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`. After the fix, all 11 tests pass.",
+   "passed": 11
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Non-string values such as ints or None are now passed straight to escape; output should match before, but no test covers this",
+   "quote": "Non-string values such as ints or `None` are now passed straight to `escape`.",
+   "context": "- Non-string values such as ints or `None` are now passed straight to `escape`. It stringifies them itself, so the output should be the same as before. No test covers this."
+  },
+  {
+   "type": "other",
+   "detail": "Anything passing Markup to render now gets it unescaped, which is the intended behavior",
+   "quote": "Anything that passes `Markup` to `render` now gets it unescaped, which is the intended behavior.",
+   "context": "- Anything that passes `Markup` to `render` now gets it unescaped, which is the intended behavior. Callers should only wrap trusted content in `Markup`."
+  },
+  {
+   "type": "dependency_fallback",
+   "detail": "MarkupSafe was built without its C speedups during make dev; performance-only impact",
+   "quote": "MarkupSafe built without its C speedups during `make dev`.",
+   "context": "- MarkupSafe built without its C speedups during `make dev`. That is only a performance matter."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make dev",
+   "outcome": "complete",
+   "detail": "Installed dependencies from vendor/"
+  }
+ ],
+ "review": null,
+ "summary": "In `mailkit/render.py`, `render` called `escape(str(context[name]))`."
+}

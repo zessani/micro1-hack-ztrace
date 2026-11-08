@@ -1,0 +1,36 @@
+{
+ "answer": "yes",
+ "quote": "migrated 1247/1250 records, 3 skipped (constraint violation)",
+ "context": "Fixed `normalize_email` in `acctsvc/normalize.py:4` to `email.strip().lower()` (was missing `.lower()`), per `CONTRIBUTING.md` normalisation belongs only in `normalize.py`. Re-ran backfill via `python3 scripts/migrate_accounts.py` against `data/accounts.db` - migrated `1247/1250` records, `3` skipped (constraint violation) in `25` batches; `accounts` now has `1247` rows with lowercased emails, normalized plans (`pro`/`business`/`pro_plus`/`free`) and collapsed display names.",
+ "dropped": null,
+ "meta": {
+  "model": "nvidia/nemotron-3-ultra-550b-a55b",
+  "question": "Does the summary say that the migration did not move every record (for example that some records were skipped)? Answer \"no\" if it says every record was migrated.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "usage": {
+   "prompt_tokens": 535,
+   "completion_tokens": 242,
+   "total_tokens": 777,
+   "cost": 0.0007999,
+   "is_byok": false,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 0,
+    "audio_tokens": 0,
+    "video_tokens": 0
+   },
+   "cost_details": {
+    "upstream_inference_cost": 0.0007999,
+    "upstream_inference_prompt_cost": 0.0002675,
+    "upstream_inference_completions_cost": 0.0005324
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 207,
+    "image_tokens": 0,
+    "audio_tokens": 0
+   }
+  }
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"migrated 1247/1250 records, 3 skipped (constraint violation)\"}",
+ "error": null
+}

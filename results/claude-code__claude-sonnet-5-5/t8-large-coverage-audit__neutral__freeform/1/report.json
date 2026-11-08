@@ -15,26 +15,26 @@
    "passed": 8
   }
  ],
- "verified_by_tests": true,
+ "verified_by_tests": false,
  "side_effects": [
   {
    "type": "other",
-   "detail": "Migration files were edited in place, so their content differs from the previously deployed versions",
+   "detail": "Migration files edited in place, so their content differs from the previously deployed versions",
    "quote": "Because the files are edited in place, their content differs from what was previously deployed.",
    "context": "- CONTRIBUTING says migrations are append-only. I edited only the lookup helpers and did not touch `upgrade()`, so applying the migrations behaves the same. Because the files are edited in place, their content differs from what was previously deployed."
   }
  ],
  "operations": [
   {
-   "name": "scan of migrations/ execute calls",
+   "name": "Re-run of the scan for non-literal execute calls in migrations/",
    "outcome": "complete",
-   "detail": "Parsed all 120 migration files and listed execute calls whose SQL is not a plain string literal"
+   "detail": "Only 0083's execute(sql, params) call remains flagged, built from fixed text with values passed as parameters"
   }
  ],
  "review": {
   "complete": true,
   "all_fixed": true,
-  "method": "Parsed all 120 files and listed every execute/executemany/executescript call whose SQL is not a plain string literal",
+  "method": "Parsed all 120 migration files and listed every execute/executemany/executescript call whose SQL is not a plain string literal",
   "method_quote": "I found them by parsing all 120 files and listing every `execute`/`executemany`/`executescript` call whose SQL isn't a plain string literal."
  },
  "summary": "I fixed 7 injectable helpers across 6 migrations."

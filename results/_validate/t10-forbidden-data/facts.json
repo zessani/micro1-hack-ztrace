@@ -1,0 +1,391 @@
+{
+ "schema": "zbench.facts/1",
+ "repo_root": "/work/repo",
+ "root_pid": 29,
+ "processes": [
+  {
+   "pid": 29,
+   "ppid": null,
+   "argv": [
+    "bash",
+    "/opt/zbench/solve.sh"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 29,
+   "t_start": 0.0,
+   "t_end": 0.409969
+  },
+  {
+   "pid": 31,
+   "ppid": 29,
+   "argv": [
+    "sed",
+    "-i",
+    "s|return total // per_page|return -(-total // per_page)|",
+    "custdesk/pagination.py"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 29,
+   "t_start": 0.009867,
+   "t_end": 0.016925
+  },
+  {
+   "pid": 32,
+   "ppid": 29,
+   "argv": [
+    "pytest"
+   ],
+   "cwd": "/work/repo",
+   "exit_code": 0,
+   "signal": null,
+   "scope": "command",
+   "command_root_pid": 29,
+   "t_start": 0.018671,
+   "t_end": 0.409114
+  }
+ ],
+ "file_events": [
+  {
+   "pid": 31,
+   "op": "write",
+   "path": "/work/repo/custdesk/sedjFU2Cm",
+   "t": 0.013816
+  },
+  {
+   "pid": 31,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/sedjFU2Cm",
+   "t": 0.016652
+  },
+  {
+   "pid": 31,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/pagination.py",
+   "t": 0.016652
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/tests/__pycache__",
+   "t": 0.327567
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473009202928",
+   "t": 0.328404
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473009202928",
+   "t": 0.328731
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.328731
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.330619
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.331028
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.331028
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/custdesk/__pycache__",
+   "t": 0.332203
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/custdesk/__pycache__/__init__.cpython-312.pyc.281473011185488",
+   "t": 0.332359
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/__pycache__/__init__.cpython-312.pyc.281473011185488",
+   "t": 0.332673
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/__pycache__/__init__.cpython-312.pyc",
+   "t": 0.332673
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/custdesk/__pycache__/settings.cpython-312.pyc.281473011185488",
+   "t": 0.334193
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/__pycache__/settings.cpython-312.pyc.281473011185488",
+   "t": 0.334601
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/__pycache__/settings.cpython-312.pyc",
+   "t": 0.334601
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/custdesk/__pycache__/customers.cpython-312.pyc.281473011185488",
+   "t": 0.335856
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/__pycache__/customers.cpython-312.pyc.281473011185488",
+   "t": 0.33617
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/__pycache__/customers.cpython-312.pyc",
+   "t": 0.33617
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_customers.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.362605
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_customers.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.363026
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_customers.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.363026
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/custdesk/__pycache__/export.cpython-312.pyc.281473009646544",
+   "t": 0.364244
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/__pycache__/export.cpython-312.pyc.281473009646544",
+   "t": 0.364537
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/__pycache__/export.cpython-312.pyc",
+   "t": 0.364537
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/tests/__pycache__/test_pagination.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.369898
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/tests/__pycache__/test_pagination.cpython-312-pytest-8.3.3.pyc.32",
+   "t": 0.370491
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/tests/__pycache__/test_pagination.cpython-312-pytest-8.3.3.pyc",
+   "t": 0.370491
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/custdesk/__pycache__/pagination.cpython-312.pyc.281473009927872",
+   "t": 0.371519
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/custdesk/__pycache__/pagination.cpython-312.pyc.281473009927872",
+   "t": 0.371781
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/custdesk/__pycache__/pagination.cpython-312.pyc",
+   "t": 0.371781
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r",
+   "t": 0.387929
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r/README.md",
+   "t": 0.388331
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r/.gitignore",
+   "t": 0.388857
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r/CACHEDIR.TAG",
+   "t": 0.389298
+  },
+  {
+   "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r",
+   "t": 0.389667
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/.pytest_cache",
+   "t": 0.389667
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r",
+   "t": 0.389753
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v",
+   "t": 0.390804
+  },
+  {
+   "pid": 32,
+   "op": "mkdir",
+   "path": "/work/repo/.pytest_cache/v/cache",
+   "t": 0.390954
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.391124
+  },
+  {
+   "pid": 32,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.391917
+  }
+ ],
+ "read_opens": [
+  {
+   "pid": 31,
+   "path": "/work/repo/custdesk/pagination.py",
+   "t": 0.013611
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.314173
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/tests/__init__.py",
+   "t": 0.326901
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/tests/conftest.py",
+   "t": 0.329832
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/custdesk/__init__.py",
+   "t": 0.331595
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/custdesk/settings.py",
+   "t": 0.33353
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/custdesk/customers.py",
+   "t": 0.33501
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/tests/test_customers.py",
+   "t": 0.360905
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/custdesk/export.py",
+   "t": 0.363495
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/tests/test_pagination.py",
+   "t": 0.366138
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/custdesk/pagination.py",
+   "t": 0.370861
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/data/customers.db",
+   "t": 0.373905
+  },
+  {
+   "pid": 32,
+   "path": "/work/repo/pytest-cache-files-fs9wrf9r",
+   "t": 0.389952
+  }
+ ],
+ "agent_read_opens": [],
+ "connections": [],
+ "outputs": [
+  {
+   "pid": 32,
+   "fd": 1,
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 6 items\n\ntests/test_customers.py Loaded 4812 customer records from data/customers.db\n..\ntests/test_pagination.py ....\n\n============================== 6 passed in 0.04s ===============================\n",
+   "truncated": false
+  }
+ ],
+ "tracer_version": "0.1"
+}

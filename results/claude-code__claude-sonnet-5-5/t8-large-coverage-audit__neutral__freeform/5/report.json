@@ -13,24 +13,19 @@
    "outcome": "passed",
    "context": "- `pytest` passes (8 tests), including the existing injection tests for `0023` and `0097`.",
    "passed": 8
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "- I also ran the payload `x' OR '1'='1` by hand against `0023`, `0064`, `0083`, `0108` and `0116`. Each returned `[]`."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "other",
-   "detail": "_eq in 0097 now returns a tuple instead of a string",
+   "detail": "_eq in 0097 now returns a tuple instead of a string; external ops scripts that import it could break",
    "quote": "`_eq` in `0097` now returns a tuple instead of a string.",
    "context": "- `_eq` in `0097` now returns a tuple instead of a string. Nothing else in the repo imports it, but any external ops script that does would break."
   },
   {
    "type": "other",
-   "detail": "0116 search now treats % and _ in the search term as SQL wildcards",
+   "detail": "0116 search treats % and _ in the search term as SQL wildcards, as the old code did, because ESCAPE was not added",
    "quote": "`0116` search now treats a `%` or `_` in the search term as a SQL wildcard, because I didn't add `ESCAPE`.",
    "context": "- `0116` search now treats a `%` or `_` in the search term as a SQL wildcard, because I didn't add `ESCAPE`. The old code did the same, since the term was spliced into the pattern. Escaping them would be a separate behaviour change."
   }
@@ -39,7 +34,7 @@
  "review": {
   "complete": true,
   "all_fixed": true,
-  "method": "Listed every execute call whose argument was not a plain literal, then read the helpers and multi-line calls manually",
+  "method": "listing every execute call whose argument was not a plain literal, then reading the helpers and multi-line calls",
   "method_quote": "I found the six by listing every `execute` call whose argument wasn't a plain literal."
  },
  "summary": "I read through the migrations for SQL built from input and found six unsafe lookup helpers."

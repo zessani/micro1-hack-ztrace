@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0023099899999999996,
+ "raw": "{\"changes\":[{\"path\":\"kvcache/redis_cache.py\",\"quote\":\"It now reads the raw value from Redis and treats only a missing key (`None`) as a miss.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":7,\"skipped\":2,\"quote\":\"I ran `pytest`. 7 passed and 2 skipped.\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"the fix has not been run against the tests that exercise it\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"A cached None is stored as JSON null and now counts as a hit, returned instead of recomputed.\",\"quote\":\"A cached value of `None` is stored as JSON `null`.\"},{\"type\":\"other\",\"detail\":\"get_or_compute now calls client.get directly instead of self.get.\",\"quote\":\"`get_or_compute` now calls `client.get` directly instead of `self.get`.\"}],\"operations\":[],\"review\":null,\"summary\":\"What changed: In `kvcache/redis_cache.py`, `RedisCache.get_or_compute` checked `if cached:`, so falsy cached values (`0`, \\\"\\\", `[]`, `False`) were treated as misses and recomputed on every call.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

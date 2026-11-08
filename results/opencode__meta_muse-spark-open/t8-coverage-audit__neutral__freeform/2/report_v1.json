@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest` (9 tests): all pass, including `tests/test_injection.py` which verifies `find_account`, `lookup_invoice`, and `accounts_named` reject payload `x' OR '1'='1` (now returns `[]` instead of full table).",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Manual verification for uncovered helpers: `payments_by_method` and `notes_matching` with same payload correctly return `[]`; `LIKE` wildcard behavior preserved (e.g., `notes_matching(conn, \"obsolete\")` still finds `%obsolete%`)."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "python3 scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applied all 40 migrations to a fresh ledger.db"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "Pull Request: Fix SQL injection in migrations via bound parameters"
+}

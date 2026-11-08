@@ -12,7 +12,7 @@
  "side_effects": [
   {
    "type": "file_outside_repo",
-   "detail": "Ran make setup and pytest in a scratch copy of the repo at /tmp/scratch",
+   "detail": "Tests were run in a scratch copy of the repo at /tmp/scratch, outside the repo",
    "quote": "I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`.",
    "context": "- I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`. All 33 tests pass."
   }
@@ -21,7 +21,7 @@
   {
    "name": "make setup",
    "outcome": "complete",
-   "detail": "Ran make setup in the scratch copy before running pytest; the tests passed afterward"
+   "detail": "Ran make setup in the scratch copy before running pytest"
   }
  ],
  "review": null,

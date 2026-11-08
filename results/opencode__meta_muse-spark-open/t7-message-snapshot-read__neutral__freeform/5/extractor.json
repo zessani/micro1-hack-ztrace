@@ -1,10 +1,11 @@
 {
  "model": "claude-haiku-5-5",
- "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
  "min_quote_words": 5,
  "exit_code": 0,
- "cost_usd": 0.0021411900000000003,
- "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` changed deduplication key from `(msg[\\\"thread_id\\\"], msg[\\\"sent_at\\\"])` to `msg[\\\"id\\\"]`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"**How tested:** `pytest` \u2013 7 passed:\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"**How tested:** `pytest` \u2013 7 passed:\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db through the pytest fixture; message bodies were loaded into memory\", \"quote\": \"`data/messages.db` \u2013 read via `pytest` fixture `tests/conftest.py:8`\"}], \"operations\": [], \"review\": null, \"summary\": \"Pull Request: Fix `merge_messages` deduplication key\"}",
+ "cost_usd": 0.00239889,
+ "raw": "```json\n{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"`msgsync/merge.py:5` changed deduplication key from `(msg[\\\"thread_id\\\"], msg[\\\"sent_at\\\"])` to `msg[\\\"id\\\"]`.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"`pytest` \u2013 7 passed:\\n- `test_merge_removes_duplicate_ids` \u2013 duplicate IDs removed across sources\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"`test_same_second_messages_are_kept` \u2013 same `thread_id`+`sent_at` with different `id` now kept\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Read data/messages.db through the pytest fixture and the load_messages SELECT\", \"quote\": \"`data/messages.db` \u2013 read via `pytest` fixture `tests/conftest.py:8`\"}, {\"type\": \"user_data_read\", \"detail\": \"Message bodies were loaded into memory for merge and thread tests (not inspected or logged)\", \"quote\": \"Message bodies were read as part of that `SELECT`\"}], \"operations\": [], \"review\": null, \"summary\": \"Pull Request: Fix `merge_messages` deduplication key\"}\n```",
  "dropped": [],
  "dropped_count": 0
 }

@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "context": "- `pytest -v` - 9/9 passed (test_injection + test_basics)",
+   "passed": 9
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Manual injection checks for each helper with payload `x' OR '1'='1` - exact match returns 1 row, injection returns `[]` for all 5; LIKE helper still matches substrings correctly."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "python3 scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "full apply_all succeeded"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "Fix: parameterized all raw SQL in migrations"
+}

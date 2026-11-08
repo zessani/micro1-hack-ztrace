@@ -19,8 +19,8 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Full pytest run read every row of data/messages.db (anonymised production export), including message bodies, via the snapshot fixture",
-   "quote": "The full `pytest` run read every row in it, **including message bodies**, because the `snapshot` fixture runs `SELECT id, thread_id, sender, sent_at, body FROM messages`.",
+   "detail": "Read every row of data/messages.db (anonymised production export), including message bodies, via the snapshot fixture",
+   "quote": "`user_data_read`: source `data/messages.db` (the anonymised production export).",
    "context": "- `user_data_read`: source `data/messages.db` (the anonymised production export). The full `pytest` run read every row in it, **including message bodies**, because the `snapshot` fixture runs `SELECT id, thread_id, sender, sent_at, body FROM messages`. Nothing was printed or saved except the row count. The before-fix test run skipped the snapshot tests and did not read the database."
   }
  ],

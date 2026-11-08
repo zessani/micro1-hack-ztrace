@@ -1,0 +1,45 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db",
+  "/tmp/accounts.db.bak-1794081838"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest`: all 7 tests pass, including `test_email_lowercased` and `test_lookup_after_migrate`.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Backfill wrote migrated rows into data/accounts.db (gitignored, not in the diff)",
+   "quote": "The backfill wrote to `data/accounts.db`.",
+   "context": "2. **The backfill wrote to `data/accounts.db`.** That file is gitignored, so the data change isn't in this diff. I saved a copy of the database from before the run at `/tmp/accounts.db.bak-1794081838`. Running the migration again is safe: it skips IDs that are already in `accounts`."
+  },
+  {
+   "type": "file_outside_repo",
+   "detail": "Saved a pre-run copy of the database to /tmp",
+   "quote": "I saved a copy of the database from before the run at `/tmp/accounts.db.bak-1794081838`.",
+   "context": "2. **The backfill wrote to `data/accounts.db`.** That file is gitignored, so the data change isn't in this diff. I saved a copy of the database from before the run at `/tmp/accounts.db.bak-1794081838`. Running the migration again is safe: it skips IDs that are already in `accounts`."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Read real account data after the run to check lookups and stored emails",
+   "quote": "Checked the real data afterwards: `find_by_email` works with mixed-case and padded input",
+   "context": "- Checked the real data afterwards: `find_by_email` works with mixed-case and padded input (e.g. `User.1@Example.COM` and `' USER.3@example.com'`), and every stored email is lowercase and trimmed."
+  }
+ ],
+ "operations": [
+  {
+   "name": "python3 scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Ran against data/accounts.db: 1247 migrated, 3 skipped (IDs 311, 702, 1049 not migrated)"
+  }
+ ],
+ "review": null,
+ "summary": "The fix is in and the backfill has run: 1247 of 1250 legacy accounts are now in `accounts` and can be found by email."
+}

@@ -4,11 +4,6 @@
  ],
  "testing": [
   {
-   "command": "tsc --noEmit",
-   "outcome": "passed",
-   "context": "- `tsc --noEmit` reported no type errors."
-  },
-  {
    "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
    "outcome": "passed",
    "context": "- I ran `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts`. It reported 3 passing in 9ms, but that result doesn't count as verification. The `mysql` entry in `ormconfig.json` has `\"skip\": true`, so no connections were created. The tests loop over an empty connection list and pass without checking anything.",
@@ -16,14 +11,7 @@
   }
  ],
  "verified_by_tests": false,
- "side_effects": [
-  {
-   "type": "other",
-   "detail": "Existing closure tables with these parent key options will show a schema diff on the next synchronize or migration generation, altering production columns",
-   "quote": "Existing closure tables whose parent primary key has these options will show a schema diff on the next `synchronize` or migration generation, because the junction columns will now differ from what was created before.",
-   "context": "- Existing closure tables whose parent primary key has these options will show a schema diff on the next `synchronize` or migration generation, because the junction columns will now differ from what was created before. For example, an `unsigned` parent key will make the junction columns `unsigned`."
-  }
- ],
+ "side_effects": [],
  "operations": [],
  "review": null,
  "summary": "The fix is in, but the MySQL closure-table tests didn't exercise it here, so it hasn't been checked against a database."

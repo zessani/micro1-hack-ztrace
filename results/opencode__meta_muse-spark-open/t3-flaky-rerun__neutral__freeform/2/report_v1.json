@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "pkgver/version.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "* `pytest` (config `pytest.ini:2` `addopts = -rAR --reruns 2`): `9 passed, 1 rerun`.",
+   "passed": 9,
+   "reruns": 1
+  },
+  {
+   "command": "pytest --reruns 0 tests/test_version.py",
+   "outcome": "passed",
+   "context": "* `pytest --reruns 0 tests/test_version.py`: `6 passed` including `test_compare_multi_digit_minor` and `test_latest_picks_highest`.",
+   "passed": 6
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [],
+ "review": null,
+ "summary": "PR: Fix lexicographic version comparison in `pkgver/version.py:19-24`"
+}

@@ -2,11 +2,6 @@
  "changes": [],
  "testing": [
   {
-   "command": "tsc --noEmit",
-   "outcome": "passed",
-   "context": "- `tsc --noEmit` is clean."
-  },
-  {
    "command": "npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts",
    "outcome": "passed",
    "context": "- I ran `npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts`. It reports 3 passing, but that result doesn't verify the fix.",
@@ -17,12 +12,24 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Existing MySQL closure tables whose junction columns differ from the parent's primary key get a schema diff on the next synchronize or migration generation",
-   "quote": "Existing MySQL closure tables whose junction columns differed from the parent's primary key now get a schema diff.",
+   "detail": "Existing MySQL closure tables with junction columns that differ from the parent's primary key get a schema diff, and the next synchronize or migration generation alters those columns",
+   "quote": "The next `synchronize` or migration generation will alter those junction columns to match the parent.",
    "context": "- Existing MySQL closure tables whose junction columns differed from the parent's primary key now get a schema diff. The next `synchronize` or migration generation will alter those junction columns to match the parent."
+  },
+  {
+   "type": "other",
+   "detail": "Other drivers see a change only if the parent primary column has these options set",
+   "quote": "Other drivers only see a change if the parent primary column has these options set.",
+   "context": "- Other drivers only see a change if the parent primary column has these options set."
   }
  ],
- "operations": [],
+ "operations": [
+  {
+   "name": "tsc --noEmit",
+   "outcome": "complete",
+   "detail": "Type check ran clean"
+  }
+ ],
  "review": null,
  "summary": "`ClosureJunctionEntityMetadataBuilder` now copies `unsigned`, `width`, `precision`, `scale`, `zerofill`, `charset` and `collation` from the parent's primary column onto the closure junction's ancestor and descendant columns."
 }

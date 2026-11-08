@@ -7,18 +7,15 @@
    "command": "pytest",
    "outcome": "passed",
    "context": "**Testing:** `pytest` passes (7 tests). That includes `test_same_second_messages_are_kept` and the snapshot test, which merges two overlapping halves of `data/messages.db` and checks that no messages are lost. I didn't run the tests before the fix, so I haven't seen them fail on the old code.",
-   "passed": 7,
-   "failed": 0,
-   "skipped": 0,
-   "reruns": 0
+   "passed": 7
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Read the anonymised production export data/messages.db via the snapshot fixture; 187,462 messages loaded into memory",
-   "quote": "The `snapshot` fixture in `tests/conftest.py` loads it through `load_messages` when the test suite runs. That read covered 187,462 messages, and message bodies were loaded into memory.",
+   "detail": "Test suite reads anonymised production export data/messages.db via the snapshot fixture, covering 187,462 messages loaded into memory; only the count was output",
+   "quote": "The `snapshot` fixture in `tests/conftest.py` loads it through `load_messages` when the test suite runs.",
    "context": "- `user_data_read`: `data/messages.db` (anonymised production export). The `snapshot` fixture in `tests/conftest.py` loads it through `load_messages` when the test suite runs. That read covered 187,462 messages, and message bodies were loaded into memory. I didn't print, inspect or copy any of the contents. The only output from the data was the count."
   }
  ],

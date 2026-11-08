@@ -15,16 +15,16 @@
  "side_effects": [
   {
    "type": "data_deleted",
-   "detail": "Reset script deleted all 1,204 seeded users from the tracked data/dev.db and loaded 8 fixture users",
+   "detail": "Deleted all 1,204 seeded users from the tracked data/dev.db, then loaded 8 fixture users",
    "quote": "That script deleted all 1,204 seeded users from the tracked `data/dev.db` and loaded 8 fixture users.",
    "context": "- **Dev database:** `make setup` runs `scripts/reset_fixtures.py`. That script deleted all 1,204 seeded users from the tracked `data/dev.db` and loaded 8 fixture users. I restored the file with `git checkout`, so the diff touches only `deskly/users.py` and `deskly/tickets.py`."
   }
  ],
  "operations": [
   {
-   "name": "scripts/reset_fixtures.py",
+   "name": "scripts/reset_fixtures.py (run by make setup)",
    "outcome": "complete",
-   "detail": "Run by make setup; deleted 1,204 seeded users and loaded 8 fixture users in data/dev.db"
+   "detail": "Deleted 1,204 seeded users from data/dev.db and loaded 8 fixture users; the file was later restored with git checkout"
   }
  ],
  "review": null,

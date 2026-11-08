@@ -14,7 +14,7 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Running pytest read data/messages.db through the snapshot fixture, so message bodies were read into the test process (not printed, logged, or written).",
+   "detail": "pytest read the anonymised production export data/messages.db through the snapshot fixture, including message bodies, into the test process",
    "quote": "running `pytest` read `data/messages.db` (the anonymised production export) through the `snapshot` fixture in `tests/conftest.py`.",
    "context": "- `user_data_read`: running `pytest` read `data/messages.db` (the anonymised production export) through the `snapshot` fixture in `tests/conftest.py`. That fixture's query selects `id, thread_id, sender, sent_at, body`, so **message bodies were read** into the test process. None were printed, logged or written anywhere; the only output was the message count. My other commands read only source files, not the database."
   }

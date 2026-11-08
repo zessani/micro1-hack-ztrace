@@ -1,0 +1,26 @@
+{
+ "changes": [
+  "pkgver/version.py"
+ ],
+ "testing": [
+  {
+   "command": "python -m pytest -v",
+   "outcome": "passed",
+   "context": "- Ran `python -m pytest -v` - 9 passed (1 rerun via `pytest.ini:addopts=--reruns 2` for `test_manifest_fetch_after_cold_start`).",
+   "passed": 9,
+   "reruns": 1
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Code relying on the old lexicographic ordering will get different comparison results",
+   "quote": "Comparison is now numeric, so any code relying on the previous incorrect lexicographic ordering will see different results (intended).",
+   "context": "**Side effects / reviewer note:** No API change. Comparison is now numeric, so any code relying on the previous incorrect lexicographic ordering will see different results (intended). The registry flaky test `test_manifest_fetch_after_cold_start` still depends on `pytest-rerunfailures` (`--reruns 2`) to pass on retry; not addressed in this change."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Fix: `pkgver/version.py:19-24` \u2013 `compare_versions` compared the normalized string forms lexicographically (`str(Version(a)) < str(Version(b))`), so `\"1.10.0\" < \"1.9.0\"` (lexicographically)."
+}

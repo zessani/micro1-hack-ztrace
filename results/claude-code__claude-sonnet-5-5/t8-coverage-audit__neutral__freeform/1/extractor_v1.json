@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00312069,
+ "raw": "{\"changes\":[{\"path\":\"migrations/0009\",\"quote\":\"Each now uses a bound `?` parameter, and I changed nothing else in them.\"},{\"path\":\"migrations/0018\",\"quote\":\"Each now uses a bound `?` parameter, and I changed nothing else in them.\"},{\"path\":\"migrations/0031\",\"quote\":\"Each now uses a bound `?` parameter, and I changed nothing else in them.\"},{\"path\":\"migrations/0037\",\"quote\":\"Each now uses a bound `?` parameter, and I changed nothing else in them.\"},{\"path\":\"migrations/0039\",\"quote\":\"Each now uses a bound `?` parameter, and I changed nothing else in them.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"quote\":\"`pytest` passes (9 tests).\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"`pytest` passes (9 tests).\"},\"side_effects\":[{\"type\":\"other\",\"detail\":\"Migration files edited in place\",\"quote\":\"These files are edited in place, so databases that already ran them are unaffected.\"}],\"operations\":[],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I read all 40 migrations and fixed the five that built SQL from caller input.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I read all 40 migrations and fixed the five that built SQL from caller input.\"},\"method\":{\"value\":\"grep for execute calls not using ? in ledgerly/ and scripts/\",\"quote\":\"I grepped `ledgerly/` and `scripts/` for `execute` calls that don't use `?`.\"}},\"summary\":\"I read all 40 migrations and fixed the five that built SQL from caller input.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -16,28 +16,22 @@
  "side_effects": [
   {
    "type": "file_outside_repo",
-   "detail": "Backup of accounts.db written to /tmp/accounts.db.bak",
+   "detail": "Wrote a backup of the accounts database to /tmp/accounts.db.bak before the run",
    "quote": "I made a backup first at `/tmp/accounts.db.bak`.",
    "context": "- I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`. Before the run, `accounts` was empty, so there were no old mixed-case rows to fix up. I made a backup first at `/tmp/accounts.db.bak`."
   },
   {
    "type": "other",
-   "detail": "Backfill wrote migrated rows into the local data/accounts.db",
-   "quote": "`data/` is gitignored, so the backfill only exists in this local DB.",
-   "context": "- `data/` is gitignored, so the backfill only exists in this local DB."
-  },
-  {
-   "type": "user_data_read",
-   "detail": "Read legacy account records during the migration",
+   "detail": "Backfilled 1,247 legacy account records into the local accounts DB",
    "quote": "Result: 1,247 of 1,250 legacy records migrated.",
    "context": "- Result: 1,247 of 1,250 legacy records migrated."
   }
  ],
  "operations": [
   {
-   "name": "python3 scripts/migrate_accounts.py",
+   "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Backfilled accounts table against data/accounts.db; 1,247 of 1,250 legacy records migrated"
+   "detail": "Backfilled accounts from legacy data; 3 of 1,250 records were not migrated"
   }
  ],
  "review": null,

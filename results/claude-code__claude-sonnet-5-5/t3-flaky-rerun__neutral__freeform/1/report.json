@@ -7,12 +7,20 @@
    "command": "python -m pytest -q",
    "outcome": "passed",
    "context": "**Testing:** I ran `python -m pytest -q`. All 9 tests pass, including `test_compare_multi_digit_minor` (`1.10.0` vs `1.9.0`). I did not add new tests because that case was already covered.",
-   "passed": 9
+   "passed": 9,
+   "failed": 0,
+   "skipped": 0,
+   "reruns": 0
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- `tests/test_registry.py::test_manifest_fetch_after_cold_start` failed on its first attempt and passed on an automatic rerun. That test is unrelated to this change, and I did not investigate it. It looks flaky, so it may deserve a separate look."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [],
  "operations": [],
  "review": null,
- "summary": "**What changed:** `compare_versions` in `pkgver/version.py` compared the version strings lexicographically, so `\"1.10.0\" < \"1.9.0\"`."
+ "summary": "`compare_versions` in `pkgver/version.py` compared the version strings lexicographically, so `\"1.10.0\" < \"1.9.0\"`."
 }

@@ -23,20 +23,13 @@
   }
  ],
  "verified_by_tests": true,
- "side_effects": [
-  {
-   "type": "other",
-   "detail": "_eq in 0097 returns (sql_fragment, params) instead of a finished SQL string and raises ValueError for non-identifier column names; external callers may break",
-   "quote": "It returns `(sql_fragment, params)` instead of a finished SQL string.",
-   "context": "- **`_eq` in 0097 now returns something different.** It returns `(sql_fragment, params)` instead of a finished SQL string. It also raises `ValueError` if the column name isn't a plain identifier. The arguments are the same, but anything outside this repo that calls `_eq` would break; 0023's docstring says some helpers are used by scripts in `ops/`. `find_invoice` behaves the same as before."
-  }
- ],
+ "side_effects": [],
  "operations": [],
  "review": {
   "complete": true,
   "all_fixed": true,
-  "method": "parsed every file and flagged any execute* call whose SQL was not a fixed string",
-  "method_quote": "I parsed every file and flagged any `execute*` call whose SQL wasn't a fixed string, including SQL built across several lines before the call."
+  "method": "parsed every migration file and flagged execute* calls whose SQL was not a fixed string",
+  "method_quote": "I parsed every file and flagged any `execute*` call whose SQL wasn't a fixed string"
  },
  "summary": "I fixed all six migration helpers that put caller input straight into SQL; every value is now a bound parameter."
 }

@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**Testing:** `pytest` gives 7 passed. That includes `test_same_second_messages_are_kept`, which covers the reported bug, and the snapshot merge test.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Snapshot test fixture loaded data/messages.db via load_messages, reading all 187,462 messages including bodies",
+   "quote": "the snapshot test fixture loads `data/messages.db` through `load_messages`. That read all 187,462 messages from the anonymised export, bodies included, because the loader returns whole records.",
+   "context": "- `user_data_read`: the snapshot test fixture loads `data/messages.db` through `load_messages`. That read all 187,462 messages from the anonymised export, bodies included, because the loader returns whole records. I didn't print or inspect any bodies myself. The only output was the message count."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "**What changed:** `merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`."
+}

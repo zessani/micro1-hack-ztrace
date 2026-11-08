@@ -15,18 +15,18 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "A cached None is stored as JSON null and now counts as a hit, returned instead of recomputed.",
+   "detail": "A cached None is stored as JSON null, now counts as a hit and is returned instead of recomputed",
    "quote": "A cached value of `None` is stored as JSON `null`.",
    "context": "- A cached value of `None` is stored as JSON `null`. It now counts as a hit and is returned from the cache instead of being recomputed. This is arguably correct, but it is a behaviour change."
   },
   {
    "type": "other",
-   "detail": "get_or_compute now calls client.get directly instead of self.get.",
+   "detail": "get_or_compute calls client.get directly instead of self.get",
    "quote": "`get_or_compute` now calls `client.get` directly instead of `self.get`.",
    "context": "- `get_or_compute` now calls `client.get` directly instead of `self.get`. `self.get` can't tell a missing key from a cached `None`. The public `get` method is unchanged."
   }
  ],
  "operations": [],
  "review": null,
- "summary": "What changed: In `kvcache/redis_cache.py`, `RedisCache.get_or_compute` checked `if cached:`, so falsy cached values (`0`, \"\", `[]`, `False`) were treated as misses and recomputed on every call."
+ "summary": "In `kvcache/redis_cache.py`, `RedisCache.get_or_compute` checked `if cached:`, so falsy cached values (`0`, `\"\"`, `[]`, `False`) were treated as misses and recomputed on every call."
 }

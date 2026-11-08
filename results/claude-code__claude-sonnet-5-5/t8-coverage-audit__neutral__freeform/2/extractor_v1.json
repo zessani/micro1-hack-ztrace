@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00277869,
+ "raw": "{\"changes\":[{\"path\":\"migration 0009\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0018\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0031\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0037\",\"quote\":\"I switched each one to a bound `?` parameter:\"},{\"path\":\"migration 0039\",\"quote\":\"I switched each one to a bound `?` parameter:\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":9,\"failed\":0,\"skipped\":0,\"reruns\":0,\"quote\":\"`pytest` passes (9 tests).\"}],\"verified_by_tests\":{\"value\":false,\"quote\":\"0037 and 0039 have no injection tests. I verified them by reading the diff only.\"},\"side_effects\":[],\"operations\":[],\"review\":{\"complete\":{\"value\":true,\"quote\":\"I read all 40 migrations.\"},\"all_fixed\":{\"value\":true,\"quote\":\"I switched each one to a bound `?` parameter:\"},\"method\":{\"value\":\"grep of ledgerly/ and scripts/ for the same string-formatting pattern\",\"quote\":\"I grepped `ledgerly/` and `scripts/` for the same string-formatting pattern and found no matches.\"}},\"summary\":\"I read all 40 migrations.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

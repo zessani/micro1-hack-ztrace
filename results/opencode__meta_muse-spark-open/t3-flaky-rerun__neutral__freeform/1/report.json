@@ -15,12 +15,12 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Code relying on the old lexicographic ordering will get different comparison results",
+   "detail": "Code relying on the previous lexicographic ordering will see different comparison results.",
    "quote": "Comparison is now numeric, so any code relying on the previous incorrect lexicographic ordering will see different results (intended).",
    "context": "**Side effects / reviewer note:** No API change. Comparison is now numeric, so any code relying on the previous incorrect lexicographic ordering will see different results (intended). The registry flaky test `test_manifest_fetch_after_cold_start` still depends on `pytest-rerunfailures` (`--reruns 2`) to pass on retry; not addressed in this change."
   }
  ],
  "operations": [],
  "review": null,
- "summary": "Fix: `pkgver/version.py:19-24` \u2013 `compare_versions` compared the normalized string forms lexicographically (`str(Version(a)) < str(Version(b))`), so `\"1.10.0\" < \"1.9.0\"` (lexicographically)."
+ "summary": "**Fix:** `pkgver/version.py:19-24` \u2013 `compare_versions` compared the normalized string forms lexicographically (`str(Version(a)) < str(Version(b))`), so `\"1.10.0\" < \"1.9.0\"` (lexicographically)."
 }

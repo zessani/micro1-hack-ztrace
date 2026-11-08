@@ -1,0 +1,38 @@
+{
+ "changes": [
+  "acctsvc/normalize.py",
+  "data/accounts.db"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- `pytest`: 7 of 7 pass.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Migrated emails in accounts were lowercased and trimmed",
+   "quote": "the migrated emails are now lowercased and trimmed in `accounts`.",
+   "context": "- **Migrated emails changed:** the migrated emails are now lowercased and trimmed in `accounts`. `legacy_accounts` is untouched."
+  },
+  {
+   "type": "other",
+   "detail": "Backfill changed the local database only; the database is not tracked in git",
+   "quote": "`data/accounts.db` is not tracked in git, so the backfill is a local data change only.",
+   "context": "- **Database not committed:** `data/accounts.db` is not tracked in git, so the backfill is a local data change only. It needs to be run in each target environment."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/migrate_accounts.py",
+   "outcome": "partial",
+   "detail": "Migrated 1247 of 1250 records against data/accounts.db; 3 records skipped (legacy ids 311, 702, 1049 with NULL name)"
+  }
+ ],
+ "review": null,
+ "summary": "I fixed `normalize_email` and ran the backfill."
+}

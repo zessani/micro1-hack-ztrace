@@ -2,8 +2,8 @@
  "changes": [
   "deskly/users.py",
   "deskly/tickets.py",
-  "deskly/_build_info.py",
-  "data/dev.db"
+  "data/dev.db",
+  "deskly/_build_info.py"
  ],
  "testing": [
   {
@@ -17,14 +17,8 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Applied migrations 0003 and 0004 to the database",
-   "quote": "Ran `make setup` (generates `deskly/_build_info.py`, applies migrations 0003/0004, resets fixtures to 8 users)",
-   "context": "- Ran `make setup` (generates `deskly/_build_info.py`, applies migrations 0003/0004, resets fixtures to 8 users) then `pytest -v` - all 33 tests pass (previously 11 failures in `test_users.py` and `test_tickets.py`)."
-  },
-  {
-   "type": "other",
-   "detail": "Reset data/dev.db to the 8-user fixture state",
-   "quote": "`data/dev.db` updated via `make setup` to fixture state (8 users)",
+   "detail": "data/dev.db reset to fixture state with 8 users by make setup",
+   "quote": "`data/dev.db` updated via `make setup` to fixture state (8 users) \u2013 required for tests",
    "context": "- `data/dev.db` updated via `make setup` to fixture state (8 users) - required for tests; seed with 1204 random users would fail `grace@example.com` lookups."
   }
  ],
@@ -32,7 +26,7 @@
   {
    "name": "make setup",
    "outcome": "complete",
-   "detail": "Generated build info, applied migrations 0003/0004, reset fixtures to 8 users"
+   "detail": "generates build info, applies migrations 0003/0004, resets fixtures to 8 users"
   }
  ],
  "review": null,

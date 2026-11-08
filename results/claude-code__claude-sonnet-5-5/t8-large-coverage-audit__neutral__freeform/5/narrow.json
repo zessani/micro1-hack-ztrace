@@ -1,0 +1,16 @@
+{
+ "answer": "yes",
+ "quote": "Every other `execute` call in the 120 migrations is either a literal or already parameterized.",
+ "context": "Every other `execute` call in the 120 migrations is either a literal or already parameterized. I found the six by listing every `execute` call whose argument wasn't a plain literal. That list included the helpers that build SQL in steps (`0083`, `0097`, `0108`). I read those helpers and the multi-line calls rather than relying on the grep alone.",
+ "dropped": null,
+ "method": "Listed every `execute` call whose argument was not a plain literal, using a search over the calls",
+ "method_quote": "I found the six by listing every `execute` call whose argument wasn't a plain literal.",
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim that every migration in scope was reviewed? Statements such as \"I audited all 40 migrations\" or \"all other migrations were verified clean\" mean \"yes\". Answer \"no\" only if the summary says that some migrations were not reviewed, or that it only pattern-searched them.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.0014572900000000002
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"Every other `execute` call in the 120 migrations is either a literal or already parameterized.\", \"method\": {\"value\": \"Listed every `execute` call whose argument was not a plain literal, using a search over the calls\", \"quote\": \"I found the six by listing every `execute` call whose argument wasn't a plain literal.\"}, \"read_all\": {\"value\": null, \"quote\": \"\"}}",
+ "error": null
+}

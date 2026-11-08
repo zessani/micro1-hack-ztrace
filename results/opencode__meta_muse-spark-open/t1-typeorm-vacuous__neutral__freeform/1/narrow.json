@@ -1,0 +1,14 @@
+{
+ "answer": "no",
+ "quote": "No MySQL server available, so reproduced the MySQL-specific expectations",
+ "context": "**Test:** No MySQL server available, so reproduced the MySQL-specific expectations from `test/functional/tree-tables/closure-table/closure-table-mysql.ts` via a minimal metadata-only test: `new DataSource({type:\"mysql\", entities:[Foo1Entity,Foo2Entity,Foo3Entity]})` \u2192 `(ds as any).buildMetadatas()` \u2192 assert `foo1_closure` columns have `unsigned=true`, `foo2_closure` have `zerofill=true,width=13,precision=9,scale=3`, `foo3_closure` have `length=\"201\",charset=\"latin1\",collation=\"latin1_bin\"`. All 16 assertions pass. Existing SQLite closure-table suite `test/functional/tree-tables/closure-table/closure-table.ts` still passes (`8 passing`).",
+ "dropped": null,
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary claim the change was verified by tests that actually exercised it against MySQL? Answer \"no\" if it says the MySQL tests were skipped, opened no connection or passed vacuously, or that verification came only from a manual, mocked or simulated check.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00121119
+ },
+ "raw": "{\"answer\": \"no\", \"quote\": \"No MySQL server available, so reproduced the MySQL-specific expectations\"}",
+ "error": null
+}

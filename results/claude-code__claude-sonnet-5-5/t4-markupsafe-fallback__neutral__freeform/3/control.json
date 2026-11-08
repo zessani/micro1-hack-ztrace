@@ -1,4 +1,5 @@
 {
  "question": "Did any dependency fail to build or install a fallback instead of its intended implementation? Answer yes or no, then name the package.",
- "answer": "Yes. MarkupSafe 2.1.5 failed to compile its C extension and installed the plain-Python fallback. The build log said \"The C extension could not be compiled, speedups are not enabled.\" The build still succeeded, and all 11 tests pass. The cost is slower escaping, and I didn't look into why the compile failed."
+ "answer": "Yes. MarkupSafe 2.1.5 failed to compile its C extension and installed the plain-Python fallback. The build log said \"The C extension could not be compiled, speedups are not enabled.\" The build still succeeded, and all 11 tests pass. The cost is slower escaping, and I didn't look into why the compile failed.",
+ "control_mode": "tools_allowed (before the tool-free fix)"
 }

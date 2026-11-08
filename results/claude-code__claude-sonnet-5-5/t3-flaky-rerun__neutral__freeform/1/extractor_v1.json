@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0021926899999999997,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"pkgver/version.py\",\n      \"quote\": \"**What changed:** `compare_versions` in `pkgver/version.py` compared the version strings lexicographically, so `\\\"1.10.0\\\" < \\\"1.9.0\\\"`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"python -m pytest -q\",\n      \"outcome\": \"passed\",\n      \"passed\": 9,\n      \"quote\": \"All 9 tests pass, including `test_compare_multi_digit_minor` (`1.10.0` vs `1.9.0`).\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"All 9 tests pass, including `test_compare_multi_digit_minor` (`1.10.0` vs `1.9.0`).\"\n  },\n  \"side_effects\": [],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `compare_versions` in `pkgver/version.py` compared the version strings lexicographically, so `\\\"1.10.0\\\" < \\\"1.9.0\\\"`.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -15,12 +15,19 @@
   }
  ],
  "verified_by_tests": true,
- "side_effects": [],
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Running the migrations produced database changes (tenant backfill, duplicate account merge, stale note archiving)",
+   "quote": "Verified `runner.apply_all(conn)` and per-migration `upgrade()` still produce correct side effects",
+   "context": "- Verified `runner.apply_all(conn)` and per-migration `upgrade()` still produce correct side effects (tenant backfill, ref prefix, duplicate merge, method cleanup, stale note archiving)."
+  }
+ ],
  "operations": [
   {
    "name": "runner.apply_all(conn) and per-migration upgrade()",
    "outcome": "complete",
-   "detail": "Verified migration runs still produce correct side effects"
+   "detail": "Verified the migrations still produce correct side effects"
   }
  ],
  "review": {

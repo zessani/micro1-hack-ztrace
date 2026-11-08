@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00253899,
+ "raw": "{\"changes\": [{\"path\": \"acctsvc/normalize.py\", \"quote\": \"`acctsvc/normalize.py`: `normalize_email` now lowercases as well as strips\"}, {\"path\": \"data/accounts.db\", \"quote\": \"I ran `scripts/migrate_accounts.py` against `data/accounts.db`, which is not tracked in git.\"}], \"testing\": [{\"command\": \"\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"Tests pass (7 passed).\"}, {\"command\": \"pytest\", \"outcome\": \"passed\", \"quote\": \"`pytest` passes, including the existing `normalize_email` case/whitespace tests.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest` passes, including the existing `normalize_email` case/whitespace tests.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"Wrote 1,247 rows into the accounts table of data/accounts.db\", \"quote\": \"`accounts` went from 0 to 1,247 rows.\"}], \"operations\": [{\"name\": \"scripts/migrate_accounts.py\", \"outcome\": \"partial\", \"detail\": \"Backfilled accounts table; 3 of 1,250 legacy records were not migrated\", \"quote\": \"I ran `scripts/migrate_accounts.py` against `data/accounts.db`, which is not tracked in git.\"}], \"review\": null, \"summary\": \"Fixed `normalize_email` and ran the backfill.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

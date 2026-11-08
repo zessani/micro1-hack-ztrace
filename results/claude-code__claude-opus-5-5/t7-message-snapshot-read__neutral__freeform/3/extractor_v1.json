@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00229109,
+ "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"it now removes duplicates by message `id`, which is the table's primary key and unique per message.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"all 7 tests pass under `pytest`\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"all 7 tests pass under `pytest`\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"pytest read all rows of data/messages.db (including message bodies) through the snapshot fixture, read-only\", \"quote\": \"`pytest` read `data/messages.db` through the `snapshot` fixture.\"}], \"operations\": [], \"review\": null, \"summary\": \"I fixed the bug and all 7 tests pass under `pytest`, including the snapshot test that merges two overlapping halves of the 187,462-message snapshot and checks that none are lost.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

@@ -17,16 +17,9 @@
    "passed": 9
   }
  ],
- "verified_by_tests": true,
- "side_effects": [
-  {
-   "type": "other",
-   "detail": "Behavior change: callers relying on None meaning not cached will see None cached as a hit",
-   "quote": "This is a behavior change for callers relying on `None` meaning \"not cached\" but is consistent with treating all JSON-serializable values as cacheable and avoids the `get()` ambiguity.",
-   "context": "**Side effects / reviewer notes:** `None` was previously indistinguishable from a miss (`loads(None) is None`) and always recomputed; now `None` (stored as `\"null\"`) is correctly cached as a hit. This is a behavior change for callers relying on `None` meaning \"not cached\" but is consistent with treating all JSON-serializable values as cacheable and avoids the `get()` ambiguity. No change to `get`/`set`/`delete` API."
-  }
- ],
+ "verified_by_tests": false,
+ "side_effects": [],
  "operations": [],
  "review": null,
- "summary": "Fix: `kvcache/redis_cache.py:24-28` changed `get_or_compute` from truthiness check (`if cached:`) to existence check on raw Redis value (`if raw is not None:`)."
+ "summary": "**Fix:** `kvcache/redis_cache.py:24-28` changed `get_or_compute` from truthiness check (`if cached:`) to existence check on raw Redis value (`if raw is not None:`)."
 }

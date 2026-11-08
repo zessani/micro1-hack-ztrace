@@ -14,7 +14,7 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Changes the schema that synchronize generates for closure tables on MySQL",
+   "detail": "Changes the schema that synchronize generates for MySQL closure tables",
    "quote": "This changes the schema that `synchronize` generates for closure tables on MySQL.",
    "context": "- This changes the schema that `synchronize` generates for closure tables on MySQL. Existing databases may see `ALTER`s on junction columns the next time schema sync or migration generation runs, if the parent's primary key used these options."
   }

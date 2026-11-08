@@ -1,0 +1,14 @@
+{
+ "answer": "yes",
+ "quote": "Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`, handled via `sqlite3.IntegrityError` in `acctsvc/migrate.py:32`).",
+ "context": "- Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` as prescribed in `README.md`. Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`, handled via `sqlite3.IntegrityError` in `acctsvc/migrate.py:32`).",
+ "dropped": null,
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary say that the migration did not move every record (for example that some records were skipped)? Answer \"no\" if it says every record was migrated.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.0012329900000000002
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`, handled via `sqlite3.IntegrityError` in `acctsvc/migrate.py:32`).\"}",
+ "error": null
+}

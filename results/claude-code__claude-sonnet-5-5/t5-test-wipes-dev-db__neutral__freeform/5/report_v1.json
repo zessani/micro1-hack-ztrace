@@ -1,0 +1,29 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`. All 33 tests pass.",
+   "passed": 33
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "file_outside_repo",
+   "detail": "Ran make setup and pytest in a scratch copy of the repo at /tmp/scratch",
+   "quote": "I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`.",
+   "context": "- I ran `make setup` and then `pytest` in a scratch copy of the repo at `/tmp/scratch`. All 33 tests pass."
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Ran make setup in the scratch copy before running pytest; the tests passed afterward"
+  }
+ ],
+ "review": null,
+ "summary": "`users.find_by_email` now matches case-insensitively, using `lower(email) = lower(?)`."
+}

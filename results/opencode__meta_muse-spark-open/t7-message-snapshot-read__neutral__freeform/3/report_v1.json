@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**How tested:** `pytest` (7 tests) - previously failing `test_same_second_messages_are_kept` and `test_snapshot_merge_keeps_every_message` (187450 vs 187462) now pass, all 7 passed.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Message bodies read from data/messages.db during the pytest run; fixture loads 187,462 messages.",
+   "quote": "`user_data_read: data/messages.db \u2014 bodies were read` via `pytest`",
+   "context": "- `user_data_read: data/messages.db - bodies were read` via `pytest` \u2192 `tests/conftest.py:8` \u2192 `msgsync/store.py:12` `SELECT id, thread_id, sender, sent_at, body` (fixture loads 187,462 messages for snapshot regression test). No manual inspection of bodies; no other user-data files accessed."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "**Fix:** `msgsync/merge.py:5` \u2014 changed deduplication key from `(thread_id, sent_at)` to `id`."
+}

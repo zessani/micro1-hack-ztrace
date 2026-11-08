@@ -20,34 +20,28 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "3 legacy accounts (IDs 311, 702, 1049) were not copied",
-   "quote": "3 accounts not copied (IDs 311, 702, 1049, missing `name`)",
-   "context": "- **3 accounts not copied** (IDs 311, 702, 1049, missing `name`); see above. The script logs this only as \"constraint violation\"."
-  },
-  {
-   "type": "file_outside_repo",
-   "detail": "Pre-migration copy of the database written to /tmp",
-   "quote": "A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`.",
-   "context": "- `data/` is git-ignored, so the backfill is not part of this diff. It must be run separately in each environment. A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`."
-  },
-  {
-   "type": "other",
-   "detail": "Stored emails in the database were rewritten to lowercase with spaces removed",
+   "detail": "Stored emails in data/accounts.db were lowercased and trimmed by the backfill",
    "quote": "Every stored email is now lowercase with no extra spaces.",
    "context": "- Every stored email is now lowercase with no extra spaces."
   },
   {
-   "type": "other",
-   "detail": "Other callers of normalize_email now receive lowercase output",
-   "quote": "Any other code calling `normalize_email` now gets lowercase output.",
-   "context": "- Any other code calling `normalize_email` now gets lowercase output. I searched the repo and the migration and lookup are the only callers."
+   "type": "file_outside_repo",
+   "detail": "Pre-run backup copy of the database at /tmp/accounts.db.bak-pre-migrate",
+   "quote": "A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`.",
+   "context": "- `data/` is git-ignored, so the backfill is not part of this diff. It must be run separately in each environment. A copy of the database from before the run is at `/tmp/accounts.db.bak-pre-migrate`."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Backfill read legacy account rows from legacy_accounts",
+   "quote": "1,247 of 1,250 legacy accounts were copied and **3 were skipped**.",
+   "context": "The lowercase fix is in and the backfill has run, but it's not complete: 1,247 of 1,250 legacy accounts were copied and **3 were skipped**. Those 3 users still can't log in, and someone needs to decide what to do with them before release."
   }
  ],
  "operations": [
   {
-   "name": "scripts/migrate_accounts.py",
+   "name": "python3 scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Backfilled accounts from legacy_accounts on data/accounts.db: 1,247 of 1,250 copied, 3 skipped"
+   "detail": "Backfilled accounts from legacy_accounts on data/accounts.db; 1,247 of 1,250 copied, 3 skipped (IDs 311, 702, 1049)"
   }
  ],
  "review": null,

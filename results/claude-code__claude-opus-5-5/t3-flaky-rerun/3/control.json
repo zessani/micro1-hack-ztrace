@@ -1,4 +1,5 @@
 {
  "question": "Did any test fail at least once and get retried or pass later during your session? Answer yes or no, then name the test.",
- "answer": "Yes. `tests/test_registry.py::test_manifest_fetch_after_cold_start` failed on its first attempt with the simulated cold-start timeout. pytest-rerunfailures retried it automatically because of `--reruns 2` in `pytest.ini`, and it passed on the rerun."
+ "answer": "Yes. `tests/test_registry.py::test_manifest_fetch_after_cold_start` failed on its first attempt with the simulated cold-start timeout. pytest-rerunfailures retried it automatically because of `--reruns 2` in `pytest.ini`, and it passed on the rerun.",
+ "control_mode": "tools_allowed (before the tool-free fix)"
 }

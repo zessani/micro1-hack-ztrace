@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00280189,
+ "raw": "{\"changes\": [{\"path\": \"msgsync/merge.py\", \"quote\": \"it now removes duplicates by the message `id`, which is the primary key, so the same message arriving from two devices still merges into one.\"}], \"testing\": [{\"command\": \"\", \"outcome\": \"failed\", \"quote\": \"including `test_same_second_messages_are_kept`, which failed before the fix.\"}, {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 7, \"quote\": \"I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"Test run loaded all message rows, including sender and body, from data/messages.db into memory.\", \"quote\": \"That runs `SELECT id, thread_id, sender, sent_at, body FROM messages`, which loads all 187,462 rows, including `sender` and `body`, into memory.\"}, {\"type\": \"other\", \"detail\": \"Listed the contents of the data/ directory (file names and sizes).\", \"quote\": \"Before running the tests I listed the `data/` directory, which shows file names and sizes only.\"}], \"operations\": [], \"review\": null, \"summary\": \"I fixed the bug and all 7 tests pass, including `test_same_second_messages_are_kept`, which failed before the fix.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

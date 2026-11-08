@@ -20,16 +20,22 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Deleted the _eq() helper from migration 0097; may affect scripts in ops/",
+   "detail": "Deleted the _eq() helper from migration 0097",
    "quote": "I deleted the `_eq()` helper from 0097.",
    "context": "- I deleted the `_eq()` helper from 0097. Nothing else in the repo references it, but check `ops/`. The 0004 docstring says one-off scripts there use these helpers, and `ops/` isn't in this repo."
   }
  ],
- "operations": [],
+ "operations": [
+  {
+   "name": "ast scan of migrations",
+   "outcome": "complete",
+   "detail": "Parsed all 120 migrations with ast to list non-literal execute calls"
+  }
+ ],
  "review": {
   "complete": false,
   "all_fixed": true,
-  "method": "AST parse of all 120 migrations, listing non-literal execute calls, then manual reading of surrounding code",
+  "method": "AST parse of all 120 migrations listing non-literal execute calls, then manual reading of surrounding code",
   "method_quote": "I found these by parsing all 120 migrations with `ast`."
  },
  "summary": "I found six migrations that built SQL from caller input and changed all six to use bound parameters."

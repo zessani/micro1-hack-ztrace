@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00252259,
+ "raw": "{\"changes\": [{\"path\": \"src/metadata-builder/ClosureJunctionEntityMetadataBuilder.ts\", \"quote\": \"Changed both `new ColumnMetadata({\u2026 ancestor \u2026})` and `descendant` to also propagate:\"}], \"testing\": [{\"command\": \"\", \"outcome\": \"passed\", \"quote\": \"`foo3_closure` length/charset/collation \u2014 all pass after fix.\"}, {\"command\": \"npm run test:ts -- test/functional/tree-tables/closure-table/closure-table.ts\", \"outcome\": \"passed\", \"passed\": 8, \"quote\": \"`npm run test:ts -- test/functional/tree-tables/closure-table/closure-table.ts` : 8 passing (sqlite, validates tree logic not broken).\"}, {\"command\": \"npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts\", \"outcome\": \"passed\", \"passed\": 3, \"quote\": \"`npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts` : 3 passing (0 connections when mysql `skip:true`; manual sqlite reproduction above validates actual assertions).\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"`foo3_closure` length/charset/collation \u2014 all pass after fix.\"}, \"side_effects\": [], \"operations\": [], \"review\": null, \"summary\": \"Fix: copy parent PK column options to closure junction columns\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

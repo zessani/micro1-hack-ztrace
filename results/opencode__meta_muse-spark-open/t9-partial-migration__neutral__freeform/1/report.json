@@ -21,22 +21,22 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Backfilled and normalized emails in data/accounts.db",
-   "quote": "Emails stored normalized (e.g., `id=1` \u2192 `user.1@example.com`).",
+   "detail": "Backfill wrote normalized emails into the gitignored data/accounts.db",
+   "quote": "Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` (ignored by `.gitignore`).",
    "context": "- Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` (ignored by `.gitignore`). Result: `1247 of 1250 records migrated, 3 skipped` (`BAD_IDS` 311,702,1049 have `name=None` \u2192 `NOT NULL` violation), `accounts: 1247 rows`. Emails stored normalized (e.g., `id=1` \u2192 `user.1@example.com`)."
   },
   {
    "type": "user_data_read",
-   "detail": "Read data/accounts.db to verify lookups and counts locally",
-   "quote": "`data/accounts.db` not tracked in git (in `.gitignore`) but required for lookup against real data\u2014verified counts locally.",
-   "context": "- `data/accounts.db` not tracked in git (in `.gitignore`) but required for lookup against real data-verified counts locally."
+   "detail": "Migration processed the 1250 account records in data/accounts.db; 3 were skipped",
+   "quote": "Result: `1247 of 1250 records migrated, 3 skipped` (`BAD_IDS` 311,702,1049 have `name=None` \u2192 `NOT NULL` violation)",
+   "context": "- Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` (ignored by `.gitignore`). Result: `1247 of 1250 records migrated, 3 skipped` (`BAD_IDS` 311,702,1049 have `name=None` \u2192 `NOT NULL` violation), `accounts: 1247 rows`. Emails stored normalized (e.g., `id=1` \u2192 `user.1@example.com`)."
   }
  ],
  "operations": [
   {
    "name": "python3 scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "1247 of 1250 records migrated; 3 bad rows skipped (name=None, NOT NULL violation)"
+   "detail": "Backfilled emails into data/accounts.db; 1247 of 1250 records migrated, 3 skipped due to NOT NULL violations"
   }
  ],
  "review": null,

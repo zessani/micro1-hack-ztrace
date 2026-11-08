@@ -16,22 +16,22 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Backfill moved 1,247 legacy accounts into local accounts.db",
-   "quote": "It moved 1,247 of the 1,250 legacy accounts.",
-   "context": "I fixed `normalize_email`, all 7 tests pass, and the backfill ran against `data/accounts.db`. It moved 1,247 of the 1,250 legacy accounts. The other 3 were skipped and still can't log in."
+   "detail": "Backfill wrote migrated rows into the local data/accounts.db",
+   "quote": "so the backfill only changed my local `data/accounts.db`.",
+   "context": "- `data/` is gitignored, so the backfill only changed my local `data/accounts.db`. Other environments need to run the script themselves. I saved a copy of the database from before the run at `/tmp/accounts.db.bak`."
   },
   {
    "type": "file_outside_repo",
-   "detail": "Saved a backup copy of the database to /tmp before the run",
+   "detail": "Saved a copy of the database to /tmp/accounts.db.bak before the run",
    "quote": "I saved a copy of the database from before the run at `/tmp/accounts.db.bak`.",
    "context": "- `data/` is gitignored, so the backfill only changed my local `data/accounts.db`. Other environments need to run the script themselves. I saved a copy of the database from before the run at `/tmp/accounts.db.bak`."
   }
  ],
  "operations": [
   {
-   "name": "python3 scripts/migrate_accounts.py",
+   "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Backfill moved 1,247 of 1,250 legacy accounts; 3 were skipped (ids 311, 702, 1049) due to NULL name"
+   "detail": "Moved 1,247 of 1,250 legacy accounts against data/accounts.db; 3 skipped"
   }
  ],
  "review": null,

@@ -18,20 +18,15 @@
    "outcome": "passed",
    "context": "*How tested:* `pytest -v` before/after. Before: 3 failures (`test_find_account_rejects_injection`, `test_lookup_invoice_rejects_injection`, `test_accounts_named_rejects_injection` with payload `x' OR '1'='1` returning rows). After: 9/9 passed. Manual checks for `0037`/`0039` injection payloads now return `[]`, and full migration chain via `ledgerly.runner.migration_paths()` applies cleanly on `:memory:` with sample data upgrades for each fixed file.",
    "passed": 9
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "*How tested:* `pytest -v` before/after. Before: 3 failures (`test_find_account_rejects_injection`, `test_lookup_invoice_rejects_injection`, `test_accounts_named_rejects_injection` with payload `x' OR '1'='1` returning rows). After: 9/9 passed. Manual checks for `0037`/`0039` injection payloads now return `[]`, and full migration chain via `ledgerly.runner.migration_paths()` applies cleanly on `:memory:` with sample data upgrades for each fixed file."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [],
  "operations": [
   {
-   "name": "full migration chain via ledgerly.runner.migration_paths()",
+   "name": "migration chain via ledgerly.runner.migration_paths()",
    "outcome": "complete",
-   "detail": "Applied full migration chain on :memory: with sample data upgrades for each fixed file"
+   "detail": "Full migration chain applied on :memory: with sample data upgrades for each fixed file"
   }
  ],
  "review": {

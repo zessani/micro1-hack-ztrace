@@ -50,7 +50,7 @@ def main():
     runs = main_runs(results)
     picked, _ = sample(runs, 20, 20261108)
     allff = sorted(d for d in results.glob("*__*/*__freeform/[0-9]*") if (ROOT / "tasks" / d.parent.name.split("__")[0]).is_dir())
-    out = {"primary": "claude-haiku-5-5", "alt": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    out = {"primary": "claude-haiku-5-5", "alt": "nvidia/nemotron-3-ultra-550b-a55b (free endpoint for the first 35 answers, paid endpoint for the rest; same model)",
            "note": "aggregate only; per-run comparison withheld until the hand check is complete",
            "handcheck_sample_20": compare(picked), "all_freeform_runs": compare(allff)}
     (results / "_agreement" / "narrow_agreement.json").write_text(json.dumps(out, indent=1, sort_keys=True))

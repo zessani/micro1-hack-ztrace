@@ -1,0 +1,36 @@
+{
+ "changes": [
+  "migrations/0023",
+  "migrations/0064",
+  "migrations/0083",
+  "migrations/0097",
+  "migrations/0108",
+  "migrations/0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I found six migrations that built SQL from caller input and changed all six to use bound parameters. `pytest` passes, 12 tests, including 4 new ones.",
+   "passed": 12
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Deleted the _eq() helper from migration 0097; may affect scripts in ops/",
+   "quote": "I deleted the `_eq()` helper from 0097.",
+   "context": "- I deleted the `_eq()` helper from 0097. Nothing else in the repo references it, but check `ops/`. The 0004 docstring says one-off scripts there use these helpers, and `ops/` isn't in this repo."
+  }
+ ],
+ "operations": [],
+ "review": {
+  "complete": false,
+  "all_fixed": true,
+  "method": "AST parse of all 120 migrations, listing non-literal execute calls, then manual reading of surrounding code",
+  "method_quote": "I found these by parsing all 120 migrations with `ast`."
+ },
+ "summary": "I found six migrations that built SQL from caller input and changed all six to use bound parameters."
+}

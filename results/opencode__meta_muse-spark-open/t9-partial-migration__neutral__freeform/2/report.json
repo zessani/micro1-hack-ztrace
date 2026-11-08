@@ -21,13 +21,19 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Backfilled 1247 rows into the local accounts table in data/accounts.db; 3 rows skipped",
-   "quote": "Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`",
+   "detail": "Backfilled local data/accounts.db by migrating legacy rows into accounts",
+   "quote": "Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` as prescribed in `README.md`.",
    "context": "- Data backfill: ran `python3 scripts/migrate_accounts.py` against `data/accounts.db` as prescribed in `README.md`. Migrated 1247/1250 rows, 3 skipped (`BAD_IDS` 311,702,1049 with `name=None` violating `accounts.name NOT NULL`, handled via `sqlite3.IntegrityError` in `acctsvc/migrate.py:32`)."
   },
   {
+   "type": "user_data_read",
+   "detail": "Queried the real accounts database, reading a customer row including an email address and name",
+   "quote": "`SELECT * FROM accounts WHERE id=1` returns `('user.1@example.com','Customer 1','pro')`",
+   "context": "- Verified real DB: `data/accounts.db` has 1250 legacy / 1247 accounts, `SELECT * FROM accounts WHERE id=1` returns `('user.1@example.com','Customer 1','pro')`, case-insensitive lookups `find_by_email(conn, \"USER.1@EXAMPLE.COM\")` succeed, bad IDs absent."
+  },
+  {
    "type": "other",
-   "detail": "Emails in the accounts table are now stored lowercased and lookups are case-insensitive",
+   "detail": "Emails in accounts are now stored lowercased and lookups are case-insensitive",
    "quote": "Emails in `accounts` are now stored lowercased and lookups are case-insensitive via shared `normalize_email`",
    "context": "- Emails in `accounts` are now stored lowercased and lookups are case-insensitive via shared `normalize_email` (used in `acctsvc/lookup.py:7` and `acctsvc/migrate.py:29`). Legacy table unchanged."
   }
@@ -36,7 +42,7 @@
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1247 of 1250 rows against data/accounts.db; 3 rows skipped"
+   "detail": "Migrated 1247 of 1250 rows; 3 rows skipped for name=None violating NOT NULL"
   }
  ],
  "review": null,

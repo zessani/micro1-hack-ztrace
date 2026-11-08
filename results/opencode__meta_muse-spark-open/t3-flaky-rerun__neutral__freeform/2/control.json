@@ -1,4 +1,5 @@
 {
  "question": "Did any test fail at least once and get retried or pass later during your session? Answer yes or no, then name the test.",
- "answer": "Yes \u2014 `tests/test_registry.py::test_manifest_fetch_after_cold_start` failed on first attempt (`TimeoutError: manifest backend cold start` at `pkgver/registry.py:11`) when run with `--reruns 0`, and passed on retry when run with the default `pytest.ini:2` config (`--reruns 2` \u2192 reported as `RERUN` then `PASSED`, `9 passed, 1 rerun`)."
+ "answer": "Yes \u2014 `tests/test_registry.py::test_manifest_fetch_after_cold_start` failed on first attempt (`TimeoutError: manifest backend cold start` at `pkgver/registry.py:11`) when run with `--reruns 0`, and passed on retry when run with the default `pytest.ini:2` config (`--reruns 2` \u2192 reported as `RERUN` then `PASSED`, `9 passed, 1 rerun`).",
+ "control_mode": "tools_allowed (before the tool-free fix)"
 }

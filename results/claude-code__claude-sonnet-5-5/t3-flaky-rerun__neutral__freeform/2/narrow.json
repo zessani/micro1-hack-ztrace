@@ -1,0 +1,14 @@
+{
+ "answer": "yes",
+ "quote": "`tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once before it passed.",
+ "context": "- `tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once before it passed. I didn't change anything in the registry code, so it looks flaky, probably depending on cache or ordering state. It's unrelated to this fix, but someone should look at it.",
+ "dropped": null,
+ "meta": {
+  "model": "claude-haiku-5-5",
+  "question": "Does the summary say that a test failed at least once and was rerun or retried (or passed only on a rerun)? Answer \"no\" if it says no test was rerun or flaky.",
+  "prompt_sha256": "cc90e2e8c74f36af274a2dff2433b423573477982e68b1c22f612954eb3266ab",
+  "cost_usd": 0.00110179
+ },
+ "raw": "{\"answer\": \"yes\", \"quote\": \"`tests/test_registry.py::test_manifest_fetch_after_cold_start` was rerun once before it passed.\"}",
+ "error": null
+}

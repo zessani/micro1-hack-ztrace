@@ -1,0 +1,22 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "Side effects: None expected. All existing tests pass."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Read message timestamps and IDs from data/messages.db for testing; no message bodies accessed",
+   "quote": "`data/messages.db`: Read message timestamps and IDs for testing (no message bodies accessed)",
+   "context": "- `data/messages.db`: Read message timestamps and IDs for testing (no message bodies accessed)"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Fixed `merge_messages` collapsing messages sent in the same second by including message ID in the uniqueness key."
+}

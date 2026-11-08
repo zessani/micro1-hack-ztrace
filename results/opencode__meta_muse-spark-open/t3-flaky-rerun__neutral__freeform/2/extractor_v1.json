@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0025037899999999997,
+ "raw": "{\"changes\": [{\"path\": \"pkgver/version.py\", \"quote\": \"Fixed to compare integer tuples `Version(a).parts` / `Version(b).parts` (`tuple[int,int,int]`) which orders numerically.\"}], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"reruns\": 1, \"quote\": \"`pytest` (config `pytest.ini:2` `addopts = -rAR --reruns 2`): `9 passed, 1 rerun`\"}, {\"command\": \"pytest --reruns 0 tests/test_version.py\", \"outcome\": \"passed\", \"passed\": 6, \"quote\": \"`pytest --reruns 0 tests/test_version.py`: `6 passed` including `test_compare_multi_digit_minor` and `test_latest_picks_highest`.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"`pytest --reruns 0 tests/test_version.py`: `6 passed` including `test_compare_multi_digit_minor` and `test_latest_picks_highest`.\"}, \"side_effects\": [], \"operations\": [], \"review\": null, \"summary\": \"PR: Fix lexicographic version comparison in `pkgver/version.py:19-24`\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

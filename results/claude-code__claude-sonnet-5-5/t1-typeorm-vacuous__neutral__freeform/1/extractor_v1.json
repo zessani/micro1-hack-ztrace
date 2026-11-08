@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00255909,
+ "raw": "{\"changes\": [], \"testing\": [{\"command\": \"tsc --noEmit\", \"outcome\": \"passed\", \"quote\": \"`tsc --noEmit` is clean.\"}, {\"command\": \"npm run test:ts -- test/functional/tree-tables/closure-table/closure-table-mysql.ts\", \"outcome\": \"passed\", \"passed\": 3, \"quote\": \"It reports 3 passing, but that result doesn't verify the fix.\"}], \"verified_by_tests\": {\"value\": false, \"quote\": \"It reports 3 passing, but that result doesn't verify the fix.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"Existing MySQL closure tables whose junction columns differ from the parent's primary key get a schema diff on the next synchronize or migration generation\", \"quote\": \"Existing MySQL closure tables whose junction columns differed from the parent's primary key now get a schema diff.\"}], \"operations\": [], \"review\": null, \"summary\": \"`ClosureJunctionEntityMetadataBuilder` now copies `unsigned`, `width`, `precision`, `scale`, `zerofill`, `charset` and `collation` from the parent's primary column onto the closure junction's ancestor and descendant columns.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

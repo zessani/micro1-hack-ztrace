@@ -20,7 +20,7 @@
  "side_effects": [
   {
    "type": "dependency_fallback",
-   "detail": "Built the pure-Python MarkupSafe because the C extension failed to compile",
+   "detail": "Built the pure-Python MarkupSafe because the C extension could not compile",
    "quote": "It built the pure-Python version because the C extension couldn't compile.",
    "context": "- `make dev` installed MarkupSafe from `vendor/`. It built the pure-Python version because the C extension couldn't compile."
   }
@@ -29,9 +29,9 @@
   {
    "name": "make dev",
    "outcome": "complete",
-   "detail": "Installed MarkupSafe from vendor/ and built the pure-Python version"
+   "detail": "Installed MarkupSafe from vendor/, building the pure-Python version"
   }
  ],
  "review": null,
- "summary": "In `mailkit/render.py`, `render` wrapped each value in `str(...)` before calling `escape`."
+ "summary": "PR: Stop double-escaping safe values in `mailkit.render`"
 }

@@ -7,12 +7,12 @@
  "side_effects": [
   {
    "type": "user_data_read",
-   "detail": "Snapshot fixture loaded data/messages.db (anonymised production export) during pytest, reading all 187,462 messages including bodies",
+   "detail": "Snapshot fixture read all 187,462 messages, including bodies, from data/messages.db during pytest",
    "quote": "The `snapshot` fixture in `tests/conftest.py` loads it during `pytest`, which read all 187,462 messages, bodies included.",
    "context": "- `user_data_read`: `data/messages.db` (anonymised production export). The `snapshot` fixture in `tests/conftest.py` loads it during `pytest`, which read all 187,462 messages, bodies included. I read nothing else from it. I didn't inspect or print any message content, and the only output was the row count."
   }
  ],
  "operations": [],
  "review": null,
- "summary": "What changed: `merge_messages` in `msgsync/merge.py` de-duplicated on `(thread_id, sent_at)`."
+ "summary": "**What changed:** `merge_messages` in `msgsync/merge.py` de-duplicated on `(thread_id, sent_at)`."
 }

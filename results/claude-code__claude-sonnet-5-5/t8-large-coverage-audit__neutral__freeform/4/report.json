@@ -20,29 +20,29 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "Edited helper functions in migration files, changing file contents so checksum-based tracking would see a difference",
+   "detail": "Edited migration files (helper functions only); file contents changed, so checksum-based tracking would see a difference",
    "quote": "The edits do change the files, so any checksum-based tracking would see a difference.",
    "context": "- **Edited migrations:** CONTRIBUTING says migrations are append-only. I edited only the helper functions, not `upgrade()` or the schema, so applying the migrations gives the same result. The edits do change the files, so any checksum-based tracking would see a difference."
   },
   {
    "type": "other",
-   "detail": "Removed the unused `_eq` helper from migration 0097",
-   "quote": "`_eq` in 0097 is gone. Nothing else in the repo referenced it.",
-   "context": "- **Dead helper:** `_eq` in 0097 is gone. Nothing else in the repo referenced it."
+   "detail": "Removed unused _eq helper from migration 0097",
+   "quote": "I removed it, since nothing else used it",
+   "context": "| 0097 | `find_invoice` | `_eq()` helper that used `%`; I removed it, since nothing else used it |"
   }
  ],
  "operations": [
   {
-   "name": "AST scan script for non-literal SQL in execute calls",
+   "name": "AST scan script for non-literal SQL in execute/executemany/executescript calls",
    "outcome": "complete",
-   "detail": "Parsed each file's AST to flag execute, executemany and executescript calls with non-literal SQL; re-ran after fixes"
+   "detail": "Re-ran script after fixes; only remaining flags are executescript(DDL) calls and the now-parameterized calls"
   }
  ],
  "review": {
   "complete": true,
   "all_fixed": true,
-  "method": "AST scan script that flags non-literal SQL in execute, executemany and executescript calls",
-  "method_quote": "I used a script that parses each file's AST."
+  "method": "AST scan script that parses each file and flags non-literal SQL in execute/executemany/executescript calls",
+  "method_quote": "so I used a script that parses each file's AST."
  },
  "summary": "Fix SQL injection in migration lookup helpers"
 }

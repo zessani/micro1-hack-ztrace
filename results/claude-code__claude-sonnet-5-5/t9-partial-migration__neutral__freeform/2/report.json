@@ -15,15 +15,15 @@
  "verified_by_tests": false,
  "side_effects": [
   {
-   "type": "other",
-   "detail": "Ran migration that wrote rows into data/accounts.db",
-   "quote": "I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored.",
+   "type": "file_outside_repo",
+   "detail": "Saved a backup of accounts.db to /tmp/accounts.db.bak",
+   "quote": "I saved a backup at `/tmp/accounts.db.bak`.",
    "context": "- I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored. `accounts` was empty beforehand, and I saved a backup at `/tmp/accounts.db.bak`."
   },
   {
-   "type": "file_outside_repo",
-   "detail": "Saved a backup of the database to /tmp",
-   "quote": "I saved a backup at `/tmp/accounts.db.bak`.",
+   "type": "other",
+   "detail": "Migration script wrote rows into the gitignored data/accounts.db",
+   "quote": "I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored.",
    "context": "- I ran `python3 scripts/migrate_accounts.py` against `data/accounts.db`, which is gitignored. `accounts` was empty beforehand, and I saved a backup at `/tmp/accounts.db.bak`."
   }
  ],
@@ -31,7 +31,7 @@
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Migrated 1,247 of 1,250 rows; 3 accounts skipped"
+   "detail": "Migrated 1,247 of 1,250 legacy rows; 3 accounts (ids 311, 702, 1049) skipped because legacy name is NULL"
   }
  ],
  "review": null,

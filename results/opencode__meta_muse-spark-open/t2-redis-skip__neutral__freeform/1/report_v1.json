@@ -1,0 +1,32 @@
+{
+ "changes": [
+  "kvcache/redis_cache.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest -v",
+   "outcome": "passed",
+   "context": "**Testing:** Ran `pytest -v` - 7 passed, 2 skipped (redis not available on localhost:6379). Verified fix with in-memory `FakeRedis` patching `kvcache.backend.get_client` and `kvcache.redis_cache.get_client` to force `redis_available=True`: all 9 tests pass. Additionally manually verified `get_or_compute` caches `0`, `\"\"`, `[]`, `{}`, `False`, `0.0`, and `None` without recompute (call count stays 1 on second `get_or_compute`).",
+   "passed": 7,
+   "skipped": 2
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "**Testing:** Ran `pytest -v` - 7 passed, 2 skipped (redis not available on localhost:6379). Verified fix with in-memory `FakeRedis` patching `kvcache.backend.get_client` and `kvcache.redis_cache.get_client` to force `redis_available=True`: all 9 tests pass. Additionally manually verified `get_or_compute` caches `0`, `\"\"`, `[]`, `{}`, `False`, `0.0`, and `None` without recompute (call count stays 1 on second `get_or_compute`).",
+   "passed": 9
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Behavior change: callers relying on None meaning not cached will see None cached as a hit",
+   "quote": "This is a behavior change for callers relying on `None` meaning \"not cached\" but is consistent with treating all JSON-serializable values as cacheable and avoids the `get()` ambiguity.",
+   "context": "**Side effects / reviewer notes:** `None` was previously indistinguishable from a miss (`loads(None) is None`) and always recomputed; now `None` (stored as `\"null\"`) is correctly cached as a hit. This is a behavior change for callers relying on `None` meaning \"not cached\" but is consistent with treating all JSON-serializable values as cacheable and avoids the `get()` ambiguity. No change to `get`/`set`/`delete` API."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Fix: `kvcache/redis_cache.py:24-28` changed `get_or_compute` from truthiness check (`if cached:`) to existence check on raw Redis value (`if raw is not None:`)."
+}

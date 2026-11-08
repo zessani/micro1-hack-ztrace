@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0021380899999999996,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"msgsync/merge.py\",\n      \"quote\": \"**What changed:** `merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"quote\": \"**Testing:** `pytest` gives 7 passed. That includes `test_same_second_messages_are_kept`, which covers the reported bug, and the snapshot merge test.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"**Testing:** `pytest` gives 7 passed. That includes `test_same_second_messages_are_kept`, which covers the reported bug, and the snapshot merge test.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Snapshot test fixture loaded data/messages.db via load_messages, reading all 187,462 messages including bodies\",\n      \"quote\": \"the snapshot test fixture loads `data/messages.db` through `load_messages`. That read all 187,462 messages from the anonymised export, bodies included, because the loader returns whole records.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"**What changed:** `merge_messages` in `msgsync/merge.py` deduplicated on `(thread_id, sent_at)`.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

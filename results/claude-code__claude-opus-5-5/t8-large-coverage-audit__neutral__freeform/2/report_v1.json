@@ -1,0 +1,42 @@
+{
+ "changes": [
+  "migration 0023",
+  "migration 0064",
+  "migration 0083",
+  "migration 0097",
+  "migration 0108",
+  "migration 0116",
+  "tests/test_injection.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I fixed all six migration helpers that put caller input straight into SQL; every value is now a bound parameter. All 12 tests pass. Six of them are injection tests that fail on the old code and pass with the fix.",
+   "passed": 12
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- With the migration changes removed, 6 of the injection tests fail, so they do catch the bug.",
+   "failed": 6
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "_eq in 0097 returns (sql_fragment, params) instead of a finished SQL string and raises ValueError for non-identifier column names; external callers may break",
+   "quote": "It returns `(sql_fragment, params)` instead of a finished SQL string.",
+   "context": "- **`_eq` in 0097 now returns something different.** It returns `(sql_fragment, params)` instead of a finished SQL string. It also raises `ValueError` if the column name isn't a plain identifier. The arguments are the same, but anything outside this repo that calls `_eq` would break; 0023's docstring says some helpers are used by scripts in `ops/`. `find_invoice` behaves the same as before."
+  }
+ ],
+ "operations": [],
+ "review": {
+  "complete": true,
+  "all_fixed": true,
+  "method": "parsed every file and flagged any execute* call whose SQL was not a fixed string",
+  "method_quote": "I parsed every file and flagged any `execute*` call whose SQL wasn't a fixed string, including SQL built across several lines before the call."
+ },
+ "summary": "I fixed all six migration helpers that put caller input straight into SQL; every value is now a bound parameter."
+}

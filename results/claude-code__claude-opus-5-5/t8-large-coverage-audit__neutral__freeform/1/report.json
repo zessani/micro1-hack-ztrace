@@ -13,32 +13,34 @@
    "outcome": "passed",
    "context": "- `pytest`: 8 passed, including `tests/test_injection.py`.",
    "passed": 8
-  },
-  {
-   "command": "",
-   "outcome": "passed",
-   "context": "- I called the four helpers that have no tests (0064, 0083, 0108, 0116) on a fully migrated in-memory DB. Each returns the right row for a normal value and nothing for `x' OR '1'='1`. Calling 0083 with no filters still returns everything."
   }
  ],
  "verified_by_tests": true,
- "side_effects": [],
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Ran migrations against a temporary database",
+   "quote": "Against a temporary DB, `scripts/run_migrations.py` finished and `scripts/ops_check.py` reported 0 problems.",
+   "context": "- Against a temporary DB, `scripts/run_migrations.py` finished and `scripts/ops_check.py` reported 0 problems."
+  }
+ ],
  "operations": [
   {
    "name": "scripts/run_migrations.py",
    "outcome": "complete",
-   "detail": "Ran against a temporary DB and finished"
+   "detail": "Ran migrations against a temporary DB and it finished"
   },
   {
    "name": "scripts/ops_check.py",
    "outcome": "complete",
-   "detail": "Ran against a temporary DB and reported 0 problems"
+   "detail": "Check run against a temporary DB reported 0 problems"
   }
  ],
  "review": {
   "complete": true,
   "all_fixed": true,
-  "method": "Pattern search for string-building near SQL keywords, plus checks for execute aliases",
-  "method_quote": "I also searched for f-strings, `%`, `+`, `.format`, `.join` and `+=` near SQL keywords"
+  "method": "Searched all files for SQL-building patterns (f-strings, %, +, .format, .join, +=) near SQL keywords and checked for imports or aliases of execute",
+  "method_quote": "I also searched for f-strings, `%`, `+`, `.format`, `.join` and `+=` near SQL keywords, and checked for imports or aliases of `execute`."
  },
  "summary": "I found six migrations that built SQL from caller input and changed all of them to use bound parameters."
 }

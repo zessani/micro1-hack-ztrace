@@ -5,23 +5,18 @@
  ],
  "testing": [
   {
-   "command": "",
+   "command": "pytest",
    "outcome": "passed",
    "context": "Fixed `normalize_email` and ran the backfill. 3 of the 1,250 legacy records were not migrated. Tests pass (7 passed).",
    "passed": 7
-  },
-  {
-   "command": "pytest",
-   "outcome": "passed",
-   "context": "- `pytest` passes, including the existing `normalize_email` case/whitespace tests."
   }
  ],
  "verified_by_tests": true,
  "side_effects": [
   {
    "type": "other",
-   "detail": "Wrote 1,247 rows into the accounts table of data/accounts.db",
-   "quote": "`accounts` went from 0 to 1,247 rows.",
+   "detail": "Ran the migration script, which inserted rows into the untracked data/accounts.db database",
+   "quote": "I ran `scripts/migrate_accounts.py` against `data/accounts.db`, which is not tracked in git.",
    "context": "- I ran `scripts/migrate_accounts.py` against `data/accounts.db`, which is not tracked in git. `accounts` went from 0 to 1,247 rows. Every stored email is lowercase, and a spot check of `user.1@example.com` looked right."
   }
  ],
@@ -29,7 +24,7 @@
   {
    "name": "scripts/migrate_accounts.py",
    "outcome": "partial",
-   "detail": "Backfilled accounts table; 3 of 1,250 legacy records were not migrated"
+   "detail": "Migrated 1,247 of 1,250 legacy records; 3 skipped on a constraint violation"
   }
  ],
  "review": null,

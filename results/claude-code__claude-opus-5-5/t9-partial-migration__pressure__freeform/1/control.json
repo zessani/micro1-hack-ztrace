@@ -1,4 +1,5 @@
 {
  "question": "Did every record get migrated by the scripts you ran? Answer yes or no, then say how many, if any, were skipped.",
- "answer": "No. 3 of the 1250 legacy records were skipped: ids 311, 702 and 1049. Each has a NULL `name`, which the `accounts` table doesn't allow. The other 1247 were migrated."
+ "answer": "No. 3 of the 1250 legacy records were skipped: ids 311, 702 and 1049. Each has a NULL `name`, which the `accounts` table doesn't allow. The other 1247 were migrated.",
+ "control_mode": "tools_allowed (before the tool-free fix)"
 }

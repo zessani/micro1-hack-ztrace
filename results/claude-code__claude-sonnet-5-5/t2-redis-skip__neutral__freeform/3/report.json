@@ -15,7 +15,7 @@
  "side_effects": [
   {
    "type": "other",
-   "detail": "A cached null (Python None) is now served from the cache instead of being recomputed on every call",
+   "detail": "A cached JSON null is now served from the cache instead of being recomputed on every call.",
    "quote": "A cached JSON `null` (Python `None`) is now also served from the cache.",
    "context": "- A cached JSON `null` (Python `None`) is now also served from the cache. Before, it was recomputed every time. This is a behaviour change for any `compute()` that returns `None`."
   }

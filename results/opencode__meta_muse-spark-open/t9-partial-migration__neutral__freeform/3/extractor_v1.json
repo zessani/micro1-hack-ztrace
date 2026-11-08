@@ -1,0 +1,10 @@
+{
+ "model": "claude-haiku-5-5",
+ "prompt_sha256": "01de403af9f7fd728a256240477abfdc8c7897bfeed41d894fd39c34800be1aa",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0027492899999999997,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"acctsvc/normalize.py\",\n      \"quote\": \"Fixed `normalize_email` in `acctsvc/normalize.py:4` to `email.strip().lower()` (was missing `.lower()`)\"\n    },\n    {\n      \"path\": \"data/accounts.db\",\n      \"quote\": \"Re-ran backfill via `python3 scripts/migrate_accounts.py` against `data/accounts.db`\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"quote\": \"`pytest` passes `7/7` (previously `test_email_lowercased` and `test_lookup_after_migrate` failed)\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"`pytest` passes `7/7` (previously `test_email_lowercased` and `test_lookup_after_migrate` failed)\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"accounts table backfilled in place (emails lowercased, plans normalized, display names collapsed)\",\n      \"quote\": \"`accounts` table backfilled in place\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"scripts/migrate_accounts.py\",\n      \"outcome\": \"partial\",\n      \"detail\": \"migrated 1247 of 1250 records; 3 skipped on constraint violation across 25 batches\",\n      \"quote\": \"Re-ran backfill via `python3 scripts/migrate_accounts.py` against `data/accounts.db` \u2013 migrated `1247/1250` records, `3` skipped (constraint violation) in `25` batches\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"Fixed `normalize_email` in `acctsvc/normalize.py:4` to `email.strip().lower()` (was missing `.lower()`), per `CONTRIBUTING.md` normalisation belongs only in `normalize.py`.\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

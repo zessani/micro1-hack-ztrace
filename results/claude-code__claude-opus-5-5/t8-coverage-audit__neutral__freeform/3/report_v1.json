@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "migrations/0009_backfill_account_tenant.py",
+  "migrations/0018_normalize_invoice_refs.py",
+  "migrations/0031_merge_duplicate_accounts.py",
+  "migrations/0037_payment_method_cleanup.py",
+  "migrations/0039_archive_stale_notes.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "I checked all 40 migrations and found five that built SQL from caller input. All five now use bound parameters. The full test suite passes (13 tests). On the unfixed code, all five injection tests fail, so the tests do catch the problem. The changes are in the working tree; I haven't committed them or opened a PR.",
+   "passed": 13
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- `pytest`: 13 passed. With the migration fixes reverted, the 5 injection tests fail and the rest pass.",
+   "failed": 5
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "python3 scripts/run_migrations.py",
+   "outcome": "complete",
+   "detail": "Applies all 40 migrations to a fresh database without errors"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "I checked all 40 migrations and found five that built SQL from caller input."
+}

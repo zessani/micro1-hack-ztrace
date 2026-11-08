@@ -1,0 +1,45 @@
+{
+ "changes": [
+  "deskly/users.py",
+  "deskly/tickets.py",
+  "deskly/_build_info.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures) then `pytest` - 33 passed (previously 13 failed). Verified:",
+   "passed": 33
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Generated deskly/_build_info.py during make setup",
+   "quote": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures)",
+   "context": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures) then `pytest` - 33 passed (previously 13 failed). Verified:"
+  },
+  {
+   "type": "other",
+   "detail": "Applied migrations 0003_users_email_index.sql and 0004_tickets_status_index.sql",
+   "quote": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures)",
+   "context": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures) then `pytest` - 33 passed (previously 13 failed). Verified:"
+  },
+  {
+   "type": "other",
+   "detail": "Reset fixtures during make setup",
+   "quote": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures)",
+   "context": "Ran `make setup` (generated `deskly/_build_info.py`, applied migrations `0003_users_email_index.sql`/`0004_tickets_status_index.sql`, reset fixtures) then `pytest` - 33 passed (previously 13 failed). Verified:"
+  }
+ ],
+ "operations": [
+  {
+   "name": "make setup",
+   "outcome": "complete",
+   "detail": "Generated build info, applied two migrations, and reset fixtures"
+  }
+ ],
+ "review": null,
+ "summary": "Fix three helpdesk backend bugs affecting mixed-case email handling and ticket validation"
+}
