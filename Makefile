@@ -19,6 +19,7 @@ run:
 
 replay:
 	python3 -m grader.replay results/
+	python3 -m report.metrics
 
 test:
 	python3 -m unittest discover -s tracer -t .
@@ -27,6 +28,7 @@ test:
 
 report:
 	python3 -m report
+	python3 scripts/readme_fill.py
 
 zip:
 	bash scripts/make_zip.sh

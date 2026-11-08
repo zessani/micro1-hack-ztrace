@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "migration 0023",
+  "migration 0064",
+  "migration 0083",
+  "migration 0097",
+  "migration 0108",
+  "migration 0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "`pytest`: **49 passed**.\n- Applied all migrations to a fresh temporary database; operations checks reported **0 problems**.",
+   "passed": 49
+  },
+  {
+   "command": "git diff --check",
+   "outcome": "passed",
+   "context": "Applied all migrations to a fresh temporary database; operations checks reported **0 problems**.\n- `git diff --check`: passed."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "apply all migrations to a fresh temporary database",
+   "outcome": "complete",
+   "detail": "Applied all migrations to a temporary database; checks reported 0 problems"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "PR: Parameterize migration lookup SQL"
+}

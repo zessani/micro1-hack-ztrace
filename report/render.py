@@ -48,7 +48,7 @@ function build(r){
  if(r.omissions)s.appendChild(el('span','fail','O'+r.omissions));
  if(r.category)s.appendChild(el('span','pill',r.category));
  if(r.secondary_false_claims)s.appendChild(el('span','na','other contradicted '+r.secondary_false_claims));
- if(r.kbds)s.appendChild(el('span','pill','disclosed only when asked'));
+ if(r.kbds)s.appendChild(el('span','pill','reported only when asked directly'));
  if(r.control_excluded)s.appendChild(el('span','pill','control excluded (tools used)'));
  r.tags.forEach(function(t){s.appendChild(el('span','pill',t))});
  d.appendChild(s);var b=el('div');d.appendChild(b);
@@ -100,7 +100,7 @@ def usd(x):
 
 HEAD = ["Row", "n", "Pass", "Rate", "Wilson 95%", "Key fact misstated", "Runs w/ misstated",
         "Key fact not stated", "Runs w/ not stated"] + [c[0].upper() + c[1:] for c in CATEGORIES] + [
-        "Other contradicted claims (descriptive)", "Disclosed only when asked", "Control answers (excluded)",
+        "Other contradicted claims (descriptive)", "Reported only when asked directly", "Control answers (excluded)",
         "Avoided / not scored", "method_disclosed", "Cost total", "Cost mean"]
 
 
@@ -200,7 +200,7 @@ Hard set: %s. Opus ran t8-coverage-audit with ticket v1 only.</p>
 <h2>Hard set</h2>%s
 <h2>By task</h2>%s
 <h2>Claims and disclosure</h2>%s
-<h2>Disclosed only when asked</h2>%s
+<h2>Reported only when asked directly</h2>%s
 <h2>Summary</h2>%s
 <h2>Per model and task</h2>%s
 <h2>Audit tables</h2>%s%s
@@ -212,7 +212,7 @@ Hard set: %s. Opus ran t8-coverage-audit with ticket v1 only.</p>
 <select id='ft'><option value=''>All tasks</option></select>
 <select id='fv'><option value=''>Any verdict</option><option value='pass'>pass</option><option value='fail'>fail</option>
 <option value='avoided'>avoided / not scored</option><option value='false'>key fact misstated</option>
-<option value='omission'>key fact not stated</option><option value='kbds'>disclosed only when asked</option></select>
+<option value='omission'>key fact not stated</option><option value='kbds'>reported only when asked directly</option></select>
 <input id='fq' placeholder='search path'><span id='count' class='note'></span></div>
 <div id='runs'></div>
 <h2>Sources</h2>
@@ -221,7 +221,7 @@ Rules: <a href='../../CONTRACTS.md'>CONTRACTS.md</a>, grader/RULES.md.</p>
 <script type='application/json' id='data'>%s</script><script>%s</script></body></html>""" % (
         CSS, len(runs), ", ".join(HARD), fig("hard_pass_rate"), fig("grid"),
         fig("audit", "Accuracy: concrete claims not contradicted. Disclosure: material events mentioned / seen."),
-        fig("disclosed_only_when_asked", "Summary missed the fact, control answer stated it."),
+        fig("asked_directly", "Summary missed the fact, control answer stated it."),
         table(agg, False), table(agg, True),
         audit_table(audit_agg["main"], "Main matrix"), audit_table(audit_agg["all"], "All graded runs"),
         ticket_table(runs), skipped["archived"], skipped["ungraded"], safe_json(data), JS)

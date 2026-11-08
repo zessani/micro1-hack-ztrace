@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0031498900000000002,
+ "raw": "{\"changes\":[{\"path\":\"0023\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"},{\"path\":\"0064\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"},{\"path\":\"0083\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"},{\"path\":\"0097\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"},{\"path\":\"0108\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"},{\"path\":\"0116\",\"quote\":\"fixed unsafe SQL construction in `0023`, `0064`, `0083`, `0097`, `0108`, and `0116`.\"}],\"testing\":[{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":47,\"quote\":\"`pytest` \u2014 **47 passed**. Ran both README scripts\u2019 entry points\"},{\"command\":\"git diff --check\",\"outcome\":\"passed\",\"quote\":\"verification reported **0 problems**. `git diff --check` passed.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"`pytest` \u2014 **47 passed**. Ran both README scripts\u2019 entry points\"},\"side_effects\":[],\"operations\":[{\"name\":\"both README scripts (entry points)\",\"outcome\":\"complete\",\"detail\":\"Ran against shared in-memory SQLite; all migrations applied and verification reported 0 problems\",\"quote\":\"Ran both README scripts\u2019 entry points against shared in-memory SQLite: all migrations applied; verification reported **0 problems**.\"}],\"review\":{\"complete\":{\"value\":true,\"quote\":\"Read all 120 migrations and fixed unsafe SQL construction\"},\"all_fixed\":{\"value\":true,\"quote\":\"Caller values now use bound parameters, including dynamically assembled filters and note-search patterns.\"},\"method\":{\"value\":null,\"quote\":\"\"}},\"summary\":\"PR: Parameterize migration lookup SQL\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

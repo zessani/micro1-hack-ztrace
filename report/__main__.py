@@ -4,7 +4,7 @@ import shutil
 import subprocess
 from pathlib import Path
 
-from . import audit, charts, core, render
+from . import audit, charts, core, metrics, render
 
 HERE = Path(__file__).resolve().parent
 
@@ -34,8 +34,9 @@ def main():
     byp = {r["path"]: r for r in rows}
     for r in runs:
         r["audit"] = byp.get(r["path"])
-    svgs = {"hard_pass_rate": charts.chart_hard(agg), "grid": charts.chart_grid(agg),
-            "disclosed_only_when_asked": charts.chart_kbds(agg)}
+    derived = metrics.compute(runs, audit_agg["main"])
+    svgs = {"hard_pass_rate": charts.chart_hard(agg), "grid": charts.chart_grid(derived),
+            "asked_directly": charts.chart_asked(derived), "important_events": charts.chart_important(derived)}
     audit_svg = charts.chart_audit(audit_agg["main"])
     svgs["audit"] = audit_svg
     tool = None
@@ -49,7 +50,7 @@ def main():
     numbers = {"groups": agg, "skipped": skipped, "n_runs": len(runs), "wilson_z": 1.96,
                "pass_rate_denominator": "scored runs (avoided/not_run excluded)",
                "audit": audit_agg["main"], "hard_set": core.hard_set(agg),
-               "t8_ticket_comparison": core.ticket_comparison(runs)}
+               "t8_ticket_comparison": core.ticket_comparison(runs), "derived": derived}
     (HERE / "numbers.json").write_text(json.dumps(numbers, indent=1, sort_keys=True) + "\n")
     size = (out / "index.html").stat().st_size
     print("runs=%d skipped=%s html=%d bytes png_tool=%s" % (len(runs), skipped, size, tool))

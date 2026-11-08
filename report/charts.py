@@ -1,6 +1,6 @@
 """SVG charts in one shared theme (see theme.py)."""
 from .core import MAIN_MODELS, HARD, TASK_ORDER
-from .theme import (COLOR, SHORT, W, PAD, LEFT, INK, MUTE, GRID, TRACK, S_LABEL, S_VALUE, S_AXIS,
+from .theme import (COLOR, SHORT, LABEL, TASK_NAME, ALL_C, SOME_C, NONE_C, W, PAD, LEFT, INK, MUTE, GRID, TRACK, S_LABEL, S_VALUE, S_AXIS,
                     t, svg, title, pct_axis, hline)
 
 ROW = 52
@@ -43,57 +43,83 @@ def chart_hard(agg):
         o = ms.get(m, {}).get("by_set", {}).get("hard")
         if o and o["n"]:
             items.append((m, o["pass_rate"], o["ci_low"], o["ci_high"], "%d/%d" % (o["passes"], o["n"])))
-    return _hbars("Hard-set pass rate", "", items, "Hard-set pass rate per model with Wilson 95% intervals")
+    return _hbars("Hard-set pass rate (hard tasks only, 95% CI)", "", items, "Hard-set pass rate per model with Wilson 95% intervals")
 
 
-def chart_kbds(agg):
-    ms = _models(agg)
-    items = []
-    for m in MAIN_MODELS:
-        o = ms.get(m, {}).get("overall")
-        if o and o["runs_with_control"]:
-            k, n = o["knew_but_didnt_say"], o["runs_with_control"]
-            items.append((m, k / n, None, None, "%d/%d" % (k, n)))
-    return _hbars("Disclosed only when asked", "", items,
-                  "Share of runs where the summary missed the fact but the control answer stated it")
+def chart_important(d):
+    """One bar per model: share of important events reported. d = numbers['derived']."""
+    imp = d["important_events_reported"]
+    items = sorted([(m, v) for m, v in imp.items() if v["n_events"]], key=lambda x: -x[1]["pct"])
+    n_ev = sum(v["n_events"] for _, v in items)
+    n_runs = sum(v["n_runs"] for _, v in items)
+    left, x1 = 270, W - PAD - 90
+    pw = x1 - left
+    row, top = 50, 86
+    H = top + row * len(items) + 16
+    b = [title("Share of important events the agent reported in its PR summary"),
+         t(PAD, PAD + 36, "Hard tasks, 95%% CI. %d events in %d runs." % (n_ev, n_runs), S_AXIS, fill=MUTE)]
+    for i, (m, v) in enumerate(items):
+        ye = top + row * i + row / 2
+        b.append(t(left - 14, ye + 5, LABEL[m], S_LABEL, "end"))
+        w = pw * v["pct"]
+        b.append("<rect x='%d' y='%.1f' width='%.1f' height='26' rx='2' fill='%s'/>" % (left, ye - 13, max(w, 0), COLOR[m]))
+        xl, xh = left + pw * v["ci_low"], left + pw * v["ci_high"]
+        b.append("<g stroke='%s' stroke-width='1.5'><line x1='%.1f' y1='%.1f' x2='%.1f' y2='%.1f'/>"
+                 "<line x1='%.1f' y1='%.1f' x2='%.1f' y2='%.1f'/><line x1='%.1f' y1='%.1f' x2='%.1f' y2='%.1f'/></g>"
+                 % (INK, xl, ye, xh, ye, xl, ye - 6, xl, ye + 6, xh, ye - 6, xh, ye + 6))
+        lab = "%d%%" % round(v["pct"] * 100)
+        if w > 70:
+            b.append(t(left + 10, ye + 5, lab, S_VALUE, fill="#fff", weight="700"))
+        else:
+            b.append(t(xh + 10, ye + 5, lab, S_VALUE, fill=INK, weight="700"))
+    return svg(H, "".join(b), "Share of important events reported per model, with 95% intervals")
 
 
-def _short_task(tk):
-    return "t8-large" if "large" in tk else tk.split("-")[0]
+def chart_asked(d):
+    """Of hard-task runs where the summary left an event out, the share where the agent confirmed it when asked."""
+    a = d["asked_directly"]
+    items = [(m, v["confirmed_when_asked"] / v["runs_with_missed_event"], None, None,
+              "%d of %d" % (v["confirmed_when_asked"], v["runs_with_missed_event"]))
+             for m, v in a.items() if v["runs_with_missed_event"]]
+    items.sort(key=lambda x: -x[1])
+    return _hbars("Reported only when asked directly (hard tasks, runs with a missed event)", "", items,
+                  "Share of runs with a missed event where the agent confirmed it when asked directly")
 
 
-def _shade(rate):
-    a, c = (232, 240, 252), (23, 60, 130)
-    return "#%02x%02x%02x" % tuple(round(a[k] + (c[k] - a[k]) * rate) for k in range(3)), rate > 0.55
-
-
-def chart_grid(agg):
-    ms = _models(agg)
-    tasks = [x for x in TASK_ORDER if x in HARD and any(x in md["tasks"] for md in ms.values())]
-    models = [m for m in MAIN_MODELS if m in ms and any(x in ms[m]["tasks"] for x in tasks)]
-    x0 = LEFT
-    cw = (W - PAD - x0) / len(tasks)
-    ch = 50
-    top = TOP + 18
-    H = top + ch * len(models) + PAD
-    b = [title("Pass rate by task")]
-    for i, tk in enumerate(tasks):
-        b.append(t(x0 + cw * i + cw / 2, top - 12, _short_task(tk), S_LABEL, "middle", MUTE))
-    for j, m in enumerate(models):
+def chart_grid(d):
+    """Rows: hard tasks. Columns: models. Cell: runs where every important event was reported / runs with one."""
+    te = d["task_events"]
+    models = [m for m in COLOR if m in te]
+    tasks = [x for x in TASK_NAME if any(x in te[m] for m in models)]
+    x0, cw, ch, top = 270, (W - PAD - 270) / len(models), 46, 100
+    H = top + ch * len(tasks) + PAD
+    b = [title("Important events reported, per task and model"),
+         t(PAD, PAD + 36, "Runs where every important event was reported / runs with an important event. Hard tasks.", S_AXIS, fill=MUTE)]
+    for i, m in enumerate(models):
+        b.append(t(x0 + cw * i + cw / 2, top - 12, SHORT[m], S_AXIS, "middle", INK, "600"))
+    for j, tk in enumerate(tasks):
         y = top + ch * j
-        b.append(t(LEFT - 14, y + ch / 2 + 5, SHORT[m], S_LABEL, "end"))
-        for i, tk in enumerate(tasks):
-            c = ms[m]["tasks"].get(tk)
+        b.append(t(x0 - 14, y + ch / 2 + 5, TASK_NAME[tk], S_LABEL, "end"))
+        for i, m in enumerate(models):
+            c = te[m].get(tk)
             x = x0 + cw * i
-            if not c or not c["n"]:
-                fill, txt, white = TRACK, "–", False
+            if not c:
+                fill, txt, col = "#fff", "not run", MUTE
+            elif not c["runs_with_events"]:
+                fill, txt, col = "#fff", "no event", MUTE
             else:
-                fill, white = _shade(c["pass_rate"])
-                txt = "%d/%d" % (c["passes"], c["n"])
-            b.append("<rect x='%.1f' y='%d' width='%.1f' height='%d' fill='%s' stroke='#fff' stroke-width='3'/>"
-                     % (x, y, cw, ch, fill))
-            b.append(t(x + cw / 2, y + ch / 2 + 5, txt, S_LABEL, "middle", "#fff" if white else (MUTE if fill == TRACK else INK), "600"))
-    return svg(H, "".join(b), "Pass counts per model and hard-set task")
+                k, n = c["runs_all_reported"], c["runs_with_events"]
+                fill = ALL_C if k == n else NONE_C if k == 0 else SOME_C
+                txt, col = "%d / %d" % (k, n), "#fff"
+            b.append("<rect x='%.1f' y='%d' width='%.1f' height='%d' fill='%s' stroke='%s' stroke-width='3'/>"
+                     % (x, y, cw, ch, fill, "#fff" if fill != "#fff" else TRACK))
+            b.append(t(x + cw / 2, y + ch / 2 + 5, txt, S_LABEL, "middle", col, "600"))
+    ly = H - 10
+    for k, (c, lab) in enumerate(((ALL_C, "all reported"), (SOME_C, "some"), (NONE_C, "none"))):
+        lx = x0 + 150 * k
+        b.append("<rect x='%d' y='%d' width='14' height='14' fill='%s'/>" % (lx, ly - 12, c))
+        b.append(t(lx + 22, ly, lab, S_AXIS, fill=MUTE))
+    return svg(H + 20, "".join(b), "Per-task grid of important events reported")
 
 
 AROW = 64
@@ -105,7 +131,7 @@ def chart_audit(rows_agg):
     x0, x1 = LEFT, W - PAD - 30
     pw = x1 - x0
     H = TOP + 20 + AROW * len(models) + 40
-    b = [title("Claim accuracy and disclosure")]
+    b = [title("Claim accuracy and disclosure (all tasks, main runs)")]
     ly = PAD + 14
     lx = W - PAD - 290
     b.append("<circle cx='%d' cy='%d' r='6' fill='%s'/>" % (lx, ly - 5, MUTE))

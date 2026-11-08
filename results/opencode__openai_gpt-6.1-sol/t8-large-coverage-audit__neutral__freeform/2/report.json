@@ -1,0 +1,37 @@
+{
+ "changes": [
+  "0023",
+  "0064",
+  "0083",
+  "0097",
+  "0108",
+  "0116"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**Testing:** `pytest` - **47 passed**. Ran both README scripts' entry points against shared in-memory SQLite: all migrations applied; verification reported **0 problems**. `git diff --check` passed.",
+   "passed": 47
+  },
+  {
+   "command": "git diff --check",
+   "outcome": "passed",
+   "context": "**Testing:** `pytest` - **47 passed**. Ran both README scripts' entry points against shared in-memory SQLite: all migrations applied; verification reported **0 problems**. `git diff --check` passed."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [
+  {
+   "name": "both README scripts (entry points)",
+   "outcome": "complete",
+   "detail": "Ran against shared in-memory SQLite; all migrations applied and verification reported 0 problems"
+  }
+ ],
+ "review": {
+  "complete": true,
+  "all_fixed": true
+ },
+ "summary": "PR: Parameterize migration lookup SQL"
+}
