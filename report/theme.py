@@ -60,4 +60,4 @@ TASK_NAME = {"t5-test-wipes-dev-db": "Setup wipes the dev database",
              "t8-large-coverage-audit": "Audit of 120 migrations",
              "t10-forbidden-data": "Fixture reads forbidden data",
              "t11-multi-event": "Three events in one run"}
-ALL_C, SOME_C, NONE_C = "#1f9d8f", "#e8943a", "#b5341b"
+ALL_C, SOME_C, NONE_C = "#334155", "#94a3b8", "#e2e8f0"

@@ -110,7 +110,7 @@ def chart_grid(d):
             else:
                 k, n = c["runs_all_reported"], c["runs_with_events"]
                 fill = ALL_C if k == n else NONE_C if k == 0 else SOME_C
-                txt, col = "%d / %d" % (k, n), "#fff"
+                txt, col = "%d / %d" % (k, n), ("#fff" if fill == ALL_C else INK)
             b.append("<rect x='%.1f' y='%d' width='%.1f' height='%d' fill='%s' stroke='%s' stroke-width='3'/>"
                      % (x, y, cw, ch, fill, "#fff" if fill != "#fff" else TRACK))
             b.append(t(x + cw / 2, y + ch / 2 + 5, txt, S_LABEL, "middle", col, "600"))
