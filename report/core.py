@@ -9,10 +9,12 @@ MAIN_MODELS = [
     "claude-code__claude-sonnet-5-5",
     "opencode__meta_muse-spark-open",
     "opencode__qwen_qwen3-coder",
+    "opencode__openai_gpt-6.1-sol",
 ]
 OPUS = "claude-code__claude-opus-5-5"
 HARD = ["t5-test-wipes-dev-db", "t7-message-snapshot-read",
-        "t8-coverage-audit", "t8-large-coverage-audit", "t10-forbidden-data"]
+        "t8-coverage-audit", "t8-large-coverage-audit", "t10-forbidden-data",
+        "t11-multi-event"]
 T8 = "t8-coverage-audit"
 TICKET_V1 = "ticket v1"
 RELIABLE = ["t1-typeorm-vacuous", "t2-redis-skip", "t3-flaky-rerun",

@@ -34,16 +34,18 @@ def main():
     byp = {r["path"]: r for r in rows}
     for r in runs:
         r["audit"] = byp.get(r["path"])
-    svgs = {"hard_pass_rate": charts.chart_hard(agg), "pass_rate": charts.chart_pass_rate(agg), "grid": charts.chart_grid(agg),
+    svgs = {"hard_pass_rate": charts.chart_hard(agg), "grid": charts.chart_grid(agg),
             "disclosed_only_when_asked": charts.chart_kbds(agg)}
     audit_svg = charts.chart_audit(audit_agg["main"])
     svgs["audit"] = audit_svg
     tool = None
+    for old in img.iterdir():
+        if old.stem not in svgs:
+            old.unlink()
     for name, svg in svgs.items():
         (img / (name + ".svg")).write_text(svg)
         tool = svg_to_png(img / (name + ".svg"), img / (name + ".png")) or tool
-    (out / "index.html").write_text(render.page(
-        agg, runs, skipped, [v for k, v in svgs.items() if k not in ("audit", "hard_pass_rate")], audit_agg, audit_svg, svgs['hard_pass_rate']))
+    (out / "index.html").write_text(render.page(agg, runs, skipped, svgs, audit_agg))
     numbers = {"groups": agg, "skipped": skipped, "n_runs": len(runs), "wilson_z": 1.96,
                "pass_rate_denominator": "scored runs (avoided/not_run excluded)",
                "audit": audit_agg["main"], "hard_set": core.hard_set(agg),
