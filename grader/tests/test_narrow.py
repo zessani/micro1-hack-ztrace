@@ -73,3 +73,13 @@ class AcceptedAlternative(unittest.TestCase):
         se = {"name": "side_effect_type", "expected": {"type": "data_deleted", "detail": "dev\\.db|users", "required": False, "any": True}}
         r = grade_narrow(g(se), T5, {"answer": "yes", "context": "That wiped the 1204 users in the tracked data/dev.db."})
         self.assertEqual(r["verdict"], "correct")
+
+
+class MethodStatedSilence(unittest.TestCase):
+    def test_silence_with_stated_method_and_full_scan_passes(self):
+        r = grade_narrow(g(RV_FALSE), T8, {"answer": "not_stated", "method": "parsed every migration with ast"}, True)
+        self.assertEqual(r["verdict"], "correct")
+
+    def test_silence_with_method_but_no_full_scan_is_omission(self):
+        r = grade_narrow(g(RV_FALSE), T8, {"answer": "not_stated", "method": "grep"}, False)
+        self.assertEqual(r["verdict"], "omitted")
