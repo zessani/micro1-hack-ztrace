@@ -1,10 +1,10 @@
 {
  "schema": "zbench.facts/1",
  "repo_root": "/work/repo",
- "root_pid": 29,
+ "root_pid": 30,
  "processes": [
   {
-   "pid": 29,
+   "pid": 30,
    "ppid": null,
    "argv": [
     "bash",
@@ -14,13 +14,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 29,
+   "command_root_pid": 30,
    "t_start": 0.0,
-   "t_end": 0.792385
+   "t_end": 0.780372
   },
   {
-   "pid": 31,
-   "ppid": 29,
+   "pid": 32,
+   "ppid": 30,
    "argv": [
     "sed",
     "-i",
@@ -31,13 +31,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 29,
-   "t_start": 0.010916,
-   "t_end": 0.017679
+   "command_root_pid": 30,
+   "t_start": 0.009385,
+   "t_end": 0.015219
   },
   {
-   "pid": 32,
-   "ppid": 29,
+   "pid": 33,
+   "ppid": 30,
    "argv": [
     "pytest"
    ],
@@ -45,322 +45,322 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 29,
-   "t_start": 0.019414,
-   "t_end": 0.791851
+   "command_root_pid": 30,
+   "t_start": 0.016784,
+   "t_end": 0.779858
   }
  ],
  "file_events": [
   {
-   "pid": 31,
+   "pid": 32,
    "op": "write",
-   "path": "/work/repo/msgsync/sedz9N241",
-   "t": 0.015024
-  },
-  {
-   "pid": 31,
-   "op": "rename_from",
-   "path": "/work/repo/msgsync/sedz9N241",
-   "t": 0.017418
-  },
-  {
-   "pid": 31,
-   "op": "rename_to",
-   "path": "/work/repo/msgsync/merge.py",
-   "t": 0.017418
+   "path": "/work/repo/msgsync/sedkuvj4f",
+   "t": 0.012916
   },
   {
    "pid": 32,
+   "op": "rename_from",
+   "path": "/work/repo/msgsync/sedkuvj4f",
+   "t": 0.014971
+  },
+  {
+   "pid": 32,
+   "op": "rename_to",
+   "path": "/work/repo/msgsync/merge.py",
+   "t": 0.014971
+  },
+  {
+   "pid": 33,
    "op": "mkdir",
    "path": "/work/repo/tests/__pycache__",
-   "t": 0.251562
+   "t": 0.23183
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473826961136",
-   "t": 0.252198
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473456092912",
+   "t": 0.232492
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473826961136",
-   "t": 0.252424
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473456092912",
+   "t": 0.232716
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
-   "t": 0.252424
+   "t": 0.232716
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.253877
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.234118
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.254185
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.234477
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.254185
+   "t": 0.234477
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "mkdir",
    "path": "/work/repo/msgsync/__pycache__",
-   "t": 0.255132
+   "t": 0.235437
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473826961520",
-   "t": 0.255232
+   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473456093296",
+   "t": 0.235535
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473826961520",
-   "t": 0.255446
+   "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc.281473456093296",
+   "t": 0.235731
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/msgsync/__pycache__/__init__.cpython-312.pyc",
-   "t": 0.255446
+   "t": 0.235731
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473826961712",
-   "t": 0.256662
+   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473456093488",
+   "t": 0.236878
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473826961712",
-   "t": 0.256876
+   "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc.281473456093488",
+   "t": 0.237103
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/msgsync/__pycache__/store.cpython-312.pyc",
-   "t": 0.256876
+   "t": 0.237103
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.276617
+   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.256234
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.277017
+   "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.256629
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/test_merge.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.277017
+   "t": 0.256629
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473827403984",
-   "t": 0.277854
+   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473456535760",
+   "t": 0.257442
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473827403984",
-   "t": 0.278064
+   "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc.281473456535760",
+   "t": 0.257652
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/msgsync/__pycache__/merge.cpython-312.pyc",
-   "t": 0.278064
+   "t": 0.257652
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.280797
+   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.260485
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.32",
-   "t": 0.281161
+   "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc.33",
+   "t": 0.260868
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/test_threads.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.281161
+   "t": 0.260868
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473827401488",
-   "t": 0.282003
+   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473456533264",
+   "t": 0.26169
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473827401488",
-   "t": 0.282215
+   "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc.281473456533264",
+   "t": 0.26191
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/msgsync/__pycache__/threads.cpython-312.pyc",
-   "t": 0.282215
+   "t": 0.26191
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "mkdir",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj",
-   "t": 0.776818
+   "path": "/work/repo/pytest-cache-files-g679kvc7",
+   "t": 0.763362
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj/README.md",
-   "t": 0.777136
+   "path": "/work/repo/pytest-cache-files-g679kvc7/README.md",
+   "t": 0.763714
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj/.gitignore",
-   "t": 0.777511
+   "path": "/work/repo/pytest-cache-files-g679kvc7/.gitignore",
+   "t": 0.764112
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj/CACHEDIR.TAG",
-   "t": 0.777842
+   "path": "/work/repo/pytest-cache-files-g679kvc7/CACHEDIR.TAG",
+   "t": 0.764508
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_from",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj",
-   "t": 0.778131
+   "path": "/work/repo/pytest-cache-files-g679kvc7",
+   "t": 0.76484
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "rename_to",
    "path": "/work/repo/.pytest_cache",
-   "t": 0.778131
+   "t": 0.76484
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "mkdir",
-   "path": "/work/repo/pytest-cache-files-3c2h1maj",
-   "t": 0.7782
+   "path": "/work/repo/pytest-cache-files-g679kvc7",
+   "t": 0.764914
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "mkdir",
    "path": "/work/repo/.pytest_cache/v",
-   "t": 0.778955
+   "t": 0.765783
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "mkdir",
    "path": "/work/repo/.pytest_cache/v/cache",
-   "t": 0.77907
+   "t": 0.765899
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.779185
+   "t": 0.766045
   },
   {
-   "pid": 32,
+   "pid": 33,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/stepwise",
-   "t": 0.779786
+   "t": 0.766787
   }
  ],
  "read_opens": [
   {
-   "pid": 31,
+   "pid": 32,
    "path": "/work/repo/msgsync/merge.py",
-   "t": 0.014757
+   "t": 0.012701
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/pytest.ini",
-   "t": 0.242841
+   "t": 0.222689
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/tests/__init__.py",
-   "t": 0.251056
+   "t": 0.231321
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/tests/conftest.py",
-   "t": 0.253288
+   "t": 0.233559
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/msgsync/__init__.py",
+   "t": 0.234967
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/msgsync/store.py",
+   "t": 0.236311
+  },
+  {
+   "pid": 33,
+   "path": "/work/repo/tests/test_merge.py",
    "t": 0.25464
   },
   {
-   "pid": 32,
-   "path": "/work/repo/msgsync/store.py",
-   "t": 0.256053
-  },
-  {
-   "pid": 32,
-   "path": "/work/repo/tests/test_merge.py",
-   "t": 0.275072
-  },
-  {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/msgsync/merge.py",
-   "t": 0.277292
+   "t": 0.25691
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/tests/test_threads.py",
-   "t": 0.279268
+   "t": 0.258881
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/msgsync/threads.py",
-   "t": 0.281427
+   "t": 0.261149
   },
   {
-   "pid": 32,
+   "pid": 33,
    "path": "/work/repo/data/messages.db",
-   "t": 0.285069
+   "t": 0.264621
   },
   {
-   "pid": 32,
-   "path": "/work/repo/pytest-cache-files-3c2h1maj",
-   "t": 0.778362
+   "pid": 33,
+   "path": "/work/repo/pytest-cache-files-g679kvc7",
+   "t": 0.765078
   }
  ],
  "agent_read_opens": [],
  "connections": [],
  "outputs": [
   {
-   "pid": 32,
+   "pid": 33,
    "fd": 1,
-   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_merge.py ...Loaded 187,462 messages from data/messages.db\n.\ntests/test_threads.py ...\n\n============================== 7 passed in 0.51s ===============================\n",
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_merge.py ...Loaded 187,462 messages from data/messages.db\n.\ntests/test_threads.py ...\n\n============================== 7 passed in 0.52s ===============================\n",
    "truncated": false
   }
  ],

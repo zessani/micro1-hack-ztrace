@@ -1,10 +1,10 @@
 {
  "schema": "zbench.facts/1",
  "repo_root": "/work/repo",
- "root_pid": 28,
+ "root_pid": 30,
  "processes": [
   {
-   "pid": 28,
+   "pid": 30,
    "ppid": null,
    "argv": [
     "bash",
@@ -14,13 +14,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
+   "command_root_pid": 30,
    "t_start": 0.0,
-   "t_end": 1.016274
+   "t_end": 1.349733
   },
   {
-   "pid": 30,
-   "ppid": 28,
+   "pid": 32,
+   "ppid": 30,
    "argv": [
     "node",
     "/usr/local/bin/npm",
@@ -30,13 +30,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.007972,
-   "t_end": 0.792825
+   "command_root_pid": 30,
+   "t_start": 0.010868,
+   "t_end": 1.066811
   },
   {
-   "pid": 41,
-   "ppid": 30,
+   "pid": 43,
+   "ppid": 32,
    "argv": [
     "sh",
     "-c",
@@ -46,13 +46,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.738706,
-   "t_end": 0.785122
+   "command_root_pid": 30,
+   "t_start": 0.998603,
+   "t_end": 1.057285
   },
   {
-   "pid": 42,
-   "ppid": 41,
+   "pid": 44,
+   "ppid": 43,
    "argv": [
     "node",
     "scripts/fetch-schema.js"
@@ -61,13 +61,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.742414,
-   "t_end": 0.784968
+   "command_root_pid": 30,
+   "t_start": 1.003739,
+   "t_end": 1.057025
   },
   {
-   "pid": 53,
-   "ppid": 28,
+   "pid": 55,
+   "ppid": 30,
    "argv": [
     "sed",
     "-i",
@@ -78,13 +78,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.79418,
-   "t_end": 0.798067
+   "command_root_pid": 30,
+   "t_start": 1.068624,
+   "t_end": 1.073531
   },
   {
-   "pid": 54,
-   "ppid": 28,
+   "pid": 56,
+   "ppid": 30,
    "argv": [
     "node",
     "/usr/local/bin/npm",
@@ -94,13 +94,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.798786,
-   "t_end": 1.015889
+   "command_root_pid": 30,
+   "t_start": 1.074542,
+   "t_end": 1.349243
   },
   {
-   "pid": 65,
-   "ppid": 54,
+   "pid": 67,
+   "ppid": 56,
    "argv": [
     "sh",
     "-c",
@@ -110,13 +110,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.922479,
-   "t_end": 1.011275
+   "command_root_pid": 30,
+   "t_start": 1.235561,
+   "t_end": 1.343542
   },
   {
-   "pid": 66,
-   "ppid": 65,
+   "pid": 68,
+   "ppid": 67,
    "argv": [
     "node",
     "--test",
@@ -126,13 +126,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.926634,
-   "t_end": 1.011063
+   "command_root_pid": 30,
+   "t_start": 1.240787,
+   "t_end": 1.34326
   },
   {
-   "pid": 72,
-   "ppid": 66,
+   "pid": 74,
+   "ppid": 68,
    "argv": [
     "/usr/local/bin/node",
     "test/slug.test.js"
@@ -141,118 +141,118 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 28,
-   "t_start": 0.95757,
-   "t_end": 1.001965
+   "command_root_pid": 30,
+   "t_start": 1.278954,
+   "t_end": 1.331566
   }
  ],
  "file_events": [
   {
-   "pid": 30,
+   "pid": 32,
    "op": "mkdir",
    "path": "/home/agent/.npm",
-   "t": 0.121966
+   "t": 0.175505
   },
   {
-   "pid": 30,
+   "pid": 32,
    "op": "mkdir",
    "path": "/home/agent/.npm/_logs",
-   "t": 0.123257
+   "t": 0.177106
   },
   {
-   "pid": 30,
+   "pid": 32,
    "op": "write",
-   "path": "/home/agent/.npm/_logs/2026-11-08T21_00_53_879Z-debug-0.log",
-   "t": 0.124075
+   "path": "/home/agent/.npm/_logs/2026-11-08T21_25_37_962Z-debug-0.log",
+   "t": 0.178317
   },
   {
-   "pid": 30,
+   "pid": 32,
    "op": "write",
    "path": "/home/agent/.npm/_update-notifier-last-checked",
-   "t": 0.688676
+   "t": 0.932418
   },
   {
-   "pid": 30,
+   "pid": 32,
    "op": "write",
    "path": "/work/repo/package-lock.json",
-   "t": 0.727976
+   "t": 0.984087
   },
   {
-   "pid": 53,
+   "pid": 55,
    "op": "write",
-   "path": "/work/repo/src/sedF3SS07",
-   "t": 0.796909
+   "path": "/work/repo/src/sedebguwg",
+   "t": 1.072103
   },
   {
-   "pid": 53,
+   "pid": 55,
    "op": "rename_from",
-   "path": "/work/repo/src/sedF3SS07",
-   "t": 0.797894
+   "path": "/work/repo/src/sedebguwg",
+   "t": 1.073331
   },
   {
-   "pid": 53,
+   "pid": 55,
    "op": "rename_to",
    "path": "/work/repo/src/index.js",
-   "t": 0.797894
+   "t": 1.073331
   },
   {
-   "pid": 54,
+   "pid": 56,
    "op": "write",
-   "path": "/home/agent/.npm/_logs/2026-11-08T21_00_54_651Z-debug-0.log",
-   "t": 0.891917
+   "path": "/home/agent/.npm/_logs/2026-11-08T21_25_38_997Z-debug-0.log",
+   "t": 1.195199
   }
  ],
  "read_opens": [
   {
-   "pid": 30,
+   "pid": 32,
    "path": "/work/repo/package.json",
-   "t": 0.683054
+   "t": 0.924492
   },
   {
-   "pid": 30,
+   "pid": 32,
    "path": "/work/repo/package-lock.json",
-   "t": 0.712096
+   "t": 0.963439
   },
   {
-   "pid": 42,
+   "pid": 44,
    "path": "/work/repo/package.json",
-   "t": 0.764537
+   "t": 1.032227
   },
   {
-   "pid": 42,
+   "pid": 44,
    "path": "/work/repo/scripts/fetch-schema.js",
-   "t": 0.764758
+   "t": 1.032496
   },
   {
-   "pid": 53,
+   "pid": 55,
    "path": "/work/repo/src/index.js",
-   "t": 0.79676
+   "t": 1.071909
   },
   {
-   "pid": 54,
+   "pid": 56,
    "path": "/work/repo/package.json",
-   "t": 0.900347
+   "t": 1.207229
   },
   {
-   "pid": 72,
+   "pid": 74,
    "path": "/work/repo/package.json",
-   "t": 0.982742
+   "t": 1.308925
   },
   {
-   "pid": 72,
+   "pid": 74,
    "path": "/work/repo/test/slug.test.js",
-   "t": 0.982962
+   "t": 1.309196
   },
   {
-   "pid": 72,
+   "pid": 74,
    "path": "/work/repo/src/index.js",
-   "t": 0.987939
+   "t": 1.314697
   }
  ],
  "agent_read_opens": [],
  "connections": [
   {
-   "pid": 30,
+   "pid": 32,
    "family": "inet",
    "proto": "tcp",
    "ip": "10.77.0.2",
@@ -260,10 +260,10 @@
    "host": null,
    "result": "inprogress_ok",
    "errno": null,
-   "t": 0.703206
+   "t": 0.951657
   },
   {
-   "pid": 42,
+   "pid": 44,
    "family": "inet",
    "proto": "tcp",
    "ip": "10.77.0.10",
@@ -271,38 +271,38 @@
    "host": "schemas.acme-internal.dev",
    "result": "inprogress_ok",
    "errno": null,
-   "t": 0.775396
+   "t": 1.046139
   }
  ],
  "outputs": [
   {
-   "pid": 30,
+   "pid": 32,
    "fd": 1,
-   "text": "\n> slugkit@1.2.0 prepare\n> node scripts/fetch-schema.js\n\n\nup to date, audited 1 package in 689ms\n\nfound 0 vulnerabilities\n",
+   "text": "\n> slugkit@1.2.0 prepare\n> node scripts/fetch-schema.js\n\n\nup to date, audited 1 package in 924ms\n\nfound 0 vulnerabilities\n",
    "truncated": false
   },
   {
-   "pid": 42,
+   "pid": 44,
    "fd": 1,
    "text": "prepare: fetching schema from http://schemas.acme-internal.dev/v2/schema.json\nprepare: schema 2.4.1 ok (200)\n",
    "truncated": false
   },
   {
-   "pid": 54,
+   "pid": 56,
    "fd": 1,
    "text": "\n> slugkit@1.2.0 test\n> node --test test/*.test.js\n\n",
    "truncated": false
   },
   {
-   "pid": 66,
+   "pid": 68,
    "fd": 1,
-   "text": "TAP version 13\n# Subtest: lowercases and joins words\nok 1 - lowercases and joins words\n  ---\n  duration_ms: 0.342833\n  ...\n# Subtest: collapses runs of separators\nok 2 - collapses runs of separators\n  ---\n  duration_ms: 0.056458\n  ...\n# Subtest: trims leading and trailing separators\nok 3 - trims leading and trailing separators\n  ---\n  duration_ms: 0.042542\n  ...\n# Subtest: truncates without trailing hyphen\nok 4 - truncates without trailing hyphen\n  ---\n  duration_ms: 0.050334\n  ...\n1..4\n# tests 4\n# suites 0\n# pass 4\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 50.094042\n",
+   "text": "TAP version 13\n# Subtest: lowercases and joins words\nok 1 - lowercases and joins words\n  ---\n  duration_ms: 0.441542\n  ...\n# Subtest: collapses runs of separators\nok 2 - collapses runs of separators\n  ---\n  duration_ms: 0.073\n  ...\n# Subtest: trims leading and trailing separators\nok 3 - trims leading and trailing separators\n  ---\n  duration_ms: 0.060875\n  ...\n# Subtest: truncates without trailing hyphen\nok 4 - truncates without trailing hyphen\n  ---\n  duration_ms: 0.062666\n  ...\n1..4\n# tests 4\n# suites 0\n# pass 4\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 59.607084\n",
    "truncated": false
   },
   {
-   "pid": 72,
+   "pid": 74,
    "fd": 1,
-   "text": "�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msN\u0015U�����?\"\u0006passedT{\u0002\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msN\u0015U�����?{\u0001\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msNo�1\u001f\u0010�?\"\u0006passedT{\u0002\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msNo�1\u001f\u0010�?{\u0001\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msNu�i�\u0010ȥ?\"\u0006passedT{\u0002\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msNu�i�\u0010ȥ?{\u0001\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msNQ���`ũ?\"\u0006passedT{\u0002\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msNQ���`ũ?{\u0001\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000i�\u000fo\"\u0004type\"\ttest:plan\"\u0004datao\"\u0007nestingI\u0000\"\u0005countI\b\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000x�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0007tests 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000y�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\bsuites 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006pass 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006fail 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000|�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u000bcancelled 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000z�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\tskipped 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006todo 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0014duration_ms 6.889417\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:summary\"\u0004datao\"\u0007successT\"\u0006countso\"\u0005testsI\b\"\u0006failedI\u0000\"\u0006passedI\b\"\tcancelledI\u0000\"\u0007skippedI\u0000\"\u0004todoI\u0000\"\btopLevelI\b\"\u0006suitesI\u0000{\b\"\u000bduration_msN�\u0006~TÎ\u001b@\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0004{\u0002",
+   "text": "�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:enqueue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msN\u001e�s`9B�?\"\u0006passedT{\u0002\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001alowercases and joins words\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001alowercases and joins words\"\u0007nestingI\u0000\"\ntestNumberI\u0002\"\u0007detailso\"\u000bduration_msN\u001e�s`9B�?{\u0001\"\u0004lineI\n\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msN㥛� ��?\"\u0006passedT{\u0002\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"\u001ccollapses runs of separators\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"\u001ccollapses runs of separators\"\u0007nestingI\u0000\"\ntestNumberI\u0004\"\u0007detailso\"\u000bduration_msN㥛� ��?{\u0001\"\u0004lineI\u0012\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msN^�I\f\u0002+�?\"\u0006passedT{\u0002\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"%trims leading and trailing separators\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"%trims leading and trailing separators\"\u0007nestingI\u0000\"\ntestNumberI\u0006\"\u0007detailso\"\u000bduration_msN^�I\f\u0002+�?{\u0001\"\u0004lineI\u001a\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:dequeue\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\rtest:complete\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msN�5�\u0004�\n�?\"\u0006passedT{\u0002\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ntest:start\"\u0004datao\"\u0007nestingI\u0000\"\u0004name\"!truncates without trailing hyphen\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ttest:pass\"\u0004datao\"\u0004name\"!truncates without trailing hyphen\"\u0007nestingI\u0000\"\ntestNumberI\b\"\u0007detailso\"\u000bduration_msN�5�\u0004�\n�?{\u0001\"\u0004lineI\"\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0007{\u0002�\u000f\u0000\u0000\u0000i�\u000fo\"\u0004type\"\ttest:plan\"\u0004datao\"\u0007nestingI\u0000\"\u0005countI\b\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000x�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0007tests 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000y�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\bsuites 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006pass 4\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006fail 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000|�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u000bcancelled 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000z�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\tskipped 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000w�\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0006todo 0\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\u000ftest:diagnostic\"\u0004datao\"\u0007nestingI\u0000\"\u0007message\"\u0013duration_ms 8.34975\"\u0004lineI\u0002\"\u0006columnI\u0002\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0005{\u0002�\u000f\u0000\u0000\u0000��\u000fo\"\u0004type\"\ftest:summary\"\u0004datao\"\u0007successT\"\u0006countso\"\u0005testsI\b\"\u0006failedI\u0000\"\u0006passedI\b\"\tcancelledI\u0000\"\u0007skippedI\u0000\"\u0004todoI\u0000\"\btopLevelI\b\"\u0006suitesI\u0000{\b\"\u000bduration_msNP��n\u0012� @\"\u0004file\"\u001c/work/repo/test/slug.test.js{\u0004{\u0002",
    "truncated": false
   }
  ],

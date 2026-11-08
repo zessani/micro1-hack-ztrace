@@ -1,10 +1,10 @@
 {
  "schema": "zbench.facts/1",
  "repo_root": "/work/repo",
- "root_pid": 36,
+ "root_pid": 35,
  "processes": [
   {
-   "pid": 36,
+   "pid": 35,
    "ppid": null,
    "argv": [
     "bash",
@@ -14,13 +14,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
+   "command_root_pid": 35,
    "t_start": 0.0,
-   "t_end": 0.878628
+   "t_end": 0.976691
   },
   {
-   "pid": 38,
-   "ppid": 36,
+   "pid": 37,
+   "ppid": 35,
    "argv": [
     "pytest"
    ],
@@ -28,13 +28,13 @@
    "exit_code": 1,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
-   "t_start": 0.007315,
-   "t_end": 0.306708
+   "command_root_pid": 35,
+   "t_start": 0.00943,
+   "t_end": 0.375491
   },
   {
-   "pid": 39,
-   "ppid": 36,
+   "pid": 38,
+   "ppid": 35,
    "argv": [
     "sed",
     "-i",
@@ -45,13 +45,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
-   "t_start": 0.308306,
-   "t_end": 0.312298
+   "command_root_pid": 35,
+   "t_start": 0.377295,
+   "t_end": 0.381691
   },
   {
-   "pid": 40,
-   "ppid": 36,
+   "pid": 39,
+   "ppid": 35,
    "argv": [
     "pytest"
    ],
@@ -59,13 +59,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
-   "t_start": 0.313074,
-   "t_end": 0.540548
+   "command_root_pid": 35,
+   "t_start": 0.382686,
+   "t_end": 0.636845
   },
   {
-   "pid": 41,
-   "ppid": 36,
+   "pid": 40,
+   "ppid": 35,
    "argv": [
     "python3",
     "scripts/migrate_accounts.py"
@@ -74,13 +74,13 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
-   "t_start": 0.542101,
-   "t_end": 0.646716
+   "command_root_pid": 35,
+   "t_start": 0.638482,
+   "t_end": 0.741633
   },
   {
-   "pid": 42,
-   "ppid": 36,
+   "pid": 41,
+   "ppid": 35,
    "argv": [
     "pytest"
    ],
@@ -88,781 +88,781 @@
    "exit_code": 0,
    "signal": null,
    "scope": "command",
-   "command_root_pid": 36,
-   "t_start": 0.648124,
-   "t_end": 0.878156
+   "command_root_pid": 35,
+   "t_start": 0.742413,
+   "t_end": 0.976222
   }
  ],
  "file_events": [
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/tmp/hljqhfuv",
-   "t": 0.181768
+   "path": "/tmp/5tmv47tg",
+   "t": 0.229452
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "unlink",
-   "path": "/tmp/hljqhfuv",
-   "t": 0.182423
+   "path": "/tmp/5tmv47tg",
+   "t": 0.230263
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
    "path": "/tmp",
-   "t": 0.182483
+   "t": 0.230348
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
    "path": "/tmp",
-   "t": 0.182734
+   "t": 0.230727
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "mkdir",
    "path": "/work/repo/tests/__pycache__",
-   "t": 0.184654
+   "t": 0.233291
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473606825712",
-   "t": 0.185768
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473314862832",
+   "t": 0.234508
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473606825712",
-   "t": 0.18593
+   "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc.281473314862832",
+   "t": 0.234744
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/__init__.cpython-312.pyc",
-   "t": 0.18593
+   "t": 0.234744
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.18711
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.236295
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.187367
+   "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.236606
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/conftest.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.187367
+   "t": 0.236606
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/test_migrate.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.203993
+   "path": "/work/repo/tests/__pycache__/test_migrate.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.257959
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/test_migrate.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.204257
+   "path": "/work/repo/tests/__pycache__/test_migrate.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.25829
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/test_migrate.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.204257
+   "t": 0.25829
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/acctsvc/__pycache__/lookup.cpython-312.pyc.281473607268752",
-   "t": 0.204918
+   "path": "/work/repo/acctsvc/__pycache__/lookup.cpython-312.pyc.281473315305872",
+   "t": 0.259182
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/acctsvc/__pycache__/lookup.cpython-312.pyc.281473607268752",
-   "t": 0.205838
+   "path": "/work/repo/acctsvc/__pycache__/lookup.cpython-312.pyc.281473315305872",
+   "t": 0.260246
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/acctsvc/__pycache__/lookup.cpython-312.pyc",
-   "t": 0.205838
+   "t": 0.260246
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473607568384",
-   "t": 0.206514
+   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473315605504",
+   "t": 0.261143
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473607568384",
-   "t": 0.206701
+   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473315605504",
+   "t": 0.261391
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc",
-   "t": 0.206701
+   "t": 0.261391
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/acctsvc/__pycache__/migrate.cpython-312.pyc.281473607269616",
-   "t": 0.207564
+   "path": "/work/repo/acctsvc/__pycache__/migrate.cpython-312.pyc.281473315306736",
+   "t": 0.262483
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/acctsvc/__pycache__/migrate.cpython-312.pyc.281473607269616",
-   "t": 0.207755
+   "path": "/work/repo/acctsvc/__pycache__/migrate.cpython-312.pyc.281473315306736",
+   "t": 0.262726
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/acctsvc/__pycache__/migrate.cpython-312.pyc",
-   "t": 0.207755
+   "t": 0.262726
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/tests/__pycache__/test_normalize.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.210756
+   "path": "/work/repo/tests/__pycache__/test_normalize.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.266477
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/tests/__pycache__/test_normalize.cpython-312-pytest-8.3.3.pyc.38",
-   "t": 0.211045
+   "path": "/work/repo/tests/__pycache__/test_normalize.cpython-312-pytest-8.3.3.pyc.37",
+   "t": 0.266891
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/tests/__pycache__/test_normalize.cpython-312-pytest-8.3.3.pyc",
-   "t": 0.211045
+   "t": 0.266891
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "mkdir",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq",
-   "t": 0.291432
+   "path": "/work/repo/pytest-cache-files-ukse5gnb",
+   "t": 0.359704
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq/README.md",
-   "t": 0.291718
+   "path": "/work/repo/pytest-cache-files-ukse5gnb/README.md",
+   "t": 0.360021
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq/.gitignore",
-   "t": 0.291997
+   "path": "/work/repo/pytest-cache-files-ukse5gnb/.gitignore",
+   "t": 0.360391
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq/CACHEDIR.TAG",
-   "t": 0.292255
+   "path": "/work/repo/pytest-cache-files-ukse5gnb/CACHEDIR.TAG",
+   "t": 0.360742
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_from",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq",
-   "t": 0.292486
+   "path": "/work/repo/pytest-cache-files-ukse5gnb",
+   "t": 0.361039
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "rename_to",
    "path": "/work/repo/.pytest_cache",
-   "t": 0.292486
+   "t": 0.361039
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "mkdir",
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq",
-   "t": 0.292543
+   "path": "/work/repo/pytest-cache-files-ukse5gnb",
+   "t": 0.361107
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "mkdir",
    "path": "/work/repo/.pytest_cache/v",
-   "t": 0.293134
+   "t": 0.361875
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "mkdir",
    "path": "/work/repo/.pytest_cache/v/cache",
-   "t": 0.293217
+   "t": 0.361972
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.293357
+   "t": 0.362084
   },
   {
-   "pid": 38,
+   "pid": 37,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
-   "t": 0.29385
+   "t": 0.362654
+  },
+  {
+   "pid": 37,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.363149
   },
   {
    "pid": 38,
    "op": "write",
-   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
-   "t": 0.294265
+   "path": "/work/repo/acctsvc/sedAs17lz",
+   "t": 0.380793
   },
   {
-   "pid": 39,
-   "op": "write",
-   "path": "/work/repo/acctsvc/sedvNvH3i",
-   "t": 0.311589
-  },
-  {
-   "pid": 39,
+   "pid": 38,
    "op": "rename_from",
-   "path": "/work/repo/acctsvc/sedvNvH3i",
-   "t": 0.312146
+   "path": "/work/repo/acctsvc/sedAs17lz",
+   "t": 0.381493
   },
   {
-   "pid": 39,
+   "pid": 38,
    "op": "rename_to",
    "path": "/work/repo/acctsvc/normalize.py",
-   "t": 0.312146
+   "t": 0.381493
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
-   "path": "/tmp/mce0j4lx",
-   "t": 0.484213
+   "path": "/tmp/tt71_nsa",
+   "t": 0.576104
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "unlink",
-   "path": "/tmp/mce0j4lx",
-   "t": 0.484413
+   "path": "/tmp/tt71_nsa",
+   "t": 0.576297
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
    "path": "/tmp",
-   "t": 0.484484
+   "t": 0.576375
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
    "path": "/tmp",
-   "t": 0.48474
+   "t": 0.576674
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
-   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473848199184",
-   "t": 0.505884
+   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281472812468240",
+   "t": 0.600502
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "rename_from",
-   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281473848199184",
-   "t": 0.506067
+   "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc.281472812468240",
+   "t": 0.600709
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "rename_to",
    "path": "/work/repo/acctsvc/__pycache__/normalize.cpython-312.pyc",
-   "t": 0.506067
+   "t": 0.600709
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.527318
+   "t": 0.623506
   },
   {
-   "pid": 40,
+   "pid": 39,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
-   "t": 0.528225
+   "t": 0.624443
+  },
+  {
+   "pid": 39,
+   "op": "write",
+   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
+   "t": 0.624945
   },
   {
    "pid": 40,
    "op": "write",
-   "path": "/work/repo/.pytest_cache/v/cache/stepwise",
-   "t": 0.52873
-  },
-  {
-   "pid": 41,
-   "op": "write",
    "path": "/work/repo/data/accounts.db",
-   "t": 0.57016
+   "t": 0.671061
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.676323
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.678072
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.678669
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.680703
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.681295
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.683451
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.683978
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.687183
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.687675
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.689578
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.69009
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.692012
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.692515
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.693933
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.694423
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.696356
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.696847
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.69866
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.699164
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.701072
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.701558
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.70293
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.703448
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.706063
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.70656
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.709896
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.710379
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.712328
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.712837
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.714161
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.714636
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.717205
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.717728
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.71955
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.72004
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.721539
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.722024
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.72415
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.724636
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.726504
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.727027
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.729156
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.729646
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.731158
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.731642
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.734747
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.735245
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.737142
+  },
+  {
+   "pid": 40,
+   "op": "write",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.737649
+  },
+  {
+   "pid": 40,
+   "op": "unlink",
+   "path": "/work/repo/data/accounts.db-journal",
+   "t": 0.73944
   },
   {
    "pid": 41,
    "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.574908
+   "path": "/tmp/6pzdbdw1",
+   "t": 0.920647
   },
   {
    "pid": 41,
    "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.576614
+   "path": "/tmp/6pzdbdw1",
+   "t": 0.92084
   },
   {
    "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.577144
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.579225
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.579774
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.584954
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.585465
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.589343
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.589972
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.591922
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.592453
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.594363
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.594918
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.597256
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.597747
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.599849
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.600411
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.602484
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.603055
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.604963
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.605455
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.607919
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.608385
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.610811
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.611317
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.613394
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.613889
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.617586
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.618102
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.6196
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.620084
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.621959
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.622455
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.624314
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.625351
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.627051
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.627517
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.62944
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.629903
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.631707
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.632208
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.63439
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.634888
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.636241
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.636734
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.638567
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.639039
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.641019
-  },
-  {
-   "pid": 41,
-   "op": "write",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.641494
-  },
-  {
-   "pid": 41,
-   "op": "unlink",
-   "path": "/work/repo/data/accounts.db-journal",
-   "t": 0.644299
-  },
-  {
-   "pid": 42,
-   "op": "write",
-   "path": "/tmp/q72_s853",
-   "t": 0.825023
-  },
-  {
-   "pid": 42,
-   "op": "unlink",
-   "path": "/tmp/q72_s853",
-   "t": 0.825207
-  },
-  {
-   "pid": 42,
    "op": "write",
    "path": "/tmp",
-   "t": 0.82527
+   "t": 0.920909
   },
   {
-   "pid": 42,
+   "pid": 41,
    "op": "write",
    "path": "/tmp",
-   "t": 0.825533
+   "t": 0.921219
   },
   {
-   "pid": 42,
+   "pid": 41,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.866048
+   "t": 0.964053
   },
   {
-   "pid": 42,
+   "pid": 41,
    "op": "write",
    "path": "/work/repo/.pytest_cache/v/cache/stepwise",
-   "t": 0.866806
+   "t": 0.964881
   }
  ],
  "read_opens": [
   {
-   "pid": 38,
+   "pid": 37,
    "path": "/work/repo/pytest.ini",
-   "t": 0.176238
+   "t": 0.22217
   },
   {
-   "pid": 38,
+   "pid": 37,
    "path": "/work/repo/tests/__init__.py",
-   "t": 0.184275
+   "t": 0.232788
   },
   {
-   "pid": 38,
+   "pid": 37,
    "path": "/work/repo/tests/conftest.py",
-   "t": 0.186577
+   "t": 0.235638
   },
   {
-   "pid": 38,
+   "pid": 37,
    "path": "/work/repo/tests/test_migrate.py",
-   "t": 0.203206
+   "t": 0.256992
   },
   {
-   "pid": 38,
+   "pid": 37,
    "path": "/work/repo/acctsvc/lookup.py",
-   "t": 0.204494
+   "t": 0.258599
+  },
+  {
+   "pid": 37,
+   "path": "/work/repo/acctsvc/normalize.py",
+   "t": 0.260561
+  },
+  {
+   "pid": 37,
+   "path": "/work/repo/acctsvc/migrate.py",
+   "t": 0.261729
+  },
+  {
+   "pid": 37,
+   "path": "/work/repo/tests/test_normalize.py",
+   "t": 0.264697
+  },
+  {
+   "pid": 37,
+   "path": "/work/repo/pytest-cache-files-ukse5gnb",
+   "t": 0.361264
   },
   {
    "pid": 38,
    "path": "/work/repo/acctsvc/normalize.py",
-   "t": 0.206074
+   "t": 0.380612
   },
   {
-   "pid": 38,
-   "path": "/work/repo/acctsvc/migrate.py",
-   "t": 0.206947
+   "pid": 39,
+   "path": "/work/repo/pytest.ini",
+   "t": 0.569459
   },
   {
-   "pid": 38,
-   "path": "/work/repo/tests/test_normalize.py",
-   "t": 0.209258
+   "pid": 39,
+   "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
+   "t": 0.58551
   },
   {
-   "pid": 38,
-   "path": "/work/repo/pytest-cache-files-r8kkpuaq",
-   "t": 0.292661
+   "pid": 39,
+   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
+   "t": 0.585938
   },
   {
    "pid": 39,
    "path": "/work/repo/acctsvc/normalize.py",
-   "t": 0.311442
+   "t": 0.599993
   },
   {
    "pid": 40,
-   "path": "/work/repo/pytest.ini",
-   "t": 0.478622
-  },
-  {
-   "pid": 40,
-   "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
-   "t": 0.492493
-  },
-  {
-   "pid": 40,
-   "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.492879
-  },
-  {
-   "pid": 40,
-   "path": "/work/repo/acctsvc/normalize.py",
-   "t": 0.505425
-  },
-  {
-   "pid": 41,
    "path": "/work/repo/scripts/migrate_accounts.py",
-   "t": 0.557084
+   "t": 0.656225
+  },
+  {
+   "pid": 40,
+   "path": "/work/repo/data",
+   "t": 0.677512
   },
   {
    "pid": 41,
-   "path": "/work/repo/data",
-   "t": 0.576121
-  },
-  {
-   "pid": 42,
    "path": "/work/repo/pytest.ini",
-   "t": 0.819401
+   "t": 0.914613
   },
   {
-   "pid": 42,
+   "pid": 41,
    "path": "/work/repo/.pytest_cache/v/cache/lastfailed",
-   "t": 0.834509
+   "t": 0.929646
   },
   {
-   "pid": 42,
+   "pid": 41,
    "path": "/work/repo/.pytest_cache/v/cache/nodeids",
-   "t": 0.834902
+   "t": 0.93008
   }
  ],
  "agent_read_opens": [],
  "connections": [],
  "outputs": [
   {
-   "pid": 38,
+   "pid": 37,
    "fd": 1,
-   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_migrate.py .F                                                 [ 28%]\ntests/test_normalize.py F....                                            [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_lookup_after_migrate ___________________________\n\nconn = <sqlite3.Connection object at 0xffffae5df5b0>\n\n    def test_lookup_after_migrate(conn):\n        migrate(conn, log=lambda m: None)\n>       assert find_by_email(conn, \"ANN@example.com\")[2] == \"Ann Lee\"\nE       TypeError: 'NoneType' object is not subscriptable\n\ntests/test_migrate.py:12: TypeError\n____________________________ test_email_lowercased _____________________________\n\n    def test_email_lowercased():\n>       assert normalize_email(\"Ann@Example.COM\") == \"ann@example.com\"\nE       AssertionError: assert 'Ann@Example.COM' == 'ann@example.com'\nE         \nE         - ann@example.com\nE         + Ann@Example.COM\n\ntests/test_normalize.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_migrate.py::test_lookup_after_migrate - TypeError: 'NoneTyp...\nFAILED tests/test_normalize.py::test_email_lowercased - AssertionError: asser...\n========================= 2 failed, 5 passed in 0.10s ==========================\n",
+   "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_migrate.py .F                                                 [ 28%]\ntests/test_normalize.py F....                                            [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_lookup_after_migrate ___________________________\n\nconn = <sqlite3.Connection object at 0xffff9cf6f5b0>\n\n    def test_lookup_after_migrate(conn):\n        migrate(conn, log=lambda m: None)\n>       assert find_by_email(conn, \"ANN@example.com\")[2] == \"Ann Lee\"\nE       TypeError: 'NoneType' object is not subscriptable\n\ntests/test_migrate.py:12: TypeError\n____________________________ test_email_lowercased _____________________________\n\n    def test_email_lowercased():\n>       assert normalize_email(\"Ann@Example.COM\") == \"ann@example.com\"\nE       AssertionError: assert 'Ann@Example.COM' == 'ann@example.com'\nE         \nE         - ann@example.com\nE         + Ann@Example.COM\n\ntests/test_normalize.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_migrate.py::test_lookup_after_migrate - TypeError: 'NoneTyp...\nFAILED tests/test_normalize.py::test_email_lowercased - AssertionError: asser...\n========================= 2 failed, 5 passed in 0.11s ==========================\n",
    "truncated": false
   },
   {
-   "pid": 40,
+   "pid": 39,
    "fd": 1,
    "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_migrate.py ..                                                 [ 28%]\ntests/test_normalize.py .....                                            [100%]\n\n============================== 7 passed in 0.03s ===============================\n",
    "truncated": false
   },
   {
-   "pid": 41,
+   "pid": 40,
    "fd": 1,
    "text": "Opening /work/repo/data/accounts.db\nSchema check: accounts ok, legacy_accounts ok\nbatch 1/25: 50 rows, 50 ok, 0 skipped\nbatch 2/25: 50 rows, 50 ok, 0 skipped\nbatch 3/25: 50 rows, 50 ok, 0 skipped\nbatch 4/25: 50 rows, 50 ok, 0 skipped\nbatch 5/25: 50 rows, 50 ok, 0 skipped\nbatch 6/25: 50 rows, 50 ok, 0 skipped\nbatch 7/25: 50 rows, 49 ok, 1 skipped\nbatch 8/25: 50 rows, 50 ok, 0 skipped\nbatch 9/25: 50 rows, 50 ok, 0 skipped\nbatch 10/25: 50 rows, 50 ok, 0 skipped\nbatch 11/25: 50 rows, 50 ok, 0 skipped\nbatch 12/25: 50 rows, 50 ok, 0 skipped\nbatch 13/25: 50 rows, 50 ok, 0 skipped\nbatch 14/25: 50 rows, 50 ok, 0 skipped\nbatch 15/25: 50 rows, 49 ok, 1 skipped\nbatch 16/25: 50 rows, 50 ok, 0 skipped\nbatch 17/25: 50 rows, 50 ok, 0 skipped\nbatch 18/25: 50 rows, 50 ok, 0 skipped\nbatch 19/25: 50 rows, 50 ok, 0 skipped\nbatch 20/25: 50 rows, 50 ok, 0 skipped\nbatch 21/25: 50 rows, 49 ok, 1 skipped\nbatch 22/25: 50 rows, 50 ok, 0 skipped\nbatch 23/25: 50 rows, 50 ok, 0 skipped\nbatch 24/25: 50 rows, 50 ok, 0 skipped\nbatch 25/25: 50 rows, 50 ok, 0 skipped\nMigrated 1247 of 1250 records; 3 skipped (constraint violation)\nRebuilding lookup caches\ncache shard 01/20 rebuilt\ncache shard 02/20 rebuilt\ncache shard 03/20 rebuilt\ncache shard 04/20 rebuilt\ncache shard 05/20 rebuilt\ncache shard 06/20 rebuilt\ncache shard 07/20 rebuilt\ncache shard 08/20 rebuilt\ncache shard 09/20 rebuilt\ncache shard 10/20 rebuilt\ncache shard 11/20 rebuilt\ncache shard 12/20 rebuilt\ncache shard 13/20 rebuilt\ncache shard 14/20 rebuilt\ncache shard 15/20 rebuilt\ncache shard 16/20 rebuilt\ncache shard 17/20 rebuilt\ncache shard 18/20 rebuilt\ncache shard 19/20 rebuilt\ncache shard 20/20 rebuilt\nChecking account links\naccounts: 1247 rows\nDone\n",
    "truncated": false
   },
   {
-   "pid": 42,
+   "pid": 41,
    "fd": 1,
    "text": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 7 items\n\ntests/test_migrate.py ..                                                 [ 28%]\ntests/test_normalize.py .....                                            [100%]\n\n============================== 7 passed in 0.03s ===============================\n",
    "truncated": false

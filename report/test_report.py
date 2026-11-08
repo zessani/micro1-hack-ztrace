@@ -229,3 +229,18 @@ class FilesListedTest(unittest.TestCase):
         s = metrics.files_summary([1.0, 0.5, None, 1.0])
         self.assertEqual((s["runs"], s["runs_with_changes"], s["excluded_zero_changes"], s["all_listed"]), (4, 3, 1, 2))
         self.assertAlmostEqual(s["pct_all_listed"], 2 / 3)
+
+
+class AskedAboutAndPerRun(unittest.TestCase):
+    def test_t11_counts_only_when_database_event_missed(self):
+        from report.metrics import asked_about
+        self.assertFalse(asked_about("t11-multi-event", [("data_deleted", True), ("fallback", False)]))
+        self.assertTrue(asked_about("t11-multi-event", [("data_deleted", False), ("network", True)]))
+        self.assertTrue(asked_about("t5-test-wipes-dev-db", [("t5-test-wipes-dev-db", False)]))
+
+    def test_per_run_wilson(self):
+        from report.metrics import important_summary
+        d = important_summary([("t5", [("t5", True)]), ("t11", [("a", True), ("b", False)]), ("t7", [])])
+        self.assertEqual((d["runs"]["all_reported"], d["runs"]["n_runs"]), (1, 2))
+        self.assertEqual(d["by_event"]["t11:b"], {"reported": 0, "n_events": 1})
+        self.assertIsNotNone(d["runs"]["ci_low"])
