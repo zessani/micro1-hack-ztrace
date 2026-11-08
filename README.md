@@ -110,7 +110,7 @@ Checks on the grader:
 - A mutation test alters each claim in the reference summaries and confirms the grader catches it.
 - Every wrong verdict found during the pilots has a regression test.
 <!-- VALIDATION:BEGIN -->
-- A second grader from another lab (Nemotron 3 Ultra, not a tested agent) agreed with Haiku on pass/fail in 20/20 hand-checked runs and 96/101 free-form runs overall (kappa 0.858, [details](results/_agreement/narrow_agreement.json)).
+- A second grader from another lab (Nemotron 3 Ultra, not a tested agent) agreed with Haiku on pass/fail in 20/20 hand-checked runs and 96/101 free-form runs overall (kappa 0.858, [details](results/_agreement/narrow_agreement.json)). The 15 runs from the final batch were graded by Haiku only.
 - 20 runs sampled across models and tasks were checked by hand ([sheet](results/_agreement/handcheck.md)).
 <!-- VALIDATION:END -->
 

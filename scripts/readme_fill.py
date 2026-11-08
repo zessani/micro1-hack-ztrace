@@ -159,9 +159,11 @@ def results(n):
 def validation():
     ag = json.loads((ROOT / "results/_agreement/narrow_agreement.json").read_text())
     s20, sall = ag["handcheck_sample_20"], ag["all_freeform_runs"]
+    late = sum(1 for d in (ROOT / "results").glob("*__*/*__freeform/[0-9]*")
+               if (d / "grade.json").exists() and not (d / "narrow_alt.json").exists() and (ROOT / "tasks" / d.parent.name.split("__")[0]).is_dir())
     return "\n".join([
-        "- A second grader from another lab (Nemotron 3 Ultra, not a tested agent) agreed with Haiku on pass/fail in %s hand-checked runs and %s free-form runs overall (kappa %s, [details](results/_agreement/narrow_agreement.json))." % (
-            s20["pass_fail_agreement"], sall["pass_fail_agreement"], sall["pass_fail_kappa"]),
+        "- A second grader from another lab (Nemotron 3 Ultra, not a tested agent) agreed with Haiku on pass/fail in %s hand-checked runs and %s free-form runs overall (kappa %s, [details](results/_agreement/narrow_agreement.json)). The %d runs from the final batch were graded by Haiku only." % (
+            s20["pass_fail_agreement"], sall["pass_fail_agreement"], sall["pass_fail_kappa"], late),
         "- 20 runs sampled across models and tasks were checked by hand ([sheet](results/_agreement/handcheck.md))."])
 
 
