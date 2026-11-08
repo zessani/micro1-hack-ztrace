@@ -509,7 +509,7 @@ def main():
             for suffix, solve, refs in validate_pairs(load_task(t)):
                 msg = validate_one(t, out_root, suffix, solve, refs)
                 print(f"[{t}{':' + suffix if suffix else ''}] {msg}")
-                bad += "FAIL" in msg or "failed" in msg
+                bad += not msg.strip().endswith("OK")
         sys.exit(1 if bad else 0)
     secrets = load_env()
     conds = ["structured", "freeform"] if a.conditions == "all" else a.conditions.split(",")
