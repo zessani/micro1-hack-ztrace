@@ -73,7 +73,7 @@ def chart_grid(agg):
     cw, ch, L, T = 96, 64, 210, 185
     W, H = L + cw * len(tasks) + 60, T + ch * len(MAIN_MODELS) + 30
     b = [_t(W / 2, 26, "Models x tasks, main matrix", 15, "middle", weight="bold"),
-         _t(W / 2, 44, "cell: pass/n, F = false claims, O = omissions; colour = pass rate", 11, "middle", MUTE)]
+         _t(W / 2, 44, "cell: pass/n, F = key fact misstated, O = key fact not stated; colour = pass rate", 11, "middle", MUTE)]
     for i, t in enumerate(tasks):
         x = L + cw * i + cw / 2
         tag = "hard" if t in HARD else "reliable"
@@ -102,21 +102,73 @@ def chart_grid(agg):
 
 
 def chart_kbds(agg):
-    """(c) knew but didn't say: control answer right, report missed or misstated the key fact."""
+    """(c) disclosed only when asked: control answer right, summary missed or misstated the key fact."""
     models = agg.get("main", {}).get("models", {})
     W, H, L, R, T = 760, 90 + 50 * len(MAIN_MODELS), 230, 60, 70
     vals = [models.get(m, {}).get("overall", {}) for m in MAIN_MODELS]
     top = max([v.get("runs_with_control", 0) for v in vals] + [1])
-    pw = W - L - R - 200
-    b = [_t(W / 2, 26, "Knew but didn't say, main matrix", 15, "middle", weight="bold"),
-         _t(W / 2, 44, "runs where the control answer stated the key fact but the report omitted or misstated it", 11, "middle", MUTE)]
+    pw = W - L - R - 260
+    b = [_t(W / 2, 26, "Disclosed only when asked, main matrix", 15, "middle", weight="bold"),
+         _t(W / 2, 44, "control answer was right but the summary missed the key fact; control steps where tools were used are excluded",
+            11, "middle", MUTE)]
     for j, m in enumerate(MAIN_MODELS):
         y = T + 50 * j
         v = vals[j]
-        k, n = v.get("knew_but_didnt_say", 0), v.get("runs_with_control", 0)
+        k, n, x = v.get("knew_but_didnt_say", 0), v.get("runs_with_control", 0), v.get("control_excluded", 0)
         b.append(_t(L - 10, y + 20, SHORT[m], 12, "end"))
         b.append("<rect x='%d' y='%d' width='%.1f' height='24' fill='#eef0f2'/>" % (L, y + 4, max(pw * n / top, 1)))
         if k:
             b.append("<rect x='%d' y='%d' width='%.1f' height='24' fill='#c0504d'/>" % (L, y + 4, pw * k / top))
-        b.append(_t(L + pw * n / top + 8, y + 21, "%d of %d runs with a control answer" % (k, n), 11, fill=MUTE))
-    return _svg(W, H, "".join(b), "Knew but did not say per model")
+        b.append(_t(L + pw * n / top + 8, y + 21, "%d of %d runs with a usable control answer (%d excluded)" % (k, n, x),
+                    11, fill=MUTE))
+    return _svg(W, H, "".join(b), "Disclosed only when asked per model")
+
+
+def chart_audit(rows_agg):
+    """(d) per model, grouped bars per material event: runs the OS saw it vs runs the summary mentioned it."""
+    from .audit import EVENTS, EVENT_LABEL
+    models = [m for m in MAIN_MODELS if m in rows_agg]
+    pw_, ph_ = 450, 270
+    W, H = 2 * pw_ + 20, 70 + 2 * ph_ + 30
+    top = max([rows_agg[m]["events"][e]["seen"] for m in models for e in EVENTS] + [1])
+    step = 10 if top > 40 else 5 if top > 15 else 2 if top > 6 else 1
+    ymax = ((top + step - 1) // step) * step
+    SEEN, SAID = "#8aa0b3", BAR
+    b = [_t(W / 2, 24, "What the OS saw vs what the summary said", 16, "middle", weight="bold"),
+         _t(W / 2, 42, "main matrix, runs per material event; right bar counts only runs where the OS saw the event. Descriptive; pass/fail uses the material-fact question only",
+            10, "middle", MUTE),
+         "<rect x='%d' y='52' width='10' height='10' fill='%s'/>" % (W / 2 - 150, SEEN),
+         _t(W / 2 - 135, 61, "OS saw the event", 11),
+         "<rect x='%d' y='52' width='10' height='10' fill='%s'/>" % (W / 2 + 10, SAID),
+         _t(W / 2 + 25, 61, "summary mentioned it", 11)]
+    for k, m in enumerate(models):
+        ox, oy = (k % 2) * (pw_ + 20), 70 + (k // 2) * ph_
+        a = rows_agg[m]
+        L, B, Tp = ox + 38, oy + ph_ - 70, oy + 34
+        gh = B - Tp
+        b.append(_t(ox + 10, oy + 14, SHORT[m], 12, weight="bold"))
+        acc = a["claim_accuracy"]
+        b.append(_t(ox + 10, oy + 28, "claim accuracy %s (%d contradicted of %d concrete claims, n=%d runs)"
+                    % ("n/a" if acc is None else "%.1f%%" % (acc * 100), a["contradicted_claims"],
+                       a["concrete_claims"], a["runs"]), 10, fill=MUTE))
+        for v in range(0, ymax + 1, step):
+            y = B - gh * v / ymax
+            b.append("<line x1='%d' y1='%.1f' x2='%d' y2='%.1f' stroke='%s'/>" % (L, y, ox + pw_ - 6, y, GRID))
+            b.append(_t(L - 4, y + 3, v, 9, "end", MUTE))
+        gw = (ox + pw_ - 6 - L) / len(EVENTS)
+        for i, e in enumerate(EVENTS):
+            ev = a["events"][e]
+            gx = L + gw * i
+            for j, (val, col) in enumerate(((ev["seen"], SEEN), (ev["mentioned"], SAID))):
+                h = gh * val / ymax
+                x = gx + gw * 0.15 + j * gw * 0.35
+                b.append("<rect x='%.1f' y='%.1f' width='%.1f' height='%.1f' fill='%s'/>" % (x, B - h, gw * 0.33, h, col))
+                b.append(_t(x + gw * 0.165, B - h - 3, val, 10, "middle"))
+            words = EVENT_LABEL[e].split(" ", 1)
+            b.append(_t(gx + gw / 2, B + 14, words[0], 10, "middle"))
+            if len(words) > 1:
+                b.append(_t(gx + gw / 2, B + 26, words[1], 10, "middle"))
+            r = ev["disclosure_rate"]
+            b.append(_t(gx + gw / 2, B + 40, "n/a" if r is None else "%d%%" % round(r * 100), 10, "middle", MUTE, "bold"))
+        b.append(_t(ox + 10, B + 54, "percent under each group: material disclosure rate (mentioned / seen)", 9, fill=MUTE))
+    return _svg(W, H, "".join(b), "What the OS saw versus what the summary said, per model and material event")
