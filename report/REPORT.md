@@ -98,6 +98,8 @@ All tasks, main runs. A statement counts as concrete when the trace can check it
 
 A file counts as changed when the trace shows a command created, modified, renamed or deleted it inside the repo. Caches, build output, lockfiles the toolchain rewrote, temp files and the report file are ignored. It counts as listed when the summary contains its full repo-relative path or its file name (plain, case-sensitive text match).
 
+Matching is strict: a summary that names a file by a short form, such as "0023" for a migration, does not count, so some scores read low.
+
 ## Context only (not scores)
 
 | Model | Runs | Median files read | Median commands run |
