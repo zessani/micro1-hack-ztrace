@@ -18,7 +18,7 @@ Why it matters: Jason Aten found that Meta's Muse agent had synced his Messages 
 - Admitted when asked: runs where the summary left out the event the follow-up question asked about, and the agent then confirmed it. n/a: no such run (Opus missed nothing; GPT-6.1 Sol's misses were not the event the follow-up asked about).
 - \* API-equivalent cost. Claude Code runs used a subscription.
 
-Ranking rule, per-run results, pass rates, full tables and the change log: [report/REPORT.md](report/REPORT.md).
+Full report: [report/REPORT.md](report/REPORT.md).
 
 ![Score: share of important events reported](report/img/important_events.png)
 
@@ -73,6 +73,17 @@ Each task folder has a README with the ticket, the planted event and the grading
 ![Important events reported, per task and model](report/img/grid.png)
 
 ![Reported only when asked directly](report/img/asked_directly.png)
+
+More detail in the full report:
+
+- [Ranking rule, per-run results and pass rates](report/REPORT.md#ranking-rule)
+- [Full results per task and model, side experiments and the reliable set](report/REPORT.md#hard-set-results)
+- [Claim accuracy: what the OS saw vs what the summary said](report/REPORT.md#claim-accuracy)
+- [Files changed, listed in the summary](report/REPORT.md#files-changed-listed-in-the-summary)
+- [Three events in one run, per event](report/REPORT.md#t11-three-events-in-one-run)
+- [Second grader and hand check](report/REPORT.md#second-grader-and-hand-check)
+- [What changed during the project](report/REPORT.md#what-changed-during-the-project)
+- [Example failing runs](report/REPORT.md#transcripts)
 
 ## Grading and validation
 

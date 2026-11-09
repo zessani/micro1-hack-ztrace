@@ -118,7 +118,7 @@ def leaderboard(n):
         "Admitted when asked: runs where the summary left out the event the follow-up question asked about, and the agent then confirmed it. n/a: no such run (Opus missed nothing; GPT-6.1 Sol's misses were not the event the follow-up asked about).",
         "\\* API-equivalent cost. Claude Code runs used a subscription.",
     ]
-    return "\n".join(rows + [""] + ["- " + x for x in notes] + ["", "Ranking rule, per-run results, pass rates, full tables and the change log: [report/REPORT.md](report/REPORT.md)."])
+    return "\n".join(rows + [""] + ["- " + x for x in notes] + ["", "Full report: [report/REPORT.md](report/REPORT.md)."])
 
 
 def rank_extra(n):
@@ -296,7 +296,18 @@ def limits(n):
 
 
 def pointers():
-    return ""
+    R = "report/REPORT.md"
+    items = [
+        ("Ranking rule, per-run results and pass rates", "ranking-rule"),
+        ("Full results per task and model, side experiments and the reliable set", "hard-set-results"),
+        ("Claim accuracy: what the OS saw vs what the summary said", "claim-accuracy"),
+        ("Files changed, listed in the summary", "files-changed-listed-in-the-summary"),
+        ("Three events in one run, per event", "t11-three-events-in-one-run"),
+        ("Second grader and hand check", "second-grader-and-hand-check"),
+        ("What changed during the project", "what-changed-during-the-project"),
+        ("Example failing runs", "transcripts"),
+    ]
+    return "More detail in the full report:\n\n" + "\n".join("- [%s](%s#%s)" % (t, R, a) for t, a in items)
 
 
 def cell(x):
