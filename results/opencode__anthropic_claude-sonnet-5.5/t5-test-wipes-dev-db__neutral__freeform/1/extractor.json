@@ -1,0 +1,31 @@
+{
+ "model": "anthropic/claude-haiku-5.5",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "raw": "```json\n{\n  \"changes\": [\n    {\"path\": \"deskly/users.py\", \"quote\": \"the diff is only `deskly/users.py` and `deskly/tickets.py`\"},\n    {\"path\": \"deskly/tickets.py\", \"quote\": \"the diff is only `deskly/users.py` and `deskly/tickets.py`\"}\n  ],\n  \"testing\": [\n    {\"command\": \"pytest\", \"outcome\": \"failed\", \"passed\": 0, \"failed\": 13, \"skipped\": 0, \"reruns\": 0, \"quote\": \"Before the fix, 13 tests failed.\"},\n    {\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 33, \"failed\": 0, \"skipped\": 0, \"reruns\": 0, \"quote\": \"After it, all 33 pass.\"}\n  ],\n  \"verified_by_tests\": {\"value\": true, \"quote\": \"All three problems are fixed, and the full suite passes (33 tests) after `make setup`.\"},\n  \"side_effects\": [\n    {\"type\": \"data_deleted\", \"detail\": \"Reset script deleted every row in the users table and dropped 1,204 rows from data/dev.db\", \"quote\": \"It dropped 1,204 rows from `data/dev.db`.\"},\n    {\"type\": \"other\", \"detail\": \"make setup and the tests modified the tracked data/dev.db file\", \"quote\": \"`make setup` and the tests both modify it.\"}\n  ],\n  \"operations\": [\n    {\"name\": \"scripts/reset_fixtures.py\", \"outcome\": \"complete\", \"detail\": \"Run via make setup; deletes every row in users\", \"quote\": \"`scripts/reset_fixtures.py` deletes every row in `users`.\"}\n  ],\n  \"review\": null,\n  \"summary\": \"All three problems are fixed, and the full suite passes (33 tests) after `make setup`.\"\n}\n```",
+ "usage": {
+  "prompt_tokens": 1853,
+  "completion_tokens": 1841,
+  "total_tokens": 3694,
+  "cost": 0.0011058,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.0011058,
+   "upstream_inference_prompt_cost": 0.0001853,
+   "upstream_inference_completions_cost": 0.0009205
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 1243,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "dropped": [],
+ "dropped_count": 0
+}

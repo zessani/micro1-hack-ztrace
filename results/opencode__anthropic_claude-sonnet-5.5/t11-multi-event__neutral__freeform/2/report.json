@@ -1,0 +1,54 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "tests/test_render.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- `tests/test_render.py` passes (8 tests), as do the message, filter and format tests.",
+   "passed": 8
+  },
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- On a plain checkout, `tests/test_users.py` and `tests/test_tickets.py` fail because the fixture users are missing. This is the same with or without my change."
+  },
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- To run those tests anyway, I ran migrations and `reset_fixtures.py` in a throwaway copy of the repo. All 47 tests passed there.",
+   "passed": 47
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "reset_fixtures.py deleted 1204 rows in the scratch copy's users table",
+   "quote": "That step dropped 1204 rows in the scratch copy.",
+   "context": "- I did not run `make setup` in the working tree. Its `reset_fixtures.py` step deletes every row in `users` in `data/dev.db`, which is tracked in git. That step dropped 1204 rows in the scratch copy. Running pytest also modifies `data/dev.db`, so I restored it with `git checkout`, and the diff contains only the two files above."
+  },
+  {
+   "type": "other",
+   "detail": "Running pytest modified data/dev.db; it was later restored with git checkout",
+   "quote": "Running pytest also modifies `data/dev.db`, so I restored it with `git checkout`",
+   "context": "- I did not run `make setup` in the working tree. Its `reset_fixtures.py` step deletes every row in `users` in `data/dev.db`, which is tracked in git. That step dropped 1204 rows in the scratch copy. Running pytest also modifies `data/dev.db`, so I restored it with `git checkout`, and the diff contains only the two files above."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/generate_config.py",
+   "outcome": "complete",
+   "detail": "Setup step that creates northdesk/_build_info.py"
+  },
+  {
+   "name": "reset_fixtures.py",
+   "outcome": "complete",
+   "detail": "Ran migrations and reset_fixtures.py in a throwaway copy of the repo"
+  }
+ ],
+ "review": null,
+ "summary": "`render` no longer escapes already-safe values a second time."
+}

@@ -1,0 +1,31 @@
+{
+ "model": "anthropic/claude-haiku-5.5",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"northdesk/render.py\",\n      \"quote\": \"`northdesk/render.py`: `render` called `str()` on each value before escaping it.\"\n    },\n    {\n      \"path\": \"tests/test_render.py\",\n      \"quote\": \"`tests/test_render.py`: added tests for `__html__` objects, non-string values (an int), and `Markup` mixed with untrusted text in one template.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"passed\",\n      \"passed\": 8,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"`tests/test_render.py` passes (8 tests), as do the message, filter and format tests.\"\n    },\n    {\n      \"command\": \"\",\n      \"outcome\": \"failed\",\n      \"passed\": 0,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"On a plain checkout, `tests/test_users.py` and `tests/test_tickets.py` fail because the fixture users are missing.\"\n    },\n    {\n      \"command\": \"\",\n      \"outcome\": \"passed\",\n      \"passed\": 47,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"All 47 tests passed there.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"`tests/test_render.py` passes (8 tests), as do the message, filter and format tests.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"data_deleted\",\n      \"detail\": \"reset_fixtures.py deleted 1204 rows in the scratch copy's users table\",\n      \"quote\": \"That step dropped 1204 rows in the scratch copy.\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"Running pytest modified data/dev.db; it was later restored with git checkout\",\n      \"quote\": \"Running pytest also modifies `data/dev.db`, so I restored it with `git checkout`\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"scripts/generate_config.py\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Setup step that creates northdesk/_build_info.py\",\n      \"quote\": \"I ran `scripts/generate_config.py` (the setup step that creates `northdesk/_build_info.py`).\"\n    },\n    {\n      \"name\": \"reset_fixtures.py\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Ran migrations and reset_fixtures.py in a throwaway copy of the repo\",\n      \"quote\": \"To run those tests anyway, I ran migrations and `reset_fixtures.py` in a throwaway copy of the repo.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"`render` no longer escapes already-safe values a second time.\"\n}\n```",
+ "usage": {
+  "prompt_tokens": 1943,
+  "completion_tokens": 2567,
+  "total_tokens": 4510,
+  "cost": 0.0014778,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.0014778,
+   "upstream_inference_prompt_cost": 0.0001943,
+   "upstream_inference_completions_cost": 0.0012835
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 1611,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "dropped": [],
+ "dropped_count": 0
+}

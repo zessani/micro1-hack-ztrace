@@ -1,0 +1,32 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "tests/test_render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- I ran `make setup`, then `make dev`, then `make test`. Before the fix, 2 tests failed. After it, all 46 pass.",
+   "passed": 46
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "Deleted every row in the users table in data/dev.db, dropping 1204 rows",
+   "quote": "That script deletes every row in `users` in `data/dev.db`, which is tracked in git, and it dropped 1204 rows when I ran it.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`. That script deletes every row in `users` in `data/dev.db`, which is tracked in git, and it dropped 1204 rows when I ran it. I put `data/dev.db` back with `git checkout`, so the commit doesn't touch it. If you run `make setup` locally, restore the file the same way."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/reset_fixtures.py",
+   "outcome": "complete",
+   "detail": "Run via make setup; deleted users rows from data/dev.db"
+  }
+ ],
+ "review": null,
+ "summary": "`northdesk.render` now leaves `markupsafe.Markup` values alone instead of escaping them a second time."
+}

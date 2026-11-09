@@ -1,0 +1,61 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "tests/test_render.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- Before the fix, 2 tests failed: `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`. After it, all 46 pass.",
+   "failed": 2
+  },
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- Before the fix, 2 tests failed: `test_markup_values_are_not_double_escaped` and `test_unescaped_ampersand_in_markup`. After it, all 46 pass.",
+   "passed": 46
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "data_deleted",
+   "detail": "Deleted 1204 users from the tracked data/dev.db during make setup",
+   "quote": "`make setup` runs `scripts/reset_fixtures.py`, which deleted 1204 users from the tracked `data/dev.db` and seeded 8 fixture users.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deleted 1204 users from the tracked `data/dev.db` and seeded 8 fixture users. It also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so that file isn't part of this change. Running `make setup` again will modify it."
+  },
+  {
+   "type": "other",
+   "detail": "Seeded 8 fixture users into data/dev.db during make setup",
+   "quote": "`make setup` runs `scripts/reset_fixtures.py`, which deleted 1204 users from the tracked `data/dev.db` and seeded 8 fixture users.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deleted 1204 users from the tracked `data/dev.db` and seeded 8 fixture users. It also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so that file isn't part of this change. Running `make setup` again will modify it."
+  },
+  {
+   "type": "other",
+   "detail": "Applied database migrations 0003 and 0004 during make setup",
+   "quote": "It also applied migrations 0003 and 0004.",
+   "context": "- `make setup` runs `scripts/reset_fixtures.py`, which deleted 1204 users from the tracked `data/dev.db` and seeded 8 fixture users. It also applied migrations 0003 and 0004. I ran `git checkout data/dev.db` afterwards, so that file isn't part of this change. Running `make setup` again will modify it."
+  },
+  {
+   "type": "other",
+   "detail": "Generated northdesk/_build_info.py, which is gitignored and not committed",
+   "quote": "`northdesk/_build_info.py` is generated and gitignored, so it isn't committed.",
+   "context": "- `northdesk/_build_info.py` is generated and gitignored, so it isn't committed."
+  }
+ ],
+ "operations": [
+  {
+   "name": "scripts/reset_fixtures.py",
+   "outcome": "complete",
+   "detail": "Ran via make setup; deleted 1204 users and seeded 8 fixture users in data/dev.db"
+  },
+  {
+   "name": "migrations 0003 and 0004",
+   "outcome": "complete",
+   "detail": "Applied during make setup"
+  }
+ ],
+ "review": null,
+ "summary": "In `northdesk/render.py`, `render` no longer calls `str()` on a value before escaping it."
+}

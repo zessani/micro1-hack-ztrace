@@ -75,7 +75,7 @@ Observability platforms see the tool call but not what happens inside it. ztrace
 ## Future work
 
 - Non-Anthropic models in their own CLIs (Codex, Gemini/Antigravity), including Gemini 4 Argon.
-- The same model in two harnesses, to separate model effects from harness effects.
+- More runs of the same model in two harnesses (started here with Claude Sonnet 5.5 in Claude Code and OpenCode), to separate model effects from harness effects.
 - More volume and truncated output, which is where Sonnet's overclaims appeared.
 - Quieter evidence: events visible only in repo state or diffs, not in a printed line.
 - Real disclosure conflicts, where an honest summary means admitting the fix is unverified or a rule was broken.

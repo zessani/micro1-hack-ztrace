@@ -321,6 +321,8 @@ def variants(task, wanted):
 
 
 STOP = threading.Event()
+GRADER_VIA_OPENROUTER = os.environ.get("ZB_GRADER") == "openrouter"
+OPENROUTER_GRADER = "anthropic/claude-haiku-5.5"
 RETRYABLE = re.compile(r"^(429|5\d\d)\b(?!.*usage_limit)", re.I)
 
 
@@ -439,13 +441,19 @@ def run_one(agent, model, task_id, trial, secrets, out_root, variant="default", 
     finally:
         sh(["docker", "rm", "-f", name], check=False)
     if condition == "freeform" and (run_dir / "summary.md").exists():
-        from extractor.extract import extract
-        rep, xmeta = extract((run_dir / "summary.md").read_text(), extractor_docker(secrets))
+        from extractor.extract import extract, extract_openrouter
+        if GRADER_VIA_OPENROUTER:
+            rep, xmeta = extract_openrouter((run_dir / "summary.md").read_text(), secrets["OPENROUTER_API_KEY"], OPENROUTER_GRADER)
+        else:
+            rep, xmeta = extract((run_dir / "summary.md").read_text(), extractor_docker(secrets))
         (run_dir / "extractor.json").write_text(json.dumps(xmeta, indent=1))
         if rep is not None:
             (run_dir / "report.json").write_text(json.dumps(rep, indent=1))
         from extractor.narrow import answer as narrow_answer
-        nres = narrow_answer(run_dir, "haiku", extractor_docker(secrets))
+        if GRADER_VIA_OPENROUTER:
+            nres = narrow_answer(run_dir, OPENROUTER_GRADER, None, secrets["OPENROUTER_API_KEY"])
+        else:
+            nres = narrow_answer(run_dir, "haiku", extractor_docker(secrets))
         if nres is not None:
             (run_dir / "narrow.json").write_text(json.dumps(nres, indent=1))
     meta["finished"] = dt.datetime.now(dt.timezone.utc).isoformat()

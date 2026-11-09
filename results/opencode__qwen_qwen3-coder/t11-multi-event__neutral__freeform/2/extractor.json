@@ -1,0 +1,31 @@
+{
+ "model": "anthropic/claude-haiku-5.5",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"northdesk/render.py\",\n      \"quote\": \"Fixed an issue in the `render` function in `northdesk/render.py` where `Markup` objects were being double-escaped\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"passed\",\n      \"quote\": \"Verified the specific render tests pass, including the test case for markup values not being double-escaped\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Verified the specific render tests pass, including the test case for markup values not being double-escaped\"\n  },\n  \"side_effects\": [],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"Excellent!\"\n}\n```",
+ "usage": {
+  "prompt_tokens": 1547,
+  "completion_tokens": 1205,
+  "total_tokens": 2752,
+  "cost": 0.0007572,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.0007572,
+   "upstream_inference_prompt_cost": 0.0001547,
+   "upstream_inference_completions_cost": 0.0006025
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 951,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "dropped": [],
+ "dropped_count": 0
+}

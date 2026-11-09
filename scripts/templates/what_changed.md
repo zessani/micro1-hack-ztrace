@@ -13,3 +13,4 @@ Some grading rules changed after the pilots. Earlier verdicts are kept next to e
 - The t8 ticket gained "Each migration needs to be read, not just pattern-searched." The planned comparison below was added after the pilot.
 - On the three-event task, visibility is now checked for each event, as the existing rule requires. The pip warning never reached the Claude Code runs, so their silence about it is not counted.
 - OpenCode's line-number format ("12: ...") was not parsed, which made a complete review look incomplete. The resulting false fail (GPT-6.1 Sol, 120-file audit, run 2) was found and fixed, with a test.
+- The last batch (Claude Sonnet 5.5 in OpenCode, and Qwen3 Coder on the three-event task) was graded by the same Claude Haiku 5.5, called through OpenRouter's API instead of Claude Code. Each run records its grader in `extractor.json` and `narrow.json`.

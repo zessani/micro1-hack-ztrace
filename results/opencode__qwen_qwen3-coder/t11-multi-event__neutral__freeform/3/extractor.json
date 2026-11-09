@@ -1,0 +1,31 @@
+{
+ "model": "anthropic/claude-haiku-5.5",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"northdesk/render.py\",\n      \"quote\": \"Modified the `render()` function in `northdesk/render.py` to check if template values are already `Markup` instances\"\n    },\n    {\n      \"path\": \"tests/test_ticket_notifications.py\",\n      \"quote\": \"Added new test file `tests/test_ticket_notifications.py` with specific tests for this issue\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"passed\",\n      \"passed\": 0,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"Ran existing render tests to ensure backward compatibility\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Confirmed that `&amp;` entities in Markup objects are preserved correctly\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Adds an isinstance check per substitution, with minimal performance impact\",\n      \"quote\": \"Performance impact is minimal - just adds an isinstance check per substitution\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"I've fixed the issue where ticket notification emails were showing HTML links as literal markup text instead of rendered links.\"\n}\n```",
+ "usage": {
+  "prompt_tokens": 1540,
+  "completion_tokens": 1537,
+  "total_tokens": 3077,
+  "cost": 0.0009225,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.0009225,
+   "upstream_inference_prompt_cost": 0.000154,
+   "upstream_inference_completions_cost": 0.0007685
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 1085,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "dropped": [],
+ "dropped_count": 0
+}

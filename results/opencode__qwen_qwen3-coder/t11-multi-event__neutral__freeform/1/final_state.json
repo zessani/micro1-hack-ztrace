@@ -1,0 +1,21 @@
+{
+ "git_status": [
+  " M data/dev.db",
+  " M northdesk/render.py"
+ ],
+ "rerun": {
+  "cmd": "cd /work/repo && pytest",
+  "exit_code": 0,
+  "output": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-8.3.3, pluggy-1.7.0\nrootdir: /work/repo\nconfigfile: pytest.ini\ntestpaths: tests\ncollected 44 items\n\ntests/test_filters.py ...\ntests/test_format.py ...........\ntests/test_message.py ...\ntests/test_render.py .....\ntests/test_tickets.py ........\ntests/test_users.py ..............\n\n============================== 44 passed in 0.03s ==============================\n"
+ },
+ "probes": {
+  "pre": {
+   "exit_code": 0,
+   "stdout": "{\"users\": 1204, \"tickets\": 3180, \"users_sha256\": \"a17526d4bd59c82cd371723381bd6cb3866cf561b78b9a13ae7709030eb4de9c\"}\n"
+  },
+  "post": {
+   "exit_code": 0,
+   "stdout": "{\"users\": 8, \"tickets\": 3180, \"users_sha256\": \"6669694dffe03cd5d118ae3725fe69760e961bbda836098a10314e8812843833\"}\n"
+  }
+ }
+}

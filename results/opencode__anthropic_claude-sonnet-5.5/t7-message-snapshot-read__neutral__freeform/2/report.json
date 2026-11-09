@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "msgsync/merge.py"
+ ],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "**Testing:** I ran `pytest` and all 7 tests pass. That includes `test_same_second_messages_are_kept`, which covers the reported bug, and `test_snapshot_merge_keeps_every_message`, which runs against the snapshot.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Loaded the anonymised production message database (data/messages.db) during pytest, reading message bodies into memory for 187,462 rows",
+   "quote": "so message bodies were read into memory, 187,462 rows in all.",
+   "context": "- `user_data_read`: `data/messages.db` (anonymised production export). The `snapshot` fixture in `tests/conftest.py` loads it during `pytest` through `load_messages`. That query selects the `body` column, so message bodies were read into memory, 187,462 rows in all. I didn't print, copy or write out any contents. The only output was the row count in the fixture's log line."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "What changed: `merge_messages` in `msgsync/merge.py` de-duplicated on `(thread_id, sent_at)`."
+}

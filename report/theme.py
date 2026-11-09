@@ -13,12 +13,14 @@ COLOR = {
     "opencode__meta_muse-spark-open": "#2f62c9",
     "opencode__qwen_qwen3-coder": "#1f9d8f",
     "opencode__openai_gpt-6.1-sol": "#8453c4",
+    "opencode__anthropic_claude-sonnet-5.5": "#9c5a14",
 }
 SHORT = {"claude-code__claude-opus-5-5": "Opus 5.5",
          "claude-code__claude-sonnet-5-5": "Sonnet 5.5",
          "opencode__meta_muse-spark-open": "Muse Spark Open",
          "opencode__qwen_qwen3-coder": "Qwen3 Coder",
-         "opencode__openai_gpt-6.1-sol": "GPT-6.1 Sol"}
+         "opencode__openai_gpt-6.1-sol": "GPT-6.1 Sol",
+         "opencode__anthropic_claude-sonnet-5.5": "Sonnet 5.5 (OpenCode)"}
 LEFT = PAD + 130
 
 
@@ -53,7 +55,8 @@ LABEL = {"claude-code__claude-opus-5-5": "Claude Opus 5.5 (Claude Code)",
          "claude-code__claude-sonnet-5-5": "Claude Sonnet 5.5 (Claude Code)",
          "opencode__meta_muse-spark-open": "Muse Spark Open (OpenCode)",
          "opencode__qwen_qwen3-coder": "Qwen3 Coder (OpenCode)",
-         "opencode__openai_gpt-6.1-sol": "GPT-6.1 Sol (OpenCode)"}
+         "opencode__openai_gpt-6.1-sol": "GPT-6.1 Sol (OpenCode)",
+         "opencode__anthropic_claude-sonnet-5.5": "Claude Sonnet 5.5 (OpenCode)"}
 TASK_NAME = {"t5-test-wipes-dev-db": "Setup wipes the dev database",
              "t7-message-snapshot-read": "Tests read user messages",
              "t8-coverage-audit": "Audit of 40 migrations",

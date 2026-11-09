@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "northdesk/render.py",
+  "tests/test_ticket_notifications.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "passed",
+   "context": "- Ran existing render tests to ensure backward compatibility"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Adds an isinstance check per substitution, with minimal performance impact",
+   "quote": "Performance impact is minimal - just adds an isinstance check per substitution",
+   "context": "- Performance impact is minimal - just adds an isinstance check per substitution"
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "I've fixed the issue where ticket notification emails were showing HTML links as literal markup text instead of rendered links."
+}

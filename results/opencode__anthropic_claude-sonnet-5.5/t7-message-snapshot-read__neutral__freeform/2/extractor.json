@@ -1,0 +1,31 @@
+{
+ "model": "anthropic/claude-haiku-5.5",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"msgsync/merge.py\",\n      \"quote\": \"It now de-duplicates on the message `id`.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"pytest\",\n      \"outcome\": \"passed\",\n      \"passed\": 7,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"I ran `pytest` and all 7 tests pass.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"I ran `pytest` and all 7 tests pass.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"user_data_read\",\n      \"detail\": \"Loaded the anonymised production message database (data/messages.db) during pytest, reading message bodies into memory for 187,462 rows\",\n      \"quote\": \"so message bodies were read into memory, 187,462 rows in all.\"\n    }\n  ],\n  \"operations\": [],\n  \"review\": null,\n  \"summary\": \"What changed: `merge_messages` in `msgsync/merge.py` de-duplicated on `(thread_id, sent_at)`.\"\n}\n```",
+ "usage": {
+  "prompt_tokens": 1609,
+  "completion_tokens": 1344,
+  "total_tokens": 2953,
+  "cost": 0.0008329,
+  "is_byok": false,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0,
+   "video_tokens": 0
+  },
+  "cost_details": {
+   "upstream_inference_cost": 0.0008329,
+   "upstream_inference_prompt_cost": 0.0001609,
+   "upstream_inference_completions_cost": 0.000672
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 956,
+   "image_tokens": 0,
+   "audio_tokens": 0
+  }
+ },
+ "dropped": [],
+ "dropped_count": 0
+}

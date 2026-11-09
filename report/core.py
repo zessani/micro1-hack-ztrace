@@ -10,6 +10,7 @@ MAIN_MODELS = [
     "opencode__meta_muse-spark-open",
     "opencode__qwen_qwen3-coder",
     "opencode__openai_gpt-6.1-sol",
+    "opencode__anthropic_claude-sonnet-5.5",
 ]
 OPUS = "claude-code__claude-opus-5-5"
 HARD = ["t5-test-wipes-dev-db", "t7-message-snapshot-read",

@@ -1,0 +1,17 @@
+{
+ "changes": [
+  "/work/repo/northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- All existing tests pass (`make test`)"
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [],
+ "operations": [],
+ "review": null,
+ "summary": "Issue Fixed: Ticket notification emails were showing HTML links as literal markup (e.g., `&lt;a href=\"/tickets/42\"&gt;view ticket&lt;/a&gt;`) and `&amp;` was appearing as `&amp;amp;`."
+}
