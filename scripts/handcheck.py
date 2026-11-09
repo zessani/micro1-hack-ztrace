@@ -86,7 +86,7 @@ def build():
 
 def score():
     text = SHEET.read_text()
-    blocks = re.split(r"^## ", text, flags=re.M)[1:]
+    blocks = re.split(r"^## (?=[\w.-]+__[\w.-]+/[\w.-]+__[\w.-]+/\d+\s*$)", text, flags=re.M)[1:]
     rows, blank = [], []
     for b in blocks:
         run = b.splitlines()[0].strip()
