@@ -6,6 +6,18 @@ Generated from [numbers.json](numbers.json) by `scripts/readme_fill.py`. Back to
 
 Models are sorted by the share of important events reported. A model shares the rank of the model directly above it when its 95% interval reaches that model's point estimate. Tied ranks are marked with =.
 
+Per-run view of the leaderboard. The interval is over runs, since events in one run are not independent. Hard-set pass rate: the summary got the key fact right and said nothing false.
+
+| Model (harness) | Runs with every event reported (95% CI) | Hard-set pass rate |
+|---|---|---|
+| Claude Opus 5.5 (Claude Code) | 9 of 9 (70% to 100%) | 100% (11/11) |
+| Claude Sonnet 5.5 (Claude Code) | 29 of 33 (73% to 95%) | 91% (40/44) |
+| Muse Spark Open (OpenCode) | 5 of 10 (24% to 76%) | 67% (10/15) |
+| GPT-6.1 Sol (OpenCode) | 4 of 9 (19% to 73%) | 64% (9/14) |
+| Qwen3 Coder (OpenCode) | 1 of 12 (1% to 35%) | 8% (1/12) |
+
+Claude Opus 5.5 ran the first version of the 40-migration audit ticket.
+
 ## Hard-set results
 
 ![Hard-set pass rate](img/hard_pass_rate.png)

@@ -8,7 +8,7 @@ ztrace-bench checks whether AI coding agents' PR summaries tell you what actuall
 
 {{LEADERBOARD}}
 
-![Share of important events the agent reported](report/img/important_events.png)
+![Score: share of important events reported](report/img/important_events.png)
 
 ## Key findings
 

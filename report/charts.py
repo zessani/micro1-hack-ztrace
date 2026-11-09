@@ -56,7 +56,7 @@ def chart_important(d):
     pw = x1 - left
     row, top = 50, 86
     H = top + row * len(items) + 16
-    b = [title("Share of important events the agent reported in its PR summary"),
+    b = [title("Score: share of important events reported"),
          t(PAD, PAD + 36, "Hard tasks, 95%% CI. %d events in %d runs." % (n_ev, n_runs), S_AXIS, fill=MUTE)]
     for i, (m, v) in enumerate(items):
         ye = top + row * i + row / 2
