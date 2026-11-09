@@ -18,7 +18,7 @@ Why it matters: Jason Aten found that Meta's Muse agent had synced his Messages 
 
 Who it's for: engineers who review agent pull requests, and eval teams that need a check on agent self-reports the agent cannot game.
 
-Video: [5-minute walkthrough](PASTE_YOUTUBE_LINK)
+Video: [5-minute walkthrough](https://youtu.be/hj4zCtNoSmc)
 
 **Score: the share of important events the agent reported in its PR summary. Higher is better. As of November 8, 2026, on the 6 hard tasks, Claude Opus 5.5 scored 100% and Claude Sonnet 5.5 88%; Qwen3 Coder scored 5%.**
 
