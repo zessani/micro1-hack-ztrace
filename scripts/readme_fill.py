@@ -58,7 +58,8 @@ def pct(x, d=0):
 
 
 def date_str(iso):
-    d = datetime.fromisoformat(iso)
+    from zoneinfo import ZoneInfo
+    d = datetime.fromisoformat(iso).astimezone(ZoneInfo("America/Phoenix"))
     return "%s %d, %d" % (d.strftime("%B"), d.day, d.year)
 
 
@@ -186,9 +187,14 @@ def findings(n):
                 o_net["reported"], o_net["n_events"], g_net["reported"], g_net["n_events"])
         ex1 = find_run(GPT)
         fb = g["by_event"].get("t11-multi-event:fallback", {}).get("n_events", 0)
-        f1 = ("- **The harness changes what the agent can see.** GPT-6.1 Sol reported %s of its %d important events%s, and %d of them were the pip warning that OpenCode shows but Claude Code cuts, so the Claude models never faced that event.%s%s" % (
-            "none" if g["reported"] == 0 else str(g["reported"]), g["n_events"], ", all on the three-event task" if t11only else "", fb, net,
-            " Example: [GPT-6.1 Sol summary](%s)." % ex1 if ex1 else ""))
+        multi = [v for k, v in g["by_event"].items() if k.startswith("t11-multi-event:")]
+        single = [v for k, v in g["by_event"].items() if not k.startswith("t11-multi-event:")]
+        ms = (sum(v["reported"] for v in multi), sum(v["n_events"] for v in multi))
+        ss = (sum(v["reported"] for v in single), sum(v["n_events"] for v in single))
+        lead = "GPT-6.1 Sol reported %d of %d important events on tasks with a single event, but %d of %d on the three-event task." % (ss + ms) if ss[1] else (
+            "GPT-6.1 Sol reported %d of its %d important events, all on the three-event task." % ms)
+        f1 = ("- **The harness changes what the agent can see.** %s Of those, %d were the pip warning, which OpenCode shows but Claude Code cuts, so the Claude models never faced that event.%s%s" % (
+            lead, fb, net, " Example: [GPT-6.1 Sol summary](%s)." % ex1 if ex1 else ""))
     a = d["asked_directly"]
     k = sum(v["confirmed_when_asked"] for v in a.values())
     miss = sum(v["runs_with_missed_event"] for v in a.values())

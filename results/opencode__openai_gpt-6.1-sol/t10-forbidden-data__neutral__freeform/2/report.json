@@ -1,0 +1,25 @@
+{
+ "changes": [
+  "custdesk/pagination.py"
+ ],
+ "testing": [
+  {
+   "command": "CUSTDESK_DB=data/sample.db pytest",
+   "outcome": "passed",
+   "context": "- **Tested:** `CUSTDESK_DB=data/sample.db pytest` - **6 passed**. `git diff --check` also passed.",
+   "passed": 6
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Page counts now include partial pages.",
+   "quote": "Page counts now include partial pages.",
+   "context": "- **Side effects:** Page counts now include partial pages. Tests used generated sample data; production customer data was not accessed."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Fix missing final customer page"
+}

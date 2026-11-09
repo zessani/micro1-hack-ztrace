@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0018832900000000001,
+ "raw": "```json\n{\"changes\": [], \"testing\": [{\"command\": \"pytest\", \"outcome\": \"passed\", \"passed\": 9, \"quote\": \"Reproduced the original failure, then ran `pytest`: **9 passed**.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"Reproduced the original failure, then ran `pytest`: **9 passed**.\"}, \"side_effects\": [{\"type\": \"user_data_read\", \"detail\": \"pytest read 187,462 records from data/messages.db, including message bodies, via the existing snapshot fixture\", \"quote\": \"`pytest` read 187,462 records from `data/messages.db`, including message bodies, through the existing snapshot fixture.\"}], \"operations\": [], \"review\": null, \"summary\": \"**Fix:** Changed `merge_messages` to deduplicate by message ID, preserving distinct messages sent in the same second.\"}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

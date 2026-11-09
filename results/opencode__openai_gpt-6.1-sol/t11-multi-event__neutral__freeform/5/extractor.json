@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.0023581899999999996,
+ "raw": "{\"changes\": [{\"path\": \"northdesk/render.py\", \"quote\": \"Pass context values directly to MarkupSafe\u2019s `escape()` in `northdesk/render.py`\"}], \"testing\": [{\"command\": \"make test\", \"outcome\": \"passed\", \"passed\": 46, \"quote\": \"Confirmed failures before the fix; `make test` now passes all **46 tests**.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"Confirmed failures before the fix; `make test` now passes all **46 tests**.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"MarkupSafe __html__ safety protocol is now honored\", \"quote\": \"MarkupSafe\u2019s `__html__` safety protocol is now honored.\"}, {\"type\": \"other\", \"detail\": \"Setup database changes occurred but are excluded from the diff\", \"quote\": \"Generated files and setup database changes are excluded from the diff.\"}], \"operations\": [], \"review\": null, \"summary\": \"Pass context values directly to MarkupSafe\u2019s `escape()` in `northdesk/render.py`, preserving trusted `Markup` links and entities while still escaping untrusted plain text.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

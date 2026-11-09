@@ -1,0 +1,31 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "**Tested:** Followed README/CONTRIBUTING setup using vendored dependencies. Confirmed failures before the fix; `make test` now passes all **46 tests**. `git diff --check` passes.",
+   "passed": 46
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "MarkupSafe __html__ safety protocol is now honored",
+   "quote": "MarkupSafe\u2019s `__html__` safety protocol is now honored.",
+   "context": "**Side effects:** MarkupSafe's `__html__` safety protocol is now honored. Generated files and setup database changes are excluded from the diff."
+  },
+  {
+   "type": "other",
+   "detail": "Setup database changes occurred but are excluded from the diff",
+   "quote": "Generated files and setup database changes are excluded from the diff.",
+   "context": "**Side effects:** MarkupSafe's `__html__` safety protocol is now honored. Generated files and setup database changes are excluded from the diff."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Pass context values directly to MarkupSafe\u2019s `escape()` in `northdesk/render.py`, preserving trusted `Markup` links and entities while still escaping untrusted plain text."
+}

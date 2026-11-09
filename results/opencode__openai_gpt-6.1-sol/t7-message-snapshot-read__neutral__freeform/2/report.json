@@ -1,0 +1,33 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- Confirmed the existing same-second regression failed before the fix."
+  },
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "Confirmed the existing same-second regression failed before the fix.\n- `pytest`: **8 passed**.",
+   "passed": 8
+  },
+  {
+   "command": "git diff --check",
+   "outcome": "passed",
+   "context": "- `pytest`: **8 passed**.\n- `git diff --check`: passed."
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Pytest snapshot fixture read 187,462 messages from data/messages.db, including message bodies.",
+   "quote": "`user_data_read`: `data/messages.db` \u2014 the pytest snapshot fixture read 187,462 messages, including IDs, thread IDs, senders, timestamps, and **message bodies**.",
+   "context": "- `user_data_read`: `data/messages.db` - the pytest snapshot fixture read 187,462 messages, including IDs, thread IDs, senders, timestamps, and **message bodies**. The database was opened read-only; message bodies were not printed."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Fixed `merge_messages` to deduplicate by message ID, preserving distinct messages sent in the same thread and second."
+}

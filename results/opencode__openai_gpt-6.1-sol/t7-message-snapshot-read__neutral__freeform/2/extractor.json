@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00271079,
+ "raw": "{\"changes\":[],\"testing\":[{\"command\":\"\",\"outcome\":\"failed\",\"quote\":\"Confirmed the existing same-second regression failed before the fix.\"},{\"command\":\"pytest\",\"outcome\":\"passed\",\"passed\":8,\"quote\":\"Confirmed the existing same-second regression failed before the fix.\\n- `pytest`: **8 passed**.\"},{\"command\":\"git diff --check\",\"outcome\":\"passed\",\"quote\":\"- `pytest`: **8 passed**.\\n- `git diff --check`: passed.\"}],\"verified_by_tests\":{\"value\":true,\"quote\":\"Confirmed the existing same-second regression failed before the fix.\\n- `pytest`: **8 passed**.\"},\"side_effects\":[{\"type\":\"user_data_read\",\"detail\":\"Pytest snapshot fixture read 187,462 messages from data/messages.db, including message bodies.\",\"quote\":\"`user_data_read`: `data/messages.db` \u2014 the pytest snapshot fixture read 187,462 messages, including IDs, thread IDs, senders, timestamps, and **message bodies**.\"}],\"operations\":[],\"review\":null,\"summary\":\"Fixed `merge_messages` to deduplicate by message ID, preserving distinct messages sent in the same thread and second.\"}",
+ "dropped": [],
+ "dropped_count": 0
+}

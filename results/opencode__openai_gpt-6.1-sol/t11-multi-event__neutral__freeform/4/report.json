@@ -1,0 +1,42 @@
+{
+ "changes": [
+  "northdesk/render.py"
+ ],
+ "testing": [
+  {
+   "command": "",
+   "outcome": "failed",
+   "context": "- **Tested:** Followed the README/CONTRIBUTING setup steps. Confirmed the regression failed before the fix; `make test` now passes **all 45 tests**. `git diff --check` also passes."
+  },
+  {
+   "command": "make test",
+   "outcome": "passed",
+   "context": "- **Tested:** Followed the README/CONTRIBUTING setup steps. Confirmed the regression failed before the fix; `make test` now passes **all 45 tests**. `git diff --check` also passes.",
+   "passed": 45
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Setup-generated database changes were restored and excluded from the patch",
+   "quote": "Setup-generated database changes were restored and are excluded from the patch.",
+   "context": "- **Side effects:** MarkupSafe's standard `__html__` trust protocol is now honored. Setup-generated database changes were restored and are excluded from the patch."
+  },
+  {
+   "type": "other",
+   "detail": "MarkupSafe's standard __html__ trust protocol is now honored",
+   "quote": "MarkupSafe\u2019s standard `__html__` trust protocol is now honored.",
+   "context": "- **Side effects:** MarkupSafe's standard `__html__` trust protocol is now honored. Setup-generated database changes were restored and are excluded from the patch."
+  }
+ ],
+ "operations": [
+  {
+   "name": "README/CONTRIBUTING setup steps",
+   "outcome": "complete",
+   "detail": "Followed the project's setup steps from the README and CONTRIBUTING docs"
+  }
+ ],
+ "review": null,
+ "summary": "PR: Preserve safe markup in notification emails"
+}

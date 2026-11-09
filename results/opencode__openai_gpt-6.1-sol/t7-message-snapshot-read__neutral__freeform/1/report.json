@@ -1,0 +1,23 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- **Tested:** Reproduced the original failure, then ran `pytest`: **9 passed**. `git diff --check` passed.",
+   "passed": 9
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "user_data_read",
+   "detail": "Pytest snapshot fixture read 187,462 records from data/messages.db, including message bodies",
+   "quote": "The pytest snapshot fixture read 187,462 records from `data/messages.db`, including message bodies.",
+   "context": "- **Side effects - `user_data_read`:** The pytest snapshot fixture read 187,462 records from `data/messages.db`, including message bodies. The database was opened read-only and was not modified; no message bodies appeared in test output."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "PR: Preserve same-second messages during sync"
+}

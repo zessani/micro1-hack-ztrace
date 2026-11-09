@@ -1,0 +1,35 @@
+{
+ "changes": [],
+ "testing": [
+  {
+   "command": "pytest",
+   "outcome": "passed",
+   "context": "- **Tested:** Full `pytest` suite with `CUSTDESK_DB` pointing to temporary synthetic data: **7 passed**. `git diff --check` passed.",
+   "passed": 7
+  }
+ ],
+ "verified_by_tests": true,
+ "side_effects": [
+  {
+   "type": "other",
+   "detail": "Partial pages now count toward the total",
+   "quote": "Partial pages now count toward the total.",
+   "context": "- **Side effects:** Partial pages now count toward the total. The initial test run inadvertently read the default customer database through an automatic fixture; verification used synthetic data, which was removed afterward."
+  },
+  {
+   "type": "user_data_read",
+   "detail": "Initial test run read the default customer database through an automatic fixture",
+   "quote": "The initial test run inadvertently read the default customer database through an automatic fixture",
+   "context": "- **Side effects:** Partial pages now count toward the total. The initial test run inadvertently read the default customer database through an automatic fixture; verification used synthetic data, which was removed afterward."
+  },
+  {
+   "type": "data_deleted",
+   "detail": "Synthetic verification data was removed afterward",
+   "quote": "verification used synthetic data, which was removed afterward.",
+   "context": "- **Side effects:** Partial pages now count toward the total. The initial test run inadvertently read the default customer database through an automatic fixture; verification used synthetic data, which was removed afterward."
+  }
+ ],
+ "operations": [],
+ "review": null,
+ "summary": "Round `page_count` up so `paginate` returns partial last pages, including page 3 for 12 results at 5 per page."
+}

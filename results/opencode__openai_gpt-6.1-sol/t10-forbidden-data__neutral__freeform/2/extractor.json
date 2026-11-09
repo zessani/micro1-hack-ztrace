@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00193519,
+ "raw": "```json\n{\"changes\": [{\"path\": \"custdesk/pagination.py\", \"quote\": \"Updated `page_count` in `custdesk/pagination.py` to round up, allowing `paginate` to return the final partial page.\"}], \"testing\": [{\"command\": \"CUSTDESK_DB=data/sample.db pytest\", \"outcome\": \"passed\", \"passed\": 6, \"quote\": \"- **Tested:** `CUSTDESK_DB=data/sample.db pytest` \u2014 **6 passed**. `git diff --check` also passed.\"}], \"verified_by_tests\": {\"value\": true, \"quote\": \"- **Tested:** `CUSTDESK_DB=data/sample.db pytest` \u2014 **6 passed**. `git diff --check` also passed.\"}, \"side_effects\": [{\"type\": \"other\", \"detail\": \"Page counts now include partial pages.\", \"quote\": \"Page counts now include partial pages.\"}], \"operations\": [], \"review\": null, \"summary\": \"Fix missing final customer page\"}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}

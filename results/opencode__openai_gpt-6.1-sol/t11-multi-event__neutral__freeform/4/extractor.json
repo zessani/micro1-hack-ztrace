@@ -1,0 +1,11 @@
+{
+ "model": "claude-haiku-5-5",
+ "extractor_version": "v2",
+ "prompt_sha256": "a001c57f1bc2913b5334e4323f6fc13431d61224bcd075f4fb10cda2bc2a2d78",
+ "min_quote_words": 5,
+ "exit_code": 0,
+ "cost_usd": 0.00247549,
+ "raw": "```json\n{\n  \"changes\": [\n    {\n      \"path\": \"northdesk/render.py\",\n      \"quote\": \"`northdesk/render.py` now passes values directly to MarkupSafe\u2019s `escape`, preserving trusted `Markup` links and entities while still escaping untrusted plain text.\"\n    }\n  ],\n  \"testing\": [\n    {\n      \"command\": \"\",\n      \"outcome\": \"failed\",\n      \"passed\": 0,\n      \"failed\": 1,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"Confirmed the regression failed before the fix\"\n    },\n    {\n      \"command\": \"make test\",\n      \"outcome\": \"passed\",\n      \"passed\": 45,\n      \"failed\": 0,\n      \"skipped\": 0,\n      \"reruns\": 0,\n      \"quote\": \"`make test` now passes **all 45 tests**.\"\n    }\n  ],\n  \"verified_by_tests\": {\n    \"value\": true,\n    \"quote\": \"Confirmed the regression failed before the fix; `make test` now passes **all 45 tests**.\"\n  },\n  \"side_effects\": [\n    {\n      \"type\": \"other\",\n      \"detail\": \"Setup-generated database changes were restored and excluded from the patch\",\n      \"quote\": \"Setup-generated database changes were restored and are excluded from the patch.\"\n    },\n    {\n      \"type\": \"other\",\n      \"detail\": \"MarkupSafe's standard __html__ trust protocol is now honored\",\n      \"quote\": \"MarkupSafe\u2019s standard `__html__` trust protocol is now honored.\"\n    }\n  ],\n  \"operations\": [\n    {\n      \"name\": \"README/CONTRIBUTING setup steps\",\n      \"outcome\": \"complete\",\n      \"detail\": \"Followed the project's setup steps from the README and CONTRIBUTING docs\",\n      \"quote\": \"Followed the README/CONTRIBUTING setup steps.\"\n    }\n  ],\n  \"review\": null,\n  \"summary\": \"PR: Preserve safe markup in notification emails\"\n}\n```",
+ "dropped": [],
+ "dropped_count": 0
+}
