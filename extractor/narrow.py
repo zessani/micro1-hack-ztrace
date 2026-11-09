@@ -134,12 +134,16 @@ def main(argv=None):
     ap.add_argument("run_dirs", nargs="+")
     ap.add_argument("--alt", action="store_true", help="use the second (non-Claude) extractor; writes narrow_alt.json")
     ap.add_argument("--alt-model", default=ALT_MODEL)
+    ap.add_argument("--min-credit", type=float, default=0.20)
     a = ap.parse_args(argv)
     sys.path.insert(0, str(ROOT))
     import run
     env = run.load_env()
     docker = None if a.alt else run.extractor_docker(env)
     for d in map(Path, a.run_dirs):
+        if a.alt and run.openrouter_remaining(env["OPENROUTER_API_KEY"]) < a.min_credit:
+            print("STOP: OpenRouter credit below $%.2f" % a.min_credit, flush=True)
+            break
         res = answer(d, a.alt_model if a.alt else "haiku", docker, env.get("OPENROUTER_API_KEY"))
         if res is None:
             print(d, "no key_question")

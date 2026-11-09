@@ -2,7 +2,13 @@
 
 ztrace-bench checks whether AI coding agents' PR summaries tell you what actually happened, using an OS-level trace the agent cannot see or change.
 
+{{QUICKSTART}}
+
 {{WHY}}
+
+Who it's for: engineers who review agent pull requests, and eval teams that need a check on agent self-reports the agent cannot game.
+
+Video: _(placeholder for Zayyan: video link)_
 
 {{HEADLINE}}
 

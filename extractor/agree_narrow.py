@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from extractor.agree import main_runs, sample  # noqa: E402
-from grader.narrow import grade_narrow  # noqa: E402
+from grader.narrow import grade_multi, grade_narrow  # noqa: E402
 from grader.grade import load_task  # noqa: E402
 
 
@@ -29,7 +29,7 @@ def compare(runs):
             skipped += 1
             continue
         a, b = json.loads(p.read_text()), json.loads(q.read_text())
-        if b.get("error") and b.get("answer") == "not_stated" and not b.get("raw"):
+        if b.get("error") and (b.get("answer") == "not_stated" or not b.get("questions")) and not b.get("raw"):
             skipped += 1
             continue
         g = json.loads((d / "grade.json").read_text())
@@ -37,8 +37,15 @@ def compare(runs):
         task = load_task(str(ROOT / "tasks" / d.parent.name.split("__")[0]))
         sc = "method_disclosed" in g.get("tags", []) or None
         va = g.get("narrow", {}).get("verdict") or grade_narrow(base, task, a, sc)["verdict"]
-        vb = grade_narrow(base, task, b, True)["verdict"]
-        ans.append((a["answer"], b["answer"]))
+        if task.get("key_questions"):
+            texts = [json.loads(l).get("text", "") for l in open(d / "tool_outputs.jsonl")] if (d / "tool_outputs.jsonl").exists() else []
+            vb = grade_multi(base, task, b, True, texts)["verdict"]
+            qa = {q.get("id"): q.get("answer") for q in a.get("questions", [])}
+            for q in b.get("questions", []):
+                ans.append((qa.get(q.get("id")), q.get("answer")))
+        else:
+            vb = grade_narrow(base, task, b, True)["verdict"]
+            ans.append((a["answer"], b["answer"]))
         ver.append(("pass" if va in ("correct", "not_scored") else "fail", "pass" if vb in ("correct", "not_scored") else "fail"))
     return {"n": len(ans), "skipped_alt_unavailable": skipped,
             "answer_agreement": "%d/%d" % (sum(x == y for x, y in ans), len(ans)), "answer_kappa": kappa(ans),
@@ -48,7 +55,8 @@ def compare(runs):
 def main():
     results = ROOT / "results"
     runs = main_runs(results)
-    picked, _ = sample(runs, 20, 20261108)
+    fixed = json.loads((results / "_agreement" / "agreement.json").read_text())["rows"]
+    picked = [results / r["run"] for r in fixed]
     allff = sorted(d for d in results.glob("*__*/*__freeform/[0-9]*") if (ROOT / "tasks" / d.parent.name.split("__")[0]).is_dir())
     out = {"primary": "claude-haiku-5-5", "alt": "nvidia/nemotron-3-ultra-550b-a55b (free endpoint for the first 35 answers, paid endpoint for the rest; same model)",
            "note": "aggregate only; per-run comparison withheld until the hand check is complete",

@@ -1,6 +1,6 @@
 # ztrace-bench full report
 
-Generated from [numbers.json](numbers.json) by `scripts/readme_fill.py`. Back to the [README](../README.md). `make report` also builds an index of every run's summary and verdict (`report/out/index.html`).
+Generated from [numbers.json](numbers.json) by `scripts/readme_fill.py`. Back to the [README](../README.md). `make report` also builds an index of every run's summary and verdict (`report/out/index.html`). The static run viewer shows each run's summary, trace evidence, verdict and follow-up answer side by side: [viewer/index.html](../viewer/index.html) (`make viewer`).
 
 ## Ranking rule
 

@@ -306,8 +306,10 @@ def pointers():
         ("Second grader and hand check", "second-grader-and-hand-check"),
         ("What changed during the project", "what-changed-during-the-project"),
         ("Example failing runs", "transcripts"),
+        ("Cost and runtime", "cost-and-runtime"),
     ]
-    return "More detail in the full report:\n\n" + "\n".join("- [%s](%s#%s)" % (t, R, a) for t, a in items)
+    return ("More detail in the full report:\n\n" + "\n".join("- [%s](%s#%s)" % (t, R, a) for t, a in items)
+            + "\n- [Run viewer: every run's summary, trace evidence, verdict and follow-up answer](viewer/index.html)")
 
 
 def cell(x):
@@ -479,13 +481,39 @@ def validation():
 
 def cost(n):
     main = n["groups"]["main"]["models"]
-    rows = ["| Model | Runs | Total cost | Mean per run |", "|---|---|---|---|"]
+    ctx = n["derived"]["context_only"]
+    rows = ["| Model | Runs | Total cost | Mean per run | Median run time |", "|---|---|---|---|---|"]
     for m, lbl in MODELS:
         o = main.get(m, {}).get("overall")
+        c = ctx.get(m, {})
         if o and o.get("runs_total"):
-            rows.append("| %s | %d | $%.2f | $%.3f |" % (lbl, o["runs_total"], o["cost_total_usd"], o["cost_mean_usd"]))
-    rows += ["", "From each run's `meta.json`. Claude Code costs are at API prices (runs used a subscription). OpenRouter billed $4.78 for all OpenCode runs and second-grader calls, against $3.55 reported by OpenCode, before the GPT-6.1 Sol runs. Runs take 1 to 5 minutes; grading a summary costs under $0.01."]
-    return "\n".join(rows)
+            md = c.get("median_duration_s")
+            rows.append("| %s | %d | $%.2f | $%.3f | %s |" % (lbl, o["runs_total"], o["cost_total_usd"], o["cost_mean_usd"],
+                                                         "%.1f min" % (md / 60) if md else "n/a"))
+    bill = n["derived"].get("billing", {})
+    oc = sum((c.get("opencode_reported_cost_usd") or 0) for c in ctx.values())
+    note = ["From each run's `meta.json`. Claude Code costs are at API prices; the runs used a subscription."]
+    if bill.get("openrouter_total_usage_usd") is not None:
+        note.append("OpenCode's own estimates undercount: OpenRouter billed $%.2f in total for all OpenCode runs and second-grader calls (as of %s), while OpenCode reported $%.2f for its main-matrix runs." % (
+            bill["openrouter_total_usage_usd"], bill.get("as_of", ""), oc))
+    return "\n".join(rows + ["", " ".join(note)])
+
+
+def quickstart(n):
+    t = n["derived"].get("timings", {})
+    def tm(k):
+        v = t.get(k)
+        if v is None:
+            return "not measured"
+        return "about %d s" % v if v < 90 else "about %d min" % round(v / 60)
+    return "\n".join([
+        "No API key needed. Requires Docker and Python 3.11+.", "", "```",
+        "make test       # unit tests (%s)" % tm("make_test_s"),
+        "make replay     # regrade every saved run from its trace (%s)" % tm("make_replay_s"),
+        "make validate   # build each task and check the reference summaries (%s)" % tm("make_validate_s"),
+        "```", "",
+        "Times measured on %s (%s); a first build takes longer." % (t.get("machine", "n/a"), t.get("measured_on", "n/a")),
+        "", "Browse every run (summary, trace evidence, verdict, follow-up answer): [viewer/index.html](viewer/index.html)."])
 
 
 def t8_tickets(n):
@@ -526,9 +554,14 @@ def transcripts():
     for t, rel, cat, ans, q in sorted(picks, key=lambda p: order.get(p[0], 99)):
         said = "\"%s\"" % q.replace("|", "/") if q and ans != "not_stated" else "not mentioned"
         rows.append("- %s, %s: [%s](%s), %s" % (short(t), cat, rel.split("results/")[1], rel, said))
-    missing = [short(t) for t in HARD + RELIABLE if t not in [p[0] for p in picks] and (ROOT / "tasks" / t).is_dir()]
+    missing = [t for t in HARD + RELIABLE if t not in [p[0] for p in picks] and (ROOT / "tasks" / t).is_dir()]
     if missing:
-        rows += ["", "No failures on %s." % ", ".join(missing)]
+        rows += ["", "No agent failed these tasks in the main runs. One example run each, so the task can still be inspected:", ""]
+        for t in missing:
+            ex = next((d for d in sorted((ROOT / "results").glob("*__*/%s__neutral__freeform/[0-9]*" % t)) if (d / "grade.json").exists()), None)
+            if ex:
+                rel = str(ex.relative_to(ROOT))
+                rows.append("- %s, no failure observed: [%s](%s)" % (short(t), rel.split("results/")[1], rel))
     return "\n".join(rows)
 
 
@@ -555,7 +588,7 @@ def main():
     n = read(NUM)
     readme = fill("README.tmpl.md", {
         "WHY": why(), "HEADLINE": headline(n), "LEADERBOARD": leaderboard(n), "FINDINGS": findings(n),
-        "ACCURACY": accuracy(n), "EXAMPLE": example(n), "TASKS": tasks_table(n), "POINTERS": pointers(),
+        "ACCURACY": accuracy(n), "QUICKSTART": quickstart(n), "EXAMPLE": example(n), "TASKS": tasks_table(n), "POINTERS": pointers(),
         "LIMITS": limits(n)})
     (ROOT / "README.md").write_text(readme)
     wc = (TEMPLATES / "what_changed.md").read_text()

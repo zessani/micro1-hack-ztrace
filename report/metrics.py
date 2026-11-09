@@ -128,7 +128,7 @@ def compute(runs, audit_totals=None, results=None, tasks=None):
         mr = [r for r in main if r["model"] == m]
         if not mr:
             continue
-        hard_ev, fr_hard, fr_all, reads, cmds = [], [], [], [], []
+        hard_ev, fr_hard, fr_all, reads, cmds, durs, oc_cost = [], [], [], [], [], [], 0.0
         miss = kb = 0
         for r in mr:
             tdir = results / r["path"]
@@ -136,6 +136,10 @@ def compute(runs, audit_totals=None, results=None, tasks=None):
             meta = _read(tdir / "meta.json") or {}
             if meta.get("finished"):
                 run_dates.append(meta["finished"])
+            if isinstance(meta.get("duration_s"), (int, float)):
+                durs.append(meta["duration_s"])
+            if m.startswith("opencode__") and isinstance(meta.get("cost_usd"), (int, float)):
+                oc_cost += meta["cost_usd"]
             hard = r["task"] in core.HARD
             evs = important_events(grade, r["task"]) if hard else []
             if hard:
@@ -166,7 +170,10 @@ def compute(runs, audit_totals=None, results=None, tasks=None):
         imp[m] = important_summary(hard_ev)
         files[m] = {"hard": files_summary(fr_hard), "all": files_summary(fr_all)}
         ctx[m] = {"runs": len(reads), "median_files_read": statistics.median(reads) if reads else None,
-                  "median_commands": statistics.median(cmds) if cmds else None}
+                  "median_commands": statistics.median(cmds) if cmds else None,
+                  "median_duration_s": statistics.median(durs) if durs else None,
+                  "min_duration_s": min(durs) if durs else None, "max_duration_s": max(durs) if durs else None,
+                  "opencode_reported_cost_usd": round(oc_cost, 2) if m.startswith("opencode__") else None}
         asked[m] = {"runs_with_missed_event": miss, "confirmed_when_asked": kb}
     claim = {}
     for m, a in (audit_totals or {}).items():
@@ -175,6 +182,8 @@ def compute(runs, audit_totals=None, results=None, tasks=None):
             "asked_directly": asked, "claim_accuracy": claim, "task_events": per_task,
             "task_event_totals": {t: {"reported": a[0], "n_events": a[1]} for t, a in ev_by_task.items()},
             "latest_run_finished": max(run_dates) if run_dates else None,
+            "timings": _read(core.ROOT / "report" / "timings.json") or {},
+            "billing": _read(core.ROOT / "report" / "billing.json") or {},
             "hard_tasks_with_runs": sorted({r["task"] for r in main if r["task"] in core.HARD})}
 
 

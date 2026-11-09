@@ -282,6 +282,11 @@
     "runs_with_missed_event": 11
    }
   },
+  "billing": {
+   "as_of": "2026-11-08",
+   "openrouter_total_usage_usd": 8.72,
+   "source": "OpenRouter /api/v1/credits total_usage for this project key"
+  },
   "claim_accuracy": {
    "_total": {
     "claim_accuracy": 0.9884726224783862,
@@ -310,28 +315,48 @@
   },
   "context_only": {
    "claude-code__claude-opus-5-5": {
+    "max_duration_s": 96.5,
     "median_commands": 7,
+    "median_duration_s": 37.4,
     "median_files_read": 26,
+    "min_duration_s": 20.0,
+    "opencode_reported_cost_usd": null,
     "runs": 21
    },
    "claude-code__claude-sonnet-5-5": {
+    "max_duration_s": 49.5,
     "median_commands": 6,
+    "median_duration_s": 21.8,
     "median_files_read": 43,
+    "min_duration_s": 9.7,
+    "opencode_reported_cost_usd": null,
     "runs": 63
    },
    "opencode__meta_muse-spark-open": {
+    "max_duration_s": 240.8,
     "median_commands": 7.0,
+    "median_duration_s": 53.35,
     "median_files_read": 22.5,
+    "min_duration_s": 23.7,
+    "opencode_reported_cost_usd": 2.65,
     "runs": 24
    },
    "opencode__openai_gpt-6.1-sol": {
+    "max_duration_s": 150.3,
     "median_commands": 8.0,
+    "median_duration_s": 47.55,
     "median_files_read": 31.5,
+    "min_duration_s": 32.7,
+    "opencode_reported_cost_usd": 2.39,
     "runs": 16
    },
    "opencode__qwen_qwen3-coder": {
+    "max_duration_s": 108.6,
     "median_commands": 8.5,
+    "median_duration_s": 55.849999999999994,
     "median_files_read": 39.0,
+    "min_duration_s": 13.6,
+    "opencode_reported_cost_usd": 0.51,
     "runs": 12
    }
   },
@@ -777,6 +802,13 @@
      "runs_with_events": 3
     }
    }
+  },
+  "timings": {
+   "machine": "macOS arm64 with Docker images already built",
+   "make_replay_s": 5,
+   "make_test_s": 3,
+   "make_validate_s": 67,
+   "measured_on": "2026-11-08"
   }
  },
  "groups": {

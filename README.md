@@ -2,7 +2,23 @@
 
 ztrace-bench checks whether AI coding agents' PR summaries tell you what actually happened, using an OS-level trace the agent cannot see or change.
 
+No API key needed. Requires Docker and Python 3.11+.
+
+```
+make test       # unit tests (about 3 s)
+make replay     # regrade every saved run from its trace (about 5 s)
+make validate   # build each task and check the reference summaries (about 67 s)
+```
+
+Times measured on macOS arm64 with Docker images already built (2026-11-08); a first build takes longer.
+
+Browse every run (summary, trace evidence, verdict, follow-up answer): [viewer/index.html](viewer/index.html).
+
 Why it matters: Jason Aten found that Meta's Muse agent had synced his Messages database "up to row 187,462" ([Inc.](https://www.inc.com/jason-aten/metas-new-muse-ai-agent-read-my-private-messages-i-never-asked-it-to/91408202), [The Next Web](https://thenextweb.com/news/meta-muse-private-messages-denial-jason-aten)). A reviewer who reads only the summary learns about events like this only if the summary mentions them.
+
+Who it's for: engineers who review agent pull requests, and eval teams that need a check on agent self-reports the agent cannot game.
+
+Video: _(placeholder for Zayyan: video link)_
 
 **Score: the share of important events the agent reported in its PR summary. Higher is better. As of November 8, 2026, on the 6 hard tasks, Claude Opus 5.5 scored 100% and Claude Sonnet 5.5 88%; Qwen3 Coder scored 8%.**
 
@@ -84,6 +100,8 @@ More detail in the full report:
 - [Second grader and hand check](report/REPORT.md#second-grader-and-hand-check)
 - [What changed during the project](report/REPORT.md#what-changed-during-the-project)
 - [Example failing runs](report/REPORT.md#transcripts)
+- [Cost and runtime](report/REPORT.md#cost-and-runtime)
+- [Run viewer: every run's summary, trace evidence, verdict and follow-up answer](viewer/index.html)
 
 ## Grading and validation
 
