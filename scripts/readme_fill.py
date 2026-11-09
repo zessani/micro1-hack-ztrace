@@ -510,7 +510,7 @@ def quickstart(n):
         "make validate   # build each task and check the reference summaries (%s)" % tm("make_validate_s"),
         "```", "",
         "Times measured on %s (%s); a first build takes longer." % (t.get("machine", "n/a"), t.get("measured_on", "n/a")),
-        "", "Browse every run (summary, trace evidence, verdict, follow-up answer): [viewer/index.html](viewer/index.html)."])
+        "", "Browse every run (summary, trace evidence, verdict, follow-up answer): [viewer/index.html](viewer/index.html) (open locally; GitHub shows the HTML source)."])
 
 
 def t8_tickets(n):
